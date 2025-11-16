@@ -1,10 +1,9 @@
 import React from "react";
 
-
-const GlassBlock = ({ children, delay = 0}) => {
+const GlassBlock = ({ children, delay = 0 }) => {
     return (
-        <div className="lass-block"
-        style = {{
+        <div className="glass-block"
+        style={{
             animation: `slideIn 0.6s ease-out ${delay}s both`,
             background: 'rgba(255, 255, 255, 0.1)',
             backdropFilter: 'blur(10px)',
@@ -15,11 +14,11 @@ const GlassBlock = ({ children, delay = 0}) => {
             marginBottom: '2rem',
             boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
             transition: 'all 0.3s ease'
-          }}
+        }}
         >
+            {children}
         </div>  
     );
 };
-
 
 export default GlassBlock;

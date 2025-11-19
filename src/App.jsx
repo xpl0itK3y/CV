@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AnimatedBackground from './components/AnimatedBackground';
 import TopBar from './components/TopBar';
 import Header from './components/sections/Header';
@@ -13,6 +13,16 @@ import './styles/animations.css';
 
 function App() {
   const [currentLang, setCurrentLang] = useState('ru');
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleLanguageChange = (lang) => {
     setCurrentLang(lang);
@@ -31,19 +41,19 @@ function App() {
       {/* Верхняя панель с переключателем языка */}
       <TopBar currentLang={currentLang} onLanguageChange={handleLanguageChange} />
       
-      {/* Основной контент с одинаковыми отступами */}
+      {/* Основной контент */}
       <div style={{ 
-        padding: '8rem 1.5rem 3rem 1.5rem' // Одинаковые отступы слева и справа как у шапки
+        padding: isMobile ? '8rem 1rem 2rem 1rem' : '10rem 1.5rem 3rem 1.5rem'
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative' }}>
           {/* Первый блок - на всю ширину */}
           <Header name={resumeData.name} title={resumeData.title} />
           
-          {/* Остальные блоки в два столбца */}
+          {/* Остальные блоки в два столбца / один столбец на мобильных */}
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(2, 1fr)', 
-            gap: '2rem',
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+            gap: isMobile ? '1.5rem' : '2rem',
           }}>
             {/* Левая колонка */}
             <div style={{ animation: 'fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both' }}>

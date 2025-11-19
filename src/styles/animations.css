@@ -10,6 +10,18 @@
     }
 }
 
+/* Анимация для шапки */
+@keyframes slideDownTop {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @keyframes fadeInLeft {
     from {
       opacity: 0;
@@ -114,7 +126,31 @@
   
 /* Hover эффект для стеклянных блоков */
 .glass-block {
+    position: relative;
+    overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%; /* шире — плавнее */
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        transparent 100%
+    );
+    transform: translateX(-120%);
+    transition: transform 0.6s ease-out;
+    pointer-events: none;
+}
+
+.glass-block:hover::before {
+    transform: translateX(120%);
 }
   
 .glass-block:hover {
@@ -140,39 +176,24 @@
     }
 }
 
-/* Shimmer эффект */
-@keyframes shimmer {
-    0% {
-        background-position: -1000px 0;
+/* Анимация для выпадающего меню */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
     }
-    100% {
-        background-position: 1000px 0;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-}
-/* Гладкий и небагующий shimmer-эффект */
-.glass-block {
-    position: relative;
-    overflow: hidden;
 }
 
-.glass-block::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 150%; /* шире — плавнее */
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.15) 50%,
-        transparent 100%
-    );
-    transform: translateX(-120%);
-    transition: transform 0.6s ease-out;
-    pointer-events: none;
-}
-
-.glass-block:hover::before {
-    transform: translateX(120%);
+/* Анимация для элементов меню */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

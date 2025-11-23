@@ -15,7 +15,6 @@ const Experience = ({ title, experience }) => {
 
     // Функция для разбивки текста на предложения
     const splitIntoSentences = (text) => {
-        // Разбиваем по точкам, но сохраняем точку в конце каждого предложения
         return text
             .split('.')
             .map(sentence => sentence.trim())
@@ -30,7 +29,6 @@ const Experience = ({ title, experience }) => {
                     color: '#fff', 
                     marginTop: '0', 
                     fontSize: isMobile ? '1.3rem' : '1.5rem',
-                    marginBottom: '0',
                     marginBottom: isMobile ? '1rem' : '1.5rem'
                 }}>
                     {title}

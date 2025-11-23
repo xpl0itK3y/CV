@@ -309,9 +309,24 @@
     }
     
     /* Отключаем все декоративные анимации */
-    @keyframes float,
-    @keyframes pulse,
-    @keyframes wave,
+    @keyframes float {
+        0%, 100% {
+            transform: none;
+        }
+    }
+    
+    @keyframes pulse {
+        0%, 100% {
+            transform: none;
+        }
+    }
+    
+    @keyframes wave {
+        0%, 100% {
+            transform: none;
+        }
+    }
+    
     @keyframes rotate {
         0%, 100% {
             transform: none;

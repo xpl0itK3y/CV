@@ -1,0 +1,53 @@
+# Зависимости
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Build артефакты
+dist
+build
+.next
+out
+
+# IDE и редакторы
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# CI/CD
+.github
+.gitlab-ci.yml
+
+# Тесты
+coverage
+.nyc_output
+*.test.js
+*.spec.js
+__tests__
+
+# Документация
+README.md
+CHANGELOG.md
+LICENSE
+docs
+
+# Environment файлы (на проде используем docker secrets/config)
+.env
+.env.local
+.env.*.local
+
+# OS файлы
+.DS_Store
+Thumbs.db
+
+# Временные файлы
+*.log
+*.tmp
+.cache

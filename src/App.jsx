@@ -185,6 +185,13 @@ function App() {
                     }}
                   />
                 </div>
+                {/* Образование */}
+                <div style={{ animation: 'fadeInUp 0.6s ease-out 0.5s both' }}>
+                  <Education 
+                    title={t.educationTitle}
+                    education={t.education}
+                  />
+                </div>
 
                 {/* Навыки */}
                 <div style={{ animation: 'fadeInUp 0.6s ease-out 0.4s both' }}>
@@ -195,14 +202,6 @@ function App() {
                       technical: t.technicalSkills,
                       soft: t.softSkills
                     }}
-                  />
-                </div>
-
-                {/* Образование */}
-                <div style={{ animation: 'fadeInUp 0.6s ease-out 0.5s both' }}>
-                  <Education 
-                    title={t.educationTitle}
-                    education={t.education}
                   />
                 </div>
 

@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  # Production версия с Nginx
+  my-resume:
+    container_name: my-resume
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Development версия с hot-reload (опционально)
+  my-resume-dev:
+    container_name: my-resume-dev
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    command: sh -c "npm install && npm run dev -- --host"
+    environment:
+      - NODE_ENV=development
+    profiles:
+      - devversion: '3.8'
+
+services:
+  # Production версия с Nginx
+  resume-app:
+    container_name: my-resume-prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    networks:
+      - resume-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Development версия (опционально)
+  resume-dev:
+    container_name: my-resume-dev
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    command: sh -c "npm install && npm run dev -- --host"
+    environment:
+      - NODE_ENV=development
+    networks:
+      - resume-network
+    profiles:
+      - dev
+
+networks:
+  resume-network:
+    driver: bridge

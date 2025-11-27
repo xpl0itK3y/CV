@@ -15,16 +15,16 @@ const Contacts = ({ title, contacts }) => {
 
     return (
         <GlassBlock delay={0.1}>
-            <h2 style={{ 
-                color: '#fff', 
-                marginTop: '0', 
+            <h2 style={{
+                color: '#fff',
+                marginTop: '0',
                 fontSize: isMobile ? '1.3rem' : '1.5rem',
-                marginBottom: '1.5rem' 
+                marginBottom: '1.5rem'
             }}>
                 {title}
             </h2>
-            <div style={{ 
-                display: 'grid', 
+            <div style={{
+                display: 'grid',
                 gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(180px, 1fr))',
                 gap: '0.8rem',
                 color: 'rgba(255, 255, 255, 0.9)',
@@ -36,12 +36,6 @@ const Contacts = ({ title, contacts }) => {
                         <polyline points="22,6 12,13 2,6"/>
                     </svg>
                     <span>{contacts.email}</span>
-                </a>
-                <a href={`tel:${contacts.phone.replace(/\s/g, '')}`} style={{ color: 'rgba(255, 255, 255, 0.9)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                    </svg>
-                    <span>{contacts.phone}</span>
                 </a>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

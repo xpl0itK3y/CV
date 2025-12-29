@@ -272,7 +272,7 @@ export const generateResumePDF = async (translations, lang) => {
                     color: "#1e40af",
                   },
                   {
-                    text: translations.github.replace(/github\.com\//, ''),
+                    text: translations.github.replace(/github\.com\//, ""),
                     style: "contactText",
                     link: `https://${translations.github}`,
                   },
@@ -304,7 +304,7 @@ export const generateResumePDF = async (translations, lang) => {
                           color: "#1e40af",
                         },
                         {
-                          text: translations.linkedin.replace(/linkedin\.com\/in\//, '').replace(/linkedin\.com\//, ''),
+                          text: "linkedin.com/in/CV",
                           style: "contactText",
                           link: `https://${translations.linkedin}`,
                         },
@@ -323,7 +323,7 @@ export const generateResumePDF = async (translations, lang) => {
                           color: "#1e40af",
                         },
                         {
-                          text: "hh.kz",
+                          text: "hh.kz/CV",
                           style: "contactText",
                           link: `https://${translations.headhunter}`,
                         },

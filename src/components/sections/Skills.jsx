@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GlassBlock from "../GlassBlock";
 
-const Skills = ({ skillsTitle, softSkillsTitle, skills }) => {
+const Skills = ({ skillsTitle, softSkillsTitle, languagesTitle, skills }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ const Skills = ({ skillsTitle, softSkillsTitle, skills }) => {
                 gap: isMobile ? '0.85rem' : '1.2rem',
                 marginBottom: '2.5rem'
             }}>
-                {skills.technical.map((skill, index) => (
+                {skills.technical && skills.technical.map((skill, index) => (
                     <div 
                         key={index} 
                         title={skill.name}
@@ -86,7 +86,7 @@ const Skills = ({ skillsTitle, softSkillsTitle, skills }) => {
                 flexWrap: 'wrap', 
                 gap: '0.75rem'
             }}>
-            {skills.soft.map((skill, index) => (
+            {skills.soft && skills.soft.map((skill, index) => (
                 <span key={index} style={{
                     background: 'rgba(255, 255, 255, 0.15)',
                     padding: isMobile ? '0.4rem 0.8rem' : '0.5rem 1rem',
@@ -98,6 +98,43 @@ const Skills = ({ skillsTitle, softSkillsTitle, skills }) => {
                     {skill}
                 </span>
             ))}
+            </div>
+            
+            {/* Languages */}
+            <h3 style={{ 
+                color: '#fff', 
+                marginTop: '2rem', 
+                marginBottom: '1rem', 
+                fontSize: isMobile ? '1.1rem' : '1.2rem'
+            }}>
+                {languagesTitle}
+            </h3>
+            <div style={{ 
+                display: 'flex', 
+                flexWrap: 'wrap', 
+                gap: '0.75rem'
+            }}>
+                {skills.languages && skills.languages.map((language, index) => (
+                    <div key={index} style={{
+                        background: 'rgba(255, 255, 255, 0.15)',
+                        padding: isMobile ? '0.4rem 0.8rem' : '0.5rem 1rem',
+                        borderRadius: '20px',
+                        color: '#fff',
+                        fontSize: isMobile ? '0.85rem' : '0.9rem',
+                        cursor: 'default',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        minWidth: isMobile ? '80px' : '100px'
+                    }}>
+                        <div style={{ fontWeight: 'bold', marginBottom: '0.2rem' }}>
+                            {language.name}
+                        </div>
+                        <div style={{ fontSize: '0.75rem', opacity: '0.8' }}>
+                            {language.level}
+                        </div>
+                    </div>
+                ))}
             </div>
         </GlassBlock>
     );

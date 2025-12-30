@@ -55,7 +55,7 @@ export const generateResumePDF = async (translations, lang) => {
 
   const docDefinition = {
     pageSize: "A4",
-    pageMargins: [50, 40, 50, 40],
+    pageMargins: [40, 30, 40, 30],
     defaultStyle: {
       font: "Roboto",
       fontSize: 11.5,
@@ -91,7 +91,7 @@ export const generateResumePDF = async (translations, lang) => {
         fontSize: 14,
         bold: true,
         color: "#1e40af",
-        margin: [0, 16, 0, 10],
+        margin: [0, 12, 0, 6],
         decoration: "underline",
         decorationStyle: "solid",
         decorationThickness: 2,
@@ -101,7 +101,7 @@ export const generateResumePDF = async (translations, lang) => {
       contactText: {
         fontSize: 11,
         color: "#1f2937",
-        margin: [0, 2, 0, 2],
+        margin: [0, 1, 0, 1],
       },
 
       // О себе
@@ -109,7 +109,7 @@ export const generateResumePDF = async (translations, lang) => {
         fontSize: 12,
         color: "#000000",
         lineHeight: 1.5,
-        margin: [0, 0, 0, 8],
+        margin: [0, 0, 0, 6],
         alignment: "left",
       },
 
@@ -118,31 +118,31 @@ export const generateResumePDF = async (translations, lang) => {
         fontSize: 13.5,
         bold: true,
         color: "#059669",
-        margin: [0, 0, 0, 2],
+        margin: [0, 0, 0, 1],
       },
       jobCompany: {
         fontSize: 12.5,
         bold: true,
         color: "#047857",
-        margin: [0, 0, 0, 2],
+        margin: [0, 0, 0, 1],
       },
       jobPeriod: {
         fontSize: 11,
         color: "#6b7280",
         italics: true,
-        margin: [0, 0, 0, 6],
+        margin: [0, 0, 0, 4],
       },
       jobDescription: {
         fontSize: 12,
         color: "#000000",
-        margin: [0, 0, 0, 8],
+        margin: [0, 0, 0, 6],
         lineHeight: 1.5,
         alignment: "left",
       },
       techTags: {
         fontSize: 10.5,
         color: "#333333",
-        margin: [0, 4, 0, 0],
+        margin: [0, 3, 0, 0],
       },
 
       // Навыки
@@ -150,9 +150,23 @@ export const generateResumePDF = async (translations, lang) => {
         fontSize: 12,
         bold: true,
         color: "#7c3aed",
-        margin: [0, 0, 0, 6],
+        margin: [0, 0, 0, 4],
       },
       skillText: {
+        fontSize: 12,
+        color: "#000000",
+        lineHeight: 1.5,
+        alignment: "left",
+      },
+
+      // Языки
+      languageHeader: {
+        fontSize: 12,
+        bold: true,
+        color: "#dc2626",
+        margin: [0, 0, 0, 4],
+      },
+      languageText: {
         fontSize: 12,
         color: "#000000",
         lineHeight: 1.5,
@@ -164,18 +178,18 @@ export const generateResumePDF = async (translations, lang) => {
         fontSize: 12,
         bold: true,
         color: "#dc2626",
-        margin: [0, 0, 0, 2],
+        margin: [0, 0, 0, 1],
       },
       eduInstitution: {
         fontSize: 12,
         color: "#1f2937",
-        margin: [0, 0, 0, 2],
+        margin: [0, 0, 0, 1],
       },
       eduPeriod: {
         fontSize: 11,
         color: "#6b7280",
         italics: true,
-        margin: [0, 0, 0, 10],
+        margin: [0, 0, 0, 6],
       },
     },
     content: [
@@ -204,11 +218,11 @@ export const generateResumePDF = async (translations, lang) => {
             y1: 0,
             x2: 495,
             y2: 0,
-            lineWidth: 3,
+            lineWidth: 2,
             lineColor: "#3b82f6",
           },
         ],
-        margin: [0, 12, 0, 0],
+        margin: [0, 8, 0, 0],
       },
 
       // Контакты
@@ -407,9 +421,27 @@ export const generateResumePDF = async (translations, lang) => {
             ],
           },
         ],
-        columnGap: 20,
+        columnGap: 15,
         margin: [0, 0, 0, 0],
       },
+
+      // Языки отдельным блоком внизу
+      ...(translations.languages && translations.languages.length > 0
+        ? [
+            {
+              text: translations.languagesTitle
+                .replace(/🌐\s*/, "")
+                .toUpperCase(),
+              style: "sectionTitle",
+              margin: [0, 12, 0, 6],
+            },
+            ...translations.languages.map((language) => ({
+              text: `${language.name}: ${language.level}`,
+              style: "languageText",
+              margin: [0, 0, 0, 3],
+            })),
+          ]
+        : []),
 
       // Опыт работы
       {
@@ -441,7 +473,7 @@ export const generateResumePDF = async (translations, lang) => {
                   alignment: "right",
                 },
               ],
-              columnGap: 10,
+              columnGap: 8,
             },
           ],
           margin: [0, 0, 0, 2],
@@ -480,11 +512,11 @@ export const generateResumePDF = async (translations, lang) => {
                     y1: 0,
                     x2: 495,
                     y2: 0,
-                    lineWidth: 1.5,
+                    lineWidth: 1,
                     lineColor: "#999999",
                   },
                 ],
-                margin: [0, 16, 0, 16],
+                margin: [0, 10, 0, 10],
               },
             ]
           : []),

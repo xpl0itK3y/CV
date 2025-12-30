@@ -150,9 +150,11 @@ function App() {
                   <Skills
                     skillsTitle={t.skillsTitle}
                     softSkillsTitle={t.softSkillsTitle}
+                    languagesTitle={t.languagesTitle}
                     skills={{
                       technical: t.technicalSkills,
                       soft: t.softSkills,
+                      languages: t.languages,
                     }}
                   />
                 </div>
@@ -207,9 +209,11 @@ function App() {
                   <Skills
                     skillsTitle={t.skillsTitle}
                     softSkillsTitle={t.softSkillsTitle}
+                    languagesTitle={t.languagesTitle}
                     skills={{
                       technical: t.technicalSkills,
                       soft: t.softSkills,
+                      languages: t.languages,
                     }}
                   />
                 </div>

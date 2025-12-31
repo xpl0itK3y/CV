@@ -104,6 +104,7 @@ function App() {
                   <Experience
                     title={t.experienceTitle}
                     experience={firstExperiences}
+                    totalExperience={t.totalExperience}
                   />
                 </div>
 
@@ -114,7 +115,7 @@ function App() {
                       animation: `fadeInUp 0.6s ease-out ${0.8 + index * 0.1}s both`,
                     }}
                   >
-                    <Experience title="" experience={[job]} />
+                    <Experience title="" experience={[job]} totalExperience={t.totalExperience} />
                   </div>
                 ))}
               </div>
@@ -170,7 +171,7 @@ function App() {
                       animation: `fadeInUp 0.6s ease-out ${0.8 + index * 0.1}s both`,
                     }}
                   >
-                    <Experience title="" experience={[job]} />
+                    <Experience title="" experience={[job]} totalExperience={t.totalExperience} />
                   </div>
                 ))}
               </div>
@@ -224,6 +225,7 @@ function App() {
                   <Experience
                     title={t.experienceTitle}
                     experience={firstExperiences}
+                    totalExperience={t.totalExperience}
                   />
                 </div>
 
@@ -235,7 +237,7 @@ function App() {
                       animation: `fadeInUp 0.6s ease-out ${0.7 + index * 0.1}s both`,
                     }}
                   >
-                    <Experience title="" experience={[job]} />
+                    <Experience title="" experience={[job]} totalExperience={t.totalExperience} />
                   </div>
                 ))}
               </>

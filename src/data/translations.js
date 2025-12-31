@@ -25,6 +25,7 @@ const translations = {
 
     // Experience
     experienceTitle: "💼 Опыт работы",
+    totalExperience: "3+ года",
     experiences: [
       {
         position: "Fullstack-разработчик",
@@ -224,6 +225,7 @@ const translations = {
 
     // Experience
     experienceTitle: "💼 Work Experience",
+    totalExperience: "3+ years",
     experiences: [
       {
         position: "Full-stack developer",

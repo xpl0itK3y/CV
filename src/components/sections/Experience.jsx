@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GlassBlock from "../GlassBlock";
 
-const Experience = ({ title, experience }) => {
+const Experience = ({ title, experience, totalExperience }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
@@ -32,16 +32,40 @@ const Experience = ({ title, experience }) => {
   return (
     <GlassBlock delay={0.3}>
       {title && (
-        <h2
+        <div
           style={{
-            color: "#fff",
-            marginTop: "0",
-            fontSize: isMobile ? "1.3rem" : "1.5rem",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
             marginBottom: isMobile ? "1rem" : "1.5rem",
           }}
         >
-          {title}
-        </h2>
+          <h2
+            style={{
+              color: "#fff",
+              marginTop: "0",
+              fontSize: isMobile ? "1.3rem" : "1.5rem",
+              marginBottom: "0",
+            }}
+          >
+            {title}
+          </h2>
+          {totalExperience && (
+            <div
+              style={{
+                border: "1px solid rgba(102, 126, 234, 0.7)",
+                borderRadius: "12px",
+                padding: isMobile ? "0.5rem 1rem" : "0.6rem 1.2rem",
+                color: "#fff",
+                fontSize: isMobile ? "1.0rem" : "1.1rem",
+                fontWeight: "700",
+                fontStyle: "italic",
+              }}
+            >
+              {totalExperience}
+            </div>
+          )}
+        </div>
       )}
       {experience.map((job, index) => (
         <div

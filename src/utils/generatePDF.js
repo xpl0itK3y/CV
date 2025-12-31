@@ -173,6 +173,16 @@ export const generateResumePDF = async (translations, lang) => {
         alignment: "left",
       },
 
+      // Общий опыт работы
+      totalExperience: {
+        fontSize: 14,
+        bold: true,
+        color: "#1e40af",
+        italics: true,
+        alignment: "right",
+        margin: [0, 0, 0, 0],
+      },
+
       // Образование
       eduDegree: {
         fontSize: 12,
@@ -445,37 +455,61 @@ export const generateResumePDF = async (translations, lang) => {
 
       // Опыт работы
       {
-        text: translations.experienceTitle.replace(/💼\s*/, "").toUpperCase(),
-        style: "sectionTitle",
+        columns: [
+          {
+            width: "*",
+            text: translations.experienceTitle
+              .replace(/💼\s*/, "")
+              .toUpperCase(),
+            fontSize: 14,
+            bold: true,
+            color: "#1e40af",
+            decoration: "underline",
+            decorationStyle: "solid",
+            decorationThickness: 2,
+            alignment: "left",
+          },
+          ...(translations.totalExperience
+            ? [
+                {
+                  width: "auto",
+                  text: translations.totalExperience,
+                  fontSize: 14,
+                  bold: true,
+                  color: "#1e40af",
+                  italics: true,
+                  alignment: "right",
+                },
+              ]
+            : []),
+        ],
+        columnGap: 10,
+        margin: [0, 12, 0, 6],
       },
       ...translations.experiences.flatMap((job, index) => [
         {
-          stack: [
+          columns: [
             {
-              columns: [
+              width: "*",
+              stack: [
                 {
-                  width: "*",
-                  stack: [
-                    {
-                      text: job.position,
-                      style: "jobPosition",
-                    },
-                    {
-                      text: job.company,
-                      style: "jobCompany",
-                    },
-                  ],
+                  text: job.position,
+                  style: "jobPosition",
                 },
                 {
-                  width: "auto",
-                  text: job.period,
-                  style: "jobPeriod",
-                  alignment: "right",
+                  text: job.company,
+                  style: "jobCompany",
                 },
               ],
-              columnGap: 8,
+            },
+            {
+              width: "auto",
+              text: job.period,
+              style: "jobPeriod",
+              alignment: "right",
             },
           ],
+          columnGap: 8,
           margin: [0, 0, 0, 2],
         },
         {

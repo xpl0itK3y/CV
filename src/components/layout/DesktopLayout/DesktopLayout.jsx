@@ -48,6 +48,7 @@ const DesktopLayout = ({
                     <Skills
                         skillsTitle={t.skillsTitle}
                         softSkillsTitle={t.softSkillsTitle}
+                        workPracticesTitle={t.workPracticesTitle}
                         languagesTitle={t.languagesTitle}
                         skills={skillsData}
                         showAllLabel={t.showAllTech}

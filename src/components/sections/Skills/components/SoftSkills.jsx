@@ -1,7 +1,11 @@
 import React from "react";
 
-const SoftSkills = ({ title, skills, isMobile, styles }) => {
+const SoftSkills = ({ title, skills, isMobile, styles, tagClassName }) => {
   if (!skills) return null;
+
+  const defaultTagClassName = isMobile
+    ? styles.skillTagMobile
+    : styles.skillTagDesktop;
 
   return (
     <>
@@ -16,9 +20,7 @@ const SoftSkills = ({ title, skills, isMobile, styles }) => {
         {skills.map((skill, index) => (
           <span
             key={index}
-            className={
-              isMobile ? styles.skillTagMobile : styles.skillTagDesktop
-            }
+            className={tagClassName || defaultTagClassName}
           >
             {skill}
           </span>

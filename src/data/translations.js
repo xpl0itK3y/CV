@@ -14,12 +14,12 @@ const translations = {
     title: "Python Backend and AI Engineer",
 
     // About
-    aboutTitle: "👤 О себе",
+    aboutTitle: "О себе",
     aboutText:
       "Python Backend Engineer с 2+ годами опыта в разработке backend-систем, API и интеграционных решений. Имею практический опыт создания сервисов на FastAPI и Django, проектирования баз данных, разработки бизнес-логики и интеграции внешних систем. Работал с PostgreSQL, Redis и Docker, участвовал в развитии микросервисной архитектуры и принятии технических решений внутри команды. Также имею опыт AI-интеграций, включая LLM и RAG-подходы для прикладных задач. Рассматриваю backend и AI-focused роли в продуктовых командах, где могу приносить пользу через создание надёжных, масштабируемых и полезных решений.",
 
     // Contacts
-    contactsTitle: "📬 Контакты",
+    contactsTitle: "Контакты",
     email: "latundenis55@gmail.com",
     // phone: "",
     location: "Казахстан",
@@ -29,7 +29,7 @@ const translations = {
     headhunter: "pavlodar.hh.kz/resume/ab79d06cff0d80e57f0039ed1f61695244756d",
 
     // Experience
-    experienceTitle: "💼 Опыт работы",
+    experienceTitle: "Опыт работы",
     totalExperience: "2+ года",
     experiences: [
       {
@@ -217,16 +217,17 @@ const translations = {
     educationTitle: "🎓 Образование",
     education: [
       {
-        degree: "Вычислительная техника и программное обеспечение",
-        institution: "Инновационный Евразийский Университет",
+        degree: "Бакалавр, Вычислительная техника и программное обеспечение",
+        institution: "Инновационный Евразийский университет",
         period: "2020 - 2024",
       },
     ],
 
     // Skills
-    skillsTitle: "🚀 Технические навыки",
-    softSkillsTitle: "💡 Мягкие навыки",
-    languagesTitle: "🌐 Языки",
+    skillsTitle: "Технические навыки",
+    softSkillsTitle: "Мягкие навыки",
+    workPracticesTitle: "Подходы к работе",
+    languagesTitle: "Языки",
     technicalSkills: [
       {
         category: "Языки",
@@ -320,22 +321,22 @@ const translations = {
     ],
     softSkills: [
       "Командная работа",
-      "Agile/Scrum",
-      "Креативность",
-      "Самоорганизация",
-      "Быстрое обучение",
-      "Решение проблем",
-      "Внимание к деталям",
-      "Техническая документация",
+      "Коммуникация",
       "Аналитическое мышление",
+      "Решение проблем",
+      "Самоорганизация",
+      "Внимание к деталям",
+      "Системное мышление",
+      "Быстрое освоение новых технологий",
     ],
+    workPractices: ["Agile", "Scrum", "Kanban"],
     languages: [
       { name: "Русский", level: "C2 - Родной" },
       { name: "Английский", level: "B2 - Средний" },
     ],
 
     // Projects
-    projectsTitle: "🎨 Проекты",
+    projectsTitle: "Проекты",
     projects: [
       {
         name: "E-commerce Platform",
@@ -366,11 +367,11 @@ const translations = {
     title: "Python Backend and AI Engineer",
 
     // About
-    aboutTitle: "👤 About Me",
+    aboutTitle: "About Me",
     aboutText:
       "Python Backend Engineer with 2+ years of experience in developing backend systems, APIs, and integration solutions. I have hands-on experience building services with FastAPI and Django, designing databases, implementing business logic, and integrating external systems. I have worked with PostgreSQL, Redis, and Docker, and contributed to the development of microservices architecture and technical decision-making within the team. I also have experience with AI integrations, including LLMs and RAG-based solutions for practical use cases. I am seeking backend or AI-focused roles in product teams where I can contribute by building reliable, scalable, and impactful solutions.",
     // Contacts
-    contactsTitle: "📬 Contacts",
+    contactsTitle: "Contacts",
     email: "latundenis55@gmail.com",
     //phone: "",
     location: "Kazakhstan",
@@ -380,7 +381,7 @@ const translations = {
     headhunter: "pavlodar.hh.kz/resume/ab79d06cff0d80e57f0039ed1f61695244756d",
 
     // Experience
-    experienceTitle: "💼 Work Experience",
+    experienceTitle: "Work Experience",
     totalExperience: "2+ years",
     experiences: [
       {
@@ -570,16 +571,16 @@ const translations = {
     educationTitle: "🎓 Education",
     education: [
       {
-        degree: "Computer Engineering and Software",
-        institution: "Innovative University of Eurasia",
+        degree: "B.Sc. in Computer Engineering and Software",
+        institution: "Innovative Eurasian University",
         period: "2020 - 2024",
       },
     ],
-
     // Skills
-    skillsTitle: "🚀 Technical Skills",
-    softSkillsTitle: "💡 Soft Skills",
-    languagesTitle: "🌐 Languages",
+    skillsTitle: "Technical Skills",
+    softSkillsTitle: "Soft Skills",
+    workPracticesTitle: "Work Practices",
+    languagesTitle: "Languages",
     technicalSkills: [
       {
         category: "Languages",
@@ -672,23 +673,23 @@ const translations = {
       },
     ],
     softSkills: [
-      "Team Collaboration",
-      "Agile/Scrum",
-      "Creativity",
-      "Self-Organization",
-      "Fast Learning",
-      "Problem Solving",
-      "Attention to Detail",
-      "Technical Documentation",
+      "Teamwork",
+      "Communication",
       "Analytical Thinking",
+      "Problem Solving",
+      "Self-Organization",
+      "Attention to Detail",
+      "Systems Thinking",
+      "Fast Learning of New Technologies",
     ],
+    workPractices: ["Agile", "Scrum", "Kanban"],
     languages: [
       { name: "Russian", level: "C2 - Native" },
       { name: "English", level: "B2 - Intermediate" },
     ],
 
     // Projects
-    projectsTitle: "🎨 Projects",
+    projectsTitle: "Projects",
     projects: [
       {
         name: "E-commerce Platform",

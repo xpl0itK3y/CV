@@ -46,6 +46,7 @@ function App() {
   const skillsData = {
     technical: t.technicalSkills,
     soft: t.softSkills,
+    workPractices: t.workPractices,
     languages: t.languages,
   };
 
@@ -90,4 +91,3 @@ function App() {
 }
 
 export default App;
-

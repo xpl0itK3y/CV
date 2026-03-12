@@ -10,6 +10,7 @@ import styles from "./styles/Skills.module.css";
 const Skills = ({
   skillsTitle,
   softSkillsTitle,
+  workPracticesTitle,
   languagesTitle,
   skills,
   showAllLabel = "Show all",
@@ -117,6 +118,13 @@ const Skills = ({
       <SoftSkills
         title={softSkillsTitle}
         skills={skills.soft}
+        isMobile={isMobile}
+        styles={styles}
+      />
+
+      <SoftSkills
+        title={workPracticesTitle}
+        skills={skills.workPractices}
         isMobile={isMobile}
         styles={styles}
       />

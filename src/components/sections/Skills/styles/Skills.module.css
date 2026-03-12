@@ -183,24 +183,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 100px;
+    gap: 0.2rem;
 }
 
 .languageLayoutMobile {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 80px;
+    gap: 0.15rem;
 }
 
 .languageName {
     font-weight: bold;
-    margin-bottom: 0.2rem;
+    line-height: 1.2;
 }
 
 .languageLevel {
     font-size: 0.75rem;
-    opacity: 0.8;
+    line-height: 1.2;
+    opacity: 0.72;
 }
 
 .skillIconContainer {

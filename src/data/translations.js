@@ -16,7 +16,7 @@ const translations = {
     // About
     aboutTitle: "👤 О себе",
     aboutText:
-      "Python Backend и AI Engineer с 2+ годами опыта в разработке высоконагруженных систем и интеграции AI/ML решений. Специализируюсь на построении масштабируемых backend архитектур с использованием FastAPI, микросервисов, и современного DevOps стека (Docker, Prometheus, Grafana). Опыт руководства командой разработки, проектирования систем с нуля, и интеграции AI технологий (LangChain, OpenAI GPT, RAG). Открыт к удаленным позициям в международных продуктовых компаниях, где смогу применить опыт в AI/ML и backend разработке.",
+      "Python Backend Engineer с 2+ годами опыта в разработке backend-систем, API и интеграционных решений. Имею практический опыт создания сервисов на FastAPI и Django, проектирования баз данных, разработки бизнес-логики и интеграции внешних систем. Работал с PostgreSQL, Redis и Docker, участвовал в развитии микросервисной архитектуры и принятии технических решений внутри команды. Также имею опыт AI-интеграций, включая LLM и RAG-подходы для прикладных задач. Рассматриваю backend и AI-focused роли в продуктовых командах, где могу приносить пользу через создание надёжных, масштабируемых и полезных решений.",
 
     // Contacts
     contactsTitle: "📬 Контакты",
@@ -33,11 +33,11 @@ const translations = {
     totalExperience: "2+ года",
     experiences: [
       {
-        position: "AI/ML Engineer (Personal Projects)",
+        position: "AI Engineer / LLM Engineer (Personal Projects)",
         company: "Open Source / GitHub",
         period: "Декабрь 2025 - настоящее время",
         description:
-          "Разработка AI/ML решений и open-source проектов в свободное время для развития навыков и исследования новых технологий. Ключевые проекты:\n1) Multi-language RAG Document Assistant. - Построил production-ready RAG систему с полным pipeline: chunking,embeddings, semantic search. - Использовал векторные БД (FAISS, Chroma) для хранения и поиска эмбеддингов. - Реализовал source attribution для точного указания источников. - Применял промпт-инжиниринг для оптимизации точности ответов. 2) Krisha Agent - Autonomous Real Estate AI Agent. - Разработал multi-agent систему на LangGraph (supervisor + subagent паттерн) для автономного поиска квартир на Krisha.kz. - Реализовал асинхронный LangGraph граф с параллельным обогащением данных через 2GIS API и Нацбанк РК. - Применил structured outputs с Pydantic v2 и LLM scoring (Gemini) для ранжирования объявлений по критериям пользователя. - Настроил персистентную память агента через LangGraph checkpointing + PostgreSQL для дедупликации результатов. - Реализовал human-in-the-loop паттерн и фоновый мониторинг через ARQ task queue с уведомлениями в Telegram. - Обеспечил observability через LangSmith трейсинг и Sentry; задеплоил через Podman rootless containers + GitHub Actions CI/CD. 3) Crypto Sentiment Analysis Pipeline. - Спроектировал distributed microservices платформу 4 Python-сервиса + Vue 3 SPA для real-time мониторинга крипторынка: цены, Telegram-стримы, новости. - Построил event-driven pipeline: Binance WSS → asyncio processor с RSI-расчётом → Redis Pub/Sub FastAPI WebSocket broadcast с миллисекундной латентностью. - Реализовал Telegram ingestion через Telethon (MTProto) и CryptoPanic REST polling с асинхронной персистентностью через Celery + PostgreSQL. - Построил Vue 3 SPA с composable-архитектурой, WebSocket auto-reconnect, KeepAlive-кешированием и infinite scroll. - Задокументировал архитектуру по C4 модели (4 уровня, 14 PlantUML-диаграмм); настроил CI/CD (GitHub Actions + Docker Compose, 8 контейнеров). 4) Multi-Agent Search & Research Optimizer (Perplexity AI Analog). - Разработал распределенную мультиагентную систему на базе LangGraph (паттерн Orchestrator + Specialized Workers) для автономного поиска, парсинга и синтеза информации из интернета. - Реализовал граф на базе LangGraph с поддержкой циклического уточнения запросов и параллельного выполнения поисковых узлов (nodes), что позволило эффективно управлять состоянием агента и контекстом. - Реализовал алгоритм динамической декомпозиции сложных пользовательских запросов на независимые поисковые подзадачи с использованием LLM DeepSeek, что позволило достичь высокой релевантности и параллелизма. - Внедрил многоуровневый пайплайн сбора данных (DuckDuckGo Search + Trafilatura) с автоматической очисткой HTML-шума, фильтрацией рекламы и экстракцией чистого контента. - Использовал Pydantic v2 для гарантии типизации и structured outputs от LLM, а также управления состоянием задач через LangGraph Checkpointing и асинхронный TaskManager. - Интегрировал LangSmith для трейсинга цепочек рассуждений агента и структурированное логирование, обеспечив прозрачность выполнения каждого шага.5) Chrome Extension for Content Simplification. - Разработал High-performance Chrome Extension (Manifest V3) для упрощения сложного веб-контента в реальном времени с использованием LLM. - Разработал Chrome Extension на Vanilla JavaScript (ES6+) с Shadow DOM для изоляции стилей и предотвращения CSS конфликтов. - Построил FastAPI backend с асинхронной архитектурой для интеграции OpenAI GPT-4 с поддержкой real-time streaming. - Реализовал Server-Sent Events (SSE) для token-by-token рендеринга текста с низкойлатентностью (TTFB оптимизация). - Внедрил JWT-based stateless аутентификацию с Google OAuth2.\n- Создал систему промпт-инжиниринга с 4 режимами: Simple, Brief, Key Points, With Examples. - Разработал кастомную i18n систему для динамического переключения языков (EN/RU). - Настроил строгий CORS для безопасного взаимодействия extension backend. Все проекты доступны: github.com/Modern-Messiah",
+          "Разрабатываю AI/LLM-решения и open-source проекты в свободное время для углубления практической экспертизы в области RAG, мультиагентных систем, distributed architecture и applied AI. 1) Multi-language RAG Document Assistant. - Разработал production-ready RAG-систему с полным пайплайном обработки документов: chunking, embeddings, semantic retrieval и генерация ответов. - Использовал FAISS и Chroma для векторного хранения и similarity search. - Реализовал source attribution и prompt engineering для повышения точности и управляемости ответов. 2) Krisha Agent - Autonomous Real Estate AI Agent. - Разработал мультиагентную систему на LangGraph для автономного поиска квартир на Krisha.kz. - Реализовал асинхронный граф с параллельным обогащением данных через внешние API, structured outputs на Pydantic v2 и LLM-based scoring для ранжирования объявлений. - Настроил персистентную память, human-in-the-loop сценарии, Telegram-уведомления и observability через LangSmith и Sentry. 3) Crypto Sentiment Analysis Pipeline. - Спроектировал распределенную платформу из 4 Python-сервисов и Vue 3 SPA для real-time мониторинга крипторынка, включая цены, Telegram-стримы и новости. - Построил event-driven pipeline на asyncio, Redis Pub/Sub и FastAPI WebSockets с низкой задержкой доставки данных. - Реализовал ingestion данных через Telethon и REST polling, а также CI/CD и архитектурную документацию. 4) Multi-Agent Search and Research Optimizer (Perplexity-like). - Разработал мультиагентную систему на LangGraph для автономного поиска, парсинга и синтеза информации из интернета. - Реализовал динамическую декомпозицию сложных запросов, параллельное выполнение поисковых узлов и многоуровневый пайплайн сбора и очистки данных. - Использовал Pydantic v2, checkpointing и LangSmith для управления состоянием, типизации и трассировки выполнения. 5) Chrome Extension for Content Simplification. - Разработал Chrome Extension на Manifest V3 для упрощения сложного веб-контента с использованием LLM. - Построил FastAPI backend со streaming responses, SSE, JWT-based authentication и Google OAuth2. - Реализовал prompt engineering с несколькими режимами упрощения, кастомную i18n-систему и безопасное взаимодействие extension с backend. Все проекты доступны: github.com/xpl0itK3y",
         techGroups: [
           {
             label: "Языки",
@@ -52,18 +52,15 @@ const translations = {
               "Trafilatura",
               "Pydantic",
               "aiohttp",
-              "React",
-              "Vue",
-              "Next.js",
+              "Vue 3",
+              "Vanilla JavaScript",
             ],
           },
           {
-            label: "AI и Vector Search",
+            label: "AI / LLM",
             items: [
               "OpenAI API",
               "DeepSeek API",
-              "CoinGecko API",
-              "CryptoPanic API",
               "LangChain",
               "LangGraph",
               "LangSmith",
@@ -71,114 +68,146 @@ const translations = {
               "RAG",
               "FAISS",
               "Chroma",
-              "Vector Databases",
-              "Function Calling",
               "Prompt Engineering",
-              "DuckDuckGo Search",
+              "Structured Outputs",
+              "Function Calling",
             ],
           },
           {
-            label: "Базы данных",
-            items: ["PostgreSQL", "SQLite", "MongoDB", "Redis"],
+            label: "Базы данных и очереди",
+            items: [
+              "PostgreSQL",
+              "SQLite",
+              "MongoDB",
+              "Redis",
+              "Celery",
+              "ARQ",
+            ],
           },
           {
             label: "DevOps и Web",
             items: [
               "Docker",
               "Docker Compose",
-              "Git",
-              "Webhooks",
+              "Podman",
+              "GitHub Actions",
               "SSE",
-              "Binance WSS",
+              "WebSockets",
               "JWT",
               "Google OAuth2",
+              "Sentry",
             ],
           },
           {
-            label: "Browser Extensions",
+            label: "Интеграции и источники данных",
+            items: [
+              "DuckDuckGo Search",
+              "2GIS API",
+              "API Национального банка Казахстана",
+              "CoinGecko API",
+              "CryptoPanic API",
+              "Binance WSS",
+            ],
+          },
+          {
+            label: "Браузерные расширения",
             items: [
               "Manifest V3",
               "Chrome Extension API",
               "Shadow DOM",
               "Asyncio",
-              "Threading",
             ],
           },
         ],
       },
       {
-        position: "Backend developer",
+        position: "Backend Developer",
         company: "Private Startup (NDA)",
         period: "Июнь 2025 - настоящее время",
         description:
-          "Принимал все ключевые технические решения: выбор стека, архитектура системы, DevOps инфраструктура. - Спроектировал микросервисную архитектуру на FastAPI с использованием многопроцессорности multiprocessing для обработки высоких нагрузок. - Внедрил масштабируемую прокси-инфраструктуру с ротацией (SOCKS5, HTTP, MTProto) и GeoIP распределением для обеспечения стабильности сервиса. - Разработал систему AI-ассистирования с интеграцией OpenAI GPT для автоматизации NLP-обработки текстов. - Построил DevOps pipeline: Docker Compose с multi-stage builds, автоматизация деплоя. - Внедрил комплексный мониторинг через Prometheus + Grafana + ELK Stack с real-time метриками и custom health checks. - Использовал Redis для оптимизации производительности. - Провел менторинг команды разработки: code review, архитектурные ревью, внедрение best practices. - Обеспечил безопасность системы: JWT авторизация, bcrypt хеширование, Fernet шифрование, rate. - Внедрил культуру тестирования: Pytest unit/integration тесты, нагрузочное тестирование с Locust. - Система успешно работает в production несколько месяцев, обрабатывая высокие нагрузки.",
+          "Играл ведущую роль в backend-разработке и участвовал в принятии ключевых технических решений, связанных с архитектурой системы, выбором стека и инфраструктурой. - Спроектировал и разработал микросервисную архитектуру на FastAPI для обработки конкурентной нагрузки и масштабирования backend-компонентов. - Реализовал инфраструктурные решения для повышения стабильности, отказоустойчивости и гибкости маршрутизации сервиса. - Разработал AI-функциональность для автоматизации обработки текстовых данных и связанных бизнес-сценариев. - Настроил процесс развертывания с использованием Docker Compose и multi-stage builds, что улучшило воспроизводимость окружения и сопровождение проекта. - Внедрил мониторинг и observability с real-time метриками и health checks, а также использовал Redis для оптимизации производительности. - Участвовал в архитектурных обсуждениях и внедрении инженерных best practices внутри команды. - Усилил безопасность системы через механизмы аутентификации, шифрования, хеширования и ограничения запросов. - Также участвовал в развитии практик тестирования, включая unit/integration и нагрузочные тесты. - Система работает в production под реальной операционной нагрузкой.",
         techGroups: [
           {
             label: "Языки",
             items: ["Python"],
           },
           {
-            label: "Backend и Базы данных",
+            label: "Backend",
             items: [
               "FastAPI",
               "Pydantic",
               "SQLAlchemy",
               "REST API",
-              "PostgreSQL",
+              "Microservices",
+              "Multiprocessing",
             ],
           },
           {
-            label: "Аутентификация & API",
-            items: ["JWT Authentication", "Stripe API", "SendGrid"],
+            label: "Базы данных и кэширование",
+            items: ["PostgreSQL", "Redis"],
+          },
+          {
+            label: "DevOps и мониторинг",
+            items: ["Docker Compose", "Prometheus", "Grafana", "ELK Stack"],
+          },
+          {
+            label: "Безопасность и тестирование",
+            items: ["JWT", "bcrypt", "Fernet", "Pytest", "Locust"],
+          },
+          {
+            label: "AI и обработка текста",
+            items: ["OpenAI GPT", "NLP"],
           },
         ],
       },
       {
-        position:
-          "Backend Developer (Freelance, Full-time) PrestigeFly - Premium Aviation Services",
-        company: "PrestigeFly",
+        position: "Backend Developer (Freelance Project)",
+        company: "PrestigeFly (via freelance collaboration)",
         period: "Декабрь 2024 - Июнь 2025",
         description:
-          "Разработал с нуля в паре с backend разработчиком CRM-систему для управления продажами авиабилетов премиум-класса, обеспечивающую полный цикл от лида до закрытия сделки. - Спроектировал совместно с командой архитектуру PostgreSQL базы данных с учетом сложной бизнес-логики: управление лидами, многоэтапный процесс продаж, финансовая отчетность и ролевая модель доступа. - Разработал REST API на FastAPI для взаимодействия с Vue frontend. - Реализовал модуль продаж с автоматическим расчетом прибыли (Revenue/Award Sales), поддержкой множественных тарифных таблиц и финансовой аналитикой по транзакциям. - Интегрировал платежную систему Stripe с поддержкой дополнительных опций (Ticket Protection), обеспечив безопасное хранение платежных данных с разграничением доступа по ролям. - Реализовал систему автоматических email-уведомлений через SendGrid для отправки предложений клиентам, генерации билетов и уведомлений о статусах заказов. - Внедрил систему авторизации и прав доступа для 5 типов ролей (Administrator, Sales Agent, Supervisor, Customer Support, Expert Agent) с различными уровнями доступа к данным. - Разработал систему управления лидами с автоматическим распределением, отслеживанием статусов и предотвращением дубликатов. - Система успешно запущена в production и используется для обработки продаж премиум авиабилетов.",
+          "Участвовал в backend разработке CRM-системы для управления продажами авиабилетов премиум-класса в рамках проектной работы с другими backend разработчиками. - Система охватывала полный цикл работы с клиентом - от обработки лида до закрытия сделки. - Внес вклад в проектирование PostgreSQL базы данных с учетом сложной бизнес-логики, включая управление лидами, многоэтапный процесс продаж, финансовую отчетность и ролевую модель доступа. - Разрабатывал REST API на FastAPI для взаимодействия с frontend частью. - Реализовал backend функциональность, связанную с расчетом прибыли, поддержкой тарифных таблиц, транзакционной логикой и финансовой аналитикой. - Участвовал в интеграции Stripe и SendGrid, а также в реализации системы авторизации, разграничения прав доступа и логики управления лидами. - Система успешно работает в production несколько месяцев, обрабатывая высокие нагрузки.",
         techGroups: [
           {
             label: "Языки",
             items: ["Python"],
           },
           {
-            label: "Backend и Базы данных",
-            items: [
-              "FastAPI",
-              "Pydantic",
-              "SQLAlchemy",
-              "REST API",
-              "PostgreSQL",
-            ],
+            label: "Backend-разработка",
+            items: ["FastAPI", "Pydantic", "SQLAlchemy", "REST API", "JWT"],
           },
           {
-            label: "Аутентификация & API",
-            items: ["JWT Authentication", "Stripe API", "SendGrid"],
+            label: "Базы данных",
+            items: ["PostgreSQL"],
+          },
+          {
+            label: "Внешние сервисы и интеграции",
+            items: ["Stripe API", "SendGrid"],
           },
         ],
       },
       {
-        position: "Python Developer (Intern)",
-        company: "Tele2 Kazakhstan",
+        position: "Python/Django Developer (Diploma Project)",
+        company: "Комитет по делам молодежи ИНЕУ",
         period: "Февраль 2024 - Июнь 2024",
         description:
-          "Разработал веб-приложение для автоматизации учета продаж 20+ менеджеров. - Внедрил систему аналитики с Pandas - руководство получило инструмент для принятия решений. - Реализовал ролевую модель доступа (менеджер/администратор) с Django ORM. - Создал дашборд для мониторинга выполнения планов с визуализацией. - Внедрил контроль выполнения планов продаж с визуализацией данных. - Настроил контейнеризацию приложения с помощью Docker.",
+          "Самостоятельно разработал веб-платформу для молодежных клубов университета на Django в формате информационно-управляющего портала. - Реализовал backend и frontend логику приложения: новости и мероприятия, клубы, фотогалерею, страницы руководства, личные кабинеты студентов и руководителей, а также подачу заявок в клубы и на мероприятия. - Настроил систему регистрации, авторизации, восстановления доступа и ролевую модель пользователей с использованием Django Auth, Group и Django ORM. - Реализовал внутренние чаты, публикацию клубных новостей, комментарии, лайки и управление участниками клубов. - Использовал server-side rendering на Django Templates, SQLite для хранения данных и JavaScript для отдельных интерактивных сценариев. - Выполнил контейнеризацию приложения с помощью Docker и подготовил проект к развертыванию, что упростило деплой, воспроизводимость окружения и сопровождение. - Дополнительно настроил Django Admin для управления контентом и основными сущностями системы.",
+
         techGroups: [
           {
             label: "Языки",
-            items: ["Python"],
+            items: ["Python", "JavaScript"],
           },
           {
-            label: "Backend и Базы данных",
-            items: ["Django", "SQLite"],
+            label: "Backend и базы данных",
+            items: ["Django", "Django ORM", "Django Auth", "SQLite"],
           },
           {
-            label: "DevOps & Tools",
-            items: ["Docker", "Linux", "Pandas"],
+            label: "Frontend",
+            items: ["HTML", "CSS", "Django Templates"],
+          },
+          {
+            label: "DevOps and Tools",
+            items: ["Docker", "Linux", "Django Admin"],
           },
         ],
       },
@@ -339,7 +368,7 @@ const translations = {
     // About
     aboutTitle: "👤 About Me",
     aboutText:
-      "Python Backend and AI Engineer with 2+ years of experience in developing high-load systems and integrating AI/ML solutions. I specialize in building scalable backend architectures using FastAPI, microservices, and modern DevOps stack (Docker, Prometheus, Grafana). Experience in leading a development team, designing systems from scratch, and integrating AI technologies (LangChain, OpenAI GPT, RAG). Open to remote positions in international product companies where I can apply my experience in AI/ML and backend development.",
+      "Python Backend Engineer with 2+ years of experience in developing backend systems, APIs, and integration solutions. I have hands-on experience building services with FastAPI and Django, designing databases, implementing business logic, and integrating external systems. I have worked with PostgreSQL, Redis, and Docker, and contributed to the development of microservices architecture and technical decision-making within the team. I also have experience with AI integrations, including LLMs and RAG-based solutions for practical use cases. I am seeking backend or AI-focused roles in product teams where I can contribute by building reliable, scalable, and impactful solutions.",
     // Contacts
     contactsTitle: "📬 Contacts",
     email: "latundenis55@gmail.com",
@@ -355,18 +384,18 @@ const translations = {
     totalExperience: "2+ years",
     experiences: [
       {
-        position: "AI/ML Engineer (Personal Projects)",
+        position: "AI Engineer / LLM Engineer (Personal Projects)",
         company: "Open Source / GitHub",
         period: "December 2025 - Present",
         description:
-          "Developing AI/ML solutions and open-source projects in my spare time to grow skills and explore new technologies. Key projects:\n1) Multi-language RAG Document Assistant. - Built a production-ready RAG system with a full pipeline: chunking, embeddings, semantic search. - Used vector databases (FAISS, Chroma) for storing and retrieving embeddings. - Implemented source attribution for precise citation of information sources. - Applied prompt engineering to optimize response accuracy. 2) Krisha Agent - Autonomous Real Estate AI Agent. - Developed a multi-agent system on LangGraph (supervisor + subagent pattern) for autonomous apartment search on Krisha.kz. - Implemented an async LangGraph graph with parallel data enrichment via the 2GIS API and the National Bank of Kazakhstan. - Applied structured outputs with Pydantic v2 and LLM scoring (Gemini) to rank listings by user criteria. - Configured persistent agent memory via LangGraph checkpointing + PostgreSQL for result deduplication. - Implemented a human-in-the-loop pattern and background monitoring via ARQ task queue with Telegram notifications. - Ensured observability via LangSmith tracing and Sentry; deployed via Podman rootless containers + GitHub Actions CI/CD. 3) Crypto Sentiment Analysis Pipeline. - Designed a distributed microservices platform — 4 Python services + Vue 3 SPA — for real-time crypto market monitoring: prices, Telegram streams, and news. - Built an event-driven pipeline: Binance WSS → asyncio processor with RSI calculation → Redis Pub/Sub → FastAPI WebSocket broadcast with millisecond latency. - Implemented Telegram ingestion via Telethon (MTProto) and CryptoPanic REST polling with async persistence via Celery + PostgreSQL. - Built a Vue 3 SPA with a composable architecture, WebSocket auto-reconnect, KeepAlive caching, and infinite scroll. - Documented the architecture following the C4 model (4 levels, 14 PlantUML diagrams); configured CI/CD (GitHub Actions + Docker Compose, 8 containers). 4) Multi-Agent Search & Research Optimizer (Perplexity AI Analog). - Developed a distributed multi-agent system on LangGraph (Orchestrator + Specialized Workers pattern) for autonomous search, parsing, and synthesis of information from the internet. - Implemented a LangGraph graph with support for cyclic query refinement and parallel execution of search nodes, enabling effective agent state and context management. - Implemented a dynamic decomposition algorithm for complex user queries into independent search subtasks using LLM DeepSeek, achieving high relevance and parallelism. - Integrated a multi-layer data collection pipeline (DuckDuckGo Search + Trafilatura) with automatic HTML noise cleaning, ad filtering, and clean content extraction. - Used Pydantic v2 to guarantee typing and structured outputs from LLM, as well as task state management via LangGraph Checkpointing and an async TaskManager. - Integrated LangSmith for tracing agent reasoning chains and structured logging, ensuring transparency at every execution step. 5) Chrome Extension for Content Simplification. - Developed a high-performance Chrome Extension (Manifest V3) for real-time simplification of complex web content using LLM. - Built the Chrome Extension in Vanilla JavaScript (ES6+) with Shadow DOM for style isolation and prevention of CSS conflicts. - Built a FastAPI backend with an async architecture to integrate OpenAI GPT-4 with real-time streaming support. - Implemented Server-Sent Events (SSE) for token-by-token text rendering with low latency (TTFB optimization). - Integrated JWT-based stateless authentication with Google OAuth2.\n- Created a prompt engineering system with 4 modes: Simple, Brief, Key Points, With Examples. - Developed a custom i18n system for dynamic language switching (EN/RU). - Configured strict CORS for secure extension-backend communication. All projects available at: github.com/Modern-Messiah",
+          "Developing AI/LLM solutions and open-source projects in personal time to deepen practical expertise in RAG, multi-agent systems, distributed architecture, and applied AI. Key projects:\n1) Multi-language RAG Document Assistant. - Built a production-ready RAG system with a full document processing pipeline: chunking, embeddings, semantic retrieval, and answer generation. - Used FAISS and Chroma for vector storage and similarity search. - Implemented source attribution and prompt engineering to improve answer accuracy and controllability. 2) Krisha Agent - Autonomous Real Estate AI Agent. - Developed a multi-agent system on LangGraph for autonomous apartment search on Krisha.kz. - Implemented an asynchronous graph with parallel data enrichment via external APIs, structured outputs with Pydantic v2, and LLM-based scoring for ranking listings. - Added persistent memory, human-in-the-loop workflows, Telegram notifications, and observability through LangSmith and Sentry. 3) Crypto Sentiment Analysis Pipeline. - Designed a distributed platform consisting of 4 Python services and a Vue 3 SPA for real-time crypto market monitoring, including prices, Telegram streams, and news. - Built an event-driven pipeline using asyncio, Redis Pub/Sub, and FastAPI WebSockets with low-latency data delivery. - Implemented data ingestion via Telethon and REST polling, as well as CI/CD and architecture documentation. 4) Multi-Agent Search & Research Optimizer (Perplexity-like). - Developed a multi-agent system on LangGraph for autonomous web search, parsing, and synthesis of online information. - Implemented dynamic decomposition of complex queries, parallel execution of search nodes, and a multi-stage pipeline for data collection and content cleaning. - Used Pydantic v2, checkpointing, and LangSmith for state management, typing, and execution tracing. 5) Chrome Extension for Content Simplification. - Built a Chrome Extension on Manifest V3 for simplifying complex web content with LLM support. - Developed a FastAPI backend with streaming responses, SSE, JWT-based authentication, and Google OAuth2. - Implemented prompt engineering with multiple simplification modes, a custom i18n system, and secure interaction between the extension and backend. All projects are available at: github.com/xpl0itK3y",
         techGroups: [
           {
             label: "Languages",
             items: ["Python", "JavaScript"],
           },
           {
-            label: "Backend and Frontend",
+            label: "Backend & Frontend",
             items: [
               "FastAPI",
               "Aiogram",
@@ -374,18 +403,15 @@ const translations = {
               "Trafilatura",
               "Pydantic",
               "aiohttp",
-              "React",
-              "Vue",
-              "Next.js",
+              "Vue 3",
+              "Vanilla JavaScript",
             ],
           },
           {
-            label: "AI and Vector Search",
+            label: "AI / LLM",
             items: [
               "OpenAI API",
               "DeepSeek API",
-              "CoinGecko API",
-              "CryptoPanic API",
               "LangChain",
               "LangGraph",
               "LangSmith",
@@ -393,27 +419,45 @@ const translations = {
               "RAG",
               "FAISS",
               "Chroma",
-              "Vector Databases",
-              "Function Calling",
               "Prompt Engineering",
-              "DuckDuckGo Search",
+              "Structured Outputs",
+              "Function Calling",
             ],
           },
           {
-            label: "Databases",
-            items: ["PostgreSQL", "SQLite", "MongoDB", "Redis"],
+            label: "Databases & Queues",
+            items: [
+              "PostgreSQL",
+              "SQLite",
+              "MongoDB",
+              "Redis",
+              "Celery",
+              "ARQ",
+            ],
           },
           {
-            label: "DevOps and Web",
+            label: "DevOps & Web",
             items: [
               "Docker",
               "Docker Compose",
-              "Git",
-              "Webhooks",
+              "Podman",
+              "GitHub Actions",
               "SSE",
-              "Binance WSS",
+              "WebSockets",
               "JWT",
               "Google OAuth2",
+              "Sentry",
+            ],
+          },
+          {
+            label: "Integrations & Data Sources",
+            items: [
+              "DuckDuckGo Search",
+              "2GIS API",
+              "National Bank of Kazakhstan API",
+              "CoinGecko API",
+              "CryptoPanic API",
+              "Binance WSS",
             ],
           },
           {
@@ -423,84 +467,100 @@ const translations = {
               "Chrome Extension API",
               "Shadow DOM",
               "Asyncio",
-              "Threading",
             ],
           },
         ],
       },
       {
-        position: "Backend developer",
+        position: "Backend Developer",
         company: "Private Startup (NDA)",
         period: "June 2025 - Present",
         description:
-          "Led a team of 10 people in creating a high-load enterprise platform focusing on real-time communication (team expansion planned).\n- Made all key technical decisions: stack selection, system architecture, DevOps infrastructure.\n- Designed microservice architecture on FastAPI using multiprocessing for handling high loads.\n- Implemented scalable proxy infrastructure with rotation (SOCKS5, HTTP, MTProto) and GeoIP distribution to ensure service stability.\n- Developed an AI assistance system integrating OpenAI GPT for automating NLP text processing.\n- Built DevOps pipeline: Docker Compose with multi-stage builds, deployment automation.\n- Implemented complex monitoring via Prometheus + Grafana + ELK Stack with real-time metrics and custom health checks.\n- Used Redis for performance optimization.\n- Conducted mentoring for the development team: code review, architectural reviews, best practices implementation.\n- Ensured system security: JWT authorization, bcrypt hashing, Fernet encryption, rate limiting.\n- Implemented testing culture: Pytest unit/integration tests, load testing with Locust.\n- System has been successfully operating in production for several months, handling high loads.",
+          "Played a leading role in backend development and contributed to key technical decisions related to system architecture, technology selection, and infrastructure. - Designed and developed a FastAPI-based microservices architecture to handle concurrent workloads and scale backend components. - Implemented infrastructure solutions to improve service stability, fault tolerance, and routing flexibility. - Developed AI-powered functionality to automate text processing and related business workflows. - Set up the deployment process using Docker Compose and multi-stage builds, improving environment reproducibility and maintainability. - Implemented monitoring and observability with real-time metrics and health checks, and used Redis to optimize performance. - Participated in architectural discussions and the adoption of engineering best practices within the team. - Strengthened system security through authentication, encryption, hashing, and rate-limiting mechanisms. - Also contributed to testing practices, including unit, integration, and load testing. - The system has been running in production under real operational load.",
+
         techGroups: [
           {
             label: "Languages",
             items: ["Python"],
           },
           {
-            label: "Backend and Databases",
+            label: "Backend Development",
             items: [
               "FastAPI",
               "Pydantic",
               "SQLAlchemy",
               "REST API",
-              "PostgreSQL",
+              "Microservices",
+              "Multiprocessing",
             ],
           },
           {
-            label: "Authentication and API",
-            items: ["JWT Authentication", "Stripe API", "SendGrid"],
+            label: "Databases & Caching",
+            items: ["PostgreSQL", "Redis"],
+          },
+          {
+            label: "DevOps & Monitoring",
+            items: ["Docker Compose", "Prometheus", "Grafana", "ELK Stack"],
+          },
+          {
+            label: "Security & Testing",
+            items: ["JWT", "bcrypt", "Fernet", "Pytest", "Locust"],
+          },
+          {
+            label: "AI & Text Processing",
+            items: ["OpenAI GPT", "NLP"],
           },
         ],
       },
       {
-        position:
-          "Backend Developer (Freelance, Full-time) PrestigeFly - Premium Aviation Services",
-        company: "PrestigeFly",
+        position: "Backend Developer (Freelance Project)",
+        company: "PrestigeFly (via freelance collaboration)",
         period: "December 2024 - June 2025",
         description:
-          "Developed from scratch, paired with a backend developer, a CRM system for managing premium airline ticket sales, ensuring the full cycle from lead to deal closure.\n- Designed, together with the team, the PostgreSQL database architecture considering complex business logic: lead management, multi-stage sales process, financial reporting, and role-based access model.\n- Developed REST API on FastAPI for interaction with Vue.js frontend.\n- Implemented sales module with automatic profit calculation (Revenue/Award Sales), support for multiple tariff tables, and financial analytics on transactions.\n- Integrated Stripe payment system with support for additional options (Ticket Protection), ensuring secure storage of payment data with role-based access control.\n- Implemented automatic email notification system via SendGrid for sending offers to clients, generating tickets, and order status notifications.\n- Implemented authorization and access rights system for 5 role types (Administrator, Sales Agent, Supervisor, Customer Support, Expert Agent) with various data access levels.\n- Developed lead management system with automatic distribution, status tracking, and duplicate prevention.\n- System successfully launched in production and is used for processing premium ticket sales.",
+          "Contributed to the backend development of a CRM system for managing premium-class airline ticket sales as part of a project collaboration with other backend developers. - The system covered the full customer lifecycle, from lead processing to deal closure. - Contributed to the design of a PostgreSQL database that supported complex business logic, including lead management, a multi-stage sales process, financial reporting, and a role-based access model. - Developed REST APIs with FastAPI for interaction with the frontend. - Implemented backend functionality related to profit calculation, pricing table support, transaction logic, and financial analytics. - Participated in the integration of Stripe and SendGrid, as well as in the implementation of authentication, access control, and lead management logic. - The system has been running successfully in production for several months, handling high workloads.",
+
         techGroups: [
           {
             label: "Languages",
             items: ["Python"],
           },
           {
-            label: "Backend and Databases",
-            items: [
-              "FastAPI",
-              "Pydantic",
-              "SQLAlchemy",
-              "REST API",
-              "PostgreSQL",
-            ],
+            label: "Backend Development",
+            items: ["FastAPI", "Pydantic", "SQLAlchemy", "REST API", "JWT"],
           },
           {
-            label: "Authentication and API",
-            items: ["JWT Authentication", "Stripe API", "SendGrid"],
+            label: "Databases",
+            items: ["PostgreSQL"],
+          },
+          {
+            label: "External Services & Integrations",
+            items: ["Stripe API", "SendGrid"],
           },
         ],
       },
       {
-        position: "Python Developer (Intern)",
-        company: "Tele2 Kazakhstan",
+        position: "Python/Django Developer (Diploma Project)",
+        company: "Youth Affairs Committee of INEU",
         period: "February 2024 - June 2024",
         description:
-          "Developed a web application to automate sales accounting for 20+ managers.\n- Implemented analytics system with Pandas - management received a tool for decision making.\n- Implemented role-based access model (manager/administrator) with Django ORM.\n- Created a dashboard for monitoring plan execution with visualization.\n- Implemented sales plan execution control with data visualization.\n- Configured application containerization using Docker.",
+          "Independently developed a Django-based web platform for the university’s student clubs as an information and management portal. - Implemented both backend and frontend application logic, including news and events, clubs, photo gallery, leadership pages, student and supervisor dashboards, as well as applications for joining clubs and participating in events. - Configured user registration, authentication, password recovery, and a role-based access model using Django Auth, Group, and Django ORM. Implemented internal chats, club news publishing, comments, likes, and club member management. - Used server-side rendering with Django Templates, SQLite for data storage, and JavaScript for interactive client-side features. - Containerized the application with Docker and prepared it for deployment, improving deployment simplicity, environment reproducibility, and maintainability. - Additionally configured Django Admin for managing content and core system entities.",
+
         techGroups: [
           {
             label: "Languages",
-            items: ["Python"],
+            items: ["Python", "JavaScript"],
           },
           {
             label: "Backend and Databases",
-            items: ["Django", "SQLite"],
+            items: ["Django", "Django ORM", "Django Auth", "SQLite"],
+          },
+          {
+            label: "Frontend",
+            items: ["HTML", "CSS", "Django Templates"],
           },
           {
             label: "DevOps and Tools",
-            items: ["Docker", "Linux", "Pandas"],
+            items: ["Docker", "Linux", "Django Admin"],
           },
         ],
       },

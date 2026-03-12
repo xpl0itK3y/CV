@@ -1,0 +1,46 @@
+.appContainer {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.mainDesktop {
+    padding: 10rem 1.5rem 3rem 1.5rem;
+}
+
+.mainMobile {
+    padding: 8rem 1rem 2rem 1rem;
+}
+
+.contentWrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.desktopGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.mobileLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.leftColumn {
+    animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+    display: flex;
+    flex-direction: column;
+}
+
+.rightColumn {
+    animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+    display: flex;
+    flex-direction: column;
+}

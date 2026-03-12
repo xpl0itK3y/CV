@@ -1,0 +1,33 @@
+.rubiksCubeContainer {
+    perspective: 1000px;
+    margin: 0 auto;
+    cursor: grab;
+    touch-action: none;
+}
+
+.cube {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 1.5s ease-out;
+}
+
+.cubie {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-style: preserve-3d;
+    will-change: transform;
+    pointer-events: none;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    backface-visibility: hidden;
+}

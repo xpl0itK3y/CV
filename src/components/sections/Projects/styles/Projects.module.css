@@ -1,0 +1,51 @@
+.titleDesktop {
+    color: #fff;
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.titleMobile {
+    color: #fff;
+    margin-top: 0;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.nameDesktop {
+    color: #fff;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.nameMobile {
+    color: #fff;
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.techDesktop {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.techMobile {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.descriptionDesktop {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.descriptionMobile {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+}

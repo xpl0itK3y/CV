@@ -3,112 +3,183 @@ const translations = {
     // TopBar
     portfolio: "CV",
     downloadResume: "Скачать CV",
+    readMore: "Читать далее",
+    readLess: "Свернуть",
+    stackTitle: "Стек технологий",
+    showAllTech: "Показать всё",
+    hideTech: "Скрыть",
 
     // Header
     name: "Денис Максимович",
-    title: "Fullstack Developer",
+    title: "Python Backend and AI Engineer",
 
     // About
     aboutTitle: "👤 О себе",
     aboutText:
-      "Fullstack-разработчик с опытом разработки комплексных веб-приложений и AI-powered решений. Начинал карьеру с frontend-разработки, углубился в backend-технологии, сейчас специализируюсь на fullstack-разработке с акцентом на создание масштабируемых приложений. Владею широким стеком технологий: JavaScript/TypeScript (React, Node.js), Python (FastAPI), Go, PHP, а также опытом работы с Docker, базами данных и интеграцией AI-сервисов. Разрабатывал чат-боты, системы автоматизации и веб-приложения с интеграцией языковых моделей. Имею опыт оптимизации производительности, работы с многопоточностью и построения CI/CD пайплайнов.",
+      "Python Backend и AI Engineer с 2+ годами опыта в разработке высоконагруженных систем и интеграции AI/ML решений. Специализируюсь на построении масштабируемых backend архитектур с использованием FastAPI, микросервисов, и современного DevOps стека (Docker, Prometheus, Grafana). Опыт руководства командой разработки, проектирования систем с нуля, и интеграции AI технологий (LangChain, OpenAI GPT, RAG). Открыт к удаленным позициям в международных продуктовых компаниях, где смогу применить опыт в AI/ML и backend разработке.",
 
     // Contacts
     contactsTitle: "📬 Контакты",
     email: "latundenis55@gmail.com",
-    // phone: "номер",
-    location: "Казахстан, Павлодар",
-    github: "github.com/xpl0itK3y",
+    // phone: "",
+    location: "Казахстан",
+    github: "https://github.com/xpl0itK3y",
     telegram: "@xpl0itK3y",
-    linkedin: "linkedin.com",
-    headhunter: "pavlodar.hh.kz/resume/0338ebe5ff0f1d55450039ed1f52566f696257",
+    linkedin: "www.linkedin.com/in/vladimir-nikolayevich-9092b3321",
+    headhunter: "pavlodar.hh.kz/resume/ab79d06cff0d80e57f0039ed1f61695244756d",
 
     // Experience
     experienceTitle: "💼 Опыт работы",
-    totalExperience: "3+ года",
+    totalExperience: "2+ года",
     experiences: [
       {
-        position: "Fullstack-разработчик",
-        company: "Фриланс",
-        period: "Июль 2025 - настоящее время",
+        position: "AI/ML Engineer (Personal Projects)",
+        company: "Open Source / GitHub",
+        period: "Декабрь 2025 - настоящее время",
         description:
-          "Проектирование и разработка fullstack веб-приложений с интеграцией AI-сервисов и языковых моделей. Разработка Telegram-ботов различной сложности: от простых уведомлений до сложных диалоговых систем с AI-функционалом, обработкой команд, платёжными системами и автоматизацией бизнес-процессов. Реализация RESTful API на FastAPI с асинхронной архитектурой, JWT-аутентификацией, системами ролей и real-time обновлениями. Интеграция Telegram Bot API через aiogram и Telethon для создания интеллектуальных чат-ботов, автоответчиков и CRM-систем. Создание адаптивных пользовательских интерфейсов с использованием React, Vue и Vanilla JavaScript. Оптимизация производительности через многопоточность (asyncio, threading, ThreadPoolExecutor) для обработки высоких нагрузок. Проектирование баз данных (PostgreSQL, SQLite, MongoDB), реализация кэширования (Redis). Контейнеризация приложений с Docker/Docker Compose для быстрого развёртывания.",
-        technologies: [
-          "Python",
-          "FastAPI",
-          "Aiogram",
-          "Telethon",
-          "JavaScript",
-          "React",
-          "Vue.js",
-          "Docker",
-          "Docker Compose",
-          "PostgreSQL",
-          "SQLite",
-          "MongoDB",
-          "Redis",
-          "DeepSeek API",
-          "Asyncio",
-          "Threading",
-          "JWT",
-          "Git",
-          "aiohttp",
-          "Webhooks",
+          "Разработка AI/ML решений и open-source проектов в свободное время для развития навыков и исследования новых технологий. Ключевые проекты:\n1) Multi-language RAG Document Assistant. - Построил production-ready RAG систему с полным pipeline: chunking,embeddings, semantic search. - Использовал векторные БД (FAISS, Chroma) для хранения и поиска эмбеддингов. - Реализовал source attribution для точного указания источников. - Применял промпт-инжиниринг для оптимизации точности ответов. 2) Krisha Agent - Autonomous Real Estate AI Agent. - Разработал multi-agent систему на LangGraph (supervisor + subagent паттерн) для автономного поиска квартир на Krisha.kz. - Реализовал асинхронный LangGraph граф с параллельным обогащением данных через 2GIS API и Нацбанк РК. - Применил structured outputs с Pydantic v2 и LLM scoring (Gemini) для ранжирования объявлений по критериям пользователя. - Настроил персистентную память агента через LangGraph checkpointing + PostgreSQL для дедупликации результатов. - Реализовал human-in-the-loop паттерн и фоновый мониторинг через ARQ task queue с уведомлениями в Telegram. - Обеспечил observability через LangSmith трейсинг и Sentry; задеплоил через Podman rootless containers + GitHub Actions CI/CD. 3) Crypto Sentiment Analysis Pipeline. - Спроектировал distributed microservices платформу 4 Python-сервиса + Vue 3 SPA для real-time мониторинга крипторынка: цены, Telegram-стримы, новости. - Построил event-driven pipeline: Binance WSS → asyncio processor с RSI-расчётом → Redis Pub/Sub FastAPI WebSocket broadcast с миллисекундной латентностью. - Реализовал Telegram ingestion через Telethon (MTProto) и CryptoPanic REST polling с асинхронной персистентностью через Celery + PostgreSQL. - Построил Vue 3 SPA с composable-архитектурой, WebSocket auto-reconnect, KeepAlive-кешированием и infinite scroll. - Задокументировал архитектуру по C4 модели (4 уровня, 14 PlantUML-диаграмм); настроил CI/CD (GitHub Actions + Docker Compose, 8 контейнеров). 4) Multi-Agent Search & Research Optimizer (Perplexity AI Analog). - Разработал распределенную мультиагентную систему на базе LangGraph (паттерн Orchestrator + Specialized Workers) для автономного поиска, парсинга и синтеза информации из интернета. - Реализовал граф на базе LangGraph с поддержкой циклического уточнения запросов и параллельного выполнения поисковых узлов (nodes), что позволило эффективно управлять состоянием агента и контекстом. - Реализовал алгоритм динамической декомпозиции сложных пользовательских запросов на независимые поисковые подзадачи с использованием LLM DeepSeek, что позволило достичь высокой релевантности и параллелизма. - Внедрил многоуровневый пайплайн сбора данных (DuckDuckGo Search + Trafilatura) с автоматической очисткой HTML-шума, фильтрацией рекламы и экстракцией чистого контента. - Использовал Pydantic v2 для гарантии типизации и structured outputs от LLM, а также управления состоянием задач через LangGraph Checkpointing и асинхронный TaskManager. - Интегрировал LangSmith для трейсинга цепочек рассуждений агента и структурированное логирование, обеспечив прозрачность выполнения каждого шага.5) Chrome Extension for Content Simplification. - Разработал High-performance Chrome Extension (Manifest V3) для упрощения сложного веб-контента в реальном времени с использованием LLM. - Разработал Chrome Extension на Vanilla JavaScript (ES6+) с Shadow DOM для изоляции стилей и предотвращения CSS конфликтов. - Построил FastAPI backend с асинхронной архитектурой для интеграции OpenAI GPT-4 с поддержкой real-time streaming. - Реализовал Server-Sent Events (SSE) для token-by-token рендеринга текста с низкойлатентностью (TTFB оптимизация). - Внедрил JWT-based stateless аутентификацию с Google OAuth2.\n- Создал систему промпт-инжиниринга с 4 режимами: Simple, Brief, Key Points, With Examples. - Разработал кастомную i18n систему для динамического переключения языков (EN/RU). - Настроил строгий CORS для безопасного взаимодействия extension backend. Все проекты доступны: github.com/Modern-Messiah",
+        techGroups: [
+          {
+            label: "Языки",
+            items: ["Python", "JavaScript"],
+          },
+          {
+            label: "Backend и Frontend",
+            items: [
+              "FastAPI",
+              "Aiogram",
+              "Telethon",
+              "Trafilatura",
+              "Pydantic",
+              "aiohttp",
+              "React",
+              "Vue",
+              "Next.js",
+            ],
+          },
+          {
+            label: "AI и Vector Search",
+            items: [
+              "OpenAI API",
+              "DeepSeek API",
+              "CoinGecko API",
+              "CryptoPanic API",
+              "LangChain",
+              "LangGraph",
+              "LangSmith",
+              "LlamaIndex",
+              "RAG",
+              "FAISS",
+              "Chroma",
+              "Vector Databases",
+              "Function Calling",
+              "Prompt Engineering",
+              "DuckDuckGo Search",
+            ],
+          },
+          {
+            label: "Базы данных",
+            items: ["PostgreSQL", "SQLite", "MongoDB", "Redis"],
+          },
+          {
+            label: "DevOps и Web",
+            items: [
+              "Docker",
+              "Docker Compose",
+              "Git",
+              "Webhooks",
+              "SSE",
+              "Binance WSS",
+              "JWT",
+              "Google OAuth2",
+            ],
+          },
+          {
+            label: "Browser Extensions",
+            items: [
+              "Manifest V3",
+              "Chrome Extension API",
+              "Shadow DOM",
+              "Asyncio",
+              "Threading",
+            ],
+          },
         ],
       },
       {
-        position: "Fullstack-разработчик",
-        company: "Фриланс: PrestigeFly",
+        position: "Backend developer",
+        company: "Private Startup (NDA)",
+        period: "Июнь 2025 - настоящее время",
+        description:
+          "Принимал все ключевые технические решения: выбор стека, архитектура системы, DevOps инфраструктура. - Спроектировал микросервисную архитектуру на FastAPI с использованием многопроцессорности multiprocessing для обработки высоких нагрузок. - Внедрил масштабируемую прокси-инфраструктуру с ротацией (SOCKS5, HTTP, MTProto) и GeoIP распределением для обеспечения стабильности сервиса. - Разработал систему AI-ассистирования с интеграцией OpenAI GPT для автоматизации NLP-обработки текстов. - Построил DevOps pipeline: Docker Compose с multi-stage builds, автоматизация деплоя. - Внедрил комплексный мониторинг через Prometheus + Grafana + ELK Stack с real-time метриками и custom health checks. - Использовал Redis для оптимизации производительности. - Провел менторинг команды разработки: code review, архитектурные ревью, внедрение best practices. - Обеспечил безопасность системы: JWT авторизация, bcrypt хеширование, Fernet шифрование, rate. - Внедрил культуру тестирования: Pytest unit/integration тесты, нагрузочное тестирование с Locust. - Система успешно работает в production несколько месяцев, обрабатывая высокие нагрузки.",
+        techGroups: [
+          {
+            label: "Языки",
+            items: ["Python"],
+          },
+          {
+            label: "Backend и Базы данных",
+            items: [
+              "FastAPI",
+              "Pydantic",
+              "SQLAlchemy",
+              "REST API",
+              "PostgreSQL",
+            ],
+          },
+          {
+            label: "Аутентификация & API",
+            items: ["JWT Authentication", "Stripe API", "SendGrid"],
+          },
+        ],
+      },
+      {
+        position:
+          "Backend Developer (Freelance, Full-time) PrestigeFly - Premium Aviation Services",
+        company: "PrestigeFly",
         period: "Декабрь 2024 - Июнь 2025",
         description:
-          "Разрабатывал и внедрял веб-решения для внутренних систем компании на основе бизнес-требований. Поддерживал и оптимизировал существующий код, повышая стабильность и производительность. Участвовал в проектировании архитектуры и интеграции с внешними сервисами. Проводил тестирование, отладку и рефакторинг кода. Сотрудничал с командой дизайнеров и менеджеров для реализации функционала в срок. Контакты: artemis@prestigefly.com",
-        technologies: ["React", "JavaScript", "Node.js"],
+          "Разработал с нуля в паре с backend разработчиком CRM-систему для управления продажами авиабилетов премиум-класса, обеспечивающую полный цикл от лида до закрытия сделки. - Спроектировал совместно с командой архитектуру PostgreSQL базы данных с учетом сложной бизнес-логики: управление лидами, многоэтапный процесс продаж, финансовая отчетность и ролевая модель доступа. - Разработал REST API на FastAPI для взаимодействия с Vue frontend. - Реализовал модуль продаж с автоматическим расчетом прибыли (Revenue/Award Sales), поддержкой множественных тарифных таблиц и финансовой аналитикой по транзакциям. - Интегрировал платежную систему Stripe с поддержкой дополнительных опций (Ticket Protection), обеспечив безопасное хранение платежных данных с разграничением доступа по ролям. - Реализовал систему автоматических email-уведомлений через SendGrid для отправки предложений клиентам, генерации билетов и уведомлений о статусах заказов. - Внедрил систему авторизации и прав доступа для 5 типов ролей (Administrator, Sales Agent, Supervisor, Customer Support, Expert Agent) с различными уровнями доступа к данным. - Разработал систему управления лидами с автоматическим распределением, отслеживанием статусов и предотвращением дубликатов. - Система успешно запущена в production и используется для обработки продаж премиум авиабилетов.",
+        techGroups: [
+          {
+            label: "Языки",
+            items: ["Python"],
+          },
+          {
+            label: "Backend и Базы данных",
+            items: [
+              "FastAPI",
+              "Pydantic",
+              "SQLAlchemy",
+              "REST API",
+              "PostgreSQL",
+            ],
+          },
+          {
+            label: "Аутентификация & API",
+            items: ["JWT Authentication", "Stripe API", "SendGrid"],
+          },
+        ],
       },
       {
-        position: "Frontend-разработчик",
-        company: "Комитет по делам молодежи ИНЕУ",
+        position: "Python Developer (Intern)",
+        company: "Tele2 Kazakhstan",
         period: "Февраль 2024 - Июнь 2024",
         description:
-          "Разработал веб-платформу для молодежных клубов университета - мини социальную сеть для студентов. Реализовал систему клубов с возможностью вступления и управления участниками. Создал функционал группового чата для общения внутри клубов в режиме реального времени. Разработал ленту новостей с публикацией событий и объявлений от клубов. Внедрил ролевую модель доступа (участник/модератор клуба/администратор) с использованием Django ORM. Создал личный профиль пользователя с отображением клубов и активности. Настроил систему уведомлений о новых сообщениях и событиях. Развернул приложение в Docker для упрощения деплоя",
-        technologies: [
-          "Python",
-          "Django",
-          "SQLite",
-          "WebSockets/Django Channels",
-          "Docker",
-          "HTML/CSS/JavaScript",
-          "Bootstrap",
-        ],
-      },
-      {
-        position: "Fullstack PHP разработчик",
-        company: "Фриланс",
-        period: "Октябрь 2023 - Январь 2024",
-        description:
-          "Разработал интернет-магазин на Laravel с применением архитектурных паттернов Repository и Service Layer. Реализовал каталог товаров с фильтрацией, поиском и пагинацией. Создал личный кабинет пользователя с историей заказов и административную панель для управления товарами. Разработал систему скидок, промокодов и бонусную программу с начислением баллов за покупки. Настроил автоматические email-уведомления о статусе заказов через Laravel Mail. Реализовал авторизацию и регистрацию с подтверждением email",
-        technologies: [
-          "PHP",
-          "Laravel",
-          "MySQL",
-          "Docker",
-          "Repository Pattern",
-          "Service Layer",
-          "Laravel Mail",
-          "Authentication",
-        ],
-      },
-      {
-        position: "1С-разработчик (1С:Предприятие 8.3)",
-        company: "Фриланс",
-        period: "Сентябрь 2023 - Декабрь 2023",
-        description:
-          "Разработал систему автоматизации для книжного магазина на 1С:Предприятие. Реализовал функционал продаж: оформление заказов, работа с клиентами, печать документов (накладные, счета). Создал отчеты по продажам и остаткам товаров на складе. Настроил разграничение прав доступа для разных ролей (продавец, кассир, менеджер, администратор). Внедрил учет товаров с контролем остатков. Результат: переход с Excel на автоматизированную систему, ускорение обработки заказов в 2-3 раза",
-        technologies: [
-          "1С:Предприятие 8.3",
-          "Встроенный язык 1С",
-          "Механизм ролей",
-          "Печатные формы",
-          "Отчеты",
+          "Разработал веб-приложение для автоматизации учета продаж 20+ менеджеров. - Внедрил систему аналитики с Pandas - руководство получило инструмент для принятия решений. - Реализовал ролевую модель доступа (менеджер/администратор) с Django ORM. - Создал дашборд для мониторинга выполнения планов с визуализацией. - Внедрил контроль выполнения планов продаж с визуализацией данных. - Настроил контейнеризацию приложения с помощью Docker.",
+        techGroups: [
+          {
+            label: "Языки",
+            items: ["Python"],
+          },
+          {
+            label: "Backend и Базы данных",
+            items: ["Django", "SQLite"],
+          },
+          {
+            label: "DevOps & Tools",
+            items: ["Docker", "Linux", "Pandas"],
+          },
         ],
       },
     ],
@@ -128,43 +199,95 @@ const translations = {
     softSkillsTitle: "💡 Мягкие навыки",
     languagesTitle: "🌐 Языки",
     technicalSkills: [
-      // Frontend
-      { name: "React / Next.js", level: 90 },
-      { name: "TypeScript", level: 85 },
-      { name: "JavaScript", level: 90 },
-      { name: "Vue.js", level: 80 },
-      { name: "HTML5", level: 95 },
-      { name: "CSS / Tailwind", level: 88 },
-
-      // Backend
-      { name: "Node.js", level: 85 },
-      { name: "Python", level: 80 },
-      { name: "FastAPI", level: 80 },
-      { name: "Django", level: 75 },
-      { name: "Pandas", level: 75 },
-      { name: "PHP", level: 75 },
-      { name: "Laravel", level: 75 },
-      { name: "Symfony", level: 70 },
-      { name: "Go", level: 70 },
-
-      // Databases
-      { name: "PostgreSQL", level: 85 },
-      { name: "MongoDB", level: 80 },
-      { name: "Redis", level: 75 },
-      { name: "MySQL", level: 80 },
-      { name: "Sqlite", level: 80 },
-
-      // DevOps & Tools
-      { name: "Docker", level: 85 },
-      { name: "Kubernetes", level: 75 },
-      { name: "Git", level: 90 },
-      { name: "Nginx", level: 80 },
-      { name: "Linux", level: 85 },
-
-      // Testing & CI/CD
-      { name: "Jest", level: 80 },
-      { name: "GitHub Actions", level: 75 },
-      { name: "Pytest", level: 75 },
+      {
+        category: "Языки",
+        items: [
+          { name: "Python", level: 90 },
+          { name: "JavaScript", level: 90 },
+          { name: "TypeScript", level: 85 },
+          { name: "Bash", level: 85 },
+        ],
+      },
+      {
+        category: "Backend",
+        items: [
+          { name: "FastAPI", level: 90 },
+          { name: "Django", level: 85 },
+          { name: "Flask", level: 80 },
+          { name: "SQLAlchemy", level: 85 },
+          { name: "GraphQL", level: 75 },
+          { name: "Prisma", level: 80 },
+        ],
+      },
+      {
+        category: "AI и Data Science",
+        items: [
+          { name: "Pandas", level: 85 },
+          { name: "NumPy", level: 80 },
+          { name: "PyTorch", level: 80 },
+          { name: "TensorFlow", level: 75 },
+          { name: "Jupyter", level: 85 },
+          { name: "Streamlit", level: 80 },
+          { name: "Pinecone", level: 85 },
+          { name: "Weaviate", level: 80 },
+          { name: "ChromaDB", level: 85 },
+          { name: "Qdrant", level: 80 },
+          { name: "FAISS", level: 85 },
+        ],
+      },
+      {
+        category: "Базы данных",
+        items: [
+          { name: "PostgreSQL", level: 85 },
+          { name: "MongoDB", level: 80 },
+          { name: "Redis", level: 75 },
+          { name: "MySQL", level: 80 },
+          { name: "Sqlite", level: 80 },
+          { name: "Elasticsearch", level: 75 },
+        ],
+      },
+      {
+        category: "DevOps и Инфраструктура",
+        items: [
+          { name: "Docker", level: 90 },
+          { name: "Git", level: 95 },
+          { name: "Prometheus", level: 80 },
+          { name: "Grafana", level: 80 },
+          { name: "Nginx", level: 85 },
+          { name: "Linux", level: 90 },
+          { name: "AWS", level: 75 },
+          { name: "Google Cloud", level: 75 },
+          { name: "DigitalOcean", level: 80 },
+          { name: "Vercel", level: 85 },
+          { name: "Azure", level: 75 },
+          { name: "Firebase", level: 80 },
+          { name: "Supabase", level: 80 },
+          { name: "Heroku", level: 75 },
+          { name: "Railway", level: 75 },
+          { name: "Traefik", level: 75 },
+          { name: "GitHub Actions", level: 75 },
+        ],
+      },
+      {
+        category: "Frontend",
+        items: [
+          { name: "React", level: 90 },
+          { name: "Next.js", level: 90 },
+          { name: "Vue.js", level: 80 },
+          { name: "HTML5", level: 95 },
+          { name: "CSS3", level: 90 },
+          { name: "Tailwind CSS", level: 90 },
+          { name: "Bootstrap", level: 80 },
+        ],
+      },
+      {
+        category: "QA и Тестирование",
+        items: [
+          { name: "Jest", level: 80 },
+          { name: "Pytest", level: 75 },
+          { name: "Selenium", level: 80 },
+        ],
+      },
     ],
     softSkills: [
       "Командная работа",
@@ -203,112 +326,182 @@ const translations = {
     // TopBar
     portfolio: "CV",
     downloadResume: "Download CV",
+    readMore: "Read more",
+    readLess: "Show less",
+    stackTitle: "Tech Stack",
+    showAllTech: "Show all",
+    hideTech: "Hide",
 
     // Header
     name: "Denis Maksimovich",
-    title: "Full-stack Developer",
+    title: "Python Backend and AI Engineer",
 
     // About
     aboutTitle: "👤 About Me",
     aboutText:
-      "Full-stack developer with experience in developing complex web applications and AI-powered solutions. I started my career in front-end development, delved into back-end technologies, and now specialize in full-stack development with a focus on creating scalable applications. I have a broad technology stack: JavaScript/TypeScript (React, Node.js), Python (FastAPI), Go, PHP, as well as experience with Docker, databases, and AI service integration. I have developed chatbots, automation systems, and web applications with language model integration. I have experience in performance optimization, multithreading, and building CI/CD pipelines.",
-
+      "Python Backend and AI Engineer with 2+ years of experience in developing high-load systems and integrating AI/ML solutions. I specialize in building scalable backend architectures using FastAPI, microservices, and modern DevOps stack (Docker, Prometheus, Grafana). Experience in leading a development team, designing systems from scratch, and integrating AI technologies (LangChain, OpenAI GPT, RAG). Open to remote positions in international product companies where I can apply my experience in AI/ML and backend development.",
     // Contacts
     contactsTitle: "📬 Contacts",
     email: "latundenis55@gmail.com",
-    // phone: "номер",
-    location: "Kazakhstan, Pavlodar",
-    github: "github.com/xpl0itK3y",
+    //phone: "",
+    location: "Kazakhstan",
+    github: "https://github.com/xpl0itK3y",
     telegram: "@xpl0itK3y",
-    linkedin: "linkedin.com",
-    headhunter: "pavlodar.hh.kz/resume/0338ebe5ff0f1d55450039ed1f52566f696257",
+    linkedin: "www.linkedin.com/in/vladimir-nikolayevich-9092b3321",
+    headhunter: "pavlodar.hh.kz/resume/ab79d06cff0d80e57f0039ed1f61695244756d",
 
     // Experience
     experienceTitle: "💼 Work Experience",
-    totalExperience: "3+ years",
+    totalExperience: "2+ years",
     experiences: [
       {
-        position: "Full-stack developer",
-        company: "Freelance",
-        period: "July 2025 - present",
+        position: "AI/ML Engineer (Personal Projects)",
+        company: "Open Source / GitHub",
+        period: "December 2025 - Present",
         description:
-          "Design and development of fullstack web applications with AI service and language model integration. Development of Telegram bots of varying complexity: from simple notifications to sophisticated conversational systems with AI functionality, command processing, payment systems, and business process automation. Implementation of RESTful APIs on FastAPI with asynchronous architecture, JWT authentication, role-based systems, and real-time updates. Integration of Telegram Bot API via aiogram and Telethon to create intelligent chatbots, auto-responders, and CRM systems. Creation of responsive user interfaces using React, Vue, and Vanilla JavaScript. Performance optimization through multithreading (asyncio, threading, ThreadPoolExecutor) for high-load processing. Database design (PostgreSQL, SQLite, MongoDB), caching implementation (Redis). Application containerization with Docker/Docker Compose for rapid deployment.",
-        technologies: [
-          "Python",
-          "FastAPI",
-          "Aiogram",
-          "Telethon",
-          "JavaScript",
-          "React",
-          "Vue.js",
-          "Docker",
-          "Docker Compose",
-          "PostgreSQL",
-          "SQLite",
-          "MongoDB",
-          "Redis",
-          "DeepSeek API",
-          "Asyncio",
-          "Threading",
-          "JWT",
-          "Git",
-          "aiohttp",
-          "Webhooks",
+          "Developing AI/ML solutions and open-source projects in my spare time to grow skills and explore new technologies. Key projects:\n1) Multi-language RAG Document Assistant. - Built a production-ready RAG system with a full pipeline: chunking, embeddings, semantic search. - Used vector databases (FAISS, Chroma) for storing and retrieving embeddings. - Implemented source attribution for precise citation of information sources. - Applied prompt engineering to optimize response accuracy. 2) Krisha Agent - Autonomous Real Estate AI Agent. - Developed a multi-agent system on LangGraph (supervisor + subagent pattern) for autonomous apartment search on Krisha.kz. - Implemented an async LangGraph graph with parallel data enrichment via the 2GIS API and the National Bank of Kazakhstan. - Applied structured outputs with Pydantic v2 and LLM scoring (Gemini) to rank listings by user criteria. - Configured persistent agent memory via LangGraph checkpointing + PostgreSQL for result deduplication. - Implemented a human-in-the-loop pattern and background monitoring via ARQ task queue with Telegram notifications. - Ensured observability via LangSmith tracing and Sentry; deployed via Podman rootless containers + GitHub Actions CI/CD. 3) Crypto Sentiment Analysis Pipeline. - Designed a distributed microservices platform — 4 Python services + Vue 3 SPA — for real-time crypto market monitoring: prices, Telegram streams, and news. - Built an event-driven pipeline: Binance WSS → asyncio processor with RSI calculation → Redis Pub/Sub → FastAPI WebSocket broadcast with millisecond latency. - Implemented Telegram ingestion via Telethon (MTProto) and CryptoPanic REST polling with async persistence via Celery + PostgreSQL. - Built a Vue 3 SPA with a composable architecture, WebSocket auto-reconnect, KeepAlive caching, and infinite scroll. - Documented the architecture following the C4 model (4 levels, 14 PlantUML diagrams); configured CI/CD (GitHub Actions + Docker Compose, 8 containers). 4) Multi-Agent Search & Research Optimizer (Perplexity AI Analog). - Developed a distributed multi-agent system on LangGraph (Orchestrator + Specialized Workers pattern) for autonomous search, parsing, and synthesis of information from the internet. - Implemented a LangGraph graph with support for cyclic query refinement and parallel execution of search nodes, enabling effective agent state and context management. - Implemented a dynamic decomposition algorithm for complex user queries into independent search subtasks using LLM DeepSeek, achieving high relevance and parallelism. - Integrated a multi-layer data collection pipeline (DuckDuckGo Search + Trafilatura) with automatic HTML noise cleaning, ad filtering, and clean content extraction. - Used Pydantic v2 to guarantee typing and structured outputs from LLM, as well as task state management via LangGraph Checkpointing and an async TaskManager. - Integrated LangSmith for tracing agent reasoning chains and structured logging, ensuring transparency at every execution step. 5) Chrome Extension for Content Simplification. - Developed a high-performance Chrome Extension (Manifest V3) for real-time simplification of complex web content using LLM. - Built the Chrome Extension in Vanilla JavaScript (ES6+) with Shadow DOM for style isolation and prevention of CSS conflicts. - Built a FastAPI backend with an async architecture to integrate OpenAI GPT-4 with real-time streaming support. - Implemented Server-Sent Events (SSE) for token-by-token text rendering with low latency (TTFB optimization). - Integrated JWT-based stateless authentication with Google OAuth2.\n- Created a prompt engineering system with 4 modes: Simple, Brief, Key Points, With Examples. - Developed a custom i18n system for dynamic language switching (EN/RU). - Configured strict CORS for secure extension-backend communication. All projects available at: github.com/Modern-Messiah",
+        techGroups: [
+          {
+            label: "Languages",
+            items: ["Python", "JavaScript"],
+          },
+          {
+            label: "Backend and Frontend",
+            items: [
+              "FastAPI",
+              "Aiogram",
+              "Telethon",
+              "Trafilatura",
+              "Pydantic",
+              "aiohttp",
+              "React",
+              "Vue",
+              "Next.js",
+            ],
+          },
+          {
+            label: "AI and Vector Search",
+            items: [
+              "OpenAI API",
+              "DeepSeek API",
+              "CoinGecko API",
+              "CryptoPanic API",
+              "LangChain",
+              "LangGraph",
+              "LangSmith",
+              "LlamaIndex",
+              "RAG",
+              "FAISS",
+              "Chroma",
+              "Vector Databases",
+              "Function Calling",
+              "Prompt Engineering",
+              "DuckDuckGo Search",
+            ],
+          },
+          {
+            label: "Databases",
+            items: ["PostgreSQL", "SQLite", "MongoDB", "Redis"],
+          },
+          {
+            label: "DevOps and Web",
+            items: [
+              "Docker",
+              "Docker Compose",
+              "Git",
+              "Webhooks",
+              "SSE",
+              "Binance WSS",
+              "JWT",
+              "Google OAuth2",
+            ],
+          },
+          {
+            label: "Browser Extensions",
+            items: [
+              "Manifest V3",
+              "Chrome Extension API",
+              "Shadow DOM",
+              "Asyncio",
+              "Threading",
+            ],
+          },
         ],
       },
       {
-        position: "Full-stack developer",
-        company: "Freelance: PrestigeFly",
+        position: "Backend developer",
+        company: "Private Startup (NDA)",
+        period: "June 2025 - Present",
+        description:
+          "Led a team of 10 people in creating a high-load enterprise platform focusing on real-time communication (team expansion planned).\n- Made all key technical decisions: stack selection, system architecture, DevOps infrastructure.\n- Designed microservice architecture on FastAPI using multiprocessing for handling high loads.\n- Implemented scalable proxy infrastructure with rotation (SOCKS5, HTTP, MTProto) and GeoIP distribution to ensure service stability.\n- Developed an AI assistance system integrating OpenAI GPT for automating NLP text processing.\n- Built DevOps pipeline: Docker Compose with multi-stage builds, deployment automation.\n- Implemented complex monitoring via Prometheus + Grafana + ELK Stack with real-time metrics and custom health checks.\n- Used Redis for performance optimization.\n- Conducted mentoring for the development team: code review, architectural reviews, best practices implementation.\n- Ensured system security: JWT authorization, bcrypt hashing, Fernet encryption, rate limiting.\n- Implemented testing culture: Pytest unit/integration tests, load testing with Locust.\n- System has been successfully operating in production for several months, handling high loads.",
+        techGroups: [
+          {
+            label: "Languages",
+            items: ["Python"],
+          },
+          {
+            label: "Backend and Databases",
+            items: [
+              "FastAPI",
+              "Pydantic",
+              "SQLAlchemy",
+              "REST API",
+              "PostgreSQL",
+            ],
+          },
+          {
+            label: "Authentication and API",
+            items: ["JWT Authentication", "Stripe API", "SendGrid"],
+          },
+        ],
+      },
+      {
+        position:
+          "Backend Developer (Freelance, Full-time) PrestigeFly - Premium Aviation Services",
+        company: "PrestigeFly",
         period: "December 2024 - June 2025",
         description:
-          "Developed and implemented web solutions for internal company systems based on business requirements. Maintained and optimized existing codebase, improving stability and performance. Participated in architecture design and integration with external services. Conducted testing, debugging, and code refactoring. Collaborated with design and management teams to deliver functionality on schedule. Contact: artemis@prestigefly.com",
-        technologies: ["React", "JavaScript", "Node.js"],
+          "Developed from scratch, paired with a backend developer, a CRM system for managing premium airline ticket sales, ensuring the full cycle from lead to deal closure.\n- Designed, together with the team, the PostgreSQL database architecture considering complex business logic: lead management, multi-stage sales process, financial reporting, and role-based access model.\n- Developed REST API on FastAPI for interaction with Vue.js frontend.\n- Implemented sales module with automatic profit calculation (Revenue/Award Sales), support for multiple tariff tables, and financial analytics on transactions.\n- Integrated Stripe payment system with support for additional options (Ticket Protection), ensuring secure storage of payment data with role-based access control.\n- Implemented automatic email notification system via SendGrid for sending offers to clients, generating tickets, and order status notifications.\n- Implemented authorization and access rights system for 5 role types (Administrator, Sales Agent, Supervisor, Customer Support, Expert Agent) with various data access levels.\n- Developed lead management system with automatic distribution, status tracking, and duplicate prevention.\n- System successfully launched in production and is used for processing premium ticket sales.",
+        techGroups: [
+          {
+            label: "Languages",
+            items: ["Python"],
+          },
+          {
+            label: "Backend and Databases",
+            items: [
+              "FastAPI",
+              "Pydantic",
+              "SQLAlchemy",
+              "REST API",
+              "PostgreSQL",
+            ],
+          },
+          {
+            label: "Authentication and API",
+            items: ["JWT Authentication", "Stripe API", "SendGrid"],
+          },
+        ],
       },
       {
-        position: "Frontend Developer",
-        company: "Youth Affairs Committee of INEU",
+        position: "Python Developer (Intern)",
+        company: "Tele2 Kazakhstan",
         period: "February 2024 - June 2024",
         description:
-          "Developed a web platform for university youth clubs - a mini social network for students. Implemented a club system with membership joining and participant management. Created group chat functionality for real-time communication within clubs. Built a news feed for publishing events and announcements from clubs. Implemented role-based access control (member/club moderator/administrator) using Django ORM. Created user profiles displaying clubs and activity. Set up notification system for new messages and events. Deployed the application using Docker for simplified deployment",
-        technologies: [
-          "Python",
-          "Django",
-          "SQLite",
-          "WebSockets/Django Channels",
-          "Docker",
-          "HTML/CSS/JavaScript",
-          "Bootstrap",
-        ],
-      },
-      {
-        position: "Fullstack PHP Developer",
-        company: "Freelance",
-        period: "October 2023 - January 2024",
-        description:
-          "Developed an e-commerce store on Laravel using Repository and Service Layer architectural patterns. Implemented product catalog with filtering, search, and pagination. Created user dashboard with order history and admin panel for product management. Developed discount system, promo codes, and loyalty program with points rewards for purchases. Set up automated email notifications for order status updates via Laravel Mail. Implemented authentication and registration with email verification",
-        technologies: [
-          "PHP",
-          "Laravel",
-          "MySQL",
-          "Docker",
-          "Repository Pattern",
-          "Service Layer",
-          "Laravel Mail",
-          "Authentication",
-        ],
-      },
-      {
-        position: "1C Developer (1C:Enterprise 8.3)",
-        company: "Freelance",
-        period: "September 2023 - December 2023",
-        description:
-          "Developed an automation system for a bookstore on 1C:Enterprise platform. Implemented sales functionality: order processing, customer management, document printing (invoices, bills). Created reports for sales and inventory stock levels. Configured role-based access control for different roles (salesperson, cashier, manager, administrator). Implemented inventory management with stock control. Result: migrated from Excel to an automated system, accelerated order processing by 2-3 times",
-        technologies: [
-          "1C:Enterprise 8.3",
-          "1C Built-in Language",
-          "Role Mechanism",
-          "Print Forms",
-          "Reports",
+          "Developed a web application to automate sales accounting for 20+ managers.\n- Implemented analytics system with Pandas - management received a tool for decision making.\n- Implemented role-based access model (manager/administrator) with Django ORM.\n- Created a dashboard for monitoring plan execution with visualization.\n- Implemented sales plan execution control with data visualization.\n- Configured application containerization using Docker.",
+        techGroups: [
+          {
+            label: "Languages",
+            items: ["Python"],
+          },
+          {
+            label: "Backend and Databases",
+            items: ["Django", "SQLite"],
+          },
+          {
+            label: "DevOps and Tools",
+            items: ["Docker", "Linux", "Pandas"],
+          },
         ],
       },
     ],
@@ -328,43 +521,95 @@ const translations = {
     softSkillsTitle: "💡 Soft Skills",
     languagesTitle: "🌐 Languages",
     technicalSkills: [
-      // Frontend
-      { name: "React / Next.js", level: 90 },
-      { name: "TypeScript", level: 85 },
-      { name: "JavaScript", level: 90 },
-      { name: "Vue.js", level: 80 },
-      { name: "HTML5", level: 95 },
-      { name: "CSS / Tailwind", level: 88 },
-
-      // Backend
-      { name: "Node.js", level: 85 },
-      { name: "Python", level: 80 },
-      { name: "FastAPI", level: 80 },
-      { name: "Django", level: 75 },
-      { name: "Pandas", level: 75 },
-      { name: "PHP", level: 75 },
-      { name: "Laravel", level: 75 },
-      { name: "Symfony", level: 70 },
-      { name: "Go", level: 70 },
-
-      // Databases
-      { name: "PostgreSQL", level: 85 },
-      { name: "MongoDB", level: 80 },
-      { name: "Redis", level: 75 },
-      { name: "MySQL", level: 80 },
-      { name: "Sqlite", level: 80 },
-
-      // DevOps & Tools
-      { name: "Docker", level: 85 },
-      { name: "Kubernetes", level: 75 },
-      { name: "Git", level: 90 },
-      { name: "Nginx", level: 80 },
-      { name: "Linux", level: 85 },
-
-      // Testing & CI/CD
-      { name: "Jest", level: 80 },
-      { name: "GitHub Actions", level: 75 },
-      { name: "Pytest", level: 75 },
+      {
+        category: "Languages",
+        items: [
+          { name: "Python", level: 90 },
+          { name: "JavaScript", level: 90 },
+          { name: "TypeScript", level: 85 },
+          { name: "Bash", level: 85 },
+        ],
+      },
+      {
+        category: "Backend",
+        items: [
+          { name: "FastAPI", level: 90 },
+          { name: "Django", level: 85 },
+          { name: "Flask", level: 80 },
+          { name: "SQLAlchemy", level: 85 },
+          { name: "GraphQL", level: 75 },
+          { name: "Prisma", level: 80 },
+        ],
+      },
+      {
+        category: "AI and Data Science",
+        items: [
+          { name: "Pandas", level: 85 },
+          { name: "NumPy", level: 80 },
+          { name: "PyTorch", level: 80 },
+          { name: "TensorFlow", level: 75 },
+          { name: "Jupyter", level: 85 },
+          { name: "Streamlit", level: 80 },
+          { name: "Pinecone", level: 85 },
+          { name: "Weaviate", level: 80 },
+          { name: "ChromaDB", level: 85 },
+          { name: "Qdrant", level: 80 },
+          { name: "FAISS", level: 85 },
+        ],
+      },
+      {
+        category: "Databases",
+        items: [
+          { name: "PostgreSQL", level: 85 },
+          { name: "MongoDB", level: 80 },
+          { name: "Redis", level: 75 },
+          { name: "MySQL", level: 80 },
+          { name: "Sqlite", level: 80 },
+          { name: "Elasticsearch", level: 75 },
+        ],
+      },
+      {
+        category: "DevOps and Infrastructure",
+        items: [
+          { name: "Docker", level: 90 },
+          { name: "Git", level: 95 },
+          { name: "Prometheus", level: 80 },
+          { name: "Grafana", level: 80 },
+          { name: "Nginx", level: 90 },
+          { name: "Linux", level: 90 },
+          { name: "AWS", level: 75 },
+          { name: "Google Cloud", level: 75 },
+          { name: "DigitalOcean", level: 80 },
+          { name: "Vercel", level: 85 },
+          { name: "Azure", level: 75 },
+          { name: "Firebase", level: 80 },
+          { name: "Supabase", level: 80 },
+          { name: "Heroku", level: 75 },
+          { name: "Railway", level: 75 },
+          { name: "Traefik", level: 75 },
+          { name: "GitHub Actions", level: 75 },
+        ],
+      },
+      {
+        category: "Frontend",
+        items: [
+          { name: "React", level: 90 },
+          { name: "Next.js", level: 90 },
+          { name: "Vue.js", level: 80 },
+          { name: "HTML5", level: 95 },
+          { name: "CSS3", level: 90 },
+          { name: "Tailwind CSS", level: 90 },
+          { name: "Bootstrap", level: 80 },
+        ],
+      },
+      {
+        category: "QA and Testing",
+        items: [
+          { name: "Jest", level: 80 },
+          { name: "Pytest", level: 75 },
+          { name: "Selenium", level: 80 },
+        ],
+      },
     ],
     softSkills: [
       "Team Collaboration",

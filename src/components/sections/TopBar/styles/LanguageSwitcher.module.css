@@ -1,0 +1,156 @@
+.container {
+    position: relative;
+}
+
+.triggerButton {
+    background: rgba(15, 15, 20, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 0.65rem 1.25rem;
+    color: #e5e7eb;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.triggerButton.open {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.triggerButton:hover {
+    background: rgba(25, 25, 35, 0.85);
+    transform: translateY(-1px);
+}
+
+.triggerButton:not(.open):hover {
+    transform: translateY(-1px);
+}
+
+.flagIcon {
+    width: 28px;
+    height: 20px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.arrowIcon {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+.arrowIcon.open {
+    transform: rotate(180deg);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10001;
+}
+
+.dropdown {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    right: 0;
+    background: rgba(10, 10, 14, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85);
+    min-width: 190px;
+    z-index: 10002;
+}
+
+.optionButton {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: #e5e7eb;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    transition: background 0.2s ease;
+    font-weight: 400;
+}
+
+.optionButton:last-child {
+    border-bottom: none;
+}
+
+.optionButton:hover {
+    background: rgba(25, 25, 35, 0.85);
+    /* fallback hover if not active */
+}
+
+/* Active state for selected language */
+.optionButton.active {
+    background: rgba(25, 25, 35, 0.85);
+    /* Changed to darker background to match design */
+    font-weight: 600;
+}
+
+/* Hover effect handled in CSS where possible, 
+   but since the original used inline styles with logic for 'active' state background,
+   we verify:
+   Original: active ? "rgba(255, 255, 255, 0.06)" : "transparent"
+   Hover: "rgba(255, 255, 255, 0.08)"
+   Leave: active ? ... : ...
+*/
+
+.optionButton:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Ensure active state takes precedence if needed, or handle in JS. 
+   Actually, CSS hover usually overrides base style. 
+   If original logic was:
+   Render: active -> bg-white-06
+   Hover: bg-white-08
+   Leave: active -> bg-white-06 
+   So hover is always white-08.
+*/
+
+.optionFlag {
+    width: 26px;
+    height: 18px;
+    object-fit: cover;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.checkmark {
+    margin-left: auto;
+    font-size: 1.2rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(2px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

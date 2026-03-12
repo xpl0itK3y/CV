@@ -1,0 +1,43 @@
+.titleDesktop {
+    color: #fff;
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.titleMobile {
+    color: #fff;
+    margin-top: 0;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.educationItem {
+    margin-bottom: 1rem;
+}
+
+.educationItem:last-child {
+    margin-bottom: 0;
+}
+
+.degreeDesktop {
+    color: #fff;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.degreeMobile {
+    color: #fff;
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.detailsDesktop {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+}
+
+.detailsMobile {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}

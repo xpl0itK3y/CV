@@ -1,0 +1,334 @@
+.headerDesktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.headerMobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.titleDesktop {
+    color: #fff;
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.titleMobile {
+    color: #fff;
+    margin-top: 0;
+    font-size: 1.3rem;
+    margin-bottom: 0;
+}
+
+.badgeDesktop {
+    border: 1px solid rgba(102, 126, 234, 0.7);
+    border-radius: 12px;
+    padding: 0.6rem 1.2rem;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.badgeMobile {
+    border: 1px solid rgba(102, 126, 234, 0.7);
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.jobContainer {
+    margin-bottom: 2rem;
+    padding-bottom: 0;
+    border-bottom: none;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.timeline {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2px;
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+}
+
+.timelineDot {
+    position: absolute;
+    left: -4px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 0 15px rgba(102, 126, 234, 0.8),
+        inset 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.positionDesktop {
+    color: #fff;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.positionMobile {
+    color: #fff;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.metaDesktop {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    cursor: default;
+}
+
+.metaMobile {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    cursor: default;
+}
+
+.company {
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg,
+            rgba(102, 126, 234, 0.2),
+            rgba(118, 75, 162, 0.2));
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.separator {
+    color: rgba(102, 126, 234, 0.8);
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.period {
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}
+
+.description {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    margin: 0;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(102, 126, 234, 0.2);
+}
+
+.descriptionContent {
+    position: relative;
+    transition:
+        mask-image 0.5s ease-in-out,
+        -webkit-mask-image 0.5s ease-in-out;
+}
+
+.sentence {
+    margin-bottom: 0.4rem;
+}
+
+.expandableContent {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.expandButton {
+    background: transparent;
+    border: none;
+    color: #667eea;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+}
+
+.expandButton:hover {
+    color: #fff;
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.techSection {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.techDot {
+    position: absolute;
+    left: -1.5rem;
+    margin-left: -4px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 0 15px rgba(102, 126, 234, 0.8),
+        inset 0 0 5px rgba(255, 255, 255, 0.3);
+    z-index: 2;
+}
+
+.techTitleDesktop {
+    font-size: 1.25rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    text-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
+}
+
+.techTitleMobile {
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    text-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
+}
+
+.techContainer {
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(102, 126, 234, 0.2);
+}
+
+.techGroup {
+    margin-bottom: 0.8rem;
+}
+
+.techGroup:last-child {
+    margin-bottom: 0;
+}
+
+.techGroupLabel {
+    font-size: 0.9rem;
+    color: rgba(102, 126, 234, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+}
+
+.techList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.techTagDesktop {
+    background: rgba(102, 126, 234, 0.05);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    padding: 0.45rem 0.9rem;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: default;
+    transition: all 0.2s ease;
+}
+
+.techTagDesktop:hover {
+    border-color: rgba(102, 126, 234, 0.8);
+    background: rgba(102, 126, 234, 0.15);
+    color: #fff;
+}
+
+.techTagMobile {
+    background: rgba(102, 126, 234, 0.05);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    padding: 0.35rem 0.7rem;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: default;
+    transition: all 0.2s ease;
+}
+
+.techTagMobile:hover {
+    border-color: rgba(102, 126, 234, 0.8);
+    background: rgba(102, 126, 234, 0.15);
+    color: #fff;
+}
+
+.techGroupContent {
+    position: relative;
+    transition:
+        mask-image 0.5s ease-in-out,
+        -webkit-mask-image 0.5s ease-in-out;
+}
+
+.expandableTechContent {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    margin-top: 0.8rem;
+}
+
+.projectTitle {
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.05rem;
+    text-shadow: 0 0 12px rgba(102, 126, 234, 0.6);
+    display: inline-block;
+    margin-bottom: 0.2rem;
+}
+
+.jobLink {
+    color: #667eea;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+    transition: all 0.2s ease;
+}
+
+.jobLink:hover {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .description {
+        font-size: 0.95rem;
+    }
+}

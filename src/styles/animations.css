@@ -1,12 +1,13 @@
 /* Базовые анимации */
 @keyframes slideIn {
     from {
-      opacity: 0;
-      transform: translateY(30px);
+        opacity: 0;
+        transform: translateY(30px);
     }
+
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -15,6 +16,7 @@
         opacity: 0;
         transform: translateY(-100%);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -26,9 +28,11 @@
         opacity: 0;
         transform: scale(0.8) translateY(20px);
     }
+
     60% {
         transform: scale(1.05) translateY(-5px);
     }
+
     100% {
         opacity: 1;
         transform: scale(1) translateY(0);
@@ -40,6 +44,7 @@
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -48,57 +53,64 @@
 
 @keyframes fadeInLeft {
     from {
-      opacity: 0;
-      transform: translateX(-50px);
+        opacity: 0;
+        transform: translateX(-50px);
     }
+
     to {
-      opacity: 1;
-      transform: translateX(0);
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
 @keyframes fadeInRight {
     from {
-      opacity: 0;
-      transform: translateX(50px);
+        opacity: 0;
+        transform: translateX(50px);
     }
+
     to {
-      opacity: 1;
-      transform: translateX(0);
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
 @keyframes scaleIn {
     from {
-      opacity: 0;
-      transform: scale(0.9);
+        opacity: 0;
+        transform: scale(0.9);
     }
+
     to {
-      opacity: 1;
-      transform: scale(1);
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
 @keyframes rotateIn {
     from {
-      opacity: 0;
-      transform: rotate(-5deg) translateY(30px);
+        opacity: 0;
+        transform: rotate(-5deg) translateY(30px);
     }
+
     to {
-      opacity: 1;
-      transform: rotate(0deg) translateY(0);
+        opacity: 1;
+        transform: rotate(0deg) translateY(0);
     }
 }
-  
+
 @keyframes float {
-    0%, 100% { 
-        transform: translate(0px, 0px) scale(1); 
+    0%,
+    100% {
+        transform: translate(0px, 0px) scale(1);
     }
-    33% { 
-        transform: translate(30px, -30px) scale(1.1); 
+
+    33% {
+        transform: translate(30px, -30px) scale(1.1);
     }
-    66% { 
-        transform: translate(-20px, 20px) scale(0.9); 
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
     }
 }
 
@@ -106,15 +118,19 @@
     0% {
         background-position: 0% 50%;
     }
+
     25% {
         background-position: 50% 75%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     75% {
         background-position: 50% 25%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -124,16 +140,19 @@
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
 }
 
 @keyframes pulse {
-    0%, 100% {
+    0%,
+    100% {
         transform: scale(1);
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     }
+
     50% {
         transform: scale(1.02);
         box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
@@ -141,12 +160,15 @@
 }
 
 @keyframes wave {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0) rotate(0deg);
     }
+
     25% {
         transform: translateY(-10px) rotate(1deg);
     }
+
     75% {
         transform: translateY(10px) rotate(-1deg);
     }
@@ -160,13 +182,13 @@
 }
 
 .liquid-glass-block:hover {
-    box-shadow: 
+    box-shadow:
         0 16px 48px 0 rgba(31, 38, 135, 0.5),
         0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 }
 
 .liquid-glass-block::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -50%;
     left: -50%;
@@ -193,12 +215,13 @@
 .liquid-reflection {
     transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-  
+
 @keyframes titleEntrance {
     0% {
         opacity: 0;
         transform: translateY(-30px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -210,6 +233,7 @@
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -220,6 +244,7 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -233,6 +258,7 @@
             opacity: 0;
             transform: translateY(20px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
@@ -244,6 +270,7 @@
             opacity: 0;
             transform: translateY(20px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
@@ -255,6 +282,7 @@
             opacity: 0;
             transform: translateY(20px);
         }
+
         100% {
             opacity: 1;
             transform: translateY(0);
@@ -263,13 +291,15 @@
 
     /* Отключаем сложные анимации */
     @keyframes float {
-        0%, 100% { 
-            transform: translate(0px, 0px); 
+        0%,
+        100% {
+            transform: translate(0px, 0px);
         }
     }
 
     @keyframes gradientShift {
-        0%, 100% {
+        0%,
+        100% {
             background-position: 0% 50%;
         }
     }
@@ -283,20 +313,22 @@
         transform: translateY(-4px);
         box-shadow: 0 8px 24px 0 rgba(31, 38, 135, 0.4);
     }
-    
+
     .liquid-glass-block::before {
         display: none;
     }
 
     /* Отключаем анимации pulse и wave на мобильных */
     @keyframes pulse {
-        0%, 100% {
+        0%,
+        100% {
             transform: scale(1);
         }
     }
 
     @keyframes wave {
-        0%, 100% {
+        0%,
+        100% {
             transform: translateY(0);
         }
     }
@@ -307,28 +339,32 @@
     .liquid-glass-block:hover {
         transform: none;
     }
-    
+
     /* Отключаем все декоративные анимации */
     @keyframes float {
-        0%, 100% {
+        0%,
+        100% {
             transform: none;
         }
     }
-    
+
     @keyframes pulse {
-        0%, 100% {
+        0%,
+        100% {
             transform: none;
         }
     }
-    
+
     @keyframes wave {
-        0%, 100% {
+        0%,
+        100% {
             transform: none;
         }
     }
-    
+
     @keyframes rotate {
-        0%, 100% {
+        0%,
+        100% {
             transform: none;
         }
     }
@@ -343,4 +379,74 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+}
+
+/* Анимация "отряхивания от воды" (как в Minecraft) */
+@keyframes dogShake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    15% {
+        transform: rotate(-12deg);
+    }
+
+    30% {
+        transform: rotate(12deg);
+    }
+
+    45% {
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        transform: rotate(10deg);
+    }
+
+    75% {
+        transform: rotate(-6deg);
+    }
+
+    90% {
+        transform: rotate(6deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.skill-icon-hover {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.skill-icon-hover:hover {
+    animation: dogShake 0.6s ease-in-out forwards;
+    z-index: 10;
+}
+
+/* Эффект брызг */
+@keyframes splashFly {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+.splash-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 5;
+    animation: splashFly 0.6s ease-out forwards;
 }

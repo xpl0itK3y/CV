@@ -1,0 +1,29 @@
+.titleDesktop {
+    color: #fff;
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.titleMobile {
+    color: #fff;
+    margin-top: 0;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.textDesktop {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin: 0;
+    text-align: justify;
+}
+
+.textMobile {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    margin: 0;
+    text-align: justify;
+}

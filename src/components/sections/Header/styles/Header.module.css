@@ -1,18 +1,26 @@
 .containerDesktop {
     margin-bottom: 3rem;
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 2.6rem 2rem 4rem;
 }
 
 .containerMobile {
     margin-bottom: 3rem;
     text-align: center;
-    padding: 1rem 1rem;
+    padding: 0.35rem 1rem 1rem;
 }
 
 .cubeWrapper {
     display: inline-block;
-    margin-bottom: 2rem;
+    margin-top: -2rem;
+    margin-bottom: 1.6rem;
+}
+
+@media (max-width: 768px) {
+    .cubeWrapper {
+        margin-top: -0.9rem;
+        margin-bottom: 1.4rem;
+    }
 }
 
 .nameDesktop {
@@ -68,7 +76,7 @@
 }
 
 .titleMobile {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: rgba(255, 232, 241, 0.9);
     margin: 0;
     font-weight: 320;

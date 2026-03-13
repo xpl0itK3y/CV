@@ -201,6 +201,7 @@
     font-size: 1rem;
     padding-left: 0.5rem;
     border-left: 2px solid rgba(var(--block-accent-rgb), 0.22);
+    text-align: left;
 }
 
 .descriptionContent {
@@ -395,14 +396,20 @@
 }
 
 .jobLink {
-    color: #667eea;
+    color: var(--section-title-color, #fff);
     text-decoration: none;
-    border-bottom: 1px solid rgba(102, 126, 234, 0.3);
-    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(var(--block-accent-rgb), 0.3);
+    text-shadow: 0 0 10px rgba(var(--block-accent-rgb), 0.18);
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        text-shadow 0.25s ease;
 }
 
 .jobLink:hover {
     color: #fff;
+    border-bottom-color: rgba(var(--block-accent-rgb), 0.62);
+    text-shadow: 0 0 12px rgba(var(--block-accent-rgb), 0.28);
 }
 
 @media (max-width: 768px) {

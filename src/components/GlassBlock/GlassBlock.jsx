@@ -51,7 +51,7 @@ const GlassBlock = ({
             onMouseLeave={() => setIsHovered(false)}
             className={getBlockStyles()}
             style={{
-                animation: `slideIn 0.6s ease-out ${delay}s both`,
+                animation: `glassReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s both`,
             }}
         >
             <div

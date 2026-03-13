@@ -45,19 +45,19 @@ export const pdfStyles = {
         fontSize: 11,
         bold: true,
         color: "#4b8f97",
-        margin: [0, 0, 0, 1],
+        margin: [0, 0, 0, 0],
     },
     contactValue: {
         fontSize: 12,
         color: "#2b1a22",
-        margin: [0, 0, 0, 1],
+        margin: [0, -1, 0, 0],
     },
 
     // О себе
     aboutText: {
         fontSize: 12,
         color: "#1d1116",
-        lineHeight: 1.5,
+        lineHeight: 1.3,
         margin: [0, 0, 0, 6],
         alignment: "justify",
     },
@@ -85,7 +85,7 @@ export const pdfStyles = {
         fontSize: 12,
         color: "#1d1116",
         margin: [0, 0, 0, 6],
-        lineHeight: 1.5,
+        lineHeight: 1.3,
         alignment: "left",
     },
     techTags: {
@@ -104,7 +104,7 @@ export const pdfStyles = {
     skillText: {
         fontSize: 12,
         color: "#1d1116",
-        lineHeight: 1.5,
+        lineHeight: 1.3,
         alignment: "left",
     },
 
@@ -118,7 +118,7 @@ export const pdfStyles = {
     languageText: {
         fontSize: 12,
         color: "#1d1116",
-        lineHeight: 1.5,
+        lineHeight: 1.3,
         alignment: "left",
     },
 

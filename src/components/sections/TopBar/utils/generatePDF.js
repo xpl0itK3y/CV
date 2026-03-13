@@ -32,7 +32,7 @@ export const generateResumePDF = async (translations, lang) => {
     defaultStyle: {
       font: "Roboto",
       fontSize: 11.5,
-      lineHeight: 1.4,
+      lineHeight: 1.3,
       color: "#000000",
     },
     styles: pdfStyles,

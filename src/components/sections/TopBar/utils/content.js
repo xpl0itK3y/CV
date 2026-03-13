@@ -124,7 +124,7 @@ export const generateContent = (translations, lang, pdfLogo) => {
         paddingTop: () => 0,
         paddingBottom: () => 2,
       },
-      margin: [0, 0, 0, 0],
+      margin: [0, -2, 0, 0],
     },
 
     // О себе
@@ -135,7 +135,7 @@ export const generateContent = (translations, lang, pdfLogo) => {
     {
       text: translations.aboutText,
       style: "aboutText",
-      margin: [0, 0, 0, 0],
+      margin: [0, -2, 0, 0],
     },
 
     // Образование
@@ -169,16 +169,16 @@ export const generateContent = (translations, lang, pdfLogo) => {
           width: "50%",
           stack: translations.technicalSkills
             .slice(0, Math.ceil(translations.technicalSkills.length / 2))
-            .flatMap((group) => [
+            .flatMap((group, index) => [
               {
                 text: group.category,
                 style: "skillHeader",
-                margin: [0, 3, 0, 0],
+                margin: [0, index === 0 ? 0 : 3, 0, 0],
               },
               {
                 text: group.items.map((s) => s.name).join(", "),
                 style: "skillText",
-                margin: [0, 0, 0, 4],
+                margin: [0, -1, 0, 4],
               },
             ]),
         },
@@ -186,16 +186,16 @@ export const generateContent = (translations, lang, pdfLogo) => {
           width: "50%",
           stack: translations.technicalSkills
             .slice(Math.ceil(translations.technicalSkills.length / 2))
-            .flatMap((group) => [
+            .flatMap((group, index) => [
               {
                 text: group.category,
                 style: "skillHeader",
-                margin: [0, 3, 0, 0],
+                margin: [0, index === 0 ? 0 : 3, 0, 0],
               },
               {
                 text: group.items.map((s) => s.name).join(", "),
                 style: "skillText",
-                margin: [0, 0, 0, 4],
+                margin: [0, -1, 0, 4],
               },
             ]),
         },
@@ -214,11 +214,12 @@ export const generateContent = (translations, lang, pdfLogo) => {
                 .replace(/💡\s*/, "")
                 .toUpperCase(),
               style: "sectionTitle",
-              margin: [0, 10, 0, 6],
+              margin: [0, 10, 0, 4],
             },
             {
               text: translations.softSkills.join(" • "),
               style: "skillText",
+              margin: [0, 0, 0, 0],
             },
           ],
         },
@@ -233,7 +234,7 @@ export const generateContent = (translations, lang, pdfLogo) => {
                       : "Work Practices"
                     ).toUpperCase(),
                     style: "sectionTitle",
-                    margin: [0, 10, 0, 6],
+                    margin: [0, 10, 0, 4],
                   },
                   {
                     text: translations.workPractices.join(" • "),
@@ -247,7 +248,7 @@ export const generateContent = (translations, lang, pdfLogo) => {
                 .replace(/🌐\s*/, "")
                 .toUpperCase(),
               style: "sectionTitle",
-              margin: [0, 10, 0, 6],
+              margin: [0, 10, 0, 4],
             },
             ...translations.languages.map((l) => ({
               text: `${l.name}: ${l.level}`,

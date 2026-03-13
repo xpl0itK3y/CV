@@ -3,6 +3,19 @@ import { loadFonts } from "./fonts";
 import { pdfStyles } from "./styles";
 import { generateContent } from "./content";
 
+const loadPdfLogo = async () => {
+  try {
+    const response = await fetch(`${import.meta.env.BASE_URL}cv-icon.svg`);
+    if (!response.ok) {
+      return null;
+    }
+
+    return await response.text();
+  } catch {
+    return null;
+  }
+};
+
 /**
  * Генерирует PDF резюме из данных переводов
  * @param {Object} translations - Данные переводов для текущего языка
@@ -11,6 +24,7 @@ import { generateContent } from "./content";
 export const generateResumePDF = async (translations, lang) => {
   // Загружаем шрифты перед генерацией
   await loadFonts();
+  const pdfLogo = await loadPdfLogo();
 
   const docDefinition = {
     pageSize: "A4",
@@ -22,7 +36,7 @@ export const generateResumePDF = async (translations, lang) => {
       color: "#000000",
     },
     styles: pdfStyles,
-    content: generateContent(translations, lang),
+    content: generateContent(translations, lang, pdfLogo),
   };
 
   // Генерируем и скачиваем PDF
@@ -30,4 +44,3 @@ export const generateResumePDF = async (translations, lang) => {
     }.pdf`;
   pdfMake.createPdf(docDefinition).download(fileName);
 };
-

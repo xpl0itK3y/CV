@@ -1,12 +1,20 @@
 import { splitDescription, renderTextWithLinks } from "./helpers";
 
-export const generateContent = (translations, lang) => {
+export const generateContent = (translations, lang, pdfLogo) => {
   return [
     // Заголовок "Резюме"
-    {
-      text: lang === "ru" ? "CV" : "CV",
-      style: "resumeTitle",
-    },
+    pdfLogo
+      ? {
+          svg: pdfLogo,
+          width: 42,
+          height: 42,
+          alignment: "center",
+          margin: [0, 0, 0, 12],
+        }
+      : {
+          text: lang === "ru" ? "CV" : "CV",
+          style: "resumeTitle",
+        },
 
     // ФИО и должность
     {

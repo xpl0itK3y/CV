@@ -40,127 +40,82 @@ export const generateContent = (translations, lang) => {
       style: "sectionTitle",
     },
     {
-      columns: [
-        {
-          width: "50%",
-          stack: [
+      table: {
+        widths: ["44%", "44%", "44%"],
+        body: [
+          [
             {
-              text: [
-                {
-                  text: "Email: ",
-                  fontSize: 11,
-                  bold: true,
-                  color: "#4b8f97",
-                },
-                { text: translations.email, style: "contactText" },
+              stack: [
+                { text: "Email", style: "contactLabel" },
+                { text: translations.email, style: "contactValue" },
               ],
             },
-            ...(translations.phone
-              ? [
-                  {
-                    text: [
-                      {
-                        text: lang === "ru" ? "Телефон: " : "Phone: ",
-                        fontSize: 11,
-                        bold: true,
-                        color: "#4b8f97",
-                      },
-                      { text: translations.phone, style: "contactText" },
-                    ],
-                  },
-                ]
-              : []),
             {
-              text: [
+              stack: [
                 {
-                  text: lang === "ru" ? "Местоположение: " : "Location: ",
-                  fontSize: 11,
-                  bold: true,
-                  color: "#4b8f97",
+                  text: lang === "ru" ? "Местоположение" : "Location",
+                  style: "contactLabel",
                 },
-                { text: translations.location, style: "contactText" },
+                { text: translations.location, style: "contactValue" },
               ],
             },
-          ],
-        },
-        {
-          width: "50%",
-          stack: [
             {
-              text: [
-                {
-                  text: "GitHub: ",
-                  fontSize: 11,
-                  bold: true,
-                  color: "#4b8f97",
-                },
+              stack: [
+                { text: "GitHub", style: "contactLabel" },
                 {
                   text: translations.github.replace(/github\.com\//, ""),
-                  style: "contactText",
+                  style: "contactValue",
                   link: `https://${translations.github}`,
                 },
               ],
             },
+          ],
+          [
             {
-              text: [
-                {
-                  text: "Telegram: ",
-                  fontSize: 11,
-                  bold: true,
-                  color: "#4b8f97",
-                },
+              stack: [
+                { text: "Telegram", style: "contactLabel" },
                 {
                   text: translations.telegram,
-                  style: "contactText",
-                  link: `https://t.me/${translations.telegram.replace(
-                    "@",
-                    "",
-                  )}`,
+                  style: "contactValue",
+                  link: `https://t.me/${translations.telegram.replace("@", "")}`,
                 },
               ],
             },
-            ...(translations.linkedin
-              ? [
-                  {
-                    text: [
-                      {
-                        text: "LinkedIn: ",
-                        fontSize: 11,
-                        bold: true,
-                        color: "#4b8f97",
-                      },
-                      {
-                        text: "linkedin.com/in/CV",
-                        style: "contactText",
-                        link: `https://${translations.linkedin}`,
-                      },
-                    ],
-                  },
-                ]
-              : []),
-            ...(translations.headhunter
-              ? [
-                  {
-                    text: [
-                      {
-                        text: "HeadHunter: ",
-                        fontSize: 11,
-                        bold: true,
-                        color: "#4b8f97",
-                      },
-                      {
-                        text: "hh.kz/CV",
-                        style: "contactText",
-                        link: `https://${translations.headhunter}`,
-                      },
-                    ],
-                  },
-                ]
-              : []),
+            translations.linkedin
+              ? {
+                  stack: [
+                    { text: "LinkedIn", style: "contactLabel" },
+                    {
+                      text: "linkedin.com/in/CV",
+                      style: "contactValue",
+                      link: `https://${translations.linkedin}`,
+                    },
+                  ],
+                }
+              : { text: "" },
+            translations.headhunter
+              ? {
+                  stack: [
+                    { text: "HeadHunter", style: "contactLabel" },
+                    {
+                      text: "hh.kz/CV",
+                      style: "contactValue",
+                      link: `https://${translations.headhunter}`,
+                    },
+                  ],
+                }
+              : { text: "" },
           ],
-        },
-      ],
-      columnGap: 15,
+        ],
+      },
+      layout: {
+        hLineWidth: () => 0,
+        vLineWidth: () => 0,
+        paddingLeft: () => 0,
+        paddingRight: () => 0,
+        paddingTop: () => 0,
+        paddingBottom: () => 2,
+      },
       margin: [0, 0, 0, 0],
     },
 
@@ -314,18 +269,18 @@ export const generateContent = (translations, lang) => {
         },
         ...(translations.totalExperience
           ? [
-                        {
-                            width: "auto",
-                            text: translations.totalExperience,
-                            fontSize: 14,
-                            bold: true,
-                            color: "#7a1f49",
-                            decoration: "underline",
-                            decorationStyle: "solid",
-                            decorationThickness: 2,
-                            italics: true,
-                            alignment: "right",
-                        },
+              {
+                width: "auto",
+                text: translations.totalExperience,
+                fontSize: 14,
+                bold: true,
+                color: "#7a1f49",
+                decoration: "underline",
+                decorationStyle: "solid",
+                decorationThickness: 2,
+                italics: true,
+                alignment: "right",
+              },
             ]
           : []),
       ],
@@ -430,16 +385,16 @@ export const generateContent = (translations, lang) => {
                                 },
                               ],
                               margin: [0, 1, 0, 1],
-                                                    },
-                                                    {
-                                                        width: "*",
-                                                        ...renderTextWithLinks(sentenceText, {
-                                                            style: "jobDescription",
-                                                        }),
-                                                        margin: [2.5, 1, 0, 1],
-                                                    },
-                                                ],
-                                                columnGap: 4,
+                            },
+                            {
+                              width: "*",
+                              ...renderTextWithLinks(sentenceText, {
+                                style: "jobDescription",
+                              }),
+                              margin: [2.5, 1, 0, 1],
+                            },
+                          ],
+                          columnGap: 4,
                         }
                       : {
                           ...renderTextWithLinks(normalizedSentence, {
@@ -480,16 +435,16 @@ export const generateContent = (translations, lang) => {
                             },
                           ],
                           margin: [0, 1, 0, 1],
-                                            },
-                                            {
-                                                width: "*",
-                                                ...renderTextWithLinks(sentenceText, {
-                                                    style: "jobDescription",
-                                                }),
-                                                margin: [2.5, 1, 0, 1],
-                                            },
-                                        ],
-                                        columnGap: 4,
+                        },
+                        {
+                          width: "*",
+                          ...renderTextWithLinks(sentenceText, {
+                            style: "jobDescription",
+                          }),
+                          margin: [2.5, 1, 0, 1],
+                        },
+                      ],
+                      columnGap: 4,
                     }
                   : {
                       ...renderTextWithLinks(cleanSentence, {

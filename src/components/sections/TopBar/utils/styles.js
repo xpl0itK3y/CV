@@ -41,6 +41,17 @@ export const pdfStyles = {
         color: "#2b1a22",
         margin: [0, 1, 0, 1],
     },
+    contactLabel: {
+        fontSize: 11,
+        bold: true,
+        color: "#4b8f97",
+        margin: [0, 0, 0, 1],
+    },
+    contactValue: {
+        fontSize: 12,
+        color: "#2b1a22",
+        margin: [0, 0, 0, 1],
+    },
 
     // О себе
     aboutText: {
@@ -85,10 +96,10 @@ export const pdfStyles = {
 
     // Навыки
     skillHeader: {
-        fontSize: 12,
+        fontSize: 11,
         bold: true,
         color: "#4b8f97",
-        margin: [0, 0, 0, 4],
+        margin: [0, 0, 0, 2],
     },
     skillText: {
         fontSize: 12,

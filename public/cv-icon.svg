@@ -1,34 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="32" height="32">
   <defs>
-    <!-- Градиент "Black Glass" -->
-    <linearGradient id="blackGlassGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    <linearGradient id="cvAccentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#490021;stop-opacity:1" />
+      <stop offset="45%" style="stop-color:#7a1244;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0b3a42;stop-opacity:1" />
     </linearGradient>
   </defs>
-  
-  <!-- Фон с градиентом Black Glass (Скруглены только Top-Left и Bottom-Right) -->
+
+  <!-- Фон (Скруглены только Top-Left и Bottom-Right) -->
   <!-- M 60,0 L 256,0 L 256,196 A 60,60 0 0 1 196,256 L 0,256 L 0,60 A 60,60 0 0 1 60,0 Z -->
-  <path d="M 64,0 L 256,0 L 256,192 A 64,64 0 0 1 192,256 L 0,256 L 0,64 A 64,64 0 0 1 64,0 Z" fill="url(#blackGlassGradient)"/>
-  
+  <path d="M 64,0 L 256,0 L 256,192 A 64,64 0 0 1 192,256 L 0,256 L 0,64 A 64,64 0 0 1 64,0 Z" fill="url(#cvAccentGradient)"/>
+
   <!-- Внутренняя граница (stroke) для эффекта стекла -->
   <path d="M 64,2 L 254,2 L 254,192 A 62,62 0 0 1 192,254 L 2,254 L 2,64 A 62,62 0 0 1 64,2 Z" fill="none" stroke="white" stroke-width="2" opacity="0.15"/>
-  
+
   <!-- Буквы CV -->
-  <text x="128" y="158" 
-        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
-        font-size="96" 
-        font-weight="800" 
-        text-anchor="middle" 
+  <text x="128" y="144"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        font-size="124"
+        font-weight="800"
+        text-anchor="middle"
+        dominant-baseline="middle"
         fill="white"
         style="letter-spacing: -2px; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));">
     CV
   </text>
   
-  <!-- Декоративный элемент (линия внизу) -->
-  <rect x="68" y="200" width="120" height="4" rx="2" fill="white" opacity="0.4"/>
-  
-  <!-- Маленькие точки для декора -->
-  <circle cx="64" cy="80" r="4" fill="white" opacity="0.2"/>
-  <circle cx="192" cy="80" r="4" fill="white" opacity="0.2"/>
 </svg>

@@ -6,7 +6,7 @@ const About = ({ title, about }) => {
   const isMobile = useIsMobile();
 
   return (
-    <GlassBlock delay={0.2}>
+    <GlassBlock delay={0.2} accent="top" hoverVariant="textual">
       <h2 className={isMobile ? styles.titleMobile : styles.titleDesktop}>
         {title}
       </h2>

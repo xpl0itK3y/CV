@@ -1,4 +1,29 @@
 .container {
+    --topbar-accent-border: rgba(230, 60, 134, 0.4);
+    --topbar-accent-border-strong: rgba(230, 60, 134, 0.68);
+    --topbar-accent-glow: rgba(230, 60, 134, 0.28);
+    --topbar-accent-gradient: rgba(230, 60, 134, 0.14);
+    --topbar-surface-bg: linear-gradient(
+        90deg,
+        rgba(34, 10, 22, 0.62) 0%,
+        rgba(34, 10, 22, 0.62) 24%,
+        rgba(32, 10, 21, 0.61) 46%,
+        rgba(30, 10, 20, 0.6) 62%,
+        rgba(30, 10, 20, 0.6) 100%
+    );
+    --topbar-surface-hover: linear-gradient(
+        90deg,
+        rgba(100, 0, 48, 0.72) 0%,
+        rgba(66, 6, 36, 0.58) 24%,
+        rgba(42, 10, 26, 0.52) 46%,
+        rgba(30, 10, 20, 0.6) 62%,
+        rgba(30, 10, 20, 0.6) 100%
+    );
+    --topbar-default-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    --topbar-hover-shadow:
+        0 0 22px rgba(230, 60, 134, 0.28), 0 10px 22px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
     position: fixed;
     top: 0;
     left: 0;
@@ -11,46 +36,74 @@
 
 .glassBoxDesktop {
     padding: 1.25rem 2rem;
-    background: rgba(20, 20, 20, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 2px solid rgba(60, 60, 60, 0.4);
+    background: var(--topbar-surface-bg);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--topbar-accent-border) 45%,
+            rgba(255, 255, 255, 0.06)
+        );
     border-top: none;
     border-radius: 0 0 20px 20px;
     box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        0 6px 18px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    transition:
+        border-color 0.42s ease-in-out,
+        box-shadow 0.48s ease-out,
+        background 0.55s ease-out,
+        backdrop-filter 1.2s ease-in-out 0.12s,
+        -webkit-backdrop-filter 1.2s ease-in-out 0.12s;
     position: relative;
+    overflow: visible;
 }
 
 .glassBoxMobile {
     padding: 1rem 1rem;
-    background: rgba(20, 20, 20, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 2px solid rgba(60, 60, 60, 0.4);
+    background: var(--topbar-surface-bg);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--topbar-accent-border) 45%,
+            rgba(255, 255, 255, 0.06)
+        );
     border-top: none;
     border-radius: 0 0 20px 20px;
     box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        0 6px 18px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    transition:
+        border-color 0.42s ease-in-out,
+        box-shadow 0.48s ease-out,
+        background 0.55s ease-out,
+        backdrop-filter 1.2s ease-in-out 0.12s,
+        -webkit-backdrop-filter 1.2s ease-in-out 0.12s;
     position: relative;
+    overflow: visible;
 }
 
-@media (min-width: 769px) {
-    .glassBoxDesktop:hover {
-        border-color: rgba(26, 115, 232, 0.6);
-        box-shadow:
-            0 0 20px rgba(26, 115, 232, 0.3),
-            0 8px 32px rgba(0, 0, 0, 0.5),
-            inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    }
+.default {
+    border-color: color-mix(
+        in srgb,
+        var(--topbar-accent-border) 45%,
+        rgba(255, 255, 255, 0.06)
+    );
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
 
-    .glassBoxDesktop:hover .gradientOverlay {
-        opacity: 1;
-    }
+.hovered {
+    background: var(--topbar-surface-hover);
+    border-color: var(--topbar-accent-border);
+    box-shadow:
+        0 0 22px var(--topbar-accent-glow),
+        0 10px 22px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .gradientOverlay {
@@ -58,14 +111,59 @@
     inset: 0;
     background: linear-gradient(
         135deg,
-        rgba(26, 115, 232, 0.05) 0%,
-        transparent 50%
+        rgba(255, 255, 255, 0.08) 0%,
+        var(--topbar-accent-gradient) 18%,
+        transparent 58%
     );
     pointer-events: none;
     z-index: 0;
     border-radius: 0 0 20px 20px;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transform: translateX(-18px);
+    transition:
+        opacity 0.32s ease-out,
+        transform 0.36s ease-out;
+}
+
+.gradientOverlayVisible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.gradientOverlayHidden {
+    opacity: 0;
+    transform: translateX(-18px);
+}
+
+.ambientGlow {
+    position: absolute;
+    inset: -6%;
+    background: radial-gradient(
+        circle at 18% 18%,
+        rgba(230, 60, 134, 0.16) 0%,
+        rgba(230, 60, 134, 0.08) 20%,
+        transparent 38%
+    );
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(18px);
+    transform: scale(0.985);
+    transition:
+        opacity 0.35s ease-out,
+        transform 0.4s ease-out;
+}
+
+.ambientGlowVisible {
+    opacity: 1;
+    transform: scale(1);
+    animation: topbarGlowSettle 1.6s ease-out both;
+}
+
+.ambientGlowHidden {
+    opacity: 0;
+    transform: scale(0.985);
+    animation: none;
 }
 
 .content {
@@ -114,11 +212,19 @@
 }
 
 .downloadButtonDesktop {
-    background: rgba(15, 15, 20, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
+    background: linear-gradient(
+        180deg,
+        rgba(36, 10, 24, 0.54) 0%,
+        rgba(24, 10, 18, 0.46) 52%,
+        rgba(18, 10, 18, 0.4) 100%
+    );
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--topbar-accent-border) 45%,
+            rgba(255, 255, 255, 0.06)
+        );
+    border-radius: 20px;
     padding: 0.65rem 1.25rem;
     color: #e5e7eb;
     font-size: 0.95rem;
@@ -128,16 +234,28 @@
     align-items: center;
     gap: 0.5rem;
     white-space: nowrap;
-    transition: all 0.25s ease;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+    transition:
+        transform 1.35s ease-in-out 0.12s,
+        box-shadow 1.35s ease-out,
+        background 1.2s ease-in-out 0.12s,
+        border-color 1.05s ease-in-out;
+    box-shadow: var(--topbar-default-shadow);
 }
 
 .downloadButtonMobile {
-    background: rgba(15, 15, 20, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
+    background: linear-gradient(
+        180deg,
+        rgba(36, 10, 24, 0.54) 0%,
+        rgba(24, 10, 18, 0.46) 52%,
+        rgba(18, 10, 18, 0.4) 100%
+    );
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--topbar-accent-border) 45%,
+            rgba(255, 255, 255, 0.06)
+        );
+    border-radius: 16px;
     padding: 0.6rem 0.9rem;
     color: #e5e7eb;
     font-size: 0.85rem;
@@ -147,15 +265,28 @@
     align-items: center;
     gap: 0.5rem;
     white-space: nowrap;
-    transition: all 0.25s ease;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+    transition:
+        transform 1.35s ease-in-out 0.12s,
+        box-shadow 1.35s ease-out,
+        background 1.2s ease-in-out 0.12s,
+        border-color 1.05s ease-in-out;
+    box-shadow: var(--topbar-default-shadow);
 }
 
 .downloadButtonDesktop:hover,
 .downloadButtonMobile:hover {
-    background: rgba(25, 25, 35, 0.85);
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
+    background: linear-gradient(
+        180deg,
+        rgba(56, 12, 32, 0.64) 0%,
+        rgba(34, 12, 24, 0.52) 54%,
+        rgba(20, 10, 18, 0.44) 100%
+    );
+    transform: translateY(0);
+    border-color: var(--topbar-accent-border);
+    box-shadow:
+        0 0 8px rgba(230, 60, 134, 0.08),
+        0 6px 18px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 @keyframes slideDownTop {
@@ -164,5 +295,19 @@
     }
     to {
         transform: translateY(0);
+    }
+}
+
+@keyframes topbarGlowSettle {
+    0% {
+        opacity: 0.35;
+        transform: scale(0.975);
+        filter: blur(12px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(18px);
     }
 }

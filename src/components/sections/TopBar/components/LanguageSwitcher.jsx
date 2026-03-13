@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import styles from "../styles/LanguageSwitcher.module.css";
 
+const CLOSE_ANIMATION_MS = 320;
+
 const LanguageSwitcher = ({ currentLang, onLanguageChange }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   const languages = [
     {
@@ -18,11 +21,30 @@ const LanguageSwitcher = ({ currentLang, onLanguageChange }) => {
   ];
 
   const currentLanguage = languages.find((lang) => lang.code === currentLang);
+  const isDropdownVisible = isOpen || isClosing;
+
+  const closeDropdown = () => {
+    if (!isOpen) return;
+    setIsClosing(true);
+    setIsOpen(false);
+
+    window.setTimeout(() => {
+      setIsClosing(false);
+    }, CLOSE_ANIMATION_MS);
+  };
 
   return (
     <div className={styles.container}>
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          if (isOpen) {
+            closeDropdown();
+            return;
+          }
+
+          setIsClosing(false);
+          setIsOpen(true);
+        }}
         className={`${styles.triggerButton} ${isOpen ? styles.open : ""}`}
       >
         <img
@@ -48,20 +70,30 @@ const LanguageSwitcher = ({ currentLang, onLanguageChange }) => {
         </svg>
       </button>
 
-      {isOpen && (
+      {isDropdownVisible && (
         <>
-          <div className={styles.overlay} onClick={() => setIsOpen(false)} />
+          <div
+            className={`${styles.overlay} ${
+              isClosing ? styles.overlayClosing : styles.overlayOpening
+            }`}
+            onClick={closeDropdown}
+          />
 
-          <div className={styles.dropdown}>
+          <div
+            className={`${styles.dropdown} ${
+              isClosing ? styles.dropdownClosing : styles.dropdownOpening
+            }`}
+          >
             {languages.map((lang, index) => (
               <button
                 key={lang.code}
                 onClick={() => {
                   onLanguageChange(lang.code);
-                  setIsOpen(false);
+                  closeDropdown();
                 }}
                 className={`${styles.optionButton} ${currentLang === lang.code ? styles.active : ""
                   }`}
+                style={{ animationDelay: isClosing ? "0ms" : `${60 + index * 60}ms` }}
               >
                 <img
                   src={lang.flag}

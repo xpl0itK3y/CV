@@ -1,10 +1,60 @@
 .glassBlock {
-    background: rgba(20, 20, 20, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--block-surface-bg);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition:
+        transform 1.35s ease-in-out 0.12s,
+        border-color 1.05s ease-in-out,
+        box-shadow 1.2s ease-out,
+        background 1.2s ease-in-out 0.12s,
+        backdrop-filter 1.2s ease-in-out 0.12s,
+        -webkit-backdrop-filter 1.2s ease-in-out 0.12s;
     position: relative;
     overflow: hidden;
+    will-change: transform, box-shadow, border-color;
+}
+
+.accentTop {
+    --block-accent-rgb: 230, 60, 134;
+    --block-accent-border: rgba(230, 60, 134, 0.4);
+    --block-accent-border-strong: rgba(230, 60, 134, 0.68);
+    --block-accent-glow: rgba(230, 60, 134, 0.28);
+    --block-accent-gradient: rgba(230, 60, 134, 0.14);
+    --block-surface-bg: linear-gradient(
+        180deg,
+        rgba(36, 10, 24, 0.54) 0%,
+        rgba(24, 10, 18, 0.46) 52%,
+        rgba(18, 10, 18, 0.4) 100%
+    );
+    --block-surface-hover: linear-gradient(
+        180deg,
+        rgba(56, 12, 32, 0.64) 0%,
+        rgba(34, 12, 24, 0.52) 54%,
+        rgba(20, 10, 18, 0.44) 100%
+    );
+}
+
+.accentBottom {
+    --block-accent-rgb: 74, 196, 210;
+    --block-accent-border: rgba(74, 196, 210, 0.34);
+    --block-accent-border-strong: rgba(74, 196, 210, 0.58);
+    --block-accent-glow: rgba(74, 196, 210, 0.22);
+    --block-accent-gradient: rgba(74, 196, 210, 0.1);
+    --block-surface-bg: linear-gradient(
+        180deg,
+        rgba(8, 20, 24, 0.5) 0%,
+        rgba(8, 14, 18, 0.4) 100%
+    );
+    --block-surface-hover: linear-gradient(
+        180deg,
+        rgba(10, 28, 32, 0.56) 0%,
+        rgba(8, 16, 18, 0.44) 100%
+    );
+}
+
+.textualHover {
+    --ambient-glow-opacity: 0.16;
+    --ambient-glow-size: 120%;
 }
 
 .mobile {
@@ -20,33 +70,92 @@
 }
 
 .highlight {
-    border: 2px solid rgba(26, 115, 232, 0.8);
-    box-shadow: 0 0 30px rgba(26, 115, 232, 0.4),
-        0 8px 32px rgba(0, 0, 0, 0.6),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    background: var(--block-surface-hover);
+    border: 1px solid var(--block-accent-border-strong);
+    box-shadow:
+        0 0 28px var(--block-accent-glow),
+        0 10px 24px rgba(0, 0, 0, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .hovered {
-    border: 2px solid rgba(26, 115, 232, 0.6);
-    box-shadow: 0 0 20px rgba(26, 115, 232, 0.3),
-        0 8px 32px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transform: translateY(-4px);
+    background: var(--block-surface-hover);
+    border: 1px solid var(--block-accent-border);
+    box-shadow:
+        0 0 22px var(--block-accent-glow),
+        0 10px 22px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transform: translateY(-3px);
 }
 
 .default {
-    border: 2px solid rgba(60, 60, 60, 0.4);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--block-accent-border) 45%,
+            rgba(255, 255, 255, 0.06)
+        );
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
     transform: translateY(0);
 }
 
 .aiGradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(26, 115, 232, 0.05) 0%, transparent 50%);
+    background: linear-gradient(
+        135deg,
+        var(--block-accent-gradient) 0%,
+        transparent 50%
+    );
     pointer-events: none;
     z-index: 0;
+    opacity: 0;
+    transition: opacity 0.38s ease-out;
+}
+
+.aiGradientVisible {
+    opacity: 1;
+}
+
+.aiGradientHidden {
+    opacity: 0;
+}
+
+.ambientGlow {
+    position: absolute;
+    inset: -12%;
+    background:
+        radial-gradient(
+            circle at 18% 18%,
+            rgba(var(--block-accent-rgb), var(--ambient-glow-opacity, 0.08)) 0%,
+            rgba(var(--block-accent-rgb), 0.04) 22%,
+            transparent 52%
+        ),
+        radial-gradient(
+            circle at 82% 78%,
+            rgba(var(--block-accent-rgb), 0.08) 0%,
+            transparent 48%
+        );
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(18px);
+    transform: scale(0.985);
+    transition:
+        opacity 0.85s ease-in-out,
+        transform 1.05s ease-in-out;
+}
+
+.ambientGlowVisible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.ambientGlowHidden {
+    opacity: 0;
+    transform: scale(0.985);
 }
 
 .content {

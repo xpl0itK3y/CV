@@ -29,7 +29,7 @@ const Skills = ({
     skills.technical && skills.technical.length > INITIAL_VISIBLE_GROUPS;
 
   return (
-    <GlassBlock delay={0.4}>
+    <GlassBlock delay={0.4} accent="top">
       <h2 className={isMobile ? styles.titleMobile : styles.titleDesktop}>
         {skillsTitle}
       </h2>

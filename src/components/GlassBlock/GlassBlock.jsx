@@ -4,7 +4,13 @@ import styles from "./styles/GlassBlock.module.css";
 /**
  * Стеклянный блок в стиле Google AI
  */
-const GlassBlock = ({ children, delay = 0, highlight = false }) => {
+const GlassBlock = ({
+    children,
+    delay = 0,
+    highlight = false,
+    accent = "bottom",
+    hoverVariant = "default",
+}) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const [isHovered, setIsHovered] = useState(false);
 
@@ -19,6 +25,14 @@ const GlassBlock = ({ children, delay = 0, highlight = false }) => {
 
     const getBlockStyles = () => {
         let classNames = `${styles.glassBlock} ${isMobile ? styles.mobile : styles.desktop}`;
+
+        classNames += accent === "top"
+            ? ` ${styles.accentTop}`
+            : ` ${styles.accentBottom}`;
+
+        if (hoverVariant === "textual") {
+            classNames += ` ${styles.textualHover}`;
+        }
 
         if (highlight) {
             classNames += ` ${styles.highlight}`;
@@ -40,10 +54,18 @@ const GlassBlock = ({ children, delay = 0, highlight = false }) => {
                 animation: `slideIn 0.6s ease-out ${delay}s both`,
             }}
         >
-            {/* Google AI градиент */}
-            {(highlight || (isHovered && !isMobile)) && (
-                <div className={styles.aiGradient} />
-            )}
+            <div
+                className={`${styles.aiGradient} ${highlight || (isHovered && !isMobile)
+                    ? styles.aiGradientVisible
+                    : styles.aiGradientHidden
+                    }`}
+            />
+            <div
+                className={`${styles.ambientGlow} ${highlight || (isHovered && !isMobile)
+                    ? styles.ambientGlowVisible
+                    : styles.ambientGlowHidden
+                    }`}
+            />
 
             {/* Контент */}
             <div className={styles.content}>{children}</div>

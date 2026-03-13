@@ -2,11 +2,11 @@ import GlassBlock from "../GlassBlock/GlassBlock";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import styles from "./styles/Education.module.css";
 
-const Education = ({ title, education }) => {
+const Education = ({ title, education, accent = "bottom" }) => {
   const isMobile = useIsMobile();
 
   return (
-    <GlassBlock delay={0.6}>
+    <GlassBlock delay={0.6} accent={accent}>
       <h2 className={isMobile ? styles.titleMobile : styles.titleDesktop}>
         {title}
       </h2>

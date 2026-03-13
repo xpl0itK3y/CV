@@ -20,7 +20,7 @@ const Experience = ({
     useExperienceState();
 
   return (
-    <GlassBlock delay={0.3}>
+    <GlassBlock delay={0.3} accent={title ? "top" : "bottom"}>
       {title && (
         <div className={isMobile ? styles.headerMobile : styles.headerDesktop}>
           <h2 className={isMobile ? styles.titleMobile : styles.titleDesktop}>

@@ -1,13 +1,37 @@
 .container {
+    --switcher-accent-border: rgba(230, 60, 134, 0.24);
+    --switcher-accent-border-strong: rgba(230, 60, 134, 0.4);
+    --switcher-accent-glow: rgba(230, 60, 134, 0.16);
+    --switcher-surface-bg: linear-gradient(
+        180deg,
+        rgba(36, 10, 24, 0.54) 0%,
+        rgba(24, 10, 18, 0.46) 52%,
+        rgba(18, 10, 18, 0.4) 100%
+    );
+    --switcher-surface-hover: linear-gradient(
+        180deg,
+        rgba(56, 12, 32, 0.64) 0%,
+        rgba(34, 12, 24, 0.52) 54%,
+        rgba(20, 10, 18, 0.44) 100%
+    );
+    --switcher-default-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    --switcher-hover-shadow:
+        0 0 18px rgba(230, 60, 134, 0.16),
+        0 8px 24px rgba(0, 0, 0, 0.36);
     position: relative;
 }
 
 .triggerButton {
-    background: rgba(15, 15, 20, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
+    background: var(--switcher-surface-bg);
+    border: 1px solid
+        color-mix(
+            in srgb,
+            var(--switcher-accent-border) 45%,
+            rgba(255, 255, 255, 0.06)
+        );
+    border-radius: 20px;
     padding: 0.65rem 1.25rem;
     color: #e5e7eb;
     font-size: 0.95rem;
@@ -16,17 +40,27 @@
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    transition: all 0.25s ease;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    transition:
+        transform 1.35s ease-in-out 0.12s,
+        box-shadow 0.48s ease-out,
+        background 1.2s ease-in-out 0.12s,
+        border-color 0.42s ease-in-out;
+    box-shadow: var(--switcher-default-shadow);
 }
 
 .triggerButton.open {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    border-color: var(--switcher-accent-border-strong);
+    box-shadow: var(--switcher-hover-shadow);
 }
 
 .triggerButton:hover {
-    background: rgba(25, 25, 35, 0.85);
-    transform: translateY(-1px);
+    background: var(--switcher-surface-hover);
+    border-color: var(--switcher-accent-border-strong);
+    transform: translateY(0);
+    box-shadow:
+        0 0 8px rgba(230, 60, 134, 0.08),
+        0 6px 18px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .triggerButton:not(.open):hover {
@@ -57,22 +91,45 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 10001;
+    z-index: 10010;
+}
+
+.overlayOpening {
+    animation: overlayFadeIn 0.22s ease-out both;
+}
+
+.overlayClosing {
+    animation: overlayFadeOut 0.24s ease-in both;
 }
 
 .dropdown {
     position: absolute;
     top: calc(100% + 0.75rem);
     right: 0;
-    background: rgba(10, 10, 14, 0.95);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: linear-gradient(
+        180deg,
+        rgba(28, 10, 20, 0.94) 0%,
+        rgba(18, 10, 18, 0.9) 100%
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(230, 60, 134, 0.18);
     border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85);
+    box-shadow:
+        0 0 24px rgba(230, 60, 134, 0.12),
+        0 20px 45px rgba(0, 0, 0, 0.65);
     min-width: 190px;
-    z-index: 10002;
+    z-index: 10011;
+    transform-origin: top right;
+}
+
+.dropdownOpening {
+    animation: dropdownReveal 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.dropdownClosing {
+    animation: dropdownHide 0.28s ease-in both;
 }
 
 .optionButton {
@@ -89,6 +146,17 @@
     gap: 0.7rem;
     transition: background 0.2s ease;
     font-weight: 400;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: optionRise 0.36s ease-out forwards;
+}
+
+.optionButton:nth-child(1) {
+    animation-delay: 0.06s;
+}
+
+.optionButton:nth-child(2) {
+    animation-delay: 0.12s;
 }
 
 .optionButton:last-child {
@@ -96,13 +164,13 @@
 }
 
 .optionButton:hover {
-    background: rgba(25, 25, 35, 0.85);
+    background: rgba(230, 60, 134, 0.12);
     /* fallback hover if not active */
 }
 
 /* Active state for selected language */
 .optionButton.active {
-    background: rgba(25, 25, 35, 0.85);
+    background: rgba(230, 60, 134, 0.16);
     /* Changed to darker background to match design */
     font-weight: 600;
 }
@@ -116,7 +184,7 @@
 */
 
 .optionButton:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(230, 60, 134, 0.12);
 }
 
 /* Ensure active state takes precedence if needed, or handle in JS. 
@@ -147,6 +215,72 @@
     from {
         opacity: 0;
         transform: translateY(2px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes overlayFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes overlayFadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes dropdownReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.96);
+        filter: blur(10px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(2px) scale(1.01);
+        filter: blur(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes dropdownHide {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.97);
+        filter: blur(8px);
+    }
+}
+
+@keyframes optionRise {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
     }
 
     to {

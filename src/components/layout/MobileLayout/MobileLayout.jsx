@@ -27,7 +27,11 @@ const MobileLayout = ({
             </AnimatedSection>
 
             <AnimatedSection delay={0.5}>
-                <Education title={t.educationTitle} education={t.education} />
+                <Education
+                    title={t.educationTitle}
+                    education={t.education}
+                    accent="top"
+                />
             </AnimatedSection>
 
             <AnimatedSection delay={0.4}>

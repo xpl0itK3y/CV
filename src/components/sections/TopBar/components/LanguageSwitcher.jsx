@@ -3,7 +3,7 @@ import styles from "../styles/LanguageSwitcher.module.css";
 
 const CLOSE_ANIMATION_MS = 320;
 
-const LanguageSwitcher = ({ currentLang, onLanguageChange }) => {
+const LanguageSwitcher = ({ currentLang, onLanguageChange, onMenuToggle }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
@@ -25,6 +25,7 @@ const LanguageSwitcher = ({ currentLang, onLanguageChange }) => {
 
   const closeDropdown = () => {
     if (!isOpen) return;
+    onMenuToggle?.();
     setIsClosing(true);
     setIsOpen(false);
 
@@ -42,6 +43,7 @@ const LanguageSwitcher = ({ currentLang, onLanguageChange }) => {
             return;
           }
 
+          onMenuToggle?.();
           setIsClosing(false);
           setIsOpen(true);
         }}
@@ -88,6 +90,7 @@ const LanguageSwitcher = ({ currentLang, onLanguageChange }) => {
               <button
                 key={lang.code}
                 onClick={() => {
+                  onMenuToggle?.();
                   onLanguageChange(lang.code);
                   closeDropdown();
                 }}

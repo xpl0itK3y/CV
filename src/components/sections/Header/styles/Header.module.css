@@ -1,11 +1,11 @@
 .containerDesktop {
-    margin-bottom: 3rem;
+    margin-bottom: -0.6rem;
     text-align: center;
-    padding: 2.6rem 2rem 4rem;
+    padding: 1.5rem 2rem 4rem;
 }
 
 .containerMobile {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     text-align: center;
     padding: 0.35rem 1rem 1rem;
 }
@@ -24,7 +24,7 @@
 }
 
 .nameDesktop {
-    font-size: 3.65rem;
+    font-size: 3.35rem;
     font-weight: 700;
     margin: 0 0 1rem 0;
     background: linear-gradient(
@@ -45,7 +45,7 @@
 }
 
 .nameMobile {
-    font-size: 2.35rem;
+    font-size: 2.2rem;
     font-weight: 700;
     margin: 0 0 1rem 0;
     background: linear-gradient(
@@ -66,23 +66,49 @@
 }
 
 .titleDesktop {
-    font-size: 1.95rem;
-    color: rgba(255, 232, 241, 0.9);
+    font-size: 2.2rem;
+    background: linear-gradient(
+        90deg,
+        rgba(244, 191, 215, 0.92) 0%,
+        rgba(240, 154, 192, 0.88) 42%,
+        rgba(201, 233, 238, 0.9) 100%
+    );
+    background-size: 180% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin: 0;
     font-weight: 320;
     letter-spacing: 0.01em;
-    animation: fadeInUp 0.8s ease-out 0.5s both;
-    text-shadow: 0 0 14px rgba(230, 60, 134, 0.06);
+    animation:
+        fadeInUp 0.8s ease-out 0.5s both,
+        subtitleShift 6.5s ease-in-out infinite 1.4s;
+    text-shadow:
+        0 0 12px rgba(230, 60, 134, 0.06),
+        0 0 8px rgba(74, 196, 210, 0.04);
 }
 
 .titleMobile {
     font-size: 1.5rem;
-    color: rgba(255, 232, 241, 0.9);
+    background: linear-gradient(
+        90deg,
+        rgba(244, 191, 215, 0.92) 0%,
+        rgba(240, 154, 192, 0.88) 42%,
+        rgba(201, 233, 238, 0.9) 100%
+    );
+    background-size: 180% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin: 0;
     font-weight: 320;
     letter-spacing: 0.01em;
-    animation: fadeInUp 0.8s ease-out 0.5s both;
-    text-shadow: 0 0 12px rgba(230, 60, 134, 0.06);
+    animation:
+        fadeInUp 0.8s ease-out 0.5s both,
+        subtitleShift 6.5s ease-in-out infinite 1.4s;
+    text-shadow:
+        0 0 10px rgba(230, 60, 134, 0.06),
+        0 0 6px rgba(74, 196, 210, 0.04);
 }
 
 .dividerDesktop {
@@ -164,5 +190,15 @@
     }
     100% {
         background-position: 200% 50%;
+    }
+}
+
+@keyframes subtitleShift {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
     }
 }

@@ -1,23 +1,25 @@
 export const pdfStyles = {
+    // Core palette synced with the website's magenta/teal glass theme.
     // Заголовок "Резюме"
     resumeTitle: {
-        fontSize: 13,
-        color: "#1e40af",
-        margin: [0, 0, 0, 8],
+        fontSize: 18,
+        bold: true,
+        color: "#7a1f49",
+        margin: [0, 0, 0, 10],
         alignment: "center",
     },
     // ФИО - крупно и заметно
     headerName: {
         fontSize: 26,
         bold: true,
-        color: "#1e3a8a",
+        color: "#8f2958",
         margin: [0, 0, 0, 3],
         alignment: "center",
     },
     // Должность
     headerTitle: {
         fontSize: 15,
-        color: "#3b82f6",
+        color: "#4b8f97",
         margin: [0, 0, 0, 2],
         alignment: "center",
     },
@@ -26,7 +28,7 @@ export const pdfStyles = {
     sectionTitle: {
         fontSize: 14,
         bold: true,
-        color: "#1e40af",
+        color: "#7a1f49",
         margin: [0, 12, 0, 6],
         decoration: "underline",
         decorationStyle: "solid",
@@ -36,48 +38,48 @@ export const pdfStyles = {
     // Контакты
     contactText: {
         fontSize: 11,
-        color: "#1f2937",
+        color: "#2b1a22",
         margin: [0, 1, 0, 1],
     },
 
     // О себе
     aboutText: {
         fontSize: 12,
-        color: "#000000",
+        color: "#1d1116",
         lineHeight: 1.5,
         margin: [0, 0, 0, 6],
-        alignment: "left",
+        alignment: "justify",
     },
 
     // Опыт работы
     jobPosition: {
         fontSize: 13.5,
         bold: true,
-        color: "#059669",
+        color: "#8f2958",
         margin: [0, 0, 0, 1],
     },
     jobCompany: {
         fontSize: 12.5,
         bold: true,
-        color: "#047857",
+        color: "#4b8f97",
         margin: [0, 0, 0, 1],
     },
     jobPeriod: {
         fontSize: 11,
-        color: "#6b7280",
+        color: "#6f5964",
         italics: true,
         margin: [0, 0, 0, 4],
     },
     jobDescription: {
         fontSize: 12,
-        color: "#000000",
+        color: "#1d1116",
         margin: [0, 0, 0, 6],
         lineHeight: 1.5,
         alignment: "left",
     },
     techTags: {
         fontSize: 10.5,
-        color: "#333333",
+        color: "#3d2931",
         margin: [0, 3, 0, 0],
     },
 
@@ -85,12 +87,12 @@ export const pdfStyles = {
     skillHeader: {
         fontSize: 12,
         bold: true,
-        color: "#5b21b6",
+        color: "#4b8f97",
         margin: [0, 0, 0, 4],
     },
     skillText: {
         fontSize: 12,
-        color: "#000000",
+        color: "#1d1116",
         lineHeight: 1.5,
         alignment: "left",
     },
@@ -99,12 +101,12 @@ export const pdfStyles = {
     languageHeader: {
         fontSize: 12,
         bold: true,
-        color: "#dc2626",
+        color: "#8f2958",
         margin: [0, 0, 0, 4],
     },
     languageText: {
         fontSize: 12,
-        color: "#000000",
+        color: "#1d1116",
         lineHeight: 1.5,
         alignment: "left",
     },
@@ -113,7 +115,7 @@ export const pdfStyles = {
     totalExperience: {
         fontSize: 14,
         bold: true,
-        color: "#1e40af",
+        color: "#7a1f49",
         italics: true,
         alignment: "right",
         margin: [0, 0, 0, 0],
@@ -123,17 +125,17 @@ export const pdfStyles = {
     eduDegree: {
         fontSize: 12,
         bold: true,
-        color: "#dc2626",
+        color: "#4b8f97",
         margin: [0, 0, 0, 1],
     },
     eduInstitution: {
         fontSize: 12,
-        color: "#1f2937",
+        color: "#2b1a22",
         margin: [0, 0, 0, 1],
     },
     eduPeriod: {
         fontSize: 11,
-        color: "#6b7280",
+        color: "#6f5964",
         italics: true,
         margin: [0, 0, 0, 6],
     },

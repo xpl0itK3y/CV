@@ -11,6 +11,15 @@ const TopBar = ({ currentLang, onLanguageChange, translations }) => {
   const isVisible = useTopBarVisibility(isMobile);
   const [isHovered, setIsHovered] = useState(false);
 
+  const handleLanguageChange = (lang) => {
+    setIsHovered(false);
+    onLanguageChange(lang);
+  };
+
+  const handleLanguageMenuToggle = () => {
+    setIsHovered(false);
+  };
+
   const glassBoxClassName = [
     isMobile ? styles.glassBoxMobile : styles.glassBoxDesktop,
     isHovered && !isMobile ? styles.hovered : styles.default,
@@ -52,7 +61,8 @@ const TopBar = ({ currentLang, onLanguageChange, translations }) => {
 
             <LanguageSwitcher
               currentLang={currentLang}
-              onLanguageChange={onLanguageChange}
+              onLanguageChange={handleLanguageChange}
+              onMenuToggle={handleLanguageMenuToggle}
             />
           </div>
         </div>

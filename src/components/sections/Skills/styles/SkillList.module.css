@@ -1,7 +1,8 @@
 .title {
-    color: #fff;
+    color: var(--section-title-color, #fff);
     margin-top: 0;
     margin-bottom: 1.5rem;
+    transition: color 0.35s ease;
 }
 
 .titleMobile {
@@ -65,9 +66,11 @@
     bottom: -45px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(135deg,
-            rgba(102, 126, 234, 0.95),
-            rgba(118, 75, 162, 0.95));
+    background: linear-gradient(
+        135deg,
+        rgba(var(--block-accent-rgb), 0.92),
+        rgba(var(--block-accent-rgb), 0.7)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 0.5rem 1rem;
@@ -76,8 +79,9 @@
     font-size: 0.85rem;
     font-weight: 500;
     white-space: nowrap;
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4),
-        0 0 15px rgba(102, 126, 234, 0.3);
+    box-shadow:
+        0 8px 20px rgba(var(--block-accent-rgb), 0.28),
+        0 0 15px rgba(var(--block-accent-rgb), 0.2);
     border: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 1000;
     animation: tooltipFadeIn 0.2s ease-out;
@@ -93,7 +97,7 @@
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-bottom: 6px solid rgba(102, 126, 234, 0.95);
+    border-bottom: 6px solid rgba(var(--block-accent-rgb), 0.92);
 }
 
 @keyframes tooltipFadeIn {
@@ -109,9 +113,10 @@
 }
 
 .softSkillsTitle {
-    color: #fff;
+    color: var(--section-title-color, #fff);
     margin-top: 2rem;
     margin-bottom: 1rem;
+    transition: color 0.35s ease;
 }
 
 .softSkillsTitleMobile {
@@ -129,7 +134,12 @@
 }
 
 .softSkillItem {
-    background: rgba(255, 255, 255, 0.15);
+    background: linear-gradient(
+        180deg,
+        rgba(var(--block-accent-rgb), 0.12) 0%,
+        rgba(var(--block-accent-rgb), 0.04) 100%
+    );
+    border: 1px solid rgba(var(--block-accent-rgb), 0.28);
     border-radius: 20px;
     color: #fff;
 }

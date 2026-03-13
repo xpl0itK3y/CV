@@ -214,7 +214,7 @@ const translations = {
     ],
 
     // Education
-    educationTitle: "🎓 Образование",
+    educationTitle: "Образование",
     education: [
       {
         degree: "Бакалавр, Вычислительная техника и программное обеспечение",
@@ -568,7 +568,7 @@ const translations = {
     ],
 
     // Education
-    educationTitle: "🎓 Education",
+    educationTitle: "Education",
     education: [
       {
         degree: "B.Sc. in Computer Engineering and Software",

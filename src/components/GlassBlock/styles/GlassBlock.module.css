@@ -20,6 +20,8 @@
     --block-accent-border-strong: rgba(230, 60, 134, 0.68);
     --block-accent-glow: rgba(230, 60, 134, 0.28);
     --block-accent-gradient: rgba(230, 60, 134, 0.14);
+    --block-title-color-base: #f1c2d8;
+    --block-title-color-hover: #ffd3e6;
     --block-surface-bg: linear-gradient(
         180deg,
         rgba(36, 10, 24, 0.54) 0%,
@@ -40,6 +42,8 @@
     --block-accent-border-strong: rgba(74, 196, 210, 0.58);
     --block-accent-glow: rgba(74, 196, 210, 0.22);
     --block-accent-gradient: rgba(74, 196, 210, 0.1);
+    --block-title-color-base: #bfeef2;
+    --block-title-color-hover: #defcff;
     --block-surface-bg: linear-gradient(
         180deg,
         rgba(8, 20, 24, 0.5) 0%,
@@ -70,6 +74,7 @@
 }
 
 .highlight {
+    --section-title-color: var(--block-title-color-hover);
     background: var(--block-surface-hover);
     border: 1px solid var(--block-accent-border-strong);
     box-shadow:
@@ -79,6 +84,7 @@
 }
 
 .hovered {
+    --section-title-color: var(--block-title-color-hover);
     background: var(--block-surface-hover);
     border: 1px solid var(--block-accent-border);
     box-shadow:
@@ -89,6 +95,7 @@
 }
 
 .default {
+    --section-title-color: var(--block-title-color-base);
     border: 1px solid
         color-mix(
             in srgb,

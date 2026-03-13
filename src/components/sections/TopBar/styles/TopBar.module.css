@@ -3,6 +3,8 @@
     --topbar-accent-border-strong: rgba(230, 60, 134, 0.68);
     --topbar-accent-glow: rgba(230, 60, 134, 0.28);
     --topbar-accent-gradient: rgba(230, 60, 134, 0.14);
+    --topbar-title-color-base: #f1c2d8;
+    --topbar-title-color-hover: #ffd3e6;
     --topbar-surface-bg: linear-gradient(
         90deg,
         rgba(34, 10, 22, 0.62) 0%,
@@ -87,6 +89,7 @@
 }
 
 .default {
+    --topbar-title-color: var(--topbar-title-color-base);
     border-color: color-mix(
         in srgb,
         var(--topbar-accent-border) 45%,
@@ -98,6 +101,7 @@
 }
 
 .hovered {
+    --topbar-title-color: var(--topbar-title-color-hover);
     background: var(--topbar-surface-hover);
     border-color: var(--topbar-accent-border);
     box-shadow:
@@ -150,20 +154,18 @@
     filter: blur(18px);
     transform: scale(0.985);
     transition:
-        opacity 0.35s ease-out,
-        transform 0.4s ease-out;
+        opacity 0.7s ease-in-out,
+        transform 0.8s ease-in-out;
 }
 
 .ambientGlowVisible {
     opacity: 1;
     transform: scale(1);
-    animation: topbarGlowSettle 1.6s ease-out both;
 }
 
 .ambientGlowHidden {
     opacity: 0;
     transform: scale(0.985);
-    animation: none;
 }
 
 .content {
@@ -196,7 +198,8 @@
 }
 
 .logoText {
-    color: #ffffff;
+    color: var(--topbar-title-color, #ffffff);
+    transition: color 0.35s ease;
 }
 
 .actionsDesktop {
@@ -295,19 +298,5 @@
     }
     to {
         transform: translateY(0);
-    }
-}
-
-@keyframes topbarGlowSettle {
-    0% {
-        opacity: 0.35;
-        transform: scale(0.975);
-        filter: blur(12px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1);
-        filter: blur(18px);
     }
 }

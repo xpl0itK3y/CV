@@ -41,6 +41,9 @@ const INITIAL_STATE = CRYSTALS.map(() => ({
     jellySkewY: 0,
     jellyLeanX: 0,
     jellyLeanY: 0,
+    shadowOffsetX: 0,
+    shadowOffsetY: 0,
+    shadowScale: 1,
 }));
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
@@ -112,6 +115,9 @@ const GlassCrystals = ({ size = 120 }) => {
                     jellySkewY: item.jellySkewY * 0.72,
                     jellyLeanX: item.jellyLeanX * 0.72,
                     jellyLeanY: item.jellyLeanY * 0.72,
+                    shadowOffsetX: item.shadowOffsetX * 0.72,
+                    shadowOffsetY: item.shadowOffsetY * 0.72,
+                    shadowScale: 1 + (item.shadowScale - 1) * 0.72,
                 };
             }
 
@@ -128,6 +134,9 @@ const GlassCrystals = ({ size = 120 }) => {
                 jellySkewY: clamp(normalY * proximity * -12, -10, 10),
                 jellyLeanX: clamp(normalX * proximity * -16, -16, 16),
                 jellyLeanY: clamp(normalY * proximity * -12, -12, 12),
+                shadowOffsetX: clamp(normalX * proximity * -12, -12, 12),
+                shadowOffsetY: clamp(normalY * proximity * -10, -10, 10),
+                shadowScale: 1 + proximity * 0.08,
             };
         });
     };
@@ -278,6 +287,13 @@ const GlassCrystals = ({ size = 120 }) => {
                     const jellySkewY = clamp(body.vy * -0.2, -14, 14);
                     const jellyLeanX = clamp(body.vx * -0.34, -24, 24);
                     const jellyLeanY = clamp(body.vy * -0.28, -20, 20);
+                    const shadowOffsetX = clamp(body.vx * 0.4, -22, 22);
+                    const shadowOffsetY = clamp(body.vy * 0.32, -18, 18);
+                    const shadowScale = clamp(
+                        1 + (Math.abs(body.vx) + Math.abs(body.vy)) * 0.01,
+                        1,
+                        1.16,
+                    );
 
                     return {
                         ...item,
@@ -290,6 +306,9 @@ const GlassCrystals = ({ size = 120 }) => {
                         jellySkewY,
                         jellyLeanX,
                         jellyLeanY,
+                        shadowOffsetX,
+                        shadowOffsetY,
+                        shadowScale,
                     };
                 });
                 statesRef.current = next;
@@ -316,6 +335,9 @@ const GlassCrystals = ({ size = 120 }) => {
                         jellySkewY: 0,
                         jellyLeanX: 0,
                         jellyLeanY: 0,
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 0,
+                        shadowScale: 1,
                     }));
                     statesRef.current = next;
                     return next;
@@ -381,6 +403,24 @@ const GlassCrystals = ({ size = 120 }) => {
                 -24,
                 24,
             );
+            const shadowOffsetX = clamp(
+                dragRef.current.velocityX * 0.52,
+                -30,
+                30,
+            );
+            const shadowOffsetY = clamp(
+                dragRef.current.velocityY * 0.42,
+                -22,
+                22,
+            );
+            const shadowScale = clamp(
+                1 +
+                    (Math.abs(dragRef.current.velocityX) +
+                        Math.abs(dragRef.current.velocityY)) *
+                        0.014,
+                1,
+                1.2,
+            );
 
             setCrystalStates((prev) => {
                 const safePrev =
@@ -399,6 +439,9 @@ const GlassCrystals = ({ size = 120 }) => {
                               jellySkewY,
                               jellyLeanX,
                               jellyLeanY,
+                              shadowOffsetX,
+                              shadowOffsetY,
+                              shadowScale,
                           }
                         : item,
                 );
@@ -465,6 +508,14 @@ const GlassCrystals = ({ size = 120 }) => {
                 "--jelly-skew-y": `${crystalStates[index].jellySkewY}deg`,
                 "--jelly-lean-x": `${crystalStates[index].jellyLeanX}%`,
                 "--jelly-lean-y": `${crystalStates[index].jellyLeanY}%`,
+                "--shadow-offset-x": `${crystalStates[index].shadowOffsetX}px`,
+                "--shadow-offset-y": `${18 + crystalStates[index].shadowOffsetY}px`,
+                "--shadow-blur": `${30 * crystalStates[index].shadowScale}px`,
+                "--shadow-alpha": clamp(
+                    0.22 + (crystalStates[index].shadowScale - 1) * 0.3,
+                    0.22,
+                    0.34,
+                ),
             })),
         [crystalStates],
     );
@@ -512,11 +563,19 @@ const GlassCrystals = ({ size = 120 }) => {
                         onPointerDown={(event) => handlePointerDown(index, event)}
                     >
                         <div
+                            className={`${styles.floorGlow} ${styles[`${crystal.className}Glow`]}`}
+                        />
+                        <div
+                            className={`${styles.crystalGlow} ${styles[`${crystal.className}Glow`]}`}
+                        />
+                        <div
                             className={`${styles.crystal} ${styles[crystal.className]}`}
                         >
-                            <div className={styles.crystalCore} />
-                            <div className={styles.crystalEdge} />
-                            <div className={styles.crystalHighlight} />
+                            <div className={styles.crystalMotion}>
+                                <div className={styles.crystalCore} />
+                                <div className={styles.crystalEdge} />
+                                <div className={styles.crystalHighlight} />
+                            </div>
                         </div>
                     </div>
                 ))}

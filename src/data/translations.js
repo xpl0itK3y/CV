@@ -25,8 +25,9 @@ const translations = {
     location: "Казахстан",
     github: "github.com/xpl0itK3y",
     telegram: "@xpl0itK3y",
-    linkedin: "www.linkedin.com/in/vladimir-nikolayevich-9092b3321",
-    headhunter: "pavlodar.hh.kz/resume/ab79d06cff0d80e57f0039ed1f61695244756d",
+    linkedin: "www.linkedin.com/in/denis-latun-556090367",
+    headhunter:
+      "astana.hh.kz/resume/1c636390ff103c310a0039ed1f304c43507534?customDomain=1&overRideDomainAreaId=159",
 
     // Experience
     experienceTitle: "Опыт работы",
@@ -68,7 +69,6 @@ const translations = {
               "RAG",
               "FAISS",
               "Chroma",
-              "Prompt Engineering",
               "Structured Outputs",
               "Function Calling",
             ],
@@ -103,7 +103,6 @@ const translations = {
             items: [
               "DuckDuckGo Search",
               "2GIS API",
-              "API Национального банка Казахстана",
               "CoinGecko API",
               "CryptoPanic API",
               "Binance WSS",
@@ -148,7 +147,13 @@ const translations = {
           },
           {
             label: "DevOps и мониторинг",
-            items: ["Docker Compose", "Prometheus", "Grafana", "ELK Stack"],
+            items: [
+              "Docker",
+              "Docker Compose",
+              "Prometheus",
+              "Grafana",
+              "ELK Stack",
+            ],
           },
           {
             label: "Безопасность и тестирование",
@@ -156,7 +161,7 @@ const translations = {
           },
           {
             label: "AI и обработка текста",
-            items: ["OpenAI GPT", "NLP"],
+            items: ["OpenAI API", "NLP"],
           },
         ],
       },
@@ -176,8 +181,8 @@ const translations = {
             items: ["FastAPI", "Pydantic", "SQLAlchemy", "REST API", "JWT"],
           },
           {
-            label: "Базы данных",
-            items: ["PostgreSQL"],
+            label: "Базы данных и кэширование",
+            items: ["PostgreSQL", "Redis"],
           },
           {
             label: "Внешние сервисы и интеграции",
@@ -377,8 +382,9 @@ const translations = {
     location: "Kazakhstan",
     github: "github.com/xpl0itK3y",
     telegram: "@xpl0itK3y",
-    linkedin: "www.linkedin.com/in/vladimir-nikolayevich-9092b3321",
-    headhunter: "pavlodar.hh.kz/resume/ab79d06cff0d80e57f0039ed1f61695244756d",
+    linkedin: "www.linkedin.com/in/denis-latun-556090367",
+    headhunter:
+      "astana.hh.kz/resume/1c636390ff103c310a0039ed1f304c43507534?customDomain=1&overRideDomainAreaId=159",
 
     // Experience
     experienceTitle: "Work Experience",
@@ -396,7 +402,7 @@ const translations = {
             items: ["Python", "JavaScript"],
           },
           {
-            label: "Backend & Frontend",
+            label: "Backend and Frontend",
             items: [
               "FastAPI",
               "Aiogram",
@@ -420,13 +426,12 @@ const translations = {
               "RAG",
               "FAISS",
               "Chroma",
-              "Prompt Engineering",
               "Structured Outputs",
               "Function Calling",
             ],
           },
           {
-            label: "Databases & Queues",
+            label: "Databases and Queues",
             items: [
               "PostgreSQL",
               "SQLite",
@@ -437,7 +442,7 @@ const translations = {
             ],
           },
           {
-            label: "DevOps & Web",
+            label: "DevOps and Web",
             items: [
               "Docker",
               "Docker Compose",
@@ -451,11 +456,10 @@ const translations = {
             ],
           },
           {
-            label: "Integrations & Data Sources",
+            label: "Integrations and Data Sources",
             items: [
               "DuckDuckGo Search",
               "2GIS API",
-              "National Bank of Kazakhstan API",
               "CoinGecko API",
               "CryptoPanic API",
               "Binance WSS",
@@ -496,20 +500,26 @@ const translations = {
             ],
           },
           {
-            label: "Databases & Caching",
+            label: "Databases and Caching",
             items: ["PostgreSQL", "Redis"],
           },
           {
-            label: "DevOps & Monitoring",
-            items: ["Docker Compose", "Prometheus", "Grafana", "ELK Stack"],
+            label: "DevOps and Monitoring",
+            items: [
+              "Docker",
+              "Docker Compose",
+              "Prometheus",
+              "Grafana",
+              "ELK Stack",
+            ],
           },
           {
-            label: "Security & Testing",
+            label: "Security and Testing",
             items: ["JWT", "bcrypt", "Fernet", "Pytest", "Locust"],
           },
           {
-            label: "AI & Text Processing",
-            items: ["OpenAI GPT", "NLP"],
+            label: "AI and Text Processing",
+            items: ["OpenAI API", "NLP"],
           },
         ],
       },
@@ -530,11 +540,11 @@ const translations = {
             items: ["FastAPI", "Pydantic", "SQLAlchemy", "REST API", "JWT"],
           },
           {
-            label: "Databases",
-            items: ["PostgreSQL"],
+            label: "Databases and Caching",
+            items: ["PostgreSQL", "Redis"],
           },
           {
-            label: "External Services & Integrations",
+            label: "External Services and Integrations",
             items: ["Stripe API", "SendGrid"],
           },
         ],

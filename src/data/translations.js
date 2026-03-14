@@ -337,7 +337,7 @@ const translations = {
     workPractices: ["Agile", "Scrum", "Kanban"],
     languages: [
       { name: "Русский", level: "C2 - Родной" },
-      { name: "Английский", level: "Ниже среднего (A2-B1, Pre-Intermediate)" },
+      { name: "Английский", level: "Ниже среднего (A2-B1)" },
     ],
 
     // Projects

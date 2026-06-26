@@ -31,7 +31,7 @@ const translations = {
 
     // Experience
     experienceTitle: "Опыт работы",
-    totalExperience: "2+ года",
+    totalExperience: "2 года",
     experiences: [
       {
         position: "AI Engineer (Personal Projects)",
@@ -195,31 +195,6 @@ const translations = {
           {
             label: "Безопасность и тестирование",
             items: ["JWT", "bcrypt", "Fernet", "Pytest", "Locust"],
-          },
-        ],
-      },
-      {
-        position: "Backend Developer (Freelance Project)",
-        company: "PrestigeFly (via freelance collaboration)",
-        period: "Декабрь 2024 - Июль 2025",
-        description:
-          "Участвовал в backend разработке CRM-системы для управления продажами авиабилетов премиум-класса в рамках проектной работы с другими backend разработчиками, система охватывала полный цикл работы с клиентом - от обработки лида до закрытия сделки. - Внес вклад в проектирование PostgreSQL базы данных с учетом сложной бизнес-логики, включая управление лидами, многоэтапный процесс продаж, финансовую отчетность и ролевую модель доступа. - Разрабатывал REST API на FastAPI для взаимодействия с frontend частью. - Реализовал backend функциональность, связанную с расчетом прибыли, поддержкой тарифных таблиц, транзакционной логикой и финансовой аналитикой. - Участвовал в интеграции Stripe и SendGrid, а также в реализации системы авторизации, разграничения прав доступа и логики управления лидами. - Система успешно работает в production несколько месяцев, обрабатывая высокие нагрузки.",
-        techGroups: [
-          {
-            label: "Языки",
-            items: ["Python"],
-          },
-          {
-            label: "Backend-разработка",
-            items: ["FastAPI", "Pydantic", "SQLAlchemy", "REST API", "JWT"],
-          },
-          {
-            label: "Базы данных и кэширование",
-            items: ["PostgreSQL", "Redis"],
-          },
-          {
-            label: "Внешние сервисы и интеграции",
-            items: ["Stripe API", "SendGrid"],
           },
         ],
       },
@@ -440,12 +415,12 @@ const translations = {
 
     // Experience
     experienceTitle: "Work Experience",
-    totalExperience: "2+ years",
+    totalExperience: "2 years",
     experiences: [
       {
         position: "AI Engineer (Personal Projects)",
         company: "Open Source / GitHub",
-        period: "December 2025 - May 2026",
+        period: "December 2025 - Present",
         description:
           "Developing AI solutions and open-source projects in personal time to deepen practical expertise in RAG, multi-agent systems, distributed architecture, and applied AI. 1) Multi-language RAG Document Assistant. - Built a production-ready RAG system with a full document processing pipeline: chunking, embeddings, semantic retrieval, and answer generation. - Used FAISS and Chroma for vector storage and similarity search. - Implemented source attribution and prompt engineering to improve answer accuracy and controllability. 2) Multi-Agent Deep Research System. - Developed a multi-agent deep research system with a full pipeline: dynamic query decomposition, parallel web search and content extraction, analysis-synthesis, and graph finalization on LangGraph. - Implemented a verifiability layer as a key differentiator: per-claim citation audit, adversarial red-team with counter-evidence search, numerical fact-checking, source independence analysis, and confidence fusion solid / contested / speculative. - Designed fault-tolerant task processing atomic claim, dead-letter, auto-recovery, idempotent finalization with a native Rust/PyO3 accelerator, live progress streaming SSE, and SSRF/CSRF/JWT protection. 3) Self-hosted RAG platform for private knowledge base. - Built a self-hosted AI assistant with document ingestion, RAG search over pgvector, and streaming chat with source citation on top of durable workflows Temporal. - Developed a FastAPI backend with streaming responses SSE, multi-tenant API key authentication, and background task orchestration on Temporal for ingestion, embedding generation, and human-in-the-loop approval. - Implemented tool-calling agents with PydanticAI with typed structured output, semantic cache on Redis, LLM usage and cost analytics on ClickHouse, observability via Langfuse, and a custom i18n system in a Vue 3 frontend. 4) Krisha Agent - Autonomous Real Estate AI Agent. - Developed a multi-agent system on LangGraph for autonomous apartment search on Krisha.kz. - Implemented an asynchronous graph with parallel data enrichment via external APIs, structured outputs with Pydantic v2, and LLM-based scoring for ranking listings. - Added persistent memory, human-in-the-loop workflows, Telegram notifications, and observability via LangSmith and Sentry. 5) Crypto Sentiment Analysis Pipeline. - Designed a distributed platform of 4 Python services and a Vue 3 SPA for real-time crypto market monitoring, including prices, Telegram streams, and news. - Built an event-driven pipeline on asyncio, Redis Pub/Sub, and FastAPI WebSockets with low-latency data delivery. - Implemented data ingestion via Telethon and REST polling, as well as CI/CD and architecture documentation. All projects available at: github.com/xpl0itK3y",
         techGroups: [
@@ -556,7 +531,7 @@ const translations = {
       {
         position: "Backend Developer",
         company: "Private Startup (NDA)",
-        period: "June 2025 - Present",
+        period: "June 2025 - May 2026",
         description:
           "Developed AI functionality and backend services for a production platform for automated text data processing and classification within a cross-functional team. Responsible for the AI module and related services. - Participated in designing a FastAPI-based microservices architecture to handle concurrent workloads and scale backend components. - Implemented infrastructure solutions within my area of responsibility to improve service stability, fault tolerance, and routing flexibility. - Developed AI-powered functionality to automate text data processing and related workflows. - Collaborated with the team to set up the deployment process using Docker Compose and multi-stage builds, improving environment reproducibility and maintainability. - Participated in configuring monitoring and observability with real-time metrics and health checks; implemented Redis caching to optimize AI pipeline performance. - Participated in architectural discussions and the adoption of engineering best practices within the team. - Strengthened service security through authentication, encryption, hashing, and request-limiting mechanisms. - Contributed to testing practices, including unit, integration, and load testing. - The system has been running in production under real operational load.",
 
@@ -605,32 +580,6 @@ const translations = {
           {
             label: "Security and Testing",
             items: ["JWT", "bcrypt", "Fernet", "Pytest", "Locust"],
-          },
-        ],
-      },
-      {
-        position: "Backend Developer (Freelance Project)",
-        company: "PrestigeFly (via freelance collaboration)",
-        period: "December 2024 - June 2025",
-        description:
-          "Contributed to the backend development of a CRM system for managing premium-class airline ticket sales as part of a project collaboration with other backend developers, covering the full customer lifecycle from lead processing to deal closure. - Contributed to the design of a PostgreSQL database that supported complex business logic, including lead management, a multi-stage sales process, financial reporting, and a role-based access model. - Developed REST APIs with FastAPI for interaction with the frontend. - Implemented backend functionality related to profit calculation, pricing table support, transaction logic, and financial analytics. - Participated in the integration of Stripe and SendGrid, as well as in the implementation of authentication, access control, and lead management logic. - The system has been running successfully in production for several months, handling high workloads.",
-
-        techGroups: [
-          {
-            label: "Languages",
-            items: ["Python"],
-          },
-          {
-            label: "Backend Development",
-            items: ["FastAPI", "Pydantic", "SQLAlchemy", "REST API", "JWT"],
-          },
-          {
-            label: "Databases and Caching",
-            items: ["PostgreSQL", "Redis"],
-          },
-          {
-            label: "External Services and Integrations",
-            items: ["Stripe API", "SendGrid"],
           },
         ],
       },

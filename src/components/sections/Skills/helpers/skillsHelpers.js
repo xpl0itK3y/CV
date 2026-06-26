@@ -65,6 +65,22 @@ export const getSkillColor = (skillName) => {
   if (name.includes("websockets")) return "#E44D26";
   if (name.includes("sse")) return "#43B02A";
 
+  // AI Agents & Tools
+  if (name.includes("langgraph")) return "#1B8F5E";
+  if (name.includes("crewai")) return "#FF4444";
+  if (name.includes("pydantic ai") || name.includes("pydanticai")) return "#E92063";
+  if (name === "mcp" || name.includes("model context")) return "#7C3AED";
+  if (name.includes("honcho")) return "#0EA5E9";
+  if (name.includes("replit")) return "#F26207";
+  if (name.includes("claude code") || name.includes("claudecode")) return "#CC785C";
+  if (name.includes("codex")) return "#5B7FFF";
+  if (name.includes("opencode")) return "#D4D4D4";
+  if (name.includes("antigravity")) return "#8B5CF6";
+  if (name.includes("cursor")) return "#FFFFFF";
+  if (name.includes("temporal")) return "#6E44FF";
+  if (name.includes("openclaw")) return "#FF6B2B";
+  if (name.includes("hermes agent") || name.includes("hermesagent")) return "#F59E0B";
+
   // Testing
   if (name.includes("jest")) return "#99425B";
   if (name.includes("github actions")) return "#2088ff";
@@ -159,6 +175,24 @@ export const getSkillIcon = (skillName) => {
     restapi: "restapi",
     websockets: "websockets",
     sse: "sse",
+    // AI Agents & Tools
+    langgraph: "langgraph",
+    crewai: "crewai",
+    "pydantic ai": "pydanticai",
+    pydanticai: "pydanticai",
+    mcp: "mcp",
+    honcho: "honcho",
+    replit: "replit",
+    "claude code": "claudecode",
+    claudecode: "claudecode",
+    codex: "codex",
+    opencode: "opencode",
+    antigravity: "antigravity",
+    cursor: "cursor",
+    openclaw: "openclaw",
+    "hermes agent": "hermesagent",
+    hermesagent: "hermesagent",
+    temporal: "temporal",
   };
 
   const iconFolder = iconMap[name] || name;

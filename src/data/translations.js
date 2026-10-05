@@ -28,6 +28,13 @@ const translations = {
     linkedin: "www.linkedin.com/in/denis-latun-556090367",
     headhunter:
       "astana.hh.kz/resume/1c636390ff103c310a0039ed1f304c43507534?customDomain=1&overRideDomainAreaId=159",
+    personalDetails: [
+      { label: "Возраст", value: "24 года" },
+      { label: "Гражданство", value: "Казахстан" },
+      { label: "Разрешение на работу", value: "Казахстан, Россия" },
+      { label: "Удалённая работа", value: "Готов" },
+      { label: "Командировки", value: "Не готов" },
+    ],
 
     // Experience
     experienceTitle: "Опыт работы",
@@ -396,6 +403,13 @@ const translations = {
     linkedin: "www.linkedin.com/in/denis-latun-556090367",
     headhunter:
       "astana.hh.kz/resume/1c636390ff103c310a0039ed1f304c43507534?customDomain=1&overRideDomainAreaId=159",
+    personalDetails: [
+      { label: "Age", value: "24" },
+      { label: "Citizenship", value: "Kazakhstan" },
+      { label: "Work permit", value: "Kazakhstan, Russia" },
+      { label: "Remote work", value: "Available" },
+      { label: "Business travel", value: "Not available" },
+    ],
 
     // Experience
     experienceTitle: "Work Experience",

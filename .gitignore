@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# CocoIndex Code (ccc)
+/.cocoindex_code/
+# Claude Code (local skills, settings)
+/.claude/

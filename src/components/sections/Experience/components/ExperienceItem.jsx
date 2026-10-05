@@ -74,17 +74,17 @@ const ExperienceItem = ({
 
         {isLong && (
           <div
-            className={styles.expandableContent}
-            style={{
-              maxHeight: isExpanded ? "2000px" : "0px",
-              opacity: isExpanded ? 1 : 0,
-            }}
+            className={`${styles.expandableContent} ${
+              isExpanded ? styles.expanded : ""
+            }`}
           >
-            {sentences.slice(MAX_SENTENCES).map((sentence, sentenceIndex) => (
-              <div key={sentenceIndex} className={styles.sentence}>
-                {renderDescription(sentence, styles)}
-              </div>
-            ))}
+            <div className={styles.expandableInner}>
+              {sentences.slice(MAX_SENTENCES).map((sentence, sentenceIndex) => (
+                <div key={sentenceIndex} className={styles.sentence}>
+                  {renderDescription(sentence, styles)}
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>

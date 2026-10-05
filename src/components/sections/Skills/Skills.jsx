@@ -70,30 +70,30 @@ const Skills = ({
         {/* Скрытая часть */}
         {hasHiddenSkills && (
           <div
-            className={styles.expandableContent}
-            style={{
-              maxHeight: showAll ? "4000px" : "0px",
-              opacity: showAll ? 1 : 0,
-            }}
+            className={`${styles.expandableContent} ${
+              showAll ? styles.expanded : ""
+            }`}
           >
-            {skills.technical
-              .slice(INITIAL_VISIBLE_GROUPS)
-              .map((group, idx) => {
-                const groupIndex = idx + INITIAL_VISIBLE_GROUPS;
-                const isLast = groupIndex === skills.technical.length - 1;
-                return (
-                  <SkillGroup
-                    key={groupIndex}
-                    group={group}
-                    groupIndex={groupIndex}
-                    isLast={isLast}
-                    isMobile={isMobile}
-                    hoveredSkill={hoveredSkill}
-                    setHoveredSkill={setHoveredSkill}
-                    styles={styles}
-                  />
-                );
-              })}
+            <div className={styles.expandableInner}>
+              {skills.technical
+                .slice(INITIAL_VISIBLE_GROUPS)
+                .map((group, idx) => {
+                  const groupIndex = idx + INITIAL_VISIBLE_GROUPS;
+                  const isLast = groupIndex === skills.technical.length - 1;
+                  return (
+                    <SkillGroup
+                      key={groupIndex}
+                      group={group}
+                      groupIndex={groupIndex}
+                      isLast={isLast}
+                      isMobile={isMobile}
+                      hoveredSkill={hoveredSkill}
+                      setHoveredSkill={setHoveredSkill}
+                      styles={styles}
+                    />
+                  );
+                })}
+            </div>
           </div>
         )}
       </div>

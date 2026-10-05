@@ -36,20 +36,20 @@ const TechGroups = ({ techGroups, isExpanded, renderTechTag, styles }) => {
       </div>
 
       <div
-        className={styles.expandableTechContent}
-        style={{
-          maxHeight: isExpanded ? "2000px" : "0px",
-          opacity: isExpanded ? 1 : 0,
-        }}
+        className={`${styles.expandableTechContent} ${
+          isExpanded ? styles.expanded : ""
+        }`}
       >
-        {techGroups.slice(1).map((group, gIndex) => (
-          <div key={gIndex + 1} className={styles.techGroup}>
-            <div className={styles.techGroupLabel}>{group.label}</div>
-            <div className={styles.techList}>
-              {group.items.map((tech, tIndex) => renderTechTag(tech, tIndex))}
+        <div className={styles.expandableInner}>
+          {techGroups.slice(1).map((group, gIndex) => (
+            <div key={gIndex + 1} className={styles.techGroup}>
+              <div className={styles.techGroupLabel}>{group.label}</div>
+              <div className={styles.techList}>
+                {group.items.map((tech, tIndex) => renderTechTag(tech, tIndex))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </>
   );

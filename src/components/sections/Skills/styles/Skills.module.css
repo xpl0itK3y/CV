@@ -122,9 +122,25 @@
     }
 }
 
+/* Height animates through the grid track (0fr -> 1fr): no max-height guess,
+   so long content is never clipped and the speed doesn't depend on its height */
 .expandableContent {
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+        grid-template-rows var(--duration-expand) var(--ease-in-out),
+        opacity var(--duration-expand) ease;
+}
+
+.expanded {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.expandableInner {
     overflow: hidden;
+    min-height: 0;
 }
 
 .expandButton {

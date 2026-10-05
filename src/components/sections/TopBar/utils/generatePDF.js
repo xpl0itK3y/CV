@@ -31,20 +31,11 @@ const pageBreakBefore = (node) => {
   return (1 - verticalRatio) * pageInnerHeight < room;
 };
 
-// Name and email on every page, so a printed page still says whose it is
-const buildFooter = (translations) => (currentPage, pageCount) => ({
-  columns: [
-    {
-      width: "*",
-      text: [
-        translations.name,
-        { text: "  ·  ", color: "#d14b88" },
-        { text: translations.email, link: `mailto:${translations.email}` },
-      ],
-    },
-    { width: "auto", text: `${currentPage} / ${pageCount}` },
-  ],
+// Page number in the bottom right corner of every page
+const footer = (currentPage, pageCount) => ({
+  text: `${currentPage} / ${pageCount}`,
   style: "footer",
+  alignment: "right",
   margin: [40, 12, 40, 0],
 });
 
@@ -79,7 +70,7 @@ export const generateResumePDF = async (translations, lang) => {
     },
     styles: pdfStyles,
     content: generateContent(translations, lang, pdfLogo),
-    footer: buildFooter(translations),
+    footer,
     pageBreakBefore,
   };
 

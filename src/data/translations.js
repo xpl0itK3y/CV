@@ -26,11 +26,11 @@ const translations = {
 
     // Contacts
     contactsTitle: "Контакты",
-    email: "latundenis55@gmail.com",
+    email: "latundenis55@icloud.com",
     // phone: "",
     location: "Казахстан",
     github: "github.com/xpl0itK3y",
-    telegram: "@xpl0itK3y",
+    telegram: "@yubikorm",
     linkedin: "www.linkedin.com/in/denis-latun-556090367",
     headhunter:
       "astana.hh.kz/resume/1c636390ff103c310a0039ed1f304c43507534?customDomain=1&overRideDomainAreaId=159",
@@ -400,11 +400,11 @@ const translations = {
     ],
     // Contacts
     contactsTitle: "Contacts",
-    email: "latundenis55@gmail.com",
+    email: "latundenis55@icloud.com",
     //phone: "",
     location: "Kazakhstan",
     github: "github.com/xpl0itK3y",
-    telegram: "@xpl0itK3y",
+    telegram: "@yubikorm",
     linkedin: "www.linkedin.com/in/denis-latun-556090367",
     headhunter:
       "astana.hh.kz/resume/1c636390ff103c310a0039ed1f304c43507534?customDomain=1&overRideDomainAreaId=159",

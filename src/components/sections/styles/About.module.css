@@ -29,3 +29,36 @@
     margin: 0;
     text-wrap: pretty;
 }
+
+/* Age, citizenship and work format, styled like the skill tags */
+.facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.factDesktop,
+.factMobile {
+    background: linear-gradient(
+        180deg,
+        rgba(var(--block-accent-rgb), 0.12) 0%,
+        rgba(var(--block-accent-rgb), 0.05) 100%
+    );
+    border: 1px solid rgba(var(--block-accent-rgb), 0.16);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    color: #fff;
+}
+
+.factDesktop {
+    padding: 0.45rem 0.95rem;
+    font-size: 0.9rem;
+}
+
+.factMobile {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}

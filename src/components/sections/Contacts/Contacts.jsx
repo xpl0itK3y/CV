@@ -61,17 +61,6 @@ const Contacts = ({ title, contacts }) => {
           />
         )}
       </div>
-
-      {contacts.details?.length > 0 && (
-        <dl className={isMobile ? styles.detailsMobile : styles.detailsDesktop}>
-          {contacts.details.map(({ label, value }) => (
-            <div key={label} className={styles.detailItem}>
-              <dt className={styles.detailLabel}>{label}</dt>
-              <dd className={styles.detailValue}>{value}</dd>
-            </div>
-          ))}
-        </dl>
-      )}
     </GlassBlock>
   );
 };

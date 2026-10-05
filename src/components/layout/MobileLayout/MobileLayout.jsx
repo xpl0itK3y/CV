@@ -19,7 +19,7 @@ const MobileLayout = ({
     return (
         <div className={styles.mobileLayout}>
             <AnimatedSection delay={0.3}>
-                <About title={t.aboutTitle} about={t.aboutText} />
+                <About title={t.aboutTitle} about={t.aboutText} facts={t.aboutFacts} />
             </AnimatedSection>
 
             <AnimatedSection delay={0.36}>

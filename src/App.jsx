@@ -41,7 +41,6 @@ function App() {
     telegram: t.telegram,
     linkedin: t.linkedin,
     headhunter: t.headhunter,
-    details: t.personalDetails,
   };
 
   const skillsData = {

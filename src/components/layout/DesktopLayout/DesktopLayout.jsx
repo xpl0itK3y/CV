@@ -21,7 +21,7 @@ const DesktopLayout = ({
         <div className={styles.desktopGrid}>
             <div className={styles.leftColumn}>
                 <AnimatedSection delay={0.3}>
-                    <About title={t.aboutTitle} about={t.aboutText} />
+                    <About title={t.aboutTitle} about={t.aboutText} facts={t.aboutFacts} />
                 </AnimatedSection>
 
                 <AnimatedSection delay={0.42}>

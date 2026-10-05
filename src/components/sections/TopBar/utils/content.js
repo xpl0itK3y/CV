@@ -1,21 +1,6 @@
 import { splitDescription, renderTextWithLinks } from "./helpers";
 
 export const generateContent = (translations, lang, pdfLogo) => {
-  // Age, citizenship and work format sit under the contacts, two to a row:
-  // the third column starts too close to the page edge for values this long
-  const details = translations.personalDetails ?? [];
-  const detailRows = [];
-  for (let i = 0; i < details.length; i += 2) {
-    const row = details.slice(i, i + 2).map(({ label, value }) => ({
-      stack: [
-        { text: label, style: "contactLabel" },
-        { text: value, style: "contactValue" },
-      ],
-    }));
-    while (row.length < 3) row.push({ text: "" });
-    detailRows.push(row);
-  }
-
   return [
     // Заголовок "Резюме"
     pdfLogo
@@ -129,7 +114,6 @@ export const generateContent = (translations, lang, pdfLogo) => {
                 }
               : { text: "" },
           ],
-          ...detailRows,
         ],
       },
       layout: {
@@ -153,6 +137,10 @@ export const generateContent = (translations, lang, pdfLogo) => {
       style: "aboutText",
       margin: [0, -2, 0, 0],
     },
+    // Age, citizenship and work format in one line under the text
+    ...(translations.aboutFacts?.length
+      ? [{ text: translations.aboutFacts.join("  ·  "), style: "aboutFacts" }]
+      : []),
 
     // Образование
     {

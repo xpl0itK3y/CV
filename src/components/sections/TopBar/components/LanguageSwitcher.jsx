@@ -1,5 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "../styles/LanguageSwitcher.module.css";
+// Bundled (and inlined by Vite) so the bar needs no request to a flag CDN
+import ruFlag from "../../../../assets/flags/ru.svg";
+import usFlag from "../../../../assets/flags/us.svg";
 
 // Matches the 150ms dropdownHide animation plus a frame of slack
 const CLOSE_ANIMATION_MS = 160;
@@ -13,12 +16,12 @@ const LanguageSwitcher = ({ currentLang, onLanguageChange, onMenuToggle }) => {
     {
       code: "ru",
       label: "Русский",
-      flag: "https://flagcdn.com/ru.svg",
+      flag: ruFlag,
     },
     {
       code: "en",
       label: "English",
-      flag: "https://flagcdn.com/us.svg",
+      flag: usFlag,
     },
   ];
 

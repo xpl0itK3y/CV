@@ -453,3 +453,9 @@
     z-index: 5;
     animation: splashFly 0.6s ease-out forwards;
 }
+
+/* Set by usePauseWhenOffscreen while the element is scrolled out of view */
+[data-offscreen],
+[data-offscreen] * {
+    animation-play-state: paused !important;
+}

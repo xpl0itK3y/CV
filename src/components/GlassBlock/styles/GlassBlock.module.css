@@ -1,18 +1,12 @@
 .glassBlock {
     background: var(--block-surface-bg);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
     transition:
-        transform 1.35s ease-in-out 0.12s,
-        border-color 1.05s ease-in-out,
-        box-shadow 1.2s ease-out,
-        background 1.2s ease-in-out 0.12s,
-        backdrop-filter 1.2s ease-in-out 0.12s,
-        -webkit-backdrop-filter 1.2s ease-in-out 0.12s;
+        border-color var(--duration-hover) ease,
+        box-shadow var(--duration-hover) ease;
     position: relative;
     overflow: hidden;
-    will-change: transform, box-shadow, border-color;
-    transform-origin: center top;
 }
 
 .accentTop {
@@ -81,7 +75,7 @@
     box-shadow:
         0 0 28px var(--block-accent-glow),
         0 10px 24px rgba(0, 0, 0, 0.24),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .hovered {
@@ -91,8 +85,7 @@
     box-shadow:
         0 0 22px var(--block-accent-glow),
         0 10px 22px rgba(0, 0, 0, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    transform: translateY(-3px);
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .default {
@@ -100,13 +93,12 @@
     border: 1px solid
         color-mix(
             in srgb,
-            var(--block-accent-border) 45%,
-            rgba(255, 255, 255, 0.06)
+            var(--block-accent-border) 30%,
+            rgba(255, 255, 255, 0.08)
         );
     box-shadow:
         0 6px 18px rgba(0, 0, 0, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.03);
-    transform: translateY(0);
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .aiGradient {
@@ -120,7 +112,7 @@
     pointer-events: none;
     z-index: 0;
     opacity: 0;
-    transition: opacity 0.38s ease-out;
+    transition: opacity var(--duration-hover) ease;
 }
 
 .aiGradientVisible {
@@ -152,8 +144,8 @@
     filter: blur(18px);
     transform: scale(0.985);
     transition:
-        opacity 0.85s ease-in-out,
-        transform 1.05s ease-in-out;
+        opacity 300ms ease,
+        transform 300ms var(--ease-out);
 }
 
 .ambientGlowVisible {
@@ -171,40 +163,17 @@
     z-index: 1;
 }
 
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
+/* Materials: honour the OS accessibility settings */
+@media (prefers-reduced-transparency: reduce) {
+    .glassBlock {
+        background: rgb(22, 12, 18);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
     }
 }
 
-@keyframes glassReveal {
-    0% {
-        opacity: 0;
-        transform: translateY(38px) scale(0.965);
-        filter: blur(12px) saturate(0.9);
-        box-shadow:
-            0 0 0 rgba(0, 0, 0, 0),
-            inset 0 1px 0 rgba(255, 255, 255, 0);
-    }
-
-    58% {
-        opacity: 1;
-        transform: translateY(-4px) scale(1.008);
-        filter: blur(0) saturate(1.03);
-        box-shadow:
-            0 10px 28px rgba(0, 0, 0, 0.22),
-            inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0) saturate(1);
+@media (prefers-contrast: more) {
+    .glassBlock.default {
+        border-color: rgba(255, 255, 255, 0.32);
     }
 }

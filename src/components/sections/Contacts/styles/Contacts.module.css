@@ -3,7 +3,7 @@
     margin-top: 0;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
-    transition: color 0.35s ease;
+    transition: color var(--duration-hover) ease;
 }
 
 .titleMobile {
@@ -11,7 +11,7 @@
     margin-top: 0;
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
-    transition: color 0.35s ease;
+    transition: color var(--duration-hover) ease;
 }
 
 .gridDesktop {
@@ -36,12 +36,9 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    transition: opacity 0.2s;
+    transition: opacity var(--duration-press) ease;
 }
 
-.link:hover {
-    opacity: 0.8;
-}
 
 .linkBreakable {
     color: rgba(255, 255, 255, 0.9);
@@ -49,12 +46,21 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    transition: opacity 0.2s;
+    transition: opacity var(--duration-press) ease;
     word-break: break-all;
 }
 
-.linkBreakable:hover {
-    opacity: 0.8;
+@media (hover: hover) and (pointer: fine) {
+    .link:hover,
+    .linkBreakable:hover {
+        opacity: 0.8;
+    }
+}
+
+/* iOS-style dim on press, also gives touch users feedback */
+.link:active,
+.linkBreakable:active {
+    opacity: 0.6;
 }
 
 .contactItem {

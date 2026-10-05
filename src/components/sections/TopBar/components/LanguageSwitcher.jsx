@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "../styles/LanguageSwitcher.module.css";
 
-const CLOSE_ANIMATION_MS = 320;
+// Matches the 150ms dropdownHide animation plus a frame of slack
+const CLOSE_ANIMATION_MS = 160;
 
 const LanguageSwitcher = ({ currentLang, onLanguageChange, onMenuToggle }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const containerRef = useRef(null);
 
   const languages = [
     {
@@ -23,7 +25,7 @@ const LanguageSwitcher = ({ currentLang, onLanguageChange, onMenuToggle }) => {
   const currentLanguage = languages.find((lang) => lang.code === currentLang);
   const isDropdownVisible = isOpen || isClosing;
 
-  const closeDropdown = () => {
+  const closeDropdown = useCallback(() => {
     if (!isOpen) return;
     onMenuToggle?.();
     setIsClosing(true);
@@ -32,10 +34,30 @@ const LanguageSwitcher = ({ currentLang, onLanguageChange, onMenuToggle }) => {
     window.setTimeout(() => {
       setIsClosing(false);
     }, CLOSE_ANIMATION_MS);
-  };
+  }, [isOpen, onMenuToggle]);
+
+  // Close on a tap outside or Escape. A position: fixed overlay can't do this here:
+  // the top bar's transform and backdrop-filter trap fixed children inside the bar.
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handlePointerDown = (event) => {
+      if (!containerRef.current?.contains(event.target)) closeDropdown();
+    };
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") closeDropdown();
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, closeDropdown]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={containerRef}>
       <button
         onClick={() => {
           if (isOpen) {
@@ -73,44 +95,35 @@ const LanguageSwitcher = ({ currentLang, onLanguageChange, onMenuToggle }) => {
       </button>
 
       {isDropdownVisible && (
-        <>
-          <div
-            className={`${styles.overlay} ${
-              isClosing ? styles.overlayClosing : styles.overlayOpening
-            }`}
-            onClick={closeDropdown}
-          />
-
-          <div
-            className={`${styles.dropdown} ${
-              isClosing ? styles.dropdownClosing : styles.dropdownOpening
-            }`}
-          >
-            {languages.map((lang, index) => (
-              <button
-                key={lang.code}
-                onClick={() => {
-                  onMenuToggle?.();
-                  onLanguageChange(lang.code);
-                  closeDropdown();
-                }}
-                className={`${styles.optionButton} ${currentLang === lang.code ? styles.active : ""
-                  }`}
-                style={{ animationDelay: isClosing ? "0ms" : `${60 + index * 60}ms` }}
-              >
-                <img
-                  src={lang.flag}
-                  alt={lang.code}
-                  className={styles.optionFlag}
-                />
-                <span>{lang.label}</span>
-                {currentLang === lang.code && (
-                  <span className={styles.checkmark}>✓</span>
-                )}
-              </button>
-            ))}
-          </div>
-        </>
+        <div
+          className={`${styles.dropdown} ${
+            isClosing ? styles.dropdownClosing : styles.dropdownOpening
+          }`}
+        >
+          {languages.map((lang, index) => (
+            <button
+              key={lang.code}
+              onClick={() => {
+                onMenuToggle?.();
+                onLanguageChange(lang.code);
+                closeDropdown();
+              }}
+              className={`${styles.optionButton} ${currentLang === lang.code ? styles.active : ""
+                }`}
+              style={{ animationDelay: isClosing ? "0ms" : `${20 + index * 30}ms` }}
+            >
+              <img
+                src={lang.flag}
+                alt={lang.code}
+                className={styles.optionFlag}
+              />
+              <span>{lang.label}</span>
+              {currentLang === lang.code && (
+                <span className={styles.checkmark}>✓</span>
+              )}
+            </button>
+          ))}
+        </div>
       )}
     </div>
   );

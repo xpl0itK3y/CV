@@ -6,7 +6,6 @@ import styles from "./styles/GlassBlock.module.css";
  */
 const GlassBlock = ({
     children,
-    delay = 0,
     highlight = false,
     accent = "bottom",
     hoverVariant = "default",
@@ -36,7 +35,7 @@ const GlassBlock = ({
 
         if (highlight) {
             classNames += ` ${styles.highlight}`;
-        } else if (isHovered && !isMobile) {
+        } else if (isHovered) {
             classNames += ` ${styles.hovered}`;
         } else {
             classNames += ` ${styles.default}`;
@@ -47,21 +46,19 @@ const GlassBlock = ({
 
     return (
         <div
-            onMouseEnter={() => !isMobile && setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            // Hover only for a real mouse: touch taps must not leave a sticky hover state
+            onPointerEnter={(e) => e.pointerType === "mouse" && setIsHovered(true)}
+            onPointerLeave={() => setIsHovered(false)}
             className={getBlockStyles()}
-            style={{
-                animation: `glassReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s both`,
-            }}
         >
             <div
-                className={`${styles.aiGradient} ${highlight || (isHovered && !isMobile)
+                className={`${styles.aiGradient} ${highlight || isHovered
                     ? styles.aiGradientVisible
                     : styles.aiGradientHidden
                     }`}
             />
             <div
-                className={`${styles.ambientGlow} ${highlight || (isHovered && !isMobile)
+                className={`${styles.ambientGlow} ${highlight || isHovered
                     ? styles.ambientGlowVisible
                     : styles.ambientGlowHidden
                     }`}

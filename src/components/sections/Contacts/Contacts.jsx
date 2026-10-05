@@ -16,7 +16,7 @@ const Contacts = ({ title, contacts }) => {
   const isMobile = useIsMobile();
 
   return (
-    <GlassBlock delay={0.1} accent="top">
+    <GlassBlock accent="top">
       <h2 className={isMobile ? styles.titleMobile : styles.titleDesktop}>
         {title}
       </h2>

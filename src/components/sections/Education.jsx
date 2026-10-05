@@ -6,7 +6,7 @@ const Education = ({ title, education, accent = "bottom" }) => {
   const isMobile = useIsMobile();
 
   return (
-    <GlassBlock delay={0.6} accent={accent}>
+    <GlassBlock accent={accent}>
       <h2 className={isMobile ? styles.titleMobile : styles.titleDesktop}>
         {title}
       </h2>

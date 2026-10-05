@@ -3,7 +3,7 @@
     margin-top: 0;
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    transition: color 0.35s ease;
+    transition: color var(--duration-hover) ease;
 }
 
 .titleMobile {
@@ -11,7 +11,7 @@
     margin-top: 0;
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    transition: color 0.35s ease;
+    transition: color var(--duration-hover) ease;
 }
 
 .textDesktop {

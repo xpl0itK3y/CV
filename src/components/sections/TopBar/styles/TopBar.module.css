@@ -31,33 +31,30 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: slideDownTop 0.6s ease-out;
+    transition: transform 320ms var(--ease-out);
+    animation: slideDownTop var(--duration-enter) var(--ease-out);
     will-change: transform;
 }
 
 .glassBoxDesktop {
     padding: 1.25rem 2rem;
     background: var(--topbar-surface-bg);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
     border: 1px solid
         color-mix(
             in srgb,
-            var(--topbar-accent-border) 45%,
-            rgba(255, 255, 255, 0.06)
+            var(--topbar-accent-border) 30%,
+            rgba(255, 255, 255, 0.08)
         );
     border-top: none;
     border-radius: 0 0 20px 20px;
     box-shadow:
         0 6px 18px rgba(0, 0, 0, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
     transition:
-        border-color 0.42s ease-in-out,
-        box-shadow 0.48s ease-out,
-        background 0.55s ease-out,
-        backdrop-filter 1.2s ease-in-out 0.12s,
-        -webkit-backdrop-filter 1.2s ease-in-out 0.12s;
+        border-color var(--duration-hover) ease,
+        box-shadow var(--duration-hover) ease;
     position: relative;
     overflow: visible;
 }
@@ -65,25 +62,22 @@
 .glassBoxMobile {
     padding: 1rem 1rem;
     background: var(--topbar-surface-bg);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
     border: 1px solid
         color-mix(
             in srgb,
-            var(--topbar-accent-border) 45%,
-            rgba(255, 255, 255, 0.06)
+            var(--topbar-accent-border) 30%,
+            rgba(255, 255, 255, 0.08)
         );
     border-top: none;
     border-radius: 0 0 20px 20px;
     box-shadow:
         0 6px 18px rgba(0, 0, 0, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
     transition:
-        border-color 0.42s ease-in-out,
-        box-shadow 0.48s ease-out,
-        background 0.55s ease-out,
-        backdrop-filter 1.2s ease-in-out 0.12s,
-        -webkit-backdrop-filter 1.2s ease-in-out 0.12s;
+        border-color var(--duration-hover) ease,
+        box-shadow var(--duration-hover) ease;
     position: relative;
     overflow: visible;
 }
@@ -92,12 +86,12 @@
     --topbar-title-color: var(--topbar-title-color-base);
     border-color: color-mix(
         in srgb,
-        var(--topbar-accent-border) 45%,
-        rgba(255, 255, 255, 0.06)
+        var(--topbar-accent-border) 30%,
+        rgba(255, 255, 255, 0.08)
     );
     box-shadow:
         0 6px 18px rgba(0, 0, 0, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .hovered {
@@ -125,8 +119,8 @@
     opacity: 0;
     transform: translateX(-18px);
     transition:
-        opacity 0.32s ease-out,
-        transform 0.36s ease-out;
+        opacity var(--duration-hover) ease,
+        transform 300ms var(--ease-out);
 }
 
 .gradientOverlayVisible {
@@ -154,8 +148,8 @@
     filter: blur(18px);
     transform: scale(0.985);
     transition:
-        opacity 0.7s ease-in-out,
-        transform 0.8s ease-in-out;
+        opacity 300ms ease,
+        transform 300ms var(--ease-out);
 }
 
 .ambientGlowVisible {
@@ -199,7 +193,7 @@
 
 .logoText {
     color: var(--topbar-title-color, #ffffff);
-    transition: color 0.35s ease;
+    transition: color var(--duration-hover) ease;
 }
 
 .actionsDesktop {
@@ -224,8 +218,8 @@
     border: 1px solid
         color-mix(
             in srgb,
-            var(--topbar-accent-border) 45%,
-            rgba(255, 255, 255, 0.06)
+            var(--topbar-accent-border) 30%,
+            rgba(255, 255, 255, 0.08)
         );
     border-radius: 20px;
     padding: 0.65rem 1.25rem;
@@ -238,10 +232,9 @@
     gap: 0.5rem;
     white-space: nowrap;
     transition:
-        transform 1.35s ease-in-out 0.12s,
-        box-shadow 1.35s ease-out,
-        background 1.2s ease-in-out 0.12s,
-        border-color 1.05s ease-in-out;
+        transform var(--duration-press) var(--ease-out),
+        box-shadow var(--duration-hover) ease,
+        border-color var(--duration-hover) ease;
     box-shadow: var(--topbar-default-shadow);
 }
 
@@ -255,8 +248,8 @@
     border: 1px solid
         color-mix(
             in srgb,
-            var(--topbar-accent-border) 45%,
-            rgba(255, 255, 255, 0.06)
+            var(--topbar-accent-border) 30%,
+            rgba(255, 255, 255, 0.08)
         );
     border-radius: 16px;
     padding: 0.6rem 0.9rem;
@@ -269,27 +262,42 @@
     gap: 0.5rem;
     white-space: nowrap;
     transition:
-        transform 1.35s ease-in-out 0.12s,
-        box-shadow 1.35s ease-out,
-        background 1.2s ease-in-out 0.12s,
-        border-color 1.05s ease-in-out;
+        transform var(--duration-press) var(--ease-out),
+        box-shadow var(--duration-hover) ease,
+        border-color var(--duration-hover) ease;
     box-shadow: var(--topbar-default-shadow);
 }
 
-.downloadButtonDesktop:hover,
-.downloadButtonMobile:hover {
-    background: linear-gradient(
-        180deg,
-        rgba(56, 12, 32, 0.64) 0%,
-        rgba(34, 12, 24, 0.52) 54%,
-        rgba(20, 10, 18, 0.44) 100%
-    );
-    transform: translateY(0);
-    border-color: var(--topbar-accent-border);
-    box-shadow:
-        0 0 8px rgba(230, 60, 134, 0.08),
-        0 6px 18px rgba(0, 0, 0, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+@media (hover: hover) and (pointer: fine) {
+    .downloadButtonDesktop:hover,
+    .downloadButtonMobile:hover {
+        background: linear-gradient(
+            180deg,
+            rgba(56, 12, 32, 0.64) 0%,
+            rgba(34, 12, 24, 0.52) 54%,
+            rgba(20, 10, 18, 0.44) 100%
+        );
+        border-color: var(--topbar-accent-border);
+        box-shadow:
+            0 0 8px rgba(230, 60, 134, 0.08),
+            0 6px 18px rgba(0, 0, 0, 0.22),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Instant press feedback */
+.downloadButtonDesktop:active,
+.downloadButtonMobile:active {
+    transform: scale(0.97);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+    .glassBoxDesktop,
+    .glassBoxMobile {
+        background: rgb(26, 10, 19);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
 }
 
 @keyframes slideDownTop {

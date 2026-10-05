@@ -17,7 +17,7 @@
     margin-top: 0;
     font-size: 1.5rem;
     margin-bottom: 0;
-    transition: color 0.35s ease;
+    transition: color var(--duration-hover) ease;
 }
 
 .titleMobile {
@@ -25,7 +25,7 @@
     margin-top: 0;
     font-size: 1.3rem;
     margin-bottom: 0;
-    transition: color 0.35s ease;
+    transition: color var(--duration-hover) ease;
 }
 
 .badgeDesktop {
@@ -50,10 +50,10 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.05),
         0 0 12px rgba(var(--block-accent-rgb), 0.06);
     transition:
-        color 0.35s ease,
-        border-color 0.35s ease,
-        background 0.35s ease,
-        box-shadow 0.35s ease;
+        color var(--duration-hover) ease,
+        border-color var(--duration-hover) ease,
+        background var(--duration-hover) ease,
+        box-shadow var(--duration-hover) ease;
 }
 
 .badgeMobile {
@@ -78,10 +78,10 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.05),
         0 0 10px rgba(var(--block-accent-rgb), 0.06);
     transition:
-        color 0.35s ease,
-        border-color 0.35s ease,
-        background 0.35s ease,
-        box-shadow 0.35s ease;
+        color var(--duration-hover) ease,
+        border-color var(--duration-hover) ease,
+        background var(--duration-hover) ease,
+        box-shadow var(--duration-hover) ease;
 }
 
 .jobContainer {
@@ -131,7 +131,7 @@
     font-size: 1.3rem;
     font-weight: 700;
     text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
-    transition: color 0.35s ease;
+    transition: color var(--duration-hover) ease;
 }
 
 .positionMobile {
@@ -140,7 +140,7 @@
     font-size: 1.15rem;
     font-weight: 700;
     text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
-    transition: color 0.35s ease;
+    transition: color var(--duration-hover) ease;
 }
 
 .metaDesktop {
@@ -178,9 +178,9 @@
     border: 1px solid rgba(var(--block-accent-rgb), 0.28);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
     transition:
-        color 0.35s ease,
-        border-color 0.35s ease,
-        background 0.35s ease;
+        color var(--duration-hover) ease,
+        border-color var(--duration-hover) ease,
+        background var(--duration-hover) ease;
 }
 
 .separator {
@@ -231,16 +231,24 @@
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    transition: color 0.35s ease;
+    transition:
+        color var(--duration-hover) ease,
+        transform var(--duration-press) var(--ease-out);
     text-shadow: 0 0 10px rgba(var(--block-accent-rgb), 0.22);
 }
 
-.expandButton:hover {
-    color: #fff;
+@media (hover: hover) and (pointer: fine) {
+    .expandButton:hover {
+        color: #fff;
+    }
+}
+
+.expandButton:active {
+    transform: scale(0.97);
 }
 
 .arrow {
-    transition: transform 0.3s ease;
+    transition: transform var(--duration-popover) var(--ease-out);
     display: inline-block;
 }
 
@@ -278,7 +286,7 @@
     display: flex;
     align-items: center;
     text-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
-    transition: color 0.35s ease;
+    transition: color var(--duration-hover) ease;
 }
 
 .techTitleMobile {
@@ -289,7 +297,7 @@
     display: flex;
     align-items: center;
     text-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
-    transition: color 0.35s ease;
+    transition: color var(--duration-hover) ease;
 }
 
 .techContainer {
@@ -333,17 +341,9 @@
     font-size: 0.95rem;
     font-weight: 500;
     cursor: default;
-    transition: all 0.2s ease;
-}
-
-.techTagDesktop:hover {
-    border-color: rgba(var(--block-accent-rgb), 0.62);
-    background: linear-gradient(
-        180deg,
-        rgba(var(--block-accent-rgb), 0.16) 0%,
-        rgba(var(--block-accent-rgb), 0.08) 100%
-    );
-    color: #fff;
+    transition:
+        border-color var(--duration-hover) ease,
+        color var(--duration-hover) ease;
 }
 
 .techTagMobile {
@@ -359,17 +359,22 @@
     font-size: 0.85rem;
     font-weight: 500;
     cursor: default;
-    transition: all 0.2s ease;
+    transition:
+        border-color var(--duration-hover) ease,
+        color var(--duration-hover) ease;
 }
 
-.techTagMobile:hover {
-    border-color: rgba(var(--block-accent-rgb), 0.62);
-    background: linear-gradient(
-        180deg,
-        rgba(var(--block-accent-rgb), 0.16) 0%,
-        rgba(var(--block-accent-rgb), 0.08) 100%
-    );
-    color: #fff;
+@media (hover: hover) and (pointer: fine) {
+    .techTagDesktop:hover,
+    .techTagMobile:hover {
+        border-color: rgba(var(--block-accent-rgb), 0.62);
+        background: linear-gradient(
+            180deg,
+            rgba(var(--block-accent-rgb), 0.16) 0%,
+            rgba(var(--block-accent-rgb), 0.08) 100%
+        );
+        color: #fff;
+    }
 }
 
 .techGroupContent {
@@ -392,7 +397,7 @@
     text-shadow: 0 0 12px rgba(102, 126, 234, 0.6);
     display: inline-block;
     margin-bottom: 0.2rem;
-    transition: color 0.35s ease;
+    transition: color var(--duration-hover) ease;
 }
 
 .jobLink {
@@ -401,15 +406,17 @@
     border-bottom: 1px solid rgba(var(--block-accent-rgb), 0.3);
     text-shadow: 0 0 10px rgba(var(--block-accent-rgb), 0.18);
     transition:
-        color 0.25s ease,
-        border-color 0.25s ease,
-        text-shadow 0.25s ease;
+        color var(--duration-hover) ease,
+        border-color var(--duration-hover) ease,
+        text-shadow var(--duration-hover) ease;
 }
 
-.jobLink:hover {
-    color: #fff;
-    border-bottom-color: rgba(var(--block-accent-rgb), 0.62);
-    text-shadow: 0 0 12px rgba(var(--block-accent-rgb), 0.28);
+@media (hover: hover) and (pointer: fine) {
+    .jobLink:hover {
+        color: #fff;
+        border-bottom-color: rgba(var(--block-accent-rgb), 0.62);
+        text-shadow: 0 0 12px rgba(var(--block-accent-rgb), 0.28);
+    }
 }
 
 @media (max-width: 768px) {

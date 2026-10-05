@@ -53,7 +53,8 @@
         color var(--duration-hover) ease,
         border-color var(--duration-hover) ease,
         background var(--duration-hover) ease,
-        box-shadow var(--duration-hover) ease;
+        box-shadow var(--duration-hover) ease,
+        transform var(--duration-hover) var(--ease-out);
 }
 
 .badgeMobile {
@@ -123,6 +124,7 @@
     box-shadow:
         0 0 15px rgba(var(--block-accent-rgb), 0.7),
         inset 0 0 5px rgba(255, 255, 255, 0.3);
+    transition: transform var(--duration-hover) var(--ease-out);
 }
 
 .positionDesktop {
@@ -291,6 +293,7 @@
         0 0 15px rgba(var(--block-accent-rgb), 0.7),
         inset 0 0 5px rgba(255, 255, 255, 0.3);
     z-index: 2;
+    transition: transform var(--duration-hover) var(--ease-out);
 }
 
 .techTitleDesktop {
@@ -356,7 +359,8 @@
     cursor: default;
     transition:
         border-color var(--duration-hover) ease,
-        color var(--duration-hover) ease;
+        color var(--duration-hover) ease,
+        transform var(--duration-hover) var(--ease-out);
 }
 
 .techTagMobile {
@@ -374,7 +378,8 @@
     cursor: default;
     transition:
         border-color var(--duration-hover) ease,
-        color var(--duration-hover) ease;
+        color var(--duration-hover) ease,
+        transform var(--duration-hover) var(--ease-out);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -387,6 +392,7 @@
             rgba(var(--block-accent-rgb), 0.08) 100%
         );
         color: #fff;
+        transform: translateY(-2px);
     }
 }
 
@@ -426,6 +432,19 @@
         color: #fff;
         border-bottom-color: rgba(var(--block-accent-rgb), 0.62);
         text-shadow: 0 0 12px rgba(var(--block-accent-rgb), 0.28);
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .badgeDesktop:hover,
+    .badgeMobile:hover {
+        transform: rotate(-3deg) scale(1.04);
+    }
+
+    /* The dot of the part being pointed at grows: job, then its stack */
+    .jobContainer:hover .timelineDot,
+    .techSection:hover .techDot {
+        transform: scale(1.3);
     }
 }
 

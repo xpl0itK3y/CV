@@ -50,10 +50,20 @@
     word-break: break-all;
 }
 
+.link svg,
+.linkBreakable svg {
+    transition: transform var(--duration-hover) var(--ease-out);
+}
+
 @media (hover: hover) and (pointer: fine) {
     .link:hover,
     .linkBreakable:hover {
         opacity: 0.8;
+    }
+
+    .link:hover svg,
+    .linkBreakable:hover svg {
+        transform: rotate(-10deg) scale(1.12);
     }
 }
 

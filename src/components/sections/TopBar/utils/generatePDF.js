@@ -16,6 +16,9 @@ const loadPdfLogo = async () => {
   }
 };
 
+// Warms up the fonts chunk so the first download doesn't wait for it
+export const preloadResumePDF = loadFonts;
+
 /**
  * Генерирует PDF резюме из данных переводов
  * @param {Object} translations - Данные переводов для текущего языка

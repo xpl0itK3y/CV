@@ -344,7 +344,7 @@ export const generateContent = (translations, lang, pdfLogo) => {
 
           // 2. Описание и проекты (обёрнуты в таблицу с вертикальной линией)
           const descriptionRows = [];
-          descriptionChunks.forEach((sentence, sIdx) => {
+          descriptionChunks.forEach((sentence) => {
             const projectTitleMatch = sentence.match(/^(\d+\)\s+[^.]+)/);
             if (projectTitleMatch) {
               // Это заголовок проекта
@@ -566,11 +566,11 @@ export const generateContent = (translations, lang, pdfLogo) => {
       layout: {
         vLineWidth: (i) => (i === 0 ? 1.5 : 0), // Линия СЛЕВА (i=0)
         vLineColor: (i) => (i === 0 ? "#d14b88" : "white"),
-        hLineWidth: (i) => 0,
-        paddingLeft: (i) => 0,
-        paddingRight: (i) => 0,
-        paddingTop: (i, node) => 0,
-        paddingBottom: (i, node) => 0,
+        hLineWidth: () => 0,
+        paddingLeft: () => 0,
+        paddingRight: () => 0,
+        paddingTop: () => 0,
+        paddingBottom: () => 0,
       },
     },
   ];

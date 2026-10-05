@@ -24,7 +24,7 @@ export const loadFonts = async () => {
         }
 
         fontsLoaded = true;
-    } catch (e) {
+    } catch {
         try {
             const pdfFonts2 = await import("pdfmake/build/vfs_fonts");
             if (pdfFonts2.default?.pdfMake?.vfs) {

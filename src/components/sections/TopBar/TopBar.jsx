@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import { useIsMobile } from "../../../hooks/useIsMobile";
 import { useTopBarVisibility } from "./hooks/useTopBarVisibility";
@@ -8,7 +8,8 @@ import styles from "./styles/TopBar.module.css";
 
 const TopBar = ({ currentLang, onLanguageChange, translations }) => {
   const isMobile = useIsMobile();
-  const isVisible = useTopBarVisibility(isMobile);
+  const containerRef = useRef(null);
+  const isVisible = useTopBarVisibility(containerRef);
   const [isHovered, setIsHovered] = useState(false);
 
   const handleLanguageChange = (lang) => {
@@ -27,6 +28,7 @@ const TopBar = ({ currentLang, onLanguageChange, translations }) => {
 
   return (
     <div
+      ref={containerRef}
       className={styles.container}
       style={{
         transform: isVisible ? "translateY(0)" : "translateY(-100%)",

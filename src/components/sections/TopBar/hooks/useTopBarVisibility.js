@@ -1,40 +1,40 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
-export const useTopBarVisibility = (isMobile) => {
+// The bar is shown only while the header crystals are below it: it slides away
+// once they scroll up to its bottom edge and returns when they come back down,
+// so it never covers the CV while it's being read.
+export const useTopBarVisibility = (barRef) => {
   const [isVisible, setIsVisible] = useState(true);
-  // A ref, not state: the scroll listener shouldn't be re-attached every frame
-  const lastScrollY = useRef(0);
 
   useEffect(() => {
+    const anchor = document.querySelector("[data-topbar-anchor]");
+    if (!anchor) return;
+
     let ticking = false;
 
-    const handleScroll = () => {
+    const update = () => {
+      // offsetHeight ignores the translateY used to hide the bar
+      const barBottom = barRef.current?.offsetHeight ?? 0;
+      setIsVisible(anchor.getBoundingClientRect().top >= barBottom);
+      ticking = false;
+    };
+
+    const scheduleUpdate = () => {
       if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
-          const scrollDifference = currentScrollY - lastScrollY.current;
-          const headerHeight = isMobile ? 220 : 300;
-          const scrollThreshold = 5;
-
-          if (currentScrollY <= headerHeight) {
-            setIsVisible(true);
-          } else if (scrollDifference > scrollThreshold) {
-            setIsVisible(false);
-          } else if (scrollDifference < -scrollThreshold) {
-            // Scrolling back up anywhere brings the bar back, like Safari's toolbar
-            setIsVisible(true);
-          }
-
-          lastScrollY.current = currentScrollY;
-          ticking = false;
-        });
+        window.requestAnimationFrame(update);
         ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMobile]);
+    // Also covers a page restored mid-scroll on reload
+    scheduleUpdate();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+    };
+  }, [barRef]);
 
   return isVisible;
 };

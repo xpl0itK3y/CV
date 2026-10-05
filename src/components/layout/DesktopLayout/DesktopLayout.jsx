@@ -20,11 +20,11 @@ const DesktopLayout = ({
     return (
         <div className={styles.desktopGrid}>
             <div className={styles.leftColumn}>
-                <AnimatedSection delay={0.2}>
+                <AnimatedSection delay={0.3}>
                     <About title={t.aboutTitle} about={t.aboutText} />
                 </AnimatedSection>
 
-                <AnimatedSection delay={0.5}>
+                <AnimatedSection delay={0.42}>
                     <Experience
                         title={t.experienceTitle}
                         experience={firstExperience}
@@ -33,18 +33,18 @@ const DesktopLayout = ({
                 </AnimatedSection>
 
                 {leftColumn.map((job, index) => (
-                    <AnimatedSection key={`left-${index}`} delay={0.8 + index * 0.1}>
+                    <AnimatedSection key={`left-${index}`} delay={0.6 + index * 0.06}>
                         <Experience title="" experience={[job]} {...experienceProps} />
                     </AnimatedSection>
                 ))}
             </div>
 
             <div className={styles.rightColumn}>
-                <AnimatedSection delay={0.4}>
+                <AnimatedSection delay={0.36}>
                     <Contacts title={t.contactsTitle} contacts={contactsData} />
                 </AnimatedSection>
 
-                <AnimatedSection delay={0.6}>
+                <AnimatedSection delay={0.48}>
                     <Skills
                         skillsTitle={t.skillsTitle}
                         softSkillsTitle={t.softSkillsTitle}
@@ -56,12 +56,12 @@ const DesktopLayout = ({
                     />
                 </AnimatedSection>
 
-                <AnimatedSection delay={0.7}>
+                <AnimatedSection delay={0.54}>
                     <Education title={t.educationTitle} education={t.education} />
                 </AnimatedSection>
 
                 {rightColumn.map((job, index) => (
-                    <AnimatedSection key={`right-${index}`} delay={0.8 + index * 0.1}>
+                    <AnimatedSection key={`right-${index}`} delay={0.6 + index * 0.06}>
                         <Experience title="" experience={[job]} {...experienceProps} />
                     </AnimatedSection>
                 ))}

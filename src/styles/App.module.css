@@ -34,13 +34,11 @@
 }
 
 .leftColumn {
-    animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
     display: flex;
     flex-direction: column;
 }
 
 .rightColumn {
-    animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
     display: flex;
     flex-direction: column;
 }

@@ -378,6 +378,9 @@
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        /* Without this, staggered sections stay invisible until their delay runs out */
+        animation-delay: 0ms !important;
+        transition-delay: 0ms !important;
     }
 }
 

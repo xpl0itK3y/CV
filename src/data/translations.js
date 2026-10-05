@@ -31,7 +31,6 @@ const translations = {
     personalDetails: [
       { label: "Возраст", value: "24 года" },
       { label: "Гражданство", value: "Казахстан" },
-      { label: "Разрешение на работу", value: "Казахстан, Россия" },
       { label: "Удалённая работа", value: "Готов" },
       { label: "Командировки", value: "Не готов" },
     ],
@@ -406,7 +405,6 @@ const translations = {
     personalDetails: [
       { label: "Age", value: "24" },
       { label: "Citizenship", value: "Kazakhstan" },
-      { label: "Work permit", value: "Kazakhstan, Russia" },
       { label: "Remote work", value: "Available" },
       { label: "Business travel", value: "Not available" },
     ],

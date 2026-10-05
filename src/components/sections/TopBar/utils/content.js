@@ -1,16 +1,177 @@
 import { splitDescription, renderTextWithLinks } from "./helpers";
 
-// Label/value grids without borders: contacts and the personal details
-const plainTableLayout = {
+// A4 minus the 40pt side margins
+const CONTENT_WIDTH = 515;
+const COLUMN_GAP = 20;
+const HALF_WIDTH = (CONTENT_WIDTH - COLUMN_GAP) / 2;
+
+const ACCENT = "#d14b88";
+const TEAL = "#4b8f97";
+const HAIRLINE = "#ecd5e0";
+const TILE = "#fbf1f6";
+
+// The experience timeline: a gutter with the rule on its left edge
+const TIMELINE_GUTTER = 15;
+const TIMELINE_RULE = 1.5;
+const TIMELINE_TEXT_WIDTH = CONTENT_WIDTH - TIMELINE_GUTTER - TIMELINE_RULE;
+// From the text column back onto the rule
+const TIMELINE_DOT_X = -TIMELINE_GUTTER - 0.75;
+
+// One table per job: the rule on the left edge, the text in the second
+// column. Stacked tables join into one continuous timeline
+const timelineLayout = {
+  vLineWidth: (i) => (i === 0 ? TIMELINE_RULE : 0),
+  vLineColor: () => ACCENT,
+  hLineWidth: () => 0,
+  paddingLeft: () => 0,
+  paddingRight: () => 0,
+  paddingTop: () => 0,
+  paddingBottom: () => 0,
+};
+
+// Label/value grid without borders for the contacts
+const contactsTableLayout = {
   hLineWidth: () => 0,
   vLineWidth: () => 0,
   paddingLeft: () => 0,
   paddingRight: () => 0,
   paddingTop: () => 0,
-  paddingBottom: () => 2,
+  paddingBottom: () => 7,
 };
 
+// A soft tile with an accent edge, like the facts on the site
+const factTileLayout = {
+  hLineWidth: () => 0,
+  vLineWidth: (i) => (i === 0 ? 2 : 0),
+  vLineColor: () => ACCENT,
+  paddingLeft: () => 8,
+  paddingRight: () => 6,
+  paddingTop: () => 5,
+  paddingBottom: () => 5,
+};
+
+// "2020 - 2024" → "2020 – 2024": a real en dash that stays on the line of
+// the word before it
+const withEnDash = (text) => text.replace(/\s+-\s+/g, " – ");
+
+// Section titles in the data may still start with an emoji
+const titleText = (title) => title.replace(/^[^\p{L}\p{N}]+/u, "").toUpperCase();
+
+// Items separated by accent bullets; the bullet sticks to the item before
+// it, so a wrapped line never starts with one
+const bulletList = (items) =>
+  items.flatMap((item, index) =>
+    index === 0 ? [item] : [{ text: " • ", color: ACCENT }, item],
+  );
+
+// Tracked uppercase title over a hairline with a short accent bar.
+// headlineLevel 1 keeps it with the content below (see generatePDF)
+const sectionTitle = (
+  text,
+  { width = CONTENT_WIDTH, aside, keepWithNext = true, margin = [0, 16, 0, 8] } = {},
+) => ({
+  stack: [
+    aside
+      ? {
+          columns: [
+            { width: "*", text, style: "sectionTitle" },
+            { width: "auto", text: aside, style: "sectionAside" },
+          ],
+        }
+      : { text, style: "sectionTitle" },
+    {
+      canvas: [
+        {
+          type: "line",
+          x1: 0,
+          y1: 0,
+          x2: width,
+          y2: 0,
+          lineWidth: 0.75,
+          lineColor: HAIRLINE,
+        },
+        {
+          type: "line",
+          x1: 0,
+          y1: 0,
+          x2: 28,
+          y2: 0,
+          lineWidth: 2,
+          lineColor: ACCENT,
+        },
+      ],
+      margin: [0, 3, 0, 0],
+    },
+  ],
+  headlineLevel: keepWithNext ? 1 : undefined,
+  margin,
+});
+
+const labelled = (label, value) => ({
+  stack: [
+    { text: label.toUpperCase(), style: "contactLabel" },
+    typeof value === "string" ? { text: value, style: "contactValue" } : value,
+  ],
+});
+
+// Drawn from inside the text cell, so the dot always lands on the same page
+// as the line it marks; detached, so it takes no room
+const timelineDot = (y) => ({
+  canvas: [{ type: "ellipse", x: 0, y: 0, r1: 3, r2: 3, color: ACCENT }],
+  relativePosition: { x: TIMELINE_DOT_X, y },
+});
+
+const descriptionBullet = (text) => ({
+  unbreakable: true,
+  columns: [
+    {
+      width: 8,
+      canvas: [
+        {
+          type: "ellipse",
+          x: -8.5,
+          y: 7,
+          r1: 2,
+          r2: 2,
+          color: TEAL,
+        },
+      ],
+      margin: [0, 1, 0, 1],
+    },
+    {
+      width: "*",
+      ...renderTextWithLinks(text, { style: "jobDescription" }),
+      margin: [2.5, 1, 0, 1],
+    },
+  ],
+  columnGap: 4,
+});
+
+const descriptionLine = (sentence) => {
+  const isDashed = sentence.trim().startsWith("-");
+  if (isDashed) {
+    return descriptionBullet(sentence.trim().replace(/^-\s*/, ""));
+  }
+  return {
+    ...renderTextWithLinks(sentence, { style: "jobDescription" }),
+    margin: [0, 1, 0, 1],
+  };
+};
+
+const skillGroup = (group, index) => ({
+  stack: [
+    { text: group.category, style: "skillHeader" },
+    { text: group.items.map((s) => s.name).join(", "), style: "skillText" },
+  ],
+  unbreakable: true,
+  margin: [0, index === 0 ? 0 : 7, 0, 0],
+});
+
 export const generateContent = (translations, lang, pdfLogo) => {
+  const half = Math.ceil(translations.technicalSkills.length / 2);
+  const stackTitle =
+    translations.stackTitle || (lang === "ru" ? "Стек технологий" : "Tech Stack");
+
   return [
     // Заголовок "Резюме"
     pdfLogo
@@ -22,7 +183,7 @@ export const generateContent = (translations, lang, pdfLogo) => {
           margin: [0, 0, 0, 12],
         }
       : {
-          text: lang === "ru" ? "CV" : "CV",
+          text: "CV",
           style: "resumeTitle",
         },
 
@@ -36,579 +197,348 @@ export const generateContent = (translations, lang, pdfLogo) => {
       style: "headerTitle",
     },
 
-    // Разделитель
+    // Разделитель: из акцентного в бирюзовый, как на сайте
     {
       canvas: [
         {
-          type: "line",
-          x1: 0,
-          y1: 0,
-          x2: 495,
-          y2: 0,
-          lineWidth: 2,
-          lineColor: "#d14b88",
+          type: "rect",
+          x: 0,
+          y: 0,
+          w: CONTENT_WIDTH,
+          h: 2,
+          r: 1,
+          linearGradient: [ACCENT, TEAL],
         },
       ],
       margin: [0, 8, 0, 0],
     },
 
     // Контакты
-    {
-      text: translations.contactsTitle.replace(/📬\s*/, "").toUpperCase(),
-      style: "sectionTitle",
-    },
+    sectionTitle(titleText(translations.contactsTitle)),
     {
       table: {
-        widths: ["44%", "44%", "44%"],
+        widths: ["*", "*", "*"],
         body: [
           [
-            {
-              stack: [
-                { text: "Email", style: "contactLabel" },
-                { text: translations.email, style: "contactValue" },
-              ],
-            },
-            {
-              stack: [
-                {
-                  text: lang === "ru" ? "Местоположение" : "Location",
-                  style: "contactLabel",
-                },
-                { text: translations.location, style: "contactValue" },
-              ],
-            },
-            {
-              stack: [
-                { text: "GitHub", style: "contactLabel" },
-                {
-                  text: translations.github.replace(/github\.com\//, ""),
-                  style: "contactValue",
-                  link: `https://${translations.github}`,
-                },
-              ],
-            },
+            labelled("Email", {
+              text: translations.email,
+              style: "contactValue",
+              link: `mailto:${translations.email}`,
+            }),
+            labelled(
+              lang === "ru" ? "Местоположение" : "Location",
+              translations.location,
+            ),
+            labelled("GitHub", {
+              text: translations.github.replace(/github\.com\//, ""),
+              style: "contactValue",
+              link: `https://${translations.github}`,
+            }),
           ],
           [
-            {
-              stack: [
-                { text: "Telegram", style: "contactLabel" },
-                {
-                  text: translations.telegram,
-                  style: "contactValue",
-                  link: `https://t.me/${translations.telegram.replace("@", "")}`,
-                },
-              ],
-            },
+            labelled("Telegram", {
+              text: translations.telegram,
+              style: "contactValue",
+              link: `https://t.me/${translations.telegram.replace("@", "")}`,
+            }),
             translations.linkedin
-              ? {
-                  stack: [
-                    { text: "LinkedIn", style: "contactLabel" },
-                    {
-                      text: "linkedin.com/in/CV",
-                      style: "contactValue",
-                      link: `https://${translations.linkedin}`,
-                    },
-                  ],
-                }
+              ? labelled("LinkedIn", {
+                  text: "linkedin.com/in/CV",
+                  style: "contactValue",
+                  link: `https://${translations.linkedin}`,
+                })
               : { text: "" },
             translations.headhunter
-              ? {
-                  stack: [
-                    { text: "HeadHunter", style: "contactLabel" },
-                    {
-                      text: "hh.kz/CV",
-                      style: "contactValue",
-                      link: `https://${translations.headhunter}`,
-                    },
-                  ],
-                }
+              ? labelled("HeadHunter", {
+                  text: "hh.kz/CV",
+                  style: "contactValue",
+                  link: `https://${translations.headhunter}`,
+                })
               : { text: "" },
           ],
         ],
       },
-      layout: plainTableLayout,
-      margin: [0, -2, 0, 0],
+      layout: contactsTableLayout,
     },
 
     // О себе
-    {
-      text: translations.aboutTitle.replace(/👤\s*/, "").toUpperCase(),
-      style: "sectionTitle",
-    },
+    sectionTitle(titleText(translations.aboutTitle), { margin: [0, 9, 0, 8] }),
     {
       text: translations.aboutText,
       style: "aboutText",
-      margin: [0, -2, 0, 0],
     },
-    // Age, citizenship and work format: a hairline sets them apart from the
-    // text, then one labelled column each, like the contacts
+    // Age, citizenship and work format: a labelled tile each
     ...(translations.aboutFacts?.length
       ? [
           {
-            canvas: [
-              {
-                type: "line",
-                x1: 0,
-                y1: 0,
-                x2: 515,
-                y2: 0,
-                lineWidth: 0.75,
-                lineColor: "#e2c3d1",
+            columns: translations.aboutFacts.map(({ label, value }) => ({
+              width: "*",
+              table: {
+                widths: ["*"],
+                body: [[{ ...labelled(label, value), fillColor: TILE }]],
               },
-            ],
-            margin: [0, 2, 0, 8],
-          },
-          {
-            table: {
-              widths: translations.aboutFacts.map(() => "*"),
-              body: [
-                translations.aboutFacts.map(({ label, value }) => ({
-                  stack: [
-                    { text: label, style: "contactLabel" },
-                    { text: value, style: "contactValue" },
-                  ],
-                })),
-              ],
-            },
-            layout: plainTableLayout,
+              layout: factTileLayout,
+            })),
+            columnGap: 8,
+            margin: [0, 10, 0, 0],
           },
         ]
       : []),
 
     // Образование
-    {
-      text: translations.educationTitle.replace(/🎓\s*/, "").toUpperCase(),
-      style: "sectionTitle",
-    },
-    ...translations.education.flatMap((edu) => [
-      {
-        text: edu.degree,
-        style: "eduDegree",
-      },
-      {
-        text: edu.institution,
-        style: "eduInstitution",
-      },
-      {
-        text: edu.period,
-        style: "eduPeriod",
-      },
-    ]),
+    sectionTitle(titleText(translations.educationTitle)),
+    ...translations.education.map((edu) => ({
+      columns: [
+        {
+          width: "*",
+          stack: [
+            { text: edu.degree, style: "eduDegree" },
+            { text: edu.institution, style: "eduInstitution" },
+          ],
+        },
+        { width: "auto", text: withEnDash(edu.period), style: "eduPeriod" },
+      ],
+      columnGap: 12,
+      margin: [0, 0, 0, 6],
+    })),
 
     // Технические навыки (Полный список по категориям)
-    {
-      text: translations.skillsTitle.replace(/🚀\s*/, "").toUpperCase(),
-      style: "sectionTitle",
-    },
+    sectionTitle(titleText(translations.skillsTitle), { margin: [0, 10, 0, 8] }),
     {
       columns: [
         {
-          width: "50%",
-          stack: translations.technicalSkills
-            .slice(0, Math.ceil(translations.technicalSkills.length / 2))
-            .flatMap((group, index) => [
-              {
-                text: group.category,
-                style: "skillHeader",
-                margin: [0, index === 0 ? 0 : 3, 0, 0],
-              },
-              {
-                text: group.items.map((s) => s.name).join(", "),
-                style: "skillText",
-                margin: [0, -1, 0, 4],
-              },
-            ]),
+          width: "*",
+          stack: translations.technicalSkills.slice(0, half).map(skillGroup),
         },
         {
-          width: "50%",
-          stack: translations.technicalSkills
-            .slice(Math.ceil(translations.technicalSkills.length / 2))
-            .flatMap((group, index) => [
-              {
-                text: group.category,
-                style: "skillHeader",
-                margin: [0, index === 0 ? 0 : 3, 0, 0],
-              },
-              {
-                text: group.items.map((s) => s.name).join(", "),
-                style: "skillText",
-                margin: [0, -1, 0, 4],
-              },
-            ]),
+          width: "*",
+          stack: translations.technicalSkills.slice(half).map(skillGroup),
         },
       ],
-      columnGap: 20,
+      columnGap: COLUMN_GAP,
     },
 
     // Soft Skills и Языки рядом внизу
     {
       columns: [
         {
-          width: "50%",
+          width: "*",
           stack: [
+            sectionTitle(titleText(translations.softSkillsTitle), {
+              width: HALF_WIDTH,
+              keepWithNext: false,
+            }),
             {
-              text: translations.softSkillsTitle
-                .replace(/💡\s*/, "")
-                .toUpperCase(),
-              style: "sectionTitle",
-              margin: [0, 10, 0, 4],
-            },
-            {
-              text: translations.softSkills.join(" • "),
+              text: bulletList(translations.softSkills),
               style: "skillText",
-              margin: [0, 0, 0, 0],
             },
           ],
         },
         {
-          width: "50%",
+          width: "*",
           stack: [
             ...(translations.workPractices?.length
               ? [
+                  sectionTitle(
+                    titleText(
+                      translations.workPracticesTitle ||
+                        (lang === "ru" ? "Подходы к работе" : "Work Practices"),
+                    ),
+                    { width: HALF_WIDTH, keepWithNext: false },
+                  ),
                   {
-                    text: (lang === "ru"
-                      ? "Подходы к работе"
-                      : "Work Practices"
-                    ).toUpperCase(),
-                    style: "sectionTitle",
-                    margin: [0, 10, 0, 4],
-                  },
-                  {
-                    text: translations.workPractices.join(" • "),
+                    text: bulletList(translations.workPractices),
                     style: "skillText",
-                    margin: [0, 0, 0, 8],
                   },
                 ]
               : []),
-            {
-              text: translations.languagesTitle
-                .replace(/🌐\s*/, "")
-                .toUpperCase(),
-              style: "sectionTitle",
-              margin: [0, 10, 0, 4],
-            },
+            sectionTitle(titleText(translations.languagesTitle), {
+              width: HALF_WIDTH,
+              keepWithNext: false,
+              margin: [0, 12, 0, 8],
+            }),
             ...translations.languages.map((l) => ({
-              text: `${l.name}: ${l.level}`,
+              text: [
+                { text: `${l.name}: `, bold: true, color: TEAL },
+                withEnDash(l.level),
+              ],
               style: "skillText",
               margin: [0, 0, 0, 2],
             })),
           ],
         },
       ],
-      columnGap: 20,
-      margin: [0, 0, 0, 10],
+      columnGap: COLUMN_GAP,
+      // Small enough to move as a whole instead of splitting a column
+      unbreakable: true,
     },
 
-    // Заголовок "Опыт работы"
-    {
-      columns: [
+    // Заголовок "Опыт работы" и общий стаж справа
+    sectionTitle(titleText(translations.experienceTitle), {
+      aside: translations.totalExperience,
+      margin: [0, 20, 0, 14],
+    }),
+    ...translations.experiences.map((job, jobIdx) => {
+      const isLast = jobIdx === translations.experiences.length - 1;
+      const rows = [];
+
+      // 1. Заголовок вакансии (точка на линии)
+      rows.push([
+        { text: "" },
         {
-          width: "*",
-          text: translations.experienceTitle.replace(/💼\s*/, "").toUpperCase(),
-          fontSize: 14,
-          bold: true,
-          color: "#7a1f49",
-          decoration: "underline",
-          decorationStyle: "solid",
-          decorationThickness: 2,
-          alignment: "left",
+          stack: [
+            timelineDot(7),
+            {
+              columns: [
+                {
+                  width: "*",
+                  stack: [
+                    { text: job.position, style: "jobPosition" },
+                    { text: job.company, style: "jobCompany" },
+                  ],
+                },
+                {
+                  width: "auto",
+                  text: withEnDash(job.period),
+                  style: "jobPeriod",
+                },
+              ],
+              columnGap: 10,
+            },
+          ],
+          margin: [0, 0, 0, 4],
         },
-        ...(translations.totalExperience
-          ? [
-              {
-                width: "auto",
-                text: translations.totalExperience,
-                fontSize: 14,
-                bold: true,
-                color: "#7a1f49",
-                decoration: "underline",
-                decorationStyle: "solid",
-                decorationThickness: 2,
-                italics: true,
-                alignment: "right",
-              },
-            ]
-          : []),
-      ],
-      margin: [0, 15, 0, 15],
-    },
-    {
-      table: {
-        widths: [15, "*"], // Отступ для текста от линии (которая теперь слева)
-        body: translations.experiences.flatMap((job, jobIdx) => {
-          const descriptionChunks = splitDescription(job.description);
-          const rows = [];
+      ]);
 
-          // 1. Заголовок вакансии (точка на линии)
-          rows.push([
+      // 2. Описание и проекты (обёрнуты в таблицу с вертикальной линией)
+      const descriptionRows = [];
+      splitDescription(job.description).forEach((sentence) => {
+        const projectTitleMatch = sentence.match(/^(\d+\)\s+[^.]+)/);
+        if (projectTitleMatch) {
+          // Это заголовок проекта
+          const title = projectTitleMatch[1].replace(/[:.]+$/, "").trim();
+          // Удаляем двоеточия, пробелы И ТОЧКИ из начала остатка (но оставляем дефис, если он есть)
+          const rest = sentence
+            .slice(projectTitleMatch[1].length)
+            .replace(/^[:\s.]+/, "");
+
+          const lines = rest
+            .split(/\.\s+/)
+            .map((s) => s.trim())
+            .filter((s) => s.length > 0 && s !== ".")
+            .map((rs) => descriptionLine(rs.endsWith(".") ? rs : `${rs}.`));
+
+          // The title goes to the next page with its first line
+          descriptionRows.push([
+            {
+              stack: [
+                { text: title, style: "projectTitle" },
+                ...lines.splice(0, 1),
+              ],
+              unbreakable: true,
+            },
+          ]);
+          lines.forEach((line) => descriptionRows.push([line]));
+        } else {
+          const isProjectsLead =
+            sentence.includes("Ключевые проекты") ||
+            sentence.includes("Key Projects");
+          descriptionRows.push([
+            descriptionLine(
+              isProjectsLead ? sentence.replace(/[.]+$/, "") : sentence,
+            ),
+          ]);
+        }
+      });
+
+      // Добавляем описание как вложенную таблицу с линией слева
+      if (descriptionRows.length > 0) {
+        rows.push([
+          { text: "" },
+          {
+            table: {
+              widths: ["*"],
+              body: descriptionRows,
+            },
+            layout: {
+              vLineWidth: (i) => (i === 0 ? 1 : 0),
+              vLineColor: () => TEAL,
+              hLineWidth: () => 0,
+              paddingLeft: () => 8,
+              paddingRight: () => 0,
+              paddingTop: () => 0,
+              paddingBottom: () => 0,
+            },
+            margin: [0, 4, 0, 4],
+          },
+        ]);
+      }
+
+      // 3. Технологии, и под ними разделитель до следующего места работы.
+      // The title keeps its first line and the rule its last one, so
+      // neither is left alone at the edge of a page
+      const stackLines = (job.techGroups ?? []).map((group) => ({
+        text: [
+          { text: `${group.label}: `, style: "stackLabel" },
+          ...bulletList(group.items),
+        ],
+        style: "stackText",
+        unbreakable: true,
+      }));
+      const hasStack = stackLines.length > 0;
+      const stackBlocks = [];
+      if (hasStack) {
+        stackBlocks.push({
+          stack: [
+            timelineDot(6),
+            { text: stackTitle.toUpperCase(), style: "stackTitle" },
+            stackLines.shift(),
+          ],
+          unbreakable: true,
+        });
+      }
+      stackBlocks.push(...stackLines);
+      if (!isLast) {
+        const lastLine = stackBlocks.pop();
+        stackBlocks.push({
+          stack: [
+            ...(lastLine ? [lastLine] : []),
             {
               canvas: [
                 {
-                  type: "ellipse",
-                  x: -0.75,
-                  y: 7,
-                  r1: 3,
-                  r2: 3,
-                  color: "#d14b88",
+                  type: "line",
+                  x1: 0,
+                  y1: 0,
+                  x2: TIMELINE_TEXT_WIDTH,
+                  y2: 0,
+                  lineWidth: 0.75,
+                  lineColor: HAIRLINE,
                 },
               ],
+              margin: [0, lastLine ? 14 : 0, 0, 0],
             },
-            {
-              stack: [
-                {
-                  columns: [
-                    {
-                      width: "*",
-                      stack: [
-                        { text: job.position, style: "jobPosition" },
-                        { text: job.company, style: "jobCompany" },
-                      ],
-                    },
-                    {
-                      width: "auto",
-                      text: job.period,
-                      style: "jobPeriod",
-                      alignment: "right",
-                    },
-                  ],
-                  columnGap: 8,
-                  margin: [0, 0, 0, 4],
-                },
-              ],
-              margin: [0, 0, 0, 0],
-            },
-          ]);
+          ],
+          unbreakable: true,
+        });
+      }
 
-          // 2. Описание и проекты (обёрнуты в таблицу с вертикальной линией)
-          const descriptionRows = [];
-          descriptionChunks.forEach((sentence) => {
-            const projectTitleMatch = sentence.match(/^(\d+\)\s+[^.]+)/);
-            if (projectTitleMatch) {
-              // Это заголовок проекта
-              const title = projectTitleMatch[1].replace(/[:.]+$/, "").trim();
-              // Удаляем двоеточия, пробелы И ТОЧКИ из начала остатка (но оставляем дефис, если он есть)
-              const rest = sentence
-                .slice(projectTitleMatch[1].length)
-                .replace(/^[:\s.]+/, "");
+      if (stackBlocks.length > 0) {
+        rows.push([
+          { text: "" },
+          {
+            stack: stackBlocks,
+            margin: [0, hasStack ? 8 : 4, 0, isLast ? 0 : 16],
+          },
+        ]);
+      }
 
-              descriptionRows.push([
-                {
-                  text: title,
-                  bold: true,
-                  color: "#d14b88",
-                  fontSize: 12,
-                  margin: [0, 4, 0, 2],
-                },
-              ]);
-
-              if (rest) {
-                const restSentences = rest
-                  .split(/\.\s+/)
-                  .map((s) => s.trim())
-                  .filter((s) => s.length > 0 && s !== ".");
-                restSentences.forEach((rs) => {
-                  const normalizedSentence = rs.endsWith(".") ? rs : `${rs}.`;
-                  const isDashed = normalizedSentence.trim().startsWith("-");
-                  const sentenceText = isDashed
-                    ? normalizedSentence.trim().replace(/^-\s*/, "")
-                    : normalizedSentence;
-
-                  descriptionRows.push([
-                    isDashed
-                      ? {
-                          unbreakable: true,
-                          columns: [
-                            {
-                              width: 8,
-                              canvas: [
-                                {
-                                  type: "ellipse",
-                                  x: -8.5,
-                                  y: 7,
-                                  r1: 2,
-                                  r2: 2,
-                                  color: "#4b8f97",
-                                },
-                              ],
-                              margin: [0, 1, 0, 1],
-                            },
-                            {
-                              width: "*",
-                              ...renderTextWithLinks(sentenceText, {
-                                style: "jobDescription",
-                              }),
-                              margin: [2.5, 1, 0, 1],
-                            },
-                          ],
-                          columnGap: 4,
-                        }
-                      : {
-                          ...renderTextWithLinks(normalizedSentence, {
-                            style: "jobDescription",
-                          }),
-                          margin: [0, 1, 0, 1],
-                        },
-                  ]);
-                });
-              }
-            } else {
-              let cleanSentence = sentence;
-              if (
-                cleanSentence.includes("Ключевые проекты") ||
-                cleanSentence.includes("Key Projects")
-              ) {
-                cleanSentence = cleanSentence.replace(/[.]+$/, "");
-              }
-              const isDashed = cleanSentence.trim().startsWith("-");
-              const sentenceText = isDashed
-                ? cleanSentence.trim().replace(/^-\s*/, "")
-                : cleanSentence;
-              descriptionRows.push([
-                isDashed
-                  ? {
-                      unbreakable: true,
-                      columns: [
-                        {
-                          width: 8,
-                          canvas: [
-                            {
-                              type: "ellipse",
-                              x: -8.5,
-                              y: 7,
-                              r1: 2,
-                              r2: 2,
-                              color: "#4b8f97",
-                            },
-                          ],
-                          margin: [0, 1, 0, 1],
-                        },
-                        {
-                          width: "*",
-                          ...renderTextWithLinks(sentenceText, {
-                            style: "jobDescription",
-                          }),
-                          margin: [2.5, 1, 0, 1],
-                        },
-                      ],
-                      columnGap: 4,
-                    }
-                  : {
-                      ...renderTextWithLinks(cleanSentence, {
-                        style: "jobDescription",
-                      }),
-                      margin: [0, 1, 0, 1],
-                    },
-              ]);
-            }
-          });
-
-          // Добавляем описание как вложенную таблицу с линией слева
-          if (descriptionRows.length > 0) {
-            rows.push([
-              { text: "" },
-              {
-                table: {
-                  widths: ["*"],
-                  body: descriptionRows,
-                },
-                layout: {
-                  vLineWidth: (i) => (i === 0 ? 1 : 0),
-                  vLineColor: () => "#4b8f97",
-                  hLineWidth: () => 0,
-                  paddingLeft: () => 8,
-                  paddingRight: () => 0,
-                  paddingTop: () => 0,
-                  paddingBottom: () => 0,
-                },
-                margin: [0, 4, 0, 4],
-              },
-            ]);
-          }
-
-          // 3. Технологии
-          if (job.techGroups && job.techGroups.length > 0) {
-            rows.push([
-              {
-                canvas: [
-                  {
-                    type: "ellipse",
-                    x: -0.75,
-                    y: 22,
-                    r1: 3,
-                    r2: 3,
-                    color: "#d14b88",
-                  },
-                ],
-              },
-              {
-                stack: [
-                  {
-                    text: (
-                      translations.stackTitle ||
-                      (lang === "ru" ? "Стек технологий" : "Tech Stack")
-                    ).toUpperCase(),
-                    fontSize: 13.5,
-                    bold: true,
-                    color: "#4b8f97",
-                    margin: [0, 10, 0, 6],
-                  },
-                  ...job.techGroups.map((group) => ({
-                    text: [
-                      {
-                        text: `${group.label}: `,
-                        fontSize: 12,
-                        bold: true,
-                        color: "#d14b88",
-                      },
-                      {
-                        text: group.items.join(" • "),
-                        fontSize: 12,
-                        color: "#1d1116",
-                      },
-                    ],
-                    margin: [0, 1, 0, 1],
-                  })),
-                ],
-                margin: [0, 5, 0, 15],
-              },
-            ]);
-          } else {
-            rows.push([{ text: "" }, { text: "", margin: [0, 0, 0, 15] }]);
-          }
-
-          // Горизонтальный разделитель между опытами (кроме последнего)
-          if (jobIdx < translations.experiences.length - 1) {
-            rows.push([
-              { text: "" },
-              {
-                canvas: [
-                  {
-                    type: "line",
-                    x1: 0,
-                    y1: 0,
-                    x2: 480,
-                    y2: 0,
-                    lineWidth: 0.75,
-                    lineColor: "#d14b88",
-                  },
-                ],
-                margin: [0, 5, 0, 15],
-              },
-            ]);
-          }
-
-          return rows;
-        }),
-      },
-      layout: {
-        vLineWidth: (i) => (i === 0 ? 1.5 : 0), // Линия СЛЕВА (i=0)
-        vLineColor: (i) => (i === 0 ? "#d14b88" : "white"),
-        hLineWidth: () => 0,
-        paddingLeft: () => 0,
-        paddingRight: () => 0,
-        paddingTop: () => 0,
-        paddingBottom: () => 0,
-      },
-    },
+      // headlineLevel 2: a job that would start at the very bottom of a
+      // page moves to the next one whole, header included
+      return {
+        table: { widths: [TIMELINE_GUTTER, "*"], body: rows },
+        layout: timelineLayout,
+        headlineLevel: 2,
+      };
+    }),
   ];
 };

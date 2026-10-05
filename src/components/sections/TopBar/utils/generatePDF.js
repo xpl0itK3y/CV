@@ -16,6 +16,38 @@ const loadPdfLogo = async () => {
   }
 };
 
+// Room a block needs left on the page when it starts, by headlineLevel:
+// a section title wants a few lines of its content under it, a job its
+// header and the first lines of the description
+const KEEP_WITH_NEXT = { 1: 80, 2: 90 };
+
+// A block that would start at the very bottom of a page, leaving a title
+// there alone or splitting a job header, starts the next page instead
+const pageBreakBefore = (node) => {
+  const room = KEEP_WITH_NEXT[node.headlineLevel];
+  if (!room) return false;
+
+  const { verticalRatio, pageInnerHeight } = node.startPosition;
+  return (1 - verticalRatio) * pageInnerHeight < room;
+};
+
+// Name and email on every page, so a printed page still says whose it is
+const buildFooter = (translations) => (currentPage, pageCount) => ({
+  columns: [
+    {
+      width: "*",
+      text: [
+        translations.name,
+        { text: "  ·  ", color: "#d14b88" },
+        { text: translations.email, link: `mailto:${translations.email}` },
+      ],
+    },
+    { width: "auto", text: `${currentPage} / ${pageCount}` },
+  ],
+  style: "footer",
+  margin: [40, 12, 40, 0],
+});
+
 // Warms up the fonts chunk so the first download doesn't wait for it
 export const preloadResumePDF = loadFonts;
 
@@ -31,7 +63,14 @@ export const generateResumePDF = async (translations, lang) => {
 
   const docDefinition = {
     pageSize: "A4",
-    pageMargins: [40, 30, 40, 30],
+    pageMargins: [40, 30, 40, 38],
+    info: {
+      title: `${translations.name} — ${translations.title}`,
+      author: translations.name,
+      subject: lang === "ru" ? "Резюме" : "Resume",
+      keywords: translations.title,
+    },
+    language: lang === "ru" ? "ru-RU" : "en-US",
     defaultStyle: {
       font: "Roboto",
       fontSize: 11.5,
@@ -40,6 +79,8 @@ export const generateResumePDF = async (translations, lang) => {
     },
     styles: pdfStyles,
     content: generateContent(translations, lang, pdfLogo),
+    footer: buildFooter(translations),
+    pageBreakBefore,
   };
 
   // Генерируем и скачиваем PDF

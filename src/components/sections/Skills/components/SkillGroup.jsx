@@ -6,8 +6,6 @@ const SkillGroup = ({
   groupIndex,
   isLast,
   isMobile,
-  hoveredSkill,
-  setHoveredSkill,
   styles,
 }) => {
   return (
@@ -33,20 +31,14 @@ const SkillGroup = ({
       <div
         className={isMobile ? styles.iconGridMobile : styles.iconGridDesktop}
       >
-        {group.items.map((skill, index) => {
-          const key = `${groupIndex}-${index}`;
-          return (
-            <SkillIcon
-              key={key}
-              skill={skill}
-              skillKey={key}
-              isMobile={isMobile}
-              hoveredSkill={hoveredSkill}
-              setHoveredSkill={setHoveredSkill}
-              styles={styles}
-            />
-          );
-        })}
+        {group.items.map((skill, index) => (
+          <SkillIcon
+            key={`${groupIndex}-${index}`}
+            skill={skill}
+            isMobile={isMobile}
+            styles={styles}
+          />
+        ))}
       </div>
     </div>
   );

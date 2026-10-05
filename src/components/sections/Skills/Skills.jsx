@@ -20,8 +20,6 @@ const Skills = ({
   const {
     showAll,
     setShowAll,
-    hoveredSkill,
-    setHoveredSkill,
     INITIAL_VISIBLE_GROUPS,
   } = useSkillsState();
 
@@ -60,8 +58,6 @@ const Skills = ({
                   groupIndex={groupIndex}
                   isLast={groupIndex === skills.technical.length - 1}
                   isMobile={isMobile}
-                  hoveredSkill={hoveredSkill}
-                  setHoveredSkill={setHoveredSkill}
                   styles={styles}
                 />
               ))}
@@ -87,8 +83,6 @@ const Skills = ({
                       groupIndex={groupIndex}
                       isLast={isLast}
                       isMobile={isMobile}
-                      hoveredSkill={hoveredSkill}
-                      setHoveredSkill={setHoveredSkill}
                       styles={styles}
                     />
                   );

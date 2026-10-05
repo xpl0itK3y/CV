@@ -29,10 +29,7 @@ const TopBar = ({ currentLang, onLanguageChange, translations }) => {
   return (
     <div
       ref={containerRef}
-      className={styles.container}
-      style={{
-        transform: isVisible ? "translateY(0)" : "translateY(-100%)",
-      }}
+      className={`${styles.container} ${isVisible ? "" : styles.hidden}`}
     >
       <div
         className={glassBoxClassName}

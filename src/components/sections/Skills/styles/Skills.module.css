@@ -64,8 +64,7 @@
     color: var(--section-title-color, #fff);
     margin-top: 0;
     font-size: 1.3rem;
-    font-weight: 700;
-    text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+    font-weight: 600;
     margin-bottom: 1rem;
     transition: color var(--duration-hover) ease;
 }
@@ -74,8 +73,7 @@
     color: var(--section-title-color, #fff);
     margin-top: 0;
     font-size: 1.15rem;
-    font-weight: 700;
-    text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+    font-weight: 600;
     margin-bottom: 1rem;
     transition: color var(--duration-hover) ease;
 }

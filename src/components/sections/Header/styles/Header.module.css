@@ -37,7 +37,8 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: -2px;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
     animation: fadeInScale var(--duration-enter) var(--ease-out) 0.1s both;
     text-shadow:
         0 0 20px rgba(230, 60, 134, 0.1),
@@ -58,7 +59,8 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: -2px;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
     animation: fadeInScale var(--duration-enter) var(--ease-out) 0.1s both;
     text-shadow:
         0 0 18px rgba(230, 60, 134, 0.1),
@@ -79,7 +81,7 @@
     background-clip: text;
     margin: 0;
     font-weight: 320;
-    letter-spacing: 0.01em;
+    letter-spacing: -0.01em;
     animation:
         fadeInUp var(--duration-enter) var(--ease-out) 0.18s both,
         subtitleShift 6.5s ease-in-out infinite 1.4s;
@@ -102,7 +104,7 @@
     background-clip: text;
     margin: 0;
     font-weight: 320;
-    letter-spacing: 0.01em;
+    letter-spacing: -0.01em;
     animation:
         fadeInUp var(--duration-enter) var(--ease-out) 0.18s both,
         subtitleShift 6.5s ease-in-out infinite 1.4s;

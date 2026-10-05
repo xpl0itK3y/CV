@@ -25,6 +25,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  /* Pressables have their own :active feedback */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Headings: tracking tightens and leading shrinks as size grows */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+h2 {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+h3 {
+  letter-spacing: -0.01em;
+  line-height: 1.25;
 }
 
 #root {

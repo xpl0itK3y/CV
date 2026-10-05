@@ -16,16 +16,16 @@
 
 .textDesktop {
     color: rgba(255, 255, 255, 0.9);
-    line-height: 1.8;
+    line-height: 1.65;
     font-size: 1.05rem;
     margin: 0;
-    text-align: justify;
+    text-wrap: pretty;
 }
 
 .textMobile {
     color: rgba(255, 255, 255, 0.9);
-    line-height: 1.8;
+    line-height: 1.65;
     font-size: 0.95rem;
     margin: 0;
-    text-align: justify;
+    text-wrap: pretty;
 }

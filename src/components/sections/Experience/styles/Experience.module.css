@@ -129,8 +129,7 @@
     color: var(--section-title-color, #fff);
     margin: 0 0 0.5rem 0;
     font-size: 1.3rem;
-    font-weight: 700;
-    text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+    font-weight: 600;
     transition: color var(--duration-hover) ease;
 }
 
@@ -138,8 +137,7 @@
     color: var(--section-title-color, #fff);
     margin: 0 0 0.5rem 0;
     font-size: 1.15rem;
-    font-weight: 700;
-    text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+    font-weight: 600;
     transition: color var(--duration-hover) ease;
 }
 
@@ -281,22 +279,20 @@
 .techTitleDesktop {
     font-size: 1.25rem;
     color: var(--section-title-color, #fff);
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 1.2rem;
     display: flex;
     align-items: center;
-    text-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
     transition: color var(--duration-hover) ease;
 }
 
 .techTitleMobile {
     font-size: 1.1rem;
     color: var(--section-title-color, #fff);
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 1.2rem;
     display: flex;
     align-items: center;
-    text-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
     transition: color var(--duration-hover) ease;
 }
 
@@ -392,9 +388,8 @@
 
 .projectTitle {
     color: var(--section-title-color, #fff);
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1.05rem;
-    text-shadow: 0 0 12px rgba(102, 126, 234, 0.6);
     display: inline-block;
     margin-bottom: 0.2rem;
     transition: color var(--duration-hover) ease;

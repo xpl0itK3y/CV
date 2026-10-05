@@ -62,12 +62,6 @@ export const pdfStyles = {
         alignment: "justify",
     },
 
-    aboutFacts: {
-        fontSize: 11,
-        color: "#4b8f97",
-        margin: [0, 4, 0, 0],
-    },
-
     // Опыт работы
     jobPosition: {
         fontSize: 13.5,

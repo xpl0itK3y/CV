@@ -18,10 +18,10 @@ const translations = {
     aboutText:
       "Python Engineer с треком от backend-разработки к AI-инженерии и 2 годами опыта. Начинал с построения сервисов на FastAPI и Django, проектирования баз данных PostgreSQL, Redis, контейнеризации Docker и участия в развитии микросервисной архитектуры. Постепенно сфокусировался на AI-направлении теперь создаю решения с использованием LLM и RAG для прикладных бизнес-задач. Сильный бэкенд-фундамент позволяет мне доводить AI-функциональность до надёжных, масштабируемых production-систем. Ищу позиции AI Engineer в продуктовых командах, где смогу приносить максимальную пользу на стыке инженерии и искусственного интеллекта.",
     aboutFacts: [
-      "24 года",
-      "Гражданство: Казахстан",
-      "Готов к удалённой работе",
-      "Не готов к командировкам",
+      { label: "Возраст", value: "24 года" },
+      { label: "Гражданство", value: "Казахстан" },
+      { label: "Удалённая работа", value: "Готов" },
+      { label: "Командировки", value: "Не готов" },
     ],
 
     // Contacts
@@ -393,10 +393,10 @@ const translations = {
     aboutText:
       "Python Engineer with a track from backend development to AI engineering and 2 years of experience. Started by building services with FastAPI and Django, designing PostgreSQL and Redis databases, containerizing with Docker, and contributing to microservices architecture. Gradually shifted focus to AI now building solutions with LLMs and RAG for real-world business use cases. A strong backend foundation lets me bring AI functionality all the way to reliable, scalable production systems. Looking for AI Engineer positions in product teams where I can deliver maximum impact at the intersection of engineering and artificial intelligence.",
     aboutFacts: [
-      "24 years old",
-      "Citizenship: Kazakhstan",
-      "Open to remote work",
-      "Not available for business travel",
+      { label: "Age", value: "24 years" },
+      { label: "Citizenship", value: "Kazakhstan" },
+      { label: "Remote work", value: "Available" },
+      { label: "Business travel", value: "Not available" },
     ],
     // Contacts
     contactsTitle: "Contacts",

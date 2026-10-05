@@ -30,30 +30,58 @@
     text-wrap: pretty;
 }
 
-/* Age, citizenship and work format, styled like the skill tags */
+/* Age, citizenship and work format: set apart from the text by a hairline,
+   each value under its own label */
 .facts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin: 1.25rem 0 0;
-    padding: 0;
-    list-style: none;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 1.5rem 0 0;
+    padding: 1.5rem 0 0;
+}
+
+/* Hairline that fades out towards both ends */
+.facts::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(var(--block-accent-rgb), 0.45) 50%,
+        transparent 100%
+    );
 }
 
 .factDesktop,
 .factMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
     background: linear-gradient(
         180deg,
-        rgba(var(--block-accent-rgb), 0.12) 0%,
-        rgba(var(--block-accent-rgb), 0.05) 100%
+        rgba(var(--block-accent-rgb), 0.1) 0%,
+        rgba(var(--block-accent-rgb), 0.04) 100%
     );
     border: 1px solid rgba(var(--block-accent-rgb), 0.16);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
-    border-radius: 20px;
-    color: #fff;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
     transition:
         border-color var(--duration-hover) ease,
         transform var(--duration-hover) var(--ease-out);
+}
+
+.factDesktop {
+    padding: 0.8rem 1rem;
+    border-radius: 14px;
+}
+
+.factMobile {
+    padding: 0.7rem;
+    border-radius: 12px;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -64,12 +92,37 @@
     }
 }
 
-.factDesktop {
-    padding: 0.45rem 0.95rem;
-    font-size: 0.9rem;
+.factLabel {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, rgb(var(--block-accent-rgb)) 72%, #fff);
 }
 
-.factMobile {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
+.factValue {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Uppercase is too wide for half a phone screen: "Удалённая работа"
+   would wrap, so phones get sentence case (one line down to 360px) */
+.factMobile .factLabel {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.factMobile .factValue {
+    font-size: 0.92rem;
+}
+
+@media (max-width: 768px) {
+    .facts {
+        gap: 0.6rem;
+    }
 }

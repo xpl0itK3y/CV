@@ -1,5 +1,15 @@
 import { splitDescription, renderTextWithLinks } from "./helpers";
 
+// Label/value grids without borders: contacts and the personal details
+const plainTableLayout = {
+  hLineWidth: () => 0,
+  vLineWidth: () => 0,
+  paddingLeft: () => 0,
+  paddingRight: () => 0,
+  paddingTop: () => 0,
+  paddingBottom: () => 2,
+};
+
 export const generateContent = (translations, lang, pdfLogo) => {
   return [
     // Заголовок "Резюме"
@@ -116,14 +126,7 @@ export const generateContent = (translations, lang, pdfLogo) => {
           ],
         ],
       },
-      layout: {
-        hLineWidth: () => 0,
-        vLineWidth: () => 0,
-        paddingLeft: () => 0,
-        paddingRight: () => 0,
-        paddingTop: () => 0,
-        paddingBottom: () => 2,
-      },
+      layout: plainTableLayout,
       margin: [0, -2, 0, 0],
     },
 
@@ -137,9 +140,39 @@ export const generateContent = (translations, lang, pdfLogo) => {
       style: "aboutText",
       margin: [0, -2, 0, 0],
     },
-    // Age, citizenship and work format in one line under the text
+    // Age, citizenship and work format: a hairline sets them apart from the
+    // text, then one labelled column each, like the contacts
     ...(translations.aboutFacts?.length
-      ? [{ text: translations.aboutFacts.join("  ·  "), style: "aboutFacts" }]
+      ? [
+          {
+            canvas: [
+              {
+                type: "line",
+                x1: 0,
+                y1: 0,
+                x2: 515,
+                y2: 0,
+                lineWidth: 0.75,
+                lineColor: "#e2c3d1",
+              },
+            ],
+            margin: [0, 2, 0, 8],
+          },
+          {
+            table: {
+              widths: translations.aboutFacts.map(() => "*"),
+              body: [
+                translations.aboutFacts.map(({ label, value }) => ({
+                  stack: [
+                    { text: label, style: "contactLabel" },
+                    { text: value, style: "contactValue" },
+                  ],
+                })),
+              ],
+            },
+            layout: plainTableLayout,
+          },
+        ]
       : []),
 
     // Образование

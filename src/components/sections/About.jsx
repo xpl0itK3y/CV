@@ -15,16 +15,17 @@ const About = ({ title, about, facts }) => {
       </p>
 
       {facts?.length > 0 && (
-        <ul className={styles.facts}>
-          {facts.map((fact) => (
-            <li
-              key={fact}
+        <dl className={styles.facts}>
+          {facts.map(({ label, value }) => (
+            <div
+              key={label}
               className={isMobile ? styles.factMobile : styles.factDesktop}
             >
-              {fact}
-            </li>
+              <dt className={styles.factLabel}>{label}</dt>
+              <dd className={styles.factValue}>{value}</dd>
+            </div>
           ))}
-        </ul>
+        </dl>
       )}
     </GlassBlock>
   );

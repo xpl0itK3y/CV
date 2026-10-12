@@ -227,7 +227,7 @@ const translations = {
         period: "Август 2024 - Февраль 2025",
         employment: "Проектная работа",
         description:
-          "Разрабатывал веб-приложения и AI-сервисы на заказ вместе с напарником: вели проекты от обсуждения задачи с заказчиком до сдачи. 1) Сервис генерации сказок. - Разработал веб-приложение на Next.js и TypeScript, которое пишет сказки с помощью LLM по возрасту, жанру, языку и героям и выводит текст по мере генерации. - Сделал потоковую генерацию через Vercel AI SDK и xAI API, отдельные промпты на русском и казахском и историю сказок в PostgreSQL через Prisma. - Собрал интерфейс на React, Tailwind CSS и React Hook Form с проверкой на Zod, написал тесты на Vitest и упаковал всё в Docker Compose. 2) CRM-система для обработки заявок магазина. - Разработал CRM на Next.js и TypeScript для заявок с сайта магазина: встраиваемый виджет и страница статуса заявки для клиента. - Сделал рабочий стол менеджера с очередью, фильтрами, приоритетами и сроками ответа, ролями на Better Auth и сводкой за день, неделю и месяц. - Добавил защиту публичных форм от спама и перебора, хранение в SQLite через Drizzle ORM и тесты основных сценариев. 3) AI-ассистент поддержки покупателей в Telegram. - Разработал Telegram-бота поддержки покупателей на TypeScript и OpenAI API: он отвечает на вопросы о доставке, оплате и режиме работы магазина. - Подключил бота к каталогу магазина: он находит товары по запросу покупателя и сообщает цены и наличие.",
+          "Разрабатывал веб-приложения и AI-сервисы на заказ вместе с напарником: вели проекты от обсуждения задачи с заказчиком до сдачи. 1) Сервис генерации сказок. - Разработал веб-приложение на Next.js и TypeScript, которое пишет сказки с помощью LLM по возрасту, жанру, языку и героям и выводит текст по мере генерации. - Сделал потоковую генерацию через Vercel AI SDK и OpenAI API, отдельные промпты на русском и казахском и историю сказок в PostgreSQL через Prisma. - Собрал интерфейс на React, Tailwind CSS и React Hook Form с проверкой на Zod, написал тесты на Vitest и упаковал всё в Docker Compose. 2) CRM-система для обработки заявок магазина. - Разработал CRM на Next.js и TypeScript для заявок с сайта магазина: встраиваемый виджет и страница статуса заявки для клиента. - Сделал рабочий стол менеджера с очередью, фильтрами, приоритетами и сроками ответа, ролями на Better Auth и сводкой за день, неделю и месяц. - Добавил защиту публичных форм от спама и перебора, хранение в SQLite через Drizzle ORM и тесты основных сценариев. 3) AI-ассистент поддержки покупателей в Telegram. - Разработал Telegram-бота поддержки покупателей на TypeScript и OpenAI API: он отвечает на вопросы о доставке, оплате и режиме работы магазина. - Подключил бота к каталогу магазина: он находит товары по запросу покупателя и сообщает цены и наличие.",
         techGroups: [
           {
             label: "Языки",
@@ -266,7 +266,6 @@ const translations = {
             items: [
               "Vercel AI SDK",
               "OpenAI API",
-              "xAI API",
               "Prompt Engineering",
               "Streaming",
             ],
@@ -703,7 +702,7 @@ const translations = {
         period: "August 2024 - February 2025",
         employment: "Project-based",
         description:
-          "Built web apps and AI services for clients together with a partner, taking each project from the first brief to handover. 1) Fairy Tale Generation Service. - Built a Next.js and TypeScript web app that writes fairy tales with an LLM for a chosen age, genre, language and characters, showing the text as it is generated. - Implemented streaming through the Vercel AI SDK and the xAI API, separate prompts in Russian and Kazakh, and a story history in PostgreSQL through Prisma. - Built the interface with React, Tailwind CSS and React Hook Form with Zod validation, wrote Vitest tests and packaged everything with Docker Compose. 2) Request Management CRM for a Retail Store. - Built a Next.js and TypeScript CRM for requests from the shop's website: an embeddable widget and a request status page for customers. - Built a manager desk with a queue, filters, priorities and response deadlines, roles on Better Auth and a summary for the day, week and month. - Added spam and guessing protection to the public forms, SQLite storage through Drizzle ORM and tests of the main flows. 3) AI Customer Support Assistant for Telegram. - Built a customer support Telegram bot on TypeScript with the OpenAI API: it answers questions about delivery, payment and the shop's opening hours. - Connected the bot to the shop's catalog: it finds products from the customer's request and reports prices and availability.",
+          "Built web apps and AI services for clients together with a partner, taking each project from the first brief to handover. 1) Fairy Tale Generation Service. - Built a Next.js and TypeScript web app that writes fairy tales with an LLM for a chosen age, genre, language and characters, showing the text as it is generated. - Implemented streaming through the Vercel AI SDK and the OpenAI API, separate prompts in Russian and Kazakh, and a story history in PostgreSQL through Prisma. - Built the interface with React, Tailwind CSS and React Hook Form with Zod validation, wrote Vitest tests and packaged everything with Docker Compose. 2) Request Management CRM for a Retail Store. - Built a Next.js and TypeScript CRM for requests from the shop's website: an embeddable widget and a request status page for customers. - Built a manager desk with a queue, filters, priorities and response deadlines, roles on Better Auth and a summary for the day, week and month. - Added spam and guessing protection to the public forms, SQLite storage through Drizzle ORM and tests of the main flows. 3) AI Customer Support Assistant for Telegram. - Built a customer support Telegram bot on TypeScript with the OpenAI API: it answers questions about delivery, payment and the shop's opening hours. - Connected the bot to the shop's catalog: it finds products from the customer's request and reports prices and availability.",
         techGroups: [
           {
             label: "Languages",
@@ -742,7 +741,6 @@ const translations = {
             items: [
               "Vercel AI SDK",
               "OpenAI API",
-              "xAI API",
               "Prompt Engineering",
               "Streaming",
             ],

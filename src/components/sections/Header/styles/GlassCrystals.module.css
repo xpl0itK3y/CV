@@ -40,9 +40,9 @@
     position: absolute;
     padding: 20px;
     margin: -20px;
-    transform: translate3d(var(--drag-x, 0px), var(--drag-y, 0px), 0)
-        rotate(var(--drag-rotate, 0deg));
-    transition: transform 0.18s ease-out;
+    /* Rest pose; the physics loop writes the transform every frame, so no
+       transition here: it would make the blob trail behind the pointer */
+    transform: rotate(var(--tilt, 0deg));
     touch-action: none;
     cursor: grab;
     will-change: transform;
@@ -56,14 +56,8 @@
     filter: blur(18px);
     opacity: 0.78;
     pointer-events: none;
-    transform:
-        translate3d(
-            calc(var(--shadow-offset-x, 0px) * 0.7),
-            calc(var(--shadow-offset-y, 18px) * 0.55),
-            0
-        )
-        scale(calc(0.92 + (var(--shadow-alpha, 0.26) * 0.45)));
-    transition: transform 0.14s ease-out, opacity 0.2s ease-out;
+    transform: translate3d(0, 10px, 0) scale(1.02);
+    transition: opacity 0.2s ease-out;
 }
 
 .floorGlow {
@@ -76,16 +70,9 @@
     filter: blur(20px);
     opacity: 0.92;
     pointer-events: none;
-    transform:
-        translate3d(
-            calc(var(--shadow-offset-x, 0px) * 0.9),
-            calc(var(--shadow-offset-y, 18px) * 0.32),
-            0
-        )
-        scaleX(calc(1.08 + (var(--shadow-alpha, 0.26) * 1.1)))
-        scaleY(calc(0.88 + (var(--shadow-alpha, 0.26) * 0.24)));
+    transform: translate3d(0, 6px, 0) scale(1.32, 0.93);
     transform-origin: center;
-    transition: transform 0.14s ease-out, opacity 0.2s ease-out;
+    transition: opacity 0.2s ease-out;
 }
 
 .shellDragging .crystalGlow {
@@ -123,18 +110,6 @@
     );
 }
 
-.shellPrimary {
-    rotate: -8deg;
-}
-
-.shellSecondary {
-    rotate: 7deg;
-}
-
-.shellTertiary {
-    rotate: 11deg;
-}
-
 .shellDragging {
     cursor: grabbing;
     z-index: 8;
@@ -149,24 +124,17 @@
     transform-style: preserve-3d;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    /* A picked-up blob (--lift from 0 to 1) casts a lower, softer shadow */
+    --drop-shadow: 0 calc(18px + var(--lift, 0) * 12px)
+        calc(30px + var(--lift, 0) * 18px)
+        rgba(0, 0, 0, calc(0.22 - var(--lift, 0) * 0.05));
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.16),
         inset 0 -1px 0 rgba(255, 255, 255, 0.04),
-        var(--shadow-offset-x, 0px) var(--shadow-offset-y, 18px)
-        var(--shadow-blur, 30px) rgba(0, 0, 0, var(--shadow-alpha, 0.26));
-    transform:
-        translate3d(var(--jelly-lean-x, 0%), var(--jelly-lean-y, 0%), 0)
-        scaleX(var(--jelly-scale-x, 1))
-        scaleY(var(--jelly-scale-y, 1))
-        skewX(var(--jelly-skew-x, 0deg))
-        skewY(var(--jelly-skew-y, 0deg));
-    transform-origin: center;
+        var(--drop-shadow);
     animation: crystalMorph 6.8s ease-in-out infinite;
-    transition:
-        transform 0.14s ease-out,
-        border-radius 0.3s ease-out,
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
+    animation-delay: var(--phase, 0s);
+    transition: border-color 0.35s ease;
     pointer-events: none;
 }
 
@@ -177,6 +145,7 @@
     animation:
         crystalFloat 5.2s ease-in-out infinite,
         crystalRotate 9s ease-in-out infinite;
+    animation-delay: var(--phase, 0s), calc(var(--phase, 0s) * 2.3);
     will-change: transform;
 }
 
@@ -221,7 +190,7 @@
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.16),
         inset 0 -1px 0 rgba(255, 255, 255, 0.04),
-        0 18px 30px rgba(0, 0, 0, 0.26),
+        var(--drop-shadow),
         0 0 20px rgba(230, 60, 134, 0.12);
 }
 
@@ -234,7 +203,7 @@
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.16),
         inset 0 -1px 0 rgba(255, 255, 255, 0.04),
-        0 18px 30px rgba(0, 0, 0, 0.26),
+        var(--drop-shadow),
         0 0 18px rgba(74, 196, 210, 0.1);
 }
 

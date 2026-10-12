@@ -171,7 +171,7 @@ const translations = {
         period: "Июнь 2025 - Май 2026",
         employment: "Полная занятость",
         description:
-          "По контракту в кросс-функциональной команде разрабатывал production-платформу для автоматической обработки и классификации текстовых данных: отвечал за AI-модуль и связанные с ним бэкенд-сервисы. - Разработал AI-модуль обработки и классификации текстов на OpenAI API: структурированные ответы в JSON с валидацией через Pydantic, повторы и ограничение частоты запросов к LLM, кэширование ответов в Redis. - Участвовал в проектировании микросервисной архитектуры на FastAPI под конкурентную нагрузку и масштабирование: asyncio и multiprocessing для параллельной обработки, PostgreSQL через SQLAlchemy. - Реализовал защиту сервисов: JWT-аутентификация, шифрование данных через Fernet, хеширование паролей на bcrypt и ограничение частоты запросов. - Вместе с командой настроил развёртывание на Docker Compose с multi-stage сборкой образов и мониторинг: метрики в реальном времени на Prometheus и Grafana, health checks, логи в ELK. - Участвовал в развитии тестирования: unit и интеграционные тесты на Pytest, нагрузочные на Locust.",
+          "По контракту в кросс-функциональной команде разрабатывал production-платформу реального времени на Replit: отвечал за AI-модуль и связанные с ним бэкенд-сервисы. - Разработал AI-модуль платформы для обработки текстов на OpenAI API: структурированные ответы в JSON с валидацией через Pydantic, повторы и ограничение частоты запросов к LLM, кэширование ответов в Redis. - Участвовал в проектировании микросервисной архитектуры на FastAPI под конкурентную нагрузку и масштабирование: asyncio и multiprocessing для параллельной обработки, PostgreSQL через SQLAlchemy. - Реализовал защиту сервисов: JWT-аутентификация, шифрование данных через Fernet, хеширование паролей на bcrypt и ограничение частоты запросов. - Вместе с командой настроил развёртывание на Docker Compose с multi-stage сборкой образов и мониторинг: метрики в реальном времени на Prometheus и Grafana, health checks, логи в ELK. - Участвовал в развитии тестирования: unit и интеграционные тесты на Pytest, нагрузочные на Locust.",
         techGroups: [
           {
             label: "Языки",
@@ -207,6 +207,7 @@ const translations = {
           {
             label: "DevOps и мониторинг",
             items: [
+              "Replit",
               "Docker",
               "Docker Compose",
               "Prometheus",
@@ -637,7 +638,7 @@ const translations = {
         period: "June 2025 - May 2026",
         employment: "Full-time",
         description:
-          "Under contract, built a production platform for automated text processing and classification as part of a cross-functional team, owning the AI module and the backend services around it. - Built the AI module for text processing and classification on the OpenAI API: structured JSON outputs validated with Pydantic, retries and rate limiting for LLM calls, and response caching in Redis. - Took part in designing a FastAPI microservice architecture for concurrent load and scaling: asyncio and multiprocessing for parallel work, PostgreSQL through SQLAlchemy. - Secured the services with JWT authentication, Fernet encryption, bcrypt password hashing and request rate limiting. - Set up deployment with the team on Docker Compose with multi-stage image builds, plus monitoring: real-time metrics in Prometheus and Grafana, health checks and logs in ELK. - Contributed to testing: unit and integration tests with Pytest, load tests with Locust.",
+          "Under contract, built a real-time production platform on Replit as part of a cross-functional team, owning the AI module and the backend services around it. - Built the platform's AI module for text processing on the OpenAI API: structured JSON outputs validated with Pydantic, retries and rate limiting for LLM calls, and response caching in Redis. - Took part in designing a FastAPI microservice architecture for concurrent load and scaling: asyncio and multiprocessing for parallel work, PostgreSQL through SQLAlchemy. - Secured the services with JWT authentication, Fernet encryption, bcrypt password hashing and request rate limiting. - Set up deployment with the team on Docker Compose with multi-stage image builds, plus monitoring: real-time metrics in Prometheus and Grafana, health checks and logs in ELK. - Contributed to testing: unit and integration tests with Pytest, load tests with Locust.",
 
         techGroups: [
           {
@@ -674,6 +675,7 @@ const translations = {
           {
             label: "DevOps and Monitoring",
             items: [
+              "Replit",
               "Docker",
               "Docker Compose",
               "Prometheus",

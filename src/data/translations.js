@@ -231,7 +231,7 @@ const translations = {
         techGroups: [
           {
             label: "Языки",
-            items: ["TypeScript", "JavaScript"],
+            items: ["TypeScript"],
           },
           {
             label: "Frontend",
@@ -241,13 +241,15 @@ const translations = {
               "Tailwind CSS",
               "React Hook Form",
               "Motion",
+              "React Markdown",
             ],
           },
           {
             label: "Backend и базы данных",
             items: [
               "Node.js",
-              "Next.js API",
+              "Route Handlers",
+              "Server Actions",
               "REST API",
               "Telegram Bot API",
               "Server-Sent Events",
@@ -271,7 +273,13 @@ const translations = {
           },
           {
             label: "Тестирование и DevOps",
-            items: ["Vitest", "Docker", "Docker Compose"],
+            items: [
+              "Vitest",
+              "Node.js Test Runner",
+              "ESLint",
+              "Docker",
+              "Docker Compose",
+            ],
           },
         ],
       },
@@ -699,7 +707,7 @@ const translations = {
         techGroups: [
           {
             label: "Languages",
-            items: ["TypeScript", "JavaScript"],
+            items: ["TypeScript"],
           },
           {
             label: "Frontend",
@@ -709,13 +717,15 @@ const translations = {
               "Tailwind CSS",
               "React Hook Form",
               "Motion",
+              "React Markdown",
             ],
           },
           {
             label: "Backend and Databases",
             items: [
               "Node.js",
-              "Next.js API",
+              "Route Handlers",
+              "Server Actions",
               "REST API",
               "Telegram Bot API",
               "Server-Sent Events",
@@ -739,7 +749,13 @@ const translations = {
           },
           {
             label: "Testing and DevOps",
-            items: ["Vitest", "Docker", "Docker Compose"],
+            items: [
+              "Vitest",
+              "Node.js Test Runner",
+              "ESLint",
+              "Docker",
+              "Docker Compose",
+            ],
           },
         ],
       },

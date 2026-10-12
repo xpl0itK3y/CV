@@ -93,8 +93,7 @@
     font-size: 0.95rem;
     font-weight: 600;
     color: color-mix(in srgb, rgb(var(--block-accent-rgb)) 78%, #fff);
-    /* Fills the first line, so it breaks between the phrases: "...One
-       folder. / Nothing overwritten." */
+    /* No lone word on the second line when it wraps */
     text-wrap: pretty;
 }
 

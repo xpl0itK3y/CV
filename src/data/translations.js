@@ -366,9 +366,9 @@ const translations = {
         // Shown until GitHub answers with the newest release of `repo`
         version: "v0.0.21",
         repo: "xpl0itK3y/modelcrew-desktop",
-        // Non-breaking spaces keep each phrase whole when the line wraps
-        tagline: "Шесть агентов. Одна папка. Ничего не затёрто.",
-        meta: ["Автор и разработчик", "Open source, MIT", "macOS, Windows, Linux"],
+        // The non-breaking space keeps the preposition off the end of a line
+        tagline: "Совместная работа AI-агентов над\u00a0общим кодом",
+        meta: ["Автор проекта", "В активной разработке", "Open source, MIT", "macOS, Windows, Linux"],
         description:
           "Десктопное приложение, в котором несколько AI-агентов для программирования (Claude Code, Codex, Copilot, OpenCode) работают бок о бок в одном проекте и не затирают правки друг друга.",
         highlights: [
@@ -385,7 +385,7 @@ const translations = {
             text: "Диффы по файлам в реальном времени, коммит, откат, переключение веток и история с графом.",
           },
         ],
-        technologies: ["Tauri 2", "Rust", "TypeScript", "React", "xterm.js"],
+        technologies: ["Tauri 2", "Rust", "TypeScript", "React"],
         links: [
           { label: "Сайт", url: "https://modelcrew-com.vercel.app/" },
           { label: "GitHub", url: "https://github.com/xpl0itK3y/modelcrew-desktop" },
@@ -760,8 +760,8 @@ const translations = {
         // Shown until GitHub answers with the newest release of `repo`
         version: "v0.0.21",
         repo: "xpl0itK3y/modelcrew-desktop",
-        tagline: "Six agents. One folder. Nothing overwritten.",
-        meta: ["Author and developer", "Open source, MIT", "macOS, Windows, Linux"],
+        tagline: "AI coding agents working together on one codebase",
+        meta: ["Project author", "In active development", "Open source, MIT", "macOS, Windows, Linux"],
         description:
           "A desktop app where several AI coding agents (Claude Code, Codex, Copilot, OpenCode) work side by side in one project without overwriting each other's edits.",
         highlights: [
@@ -778,7 +778,7 @@ const translations = {
             text: "Real-time per-file diffs, commit, revert, branch switching and a history graph.",
           },
         ],
-        technologies: ["Tauri 2", "Rust", "TypeScript", "React", "xterm.js"],
+        technologies: ["Tauri 2", "Rust", "TypeScript", "React"],
         links: [
           { label: "Website", url: "https://modelcrew-com.vercel.app/" },
           { label: "GitHub", url: "https://github.com/xpl0itK3y/modelcrew-desktop" },

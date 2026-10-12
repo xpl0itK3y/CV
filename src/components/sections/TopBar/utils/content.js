@@ -16,6 +16,8 @@ const TIMELINE_RULE = 1.5;
 const TIMELINE_TEXT_WIDTH = CONTENT_WIDTH - TIMELINE_GUTTER - TIMELINE_RULE;
 // From the text column back onto the rule
 const TIMELINE_DOT_X = -TIMELINE_GUTTER - 0.75;
+// The same for the description's rule, 8pt left of its text
+const DESCRIPTION_DOT_X = -8.5;
 
 // One table per job: the rule on the left edge, the text in the second
 // column. Stacked tables join into one continuous timeline
@@ -142,8 +144,9 @@ const timelineDot = (y) => ({
   relativePosition: { x: TIMELINE_DOT_X, y },
 });
 
-// `text`: a string, whose links are made clickable, or ready pdfmake spans
-const descriptionBullet = (text) => ({
+// `text`: a string, whose links are made clickable, or ready pdfmake spans.
+// `color`: the dot's, matching the stretch of the rule it sits on
+const descriptionBullet = (text, color = TEAL) => ({
   unbreakable: true,
   columns: [
     {
@@ -155,7 +158,7 @@ const descriptionBullet = (text) => ({
           y: 7,
           r1: 2,
           r2: 2,
-          color: TEAL,
+          color,
         },
       ],
       margin: [0, 1, 0, 1],
@@ -171,10 +174,10 @@ const descriptionBullet = (text) => ({
   columnGap: 4,
 });
 
-const descriptionLine = (sentence) => {
+const descriptionLine = (sentence, color) => {
   const isDashed = sentence.trim().startsWith("-");
   if (isDashed) {
-    return descriptionBullet(sentence.trim().replace(/^-\s*/, ""));
+    return descriptionBullet(sentence.trim().replace(/^-\s*/, ""), color);
   }
   return {
     ...renderTextWithLinks(sentence, { style: "jobDescription" }),
@@ -538,11 +541,16 @@ export const generateContent = (translations, lang, pdfLogo) => {
 
       // 2. Описание и проекты (обёрнуты в таблицу с вертикальной линией)
       const descriptionRows = [];
+      // A project's rows: its stretch of the rule is drawn in the accent
+      const projectRows = new Set();
       splitDescription(job.description).forEach((sentence) => {
         const projectTitleMatch = sentence.match(/^(\d+\)\s+[^.]+)/);
         if (projectTitleMatch) {
-          // Это заголовок проекта
-          const title = projectTitleMatch[1].replace(/[:.]+$/, "").trim();
+          // Это заголовок проекта: the dot on the rule stands for its number
+          const title = projectTitleMatch[1]
+            .replace(/^\d+\)\s*/, "")
+            .replace(/[:.]+$/, "")
+            .trim();
           // Удаляем двоеточия, пробелы И ТОЧКИ из начала остатка (но оставляем дефис, если он есть)
           const rest = sentence
             .slice(projectTitleMatch[1].length)
@@ -552,19 +560,31 @@ export const generateContent = (translations, lang, pdfLogo) => {
             .split(/\.\s+/)
             .map((s) => s.trim())
             .filter((s) => s.length > 0 && s !== ".")
-            .map((rs) => descriptionLine(rs.endsWith(".") ? rs : `${rs}.`));
+            .map((rs) =>
+              descriptionLine(rs.endsWith(".") ? rs : `${rs}.`, ACCENT),
+            );
 
           // The title goes to the next page with its first line
+          projectRows.add(descriptionRows.length);
           descriptionRows.push([
             {
               stack: [
+                {
+                  canvas: [
+                    { type: "ellipse", x: 0, y: 0, r1: 3, r2: 3, color: ACCENT },
+                  ],
+                  relativePosition: { x: DESCRIPTION_DOT_X, y: 11 },
+                },
                 { text: title, style: "projectTitle" },
                 ...lines.splice(0, 1),
               ],
               unbreakable: true,
             },
           ]);
-          lines.forEach((line) => descriptionRows.push([line]));
+          lines.forEach((line) => {
+            projectRows.add(descriptionRows.length);
+            descriptionRows.push([line]);
+          });
         } else {
           const isProjectsLead =
             sentence.includes("Ключевые проекты") ||
@@ -586,7 +606,11 @@ export const generateContent = (translations, lang, pdfLogo) => {
               widths: ["*"],
               body: descriptionRows,
             },
-            layout: descriptionLayout,
+            layout: {
+              ...descriptionLayout,
+              vLineColor: (i, node, rowIndex) =>
+                projectRows.has(rowIndex) ? ACCENT : TEAL,
+            },
             margin: [0, 4, 0, 4],
           },
         ]);

@@ -205,11 +205,11 @@ const translations = {
         ],
       },
       {
-        position: "Backend Developer",
-        company: "Фриланс, Павлодар",
+        position: "Backend Developer (Freelance)",
+        company: "Проекты на заказ",
         period: "Август 2024 - Февраль 2025",
         description:
-          "Разрабатывал веб-приложения на заказ с бэкендом на Python и PHP. 1) Генератор детских сказок для школы. - Разработал веб-приложение, которое пишет сказки с помощью LLM с учётом возраста читателя (3–5, 6–8, 9–12 лет) и персонажей, которых добавляет пользователь. - Написал сервис на FastAPI, который отдаёт сказку потоком по мере генерации, на русском и казахском языках через OpenAI API (GPT-4o-mini). - Сделал веб-интерфейс на Yii2: форма создания сказки, вывод текста в реальном времени и история сказок в MySQL. - Упаковал сервисы в Docker Compose. 2) Мини-CRM для магазина. - Разработал CRM для приёма заявок покупателей с сайта магазина через встраиваемый виджет. - Реализовал панель администратора со статусами заявок, фильтрацией и статистикой за день, неделю и месяц. - Настроил роли администратора и менеджера, вложения к заявкам и защиту от повторных заявок с одного телефона или email. - Построил backend на Laravel с разделением на сервисы и репозитории и контейнеризировал приложение в Docker.",
+          "Брал проекты под ключ: обсуждал с заказчиком требования, проектировал архитектуру, разрабатывал backend и интерфейс, разворачивал всё в Docker и передавал проект с инструкцией по запуску. 1) Генератор детских сказок для школы. - Разработал веб-приложение, которое пишет сказки с помощью LLM: пользователь выбирает возраст читателя, язык и героев, а текст появляется на экране по мере генерации. - Написал API на FastAPI с потоковой отдачей ответа, интеграцией OpenAI API (GPT-4o-mini) и валидацией запросов на Pydantic. - Составил отдельные промпты на русском и казахском для трёх возрастных групп (3–5, 6–8, 9–12 лет), чтобы язык и сюжет подходили ребёнку. - Сделал веб-интерфейс на Yii2 и Bootstrap: форма создания сказки, вывод текста в реальном времени и история сказок в MySQL с просмотром и удалением. - Добавил health check и Swagger-документацию API, упаковал API, веб-приложение и MySQL в Docker Compose. 2) Мини-CRM для магазина. - Разработал CRM для заявок покупателей: они приходят с сайта магазина через встраиваемый виджет и публичный REST API. - Сделал панель менеджера: список заявок с фильтрами по дате, статусу, email и телефону, карточка заявки с вложениями и смена статуса (новая, в работе, обработана). - Настроил роли администратора и менеджера и загрузку файлов к заявкам до 10 МБ. - Добавил защиту от спама: не больше одной заявки в сутки с одного телефона или email и проверку номера в международном формате. - Реализовал API статистики заявок за день, неделю и месяц. - Построил backend на Laravel по слоям (контроллеры, сервисы, репозитории, Form Requests, API Resources), подготовил сиды с тестовыми данными и контейнеризировал приложение в Docker с Nginx.",
         techGroups: [
           {
             label: "Языки",
@@ -224,12 +224,17 @@ const translations = {
             items: [
               "FastAPI",
               "Pydantic",
-              "Yii2",
+              "Uvicorn",
               "Laravel",
+              "Yii2",
               "REST API",
               "MySQL",
               "SQLite",
             ],
+          },
+          {
+            label: "Frontend",
+            items: ["Blade", "Bootstrap", "jQuery"],
           },
           {
             label: "DevOps",
@@ -633,11 +638,11 @@ const translations = {
         ],
       },
       {
-        position: "Backend Developer",
-        company: "Freelance, Pavlodar",
+        position: "Backend Developer (Freelance)",
+        company: "Client Projects",
         period: "August 2024 - February 2025",
         description:
-          "Built web applications for clients, with backends in Python and PHP. 1) Children's Story Generator for a School. - Built a web app that writes fairy tales with an LLM, adapted to the reader's age (3–5, 6–8, 9–12) and to the characters the user adds. - Wrote a FastAPI service that streams the story as it is generated, in Russian and Kazakh, through the OpenAI API (GPT-4o-mini). - Built the Yii2 web interface: a story form, the text appearing in real time and a story history stored in MySQL. - Packaged the services with Docker Compose. 2) Mini CRM for a Shop. - Built a CRM that collects customer requests from the shop's website through an embeddable widget. - Implemented an admin panel with request statuses, filtering and daily, weekly and monthly statistics. - Set up admin and manager roles, file attachments and protection against repeat requests from the same phone or email. - Structured the Laravel backend into services and repositories and containerized the app with Docker.",
+          "Took projects end to end: agreed the requirements with the client, designed the architecture, built the backend and the interface, deployed everything in Docker and handed the project over with setup instructions. 1) Children's Story Generator for a School. - Built a web app that writes fairy tales with an LLM: the user picks the reader's age, the language and the characters, and the text appears on screen as it is generated. - Wrote a FastAPI service that streams the answer, integrates the OpenAI API (GPT-4o-mini) and validates requests with Pydantic. - Wrote separate prompts in Russian and Kazakh for three age groups (3–5, 6–8, 9–12), so the language and the plot suit the child. - Built the web interface on Yii2 and Bootstrap: a story form, the text appearing in real time and a story history in MySQL with viewing and deleting. - Added a health check and Swagger API docs, and packaged the API, the web app and MySQL with Docker Compose. 2) Mini CRM for a Shop. - Built a CRM for customer requests, which arrive from the shop's website through an embeddable widget and a public REST API. - Built a manager panel: a request list filtered by date, status, email and phone, a request card with attachments and status changes (new, in progress, processed). - Set up admin and manager roles and file uploads of up to 10 MB per request. - Added spam protection: one request a day per phone or email, and phone numbers checked in international format. - Implemented an API with request statistics for the day, week and month. - Structured the Laravel backend in layers (controllers, services, repositories, Form Requests, API Resources), wrote seeders with test data and containerized the app in Docker with Nginx.",
         techGroups: [
           {
             label: "Languages",
@@ -652,12 +657,17 @@ const translations = {
             items: [
               "FastAPI",
               "Pydantic",
-              "Yii2",
+              "Uvicorn",
               "Laravel",
+              "Yii2",
               "REST API",
               "MySQL",
               "SQLite",
             ],
+          },
+          {
+            label: "Frontend",
+            items: ["Blade", "Bootstrap", "jQuery"],
           },
           {
             label: "DevOps",

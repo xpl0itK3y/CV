@@ -1,22 +1,6 @@
 import React from "react";
 
 export const renderDescription = (text, styles = {}) => {
-  const projectTitleRegex = /^(\s*\d+\)\s+[^.]+)/;
-  const projectMatch = text.match(projectTitleRegex);
-
-  if (projectMatch) {
-    const title = projectMatch[1];
-    const rest = text.slice(title.length);
-    return (
-      <>
-        <span className={styles.projectTitle}>
-          {title}
-        </span>
-        {renderDescription(rest, styles)}
-      </>
-    );
-  }
-
   // Улучшенное регулярное выражение: захватываем URL полностью, но исключаем знаки препинания в САМОМ конце
   const urlRegex =
     /(https?:\/\/[^\s]+?|github\.com\/[^\s]+?|pavlodar\.hh\.kz\/[^\s]+?|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|[a-zA-Z0-9.-]+\.[a-z]{2,}(?:\/[^\s]+?)?)(?=[.,!?;:]*(?:\s|$))/g;
@@ -50,6 +34,29 @@ export const renderDescription = (text, styles = {}) => {
     }
     return part;
   });
+};
+
+// Sorts the sentences into plain text, project names ("1) Name") and points
+// ("- Point"). The points under a name belong to that project, so it can be
+// drawn as one stretch of the rule; `last` marks where that stretch ends
+export const classifySentences = (sentences) => {
+  let inProject = false;
+  const items = sentences.map((sentence) => {
+    const name = sentence.match(/^\d+\)\s*(.+)$/s);
+    if (name) {
+      inProject = true;
+      return { kind: "project", text: name[1], inProject };
+    }
+    const point = sentence.match(/^-\s*(.+)$/s);
+    if (!point) inProject = false;
+    return point
+      ? { kind: "point", text: point[1], inProject }
+      : { kind: "text", text: sentence, inProject };
+  });
+  return items.map((item, index) => ({
+    ...item,
+    last: item.inProject && items[index + 1]?.kind !== "point",
+  }));
 };
 
 export const splitIntoSentences = (text) => {

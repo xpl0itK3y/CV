@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  classifySentences,
   renderDescription,
   splitIntoSentences,
 } from "../helpers/experienceHelpers";
@@ -22,8 +23,27 @@ const ExperienceItem = ({
   hideTechLabel,
   styles,
 }) => {
-  const sentences = splitIntoSentences(job.description);
+  const sentences = classifySentences(splitIntoSentences(job.description));
   const isLong = sentences.length > MAX_SENTENCES;
+
+  const renderSentence = (sentence, sentenceIndex) => (
+    <div
+      key={sentenceIndex}
+      className={[
+        styles.sentence,
+        sentence.kind === "project" && styles.projectName,
+        sentence.kind === "point" && styles.point,
+        sentence.inProject && styles.inProject,
+        sentence.last && styles.projectEnd,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      {sentence.kind === "project"
+        ? sentence.text
+        : renderDescription(sentence.text, styles)}
+    </div>
+  );
 
   const renderTechTag = (tech, techIndex) => (
     <span
@@ -65,11 +85,7 @@ const ExperienceItem = ({
         >
           {sentences
             .slice(0, isLong ? MAX_SENTENCES : sentences.length)
-            .map((sentence, sentenceIndex) => (
-              <div key={sentenceIndex} className={styles.sentence}>
-                {renderDescription(sentence, styles)}
-              </div>
-            ))}
+            .map(renderSentence)}
         </div>
 
         {isLong && (
@@ -79,11 +95,7 @@ const ExperienceItem = ({
             }`}
           >
             <div className={styles.expandableInner}>
-              {sentences.slice(MAX_SENTENCES).map((sentence, sentenceIndex) => (
-                <div key={sentenceIndex} className={styles.sentence}>
-                  {renderDescription(sentence, styles)}
-                </div>
-              ))}
+              {sentences.slice(MAX_SENTENCES).map(renderSentence)}
             </div>
           </div>
         )}

@@ -214,9 +214,6 @@ const translations = {
           {
             label: "DevOps и мониторинг",
             items: [
-              "Replit",
-              "Docker",
-              "Docker Compose",
               "Prometheus",
               "Grafana",
               "ELK Stack",
@@ -689,9 +686,6 @@ const translations = {
           {
             label: "DevOps and Monitoring",
             items: [
-              "Replit",
-              "Docker",
-              "Docker Compose",
               "Prometheus",
               "Grafana",
               "ELK Stack",

@@ -28,14 +28,6 @@ const MobileLayout = ({
             </AnimatedSection>
 
             <AnimatedSection delay={0.42}>
-                <Projects
-                    title={t.projectsTitle}
-                    projects={t.projects}
-                    stackTitle={t.stackTitle}
-                />
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.48}>
                 <Education
                     title={t.educationTitle}
                     education={t.education}
@@ -43,7 +35,7 @@ const MobileLayout = ({
                 />
             </AnimatedSection>
 
-            <AnimatedSection delay={0.54}>
+            <AnimatedSection delay={0.48}>
                 <Skills
                     skillsTitle={t.skillsTitle}
                     softSkillsTitle={t.softSkillsTitle}
@@ -55,7 +47,7 @@ const MobileLayout = ({
                 />
             </AnimatedSection>
 
-            <AnimatedSection delay={0.6}>
+            <AnimatedSection delay={0.54}>
                 <Experience
                     title={t.experienceTitle}
                     experience={firstExperience}
@@ -64,10 +56,19 @@ const MobileLayout = ({
             </AnimatedSection>
 
             {remainingExperiences.map((job, index) => (
-                <AnimatedSection key={`mobile-${index}`} delay={0.66 + index * 0.06}>
+                <AnimatedSection key={`mobile-${index}`} delay={0.6 + index * 0.06}>
                     <Experience title="" experience={[job]} {...experienceProps} />
                 </AnimatedSection>
             ))}
+
+            <AnimatedSection delay={0.6 + remainingExperiences.length * 0.06}>
+                <Projects
+                    title={t.projectsTitle}
+                    projects={t.projects}
+                    stackTitle={t.stackTitle}
+                    releaseLabel={t.latestReleaseLabel}
+                />
+            </AnimatedSection>
         </div>
     );
 };

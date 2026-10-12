@@ -142,6 +142,7 @@ const timelineDot = (y) => ({
   relativePosition: { x: TIMELINE_DOT_X, y },
 });
 
+// `text`: a string, whose links are made clickable, or ready pdfmake spans
 const descriptionBullet = (text) => ({
   unbreakable: true,
   columns: [
@@ -161,7 +162,9 @@ const descriptionBullet = (text) => ({
     },
     {
       width: "*",
-      ...renderTextWithLinks(text, { style: "jobDescription" }),
+      ...(typeof text === "string"
+        ? renderTextWithLinks(text, { style: "jobDescription" })
+        : { text, style: "jobDescription" }),
       margin: [2.5, 1, 0, 1],
     },
   ],
@@ -194,7 +197,15 @@ const projectBlock = (project, index, stackTitle) => ({
           [
             {
               stack: [
-                { text: project.name, style: "jobPosition" },
+                project.version
+                  ? {
+                      columns: [
+                        { width: "*", text: project.name, style: "jobPosition" },
+                        { width: "auto", text: project.version, style: "jobPeriod" },
+                      ],
+                      columnGap: 10,
+                    }
+                  : { text: project.name, style: "jobPosition" },
                 ...(project.tagline
                   ? [{ text: project.tagline, style: "jobCompany" }]
                   : []),
@@ -215,9 +226,19 @@ const projectBlock = (project, index, stackTitle) => ({
           ],
           // Each highlight is unbreakable on its own, so the page may turn
           // between them
-          ...(project.highlights ?? []).map((item) => [
+          ...(project.highlights ?? []).map(({ title, text }) => [
             {
-              table: { widths: ["*"], body: [[descriptionBullet(item)]] },
+              table: {
+                widths: ["*"],
+                body: [
+                  [
+                    descriptionBullet([
+                      { text: `${title}. `, bold: true, color: "#8f2958" },
+                      text,
+                    ]),
+                  ],
+                ],
+              },
               layout: descriptionLayout,
             },
           ]),
@@ -387,16 +408,6 @@ export const generateContent = (translations, lang, pdfLogo) => {
             columnGap: 8,
             margin: [0, 10, 0, 0],
           },
-        ]
-      : []),
-
-    // Проекты
-    ...(translations.projects?.length
-      ? [
-          sectionTitle(titleText(translations.projectsTitle)),
-          ...translations.projects.map((project, index) =>
-            projectBlock(project, index, stackTitle),
-          ),
         ]
       : []),
 
@@ -647,5 +658,17 @@ export const generateContent = (translations, lang, pdfLogo) => {
         headlineLevel: 2,
       };
     }),
+
+    // Проекты, под опытом, как на сайте
+    ...(translations.projects?.length
+      ? [
+          sectionTitle(titleText(translations.projectsTitle), {
+            margin: [0, 20, 0, 10],
+          }),
+          ...translations.projects.map((project, index) =>
+            projectBlock(project, index, stackTitle),
+          ),
+        ]
+      : []),
   ];
 };

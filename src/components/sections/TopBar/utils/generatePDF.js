@@ -2,6 +2,7 @@ import pdfMake from "pdfmake/build/pdfmake.min.js";
 import { loadFonts } from "./fonts";
 import { pdfStyles } from "./styles";
 import { generateContent } from "./content";
+import { fetchLatestRelease } from "../../Projects/helpers/latestRelease";
 
 const loadPdfLogo = async () => {
   try {
@@ -15,6 +16,16 @@ const loadPdfLogo = async () => {
     return null;
   }
 };
+
+// Each project with its newest release when GitHub answers, the version from
+// the data otherwise. The site has usually asked already, so it's instant
+const withLatestReleases = (projects = []) =>
+  Promise.all(
+    projects.map(async (project) => {
+      const version = project.repo ? await fetchLatestRelease(project.repo) : null;
+      return version ? { ...project, version } : project;
+    }),
+  );
 
 // Room a block needs left on the page when it starts, by headlineLevel:
 // a section title wants a few lines of its content under it, a job its
@@ -50,7 +61,10 @@ export const preloadResumePDF = loadFonts;
 export const generateResumePDF = async (translations, lang) => {
   // Загружаем шрифты перед генерацией
   await loadFonts();
-  const pdfLogo = await loadPdfLogo();
+  const [pdfLogo, projects] = await Promise.all([
+    loadPdfLogo(),
+    withLatestReleases(translations.projects),
+  ]);
 
   const docDefinition = {
     pageSize: "A4",
@@ -69,7 +83,7 @@ export const generateResumePDF = async (translations, lang) => {
       color: "#000000",
     },
     styles: pdfStyles,
-    content: generateContent(translations, lang, pdfLogo),
+    content: generateContent({ ...translations, projects }, lang, pdfLogo),
     footer,
     pageBreakBefore,
   };

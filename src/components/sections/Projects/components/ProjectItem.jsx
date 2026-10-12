@@ -1,15 +1,33 @@
 import { GithubIcon } from "../../Contacts/helpers/contactIcons";
+import { releasesUrl } from "../helpers/latestRelease";
+import { useLatestRelease } from "../hooks/useLatestRelease";
 import styles from "../styles/Projects.module.css";
 
-const ProjectItem = ({ project, stackTitle, isMobile }) => {
-  const { name, tagline, meta, description, highlights, technologies, links } =
+const ProjectItem = ({ project, stackTitle, releaseLabel, isMobile, wide }) => {
+  const { name, repo, tagline, meta, description, highlights, technologies, links } =
     project;
+  const version = useLatestRelease(repo, project.version);
 
   return (
-    <article className={styles.project}>
-      <h3 className={isMobile ? styles.nameMobile : styles.nameDesktop}>
-        {name}
-      </h3>
+    <article className={`${styles.project} ${wide ? styles.projectWide : ""}`}>
+      <div className={styles.head}>
+        <h3 className={isMobile ? styles.nameMobile : styles.nameDesktop}>
+          {name}
+        </h3>
+        {version && (
+          <a
+            href={repo ? releasesUrl(repo) : undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.version}
+            title={releaseLabel}
+            aria-label={`${releaseLabel} ${version}`}
+          >
+            <span className={styles.versionDot} aria-hidden="true" />
+            {version}
+          </a>
+        )}
+      </div>
       {tagline && <p className={styles.tagline}>{tagline}</p>}
 
       {meta?.length > 0 && (
@@ -26,9 +44,10 @@ const ProjectItem = ({ project, stackTitle, isMobile }) => {
         <p className={styles.description}>{description}</p>
         {highlights?.length > 0 && (
           <ul className={styles.highlights}>
-            {highlights.map((item) => (
-              <li key={item} className={styles.highlight}>
-                {item}
+            {highlights.map(({ title, text }) => (
+              <li key={title} className={styles.highlight}>
+                <span className={styles.highlightTitle}>{title}</span>
+                <span className={styles.highlightText}>{text}</span>
               </li>
             ))}
           </ul>

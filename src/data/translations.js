@@ -359,18 +359,31 @@ const translations = {
 
     // Projects
     projectsTitle: "Проекты",
+    latestReleaseLabel: "Последний релиз",
     projects: [
       {
         name: "ModelCrew",
+        // Shown until GitHub answers with the newest release of `repo`
+        version: "v0.0.21",
+        repo: "xpl0itK3y/modelcrew-desktop",
         // Non-breaking spaces keep each phrase whole when the line wraps
-        tagline: "Шесть агентов. Одна\u00a0папка. Ничего\u00a0не\u00a0затёрто.",
+        tagline: "Шесть агентов. Одна папка. Ничего не затёрто.",
         meta: ["Автор и разработчик", "Open source, MIT", "macOS, Windows, Linux"],
         description:
-          "Десктопное приложение, в котором несколько AI-агентов для кода (Claude Code, Codex, Copilot, OpenCode) работают бок о бок в одном проекте и не затирают правки друг друга.",
+          "Десктопное приложение, в котором несколько AI-агентов для программирования (Claude Code, Codex, Copilot, OpenCode) работают бок о бок в одном проекте и не затирают правки друг друга.",
         highlights: [
-          "Захват файлов через хуки самих агентов: перед правкой агент занимает файл, а второй получает отказ на своём протоколе (exit code, JSON-решение или ошибка плагина) вместе с причиной. Запись поверх устаревшего чтения тоже отклоняется.",
-          "Сетка терминалов на PTY: каждая панель запускает CLI из PATH пользователя, а при запуске все сессии возвращаются вместе с разговорами агентов.",
-          "Живая git-панель: диффы по файлам в реальном времени, коммит, откат, переключение веток и история с графом.",
+          {
+            title: "Захват файлов",
+            text: "Перед правкой агент занимает файл через собственный хук. Второй агент получает отказ с причиной в формате своего CLI: exit code, JSON-решение или ошибка плагина. Отклоняется и запись поверх версии, которую агент прочитал до чужих изменений.",
+          },
+          {
+            title: "Сетка терминалов",
+            text: "Каждая панель запускает CLI агента из PATH пользователя в собственном PTY. После перезапуска приложения сессии восстанавливаются вместе с диалогами агентов.",
+          },
+          {
+            title: "Git-панель",
+            text: "Диффы по файлам в реальном времени, коммит, откат, переключение веток и история с графом.",
+          },
         ],
         technologies: ["Tauri 2", "Rust", "TypeScript", "React", "xterm.js"],
         links: [
@@ -740,17 +753,30 @@ const translations = {
 
     // Projects
     projectsTitle: "Projects",
+    latestReleaseLabel: "Latest release",
     projects: [
       {
         name: "ModelCrew",
-        tagline: "Six agents. One\u00a0folder. Nothing\u00a0overwritten.",
+        // Shown until GitHub answers with the newest release of `repo`
+        version: "v0.0.21",
+        repo: "xpl0itK3y/modelcrew-desktop",
+        tagline: "Six agents. One folder. Nothing overwritten.",
         meta: ["Author and developer", "Open source, MIT", "macOS, Windows, Linux"],
         description:
           "A desktop app where several AI coding agents (Claude Code, Codex, Copilot, OpenCode) work side by side in one project without overwriting each other's edits.",
         highlights: [
-          "File claims through the agents' own hooks: an agent claims a file before editing it, and a second one is refused in its own protocol (exit code, JSON decision or plugin error) along with the reason. Writing over a stale read is refused too.",
-          "A terminal grid on PTY: every panel runs the CLI already on the user's PATH, and at launch every session comes back with each agent's conversation.",
-          "A live git panel: per-file diffs in real time, commit, revert, branch switching and history with a graph.",
+          {
+            title: "File claims",
+            text: "An agent claims a file through its own hook before editing it. A second agent is refused with a reason, in its own CLI's format: an exit code, a JSON decision or a plugin error. A write over a version the agent read before someone else changed it is refused too.",
+          },
+          {
+            title: "Terminal grid",
+            text: "Each panel runs the agent's CLI from the user's PATH in its own PTY. After a restart, sessions come back together with each agent's conversation.",
+          },
+          {
+            title: "Git panel",
+            text: "Real-time per-file diffs, commit, revert, branch switching and a history graph.",
+          },
         ],
         technologies: ["Tauri 2", "Rust", "TypeScript", "React", "xterm.js"],
         links: [

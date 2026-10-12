@@ -25,16 +25,7 @@ const DesktopLayout = ({
                     <About title={t.aboutTitle} about={t.aboutText} facts={t.aboutFacts} />
                 </AnimatedSection>
 
-                {/* The left column is the shorter one: the projects even them out */}
                 <AnimatedSection delay={0.42}>
-                    <Projects
-                        title={t.projectsTitle}
-                        projects={t.projects}
-                        stackTitle={t.stackTitle}
-                    />
-                </AnimatedSection>
-
-                <AnimatedSection delay={0.48}>
                     <Experience
                         title={t.experienceTitle}
                         experience={firstExperience}
@@ -75,6 +66,19 @@ const DesktopLayout = ({
                         <Experience title="" experience={[job]} {...experienceProps} />
                     </AnimatedSection>
                 ))}
+            </div>
+
+            {/* Under the experience, across both columns */}
+            <div className={styles.fullRow}>
+                <AnimatedSection delay={0.6 + Math.max(leftColumn.length, rightColumn.length) * 0.06}>
+                    <Projects
+                        title={t.projectsTitle}
+                        projects={t.projects}
+                        stackTitle={t.stackTitle}
+                        releaseLabel={t.latestReleaseLabel}
+                        wide
+                    />
+                </AnimatedSection>
             </div>
         </div>
     );

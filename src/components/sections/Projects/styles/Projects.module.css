@@ -21,9 +21,18 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Name and the release pill on one line */
+.head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 0.75rem;
+    margin-bottom: 0.35rem;
+}
+
 .nameDesktop {
     color: var(--section-title-color, #fff);
-    margin: 0 0 0.35rem 0;
+    margin: 0;
     font-size: 1.3rem;
     font-weight: 600;
     transition: color var(--duration-hover) ease;
@@ -31,10 +40,51 @@
 
 .nameMobile {
     color: var(--section-title-color, #fff);
-    margin: 0 0 0.35rem 0;
+    margin: 0;
     font-size: 1.15rem;
     font-weight: 600;
     transition: color var(--duration-hover) ease;
+}
+
+/* The newest release, as the product's site shows it: a pill with a lit dot */
+.version {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(var(--block-accent-rgb), 0.3);
+    background: rgba(var(--block-accent-rgb), 0.08);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.4;
+    text-decoration: none;
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    transition:
+        border-color var(--duration-hover) ease,
+        color var(--duration-hover) ease,
+        transform var(--duration-press) var(--ease-out);
+}
+
+.versionDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgb(var(--block-accent-rgb));
+    box-shadow: 0 0 6px rgba(var(--block-accent-rgb), 0.8);
+}
+
+.version:active {
+    transform: scale(0.97);
+}
+
+.version:focus-visible {
+    outline: 2px solid rgba(var(--block-accent-rgb), 0.8);
+    outline-offset: 2px;
 }
 
 /* The product's own one-liner, in the block's accent */
@@ -43,7 +93,9 @@
     font-size: 0.95rem;
     font-weight: 600;
     color: color-mix(in srgb, rgb(var(--block-accent-rgb)) 78%, #fff);
-    text-wrap: balance;
+    /* Fills the first line, so it breaks between the phrases: "...One
+       folder. / Nothing overwritten." */
+    text-wrap: pretty;
 }
 
 .metaDesktop,
@@ -105,7 +157,17 @@
 }
 
 .highlight + .highlight {
-    margin-top: 0.4rem;
+    margin-top: 0.6rem;
+}
+
+.highlightTitle {
+    display: block;
+    color: #fff;
+    font-weight: 600;
+}
+
+.highlightText {
+    display: block;
 }
 
 /* A dot centred on the first line */
@@ -239,6 +301,11 @@
         transform: translateY(-2px);
     }
 
+    .version:hover {
+        border-color: rgba(var(--block-accent-rgb), 0.6);
+        color: #fff;
+    }
+
     .link:hover {
         border-color: rgba(var(--block-accent-rgb), 0.55);
         background-color: rgba(var(--block-accent-rgb), 0.12);
@@ -256,16 +323,113 @@
     }
 }
 
-/* A finger needs about 44px: the pills grow to it on touch screens */
+/* A finger needs about 44px: the pills grow to it on touch screens, the
+   small version pill gets an invisible hit area instead */
 @media (pointer: coarse) {
     .link {
         min-height: 44px;
     }
+
+    .version::after {
+        content: "";
+        position: absolute;
+        inset: -10px -4px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .version:active,
     .link:active,
     .link:hover .linkArrow {
         transform: none;
     }
+}
+
+/* Full width under the experience: the links move up beside the name, the
+   highlights line up as tiles, like the facts under About */
+.projectWide {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+        "head links"
+        "tagline tagline"
+        "meta meta"
+        "body body"
+        "stack stack";
+    column-gap: 1.5rem;
+}
+
+.projectWide .head {
+    grid-area: head;
+}
+
+.projectWide .tagline {
+    grid-area: tagline;
+}
+
+.projectWide .metaDesktop {
+    grid-area: meta;
+}
+
+.projectWide .bodyDesktop {
+    grid-area: body;
+    padding-left: 0;
+    border-left: 0;
+}
+
+.projectWide .stack {
+    grid-area: stack;
+}
+
+.projectWide .links {
+    grid-area: links;
+    align-self: start;
+    margin-top: 0;
+}
+
+/* A comfortable measure on a 1200px card */
+.projectWide .description {
+    max-width: 72ch;
+}
+
+.projectWide .highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.projectWide .highlight {
+    padding: 1rem 1.1rem;
+    border-radius: 14px;
+    background: linear-gradient(
+        180deg,
+        rgba(var(--block-accent-rgb), 0.1) 0%,
+        rgba(var(--block-accent-rgb), 0.04) 100%
+    );
+    border: 1px solid rgba(var(--block-accent-rgb), 0.16);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.projectWide .highlight + .highlight {
+    margin-top: 0;
+}
+
+.projectWide .highlight::before {
+    display: none;
+}
+
+.projectWide .highlightTitle {
+    margin-bottom: 0.35rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, rgb(var(--block-accent-rgb)) 72%, #fff);
+}
+
+.projectWide .highlightText {
+    color: rgba(255, 255, 255, 0.85);
 }

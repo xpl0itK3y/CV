@@ -42,6 +42,13 @@
     gap: 0.1rem;
 }
 
+/* A block across both columns, under the taller one. The row gap comes on
+   top of the last block's own bottom margin, so it's taken back */
+.fullRow {
+    grid-column: 1 / -1;
+    margin-top: -1.5rem;
+}
+
 .leftColumn {
     display: flex;
     flex-direction: column;

@@ -171,7 +171,7 @@ const translations = {
         period: "Июнь 2025 - Май 2026",
         employment: "Полная занятость",
         description:
-          "По контракту в кросс-функциональной команде разрабатывал production-платформу аналитики в реальном времени: она собирает данные компании из корпоративных систем в единые дашборды. - Разработал интеграции с 1С, Битрикс и Documentolog на Python и FastAPI: данные из разных систем в реальном времени попадают в PostgreSQL и сводятся на общих дашбордах, так что вся картина видна в одном месте. - Когда платформа разрослась и искать в ней данные стало неудобно, сделал MCP-сервер с инструментами для AI-агента: через Claude Code нужную информацию можно получить запросом на естественном языке вместо ручного поиска по интерфейсу. - Защитил доступ двухфакторной аутентификацией через Microsoft Authenticator (украденный токен без подтверждения с телефона бесполезен), хешированием паролей на bcrypt и шифрованием данных через Fernet.",
+          "По контракту в кросс-функциональной команде разрабатывал production-платформу аналитики в реальном времени: она собирает данные компании из корпоративных систем в единые дашборды. - Разработал интеграции с 1С, Битрикс и Documentolog на Python и FastAPI: данные из разных систем в реальном времени попадают в PostgreSQL и сводятся на общих дашбордах, так что вся картина видна в одном месте. - Когда платформа разрослась и искать в ней данные стало неудобно, сделал MCP-сервер с инструментами для AI-агента: через Claude Code нужную информацию можно получить запросом на естественном языке вместо ручного поиска по интерфейсу. - Написал скиллы для Replit Agent, чтобы он лучше ориентировался в разросшемся проекте: точнее искал по файлам и увереннее работал с кодовой базой. - Защитил доступ двухфакторной аутентификацией через Microsoft Authenticator (украденный токен без подтверждения с телефона бесполезен), хешированием паролей на bcrypt и шифрованием данных через Fernet.",
         techGroups: [
           {
             label: "Языки",
@@ -182,6 +182,7 @@ const translations = {
             items: [
               "MCP",
               "Claude Code",
+              "Replit Agent",
               "OpenAI API",
               "Prompt Engineering",
               "Structured Outputs (JSON)",
@@ -644,7 +645,7 @@ const translations = {
         period: "June 2025 - May 2026",
         employment: "Full-time",
         description:
-          "Under contract, built a real-time production analytics platform as part of a cross-functional team, pulling the company's data from its business systems into shared dashboards. - Built integrations with 1C, Bitrix and Documentolog on Python and FastAPI: data from separate systems lands in PostgreSQL in real time and comes together on shared dashboards, so the whole picture is in one place. - When the platform grew too large to navigate comfortably, built an MCP server with tools for an AI agent: through Claude Code, the needed data comes from a natural-language request instead of a manual search through the UI. - Secured access with two-factor authentication through Microsoft Authenticator (a stolen token is useless without confirmation from the phone), bcrypt password hashing and Fernet data encryption.",
+          "Under contract, built a real-time production analytics platform as part of a cross-functional team, pulling the company's data from its business systems into shared dashboards. - Built integrations with 1C, Bitrix and Documentolog on Python and FastAPI: data from separate systems lands in PostgreSQL in real time and comes together on shared dashboards, so the whole picture is in one place. - When the platform grew too large to navigate comfortably, built an MCP server with tools for an AI agent: through Claude Code, the needed data comes from a natural-language request instead of a manual search through the UI. - Wrote skills for Replit Agent so it could find its way around the growing project: searching its files more precisely and working with the codebase more reliably. - Secured access with two-factor authentication through Microsoft Authenticator (a stolen token is useless without confirmation from the phone), bcrypt password hashing and Fernet data encryption.",
 
         techGroups: [
           {
@@ -656,6 +657,7 @@ const translations = {
             items: [
               "MCP",
               "Claude Code",
+              "Replit Agent",
               "OpenAI API",
               "Prompt Engineering",
               "Structured Outputs (JSON)",

@@ -17,7 +17,7 @@ const translations = {
     // About
     aboutTitle: "О себе",
     aboutText:
-      "Python-инженер с двумя годами опыта: начинал с backend-разработки и перешёл в AI-инженерию. Строил сервисы на FastAPI и Django с PostgreSQL, Redis и Docker, участвовал в развитии микросервисной архитектуры и production-платформы аналитики в реальном времени. Сейчас создаю LLM-системы: RAG с гибридным поиском и реранкингом, мультиагентные пайплайны на LangGraph, MCP-инструменты для агентов, а качество поиска и ответов проверяю на датасетах. Бэкенд-опыт помогает доводить такие системы до production: очереди задач, кэширование, мониторинг и безопасность. Ищу позицию AI Engineer в продуктовой команде.",
+      "Python-инженер с двумя годами опыта: начинал с backend-разработки и перешёл в AI-инженерию. Строил сервисы на FastAPI и Django с PostgreSQL, Redis и Docker, участвовал в развитии микросервисной архитектуры и production-платформы аналитики в реальном времени. Сейчас создаю LLM-системы: RAG с гибридным поиском и реранкингом, мультиагентные пайплайны на LangGraph, MCP-инструменты для агентов, а качество поиска и ответов проверяю на датасетах. Бэкенд-опыт помогает доводить такие системы до production: очереди задач, кэширование, мониторинг и безопасность. Ищу позицию AI Engineer или Python Backend Engineer в продуктовой команде.",
     aboutFacts: [
       { label: "Возраст", value: "24 года" },
       { label: "Гражданство", value: "Казахстан" },
@@ -492,7 +492,7 @@ const translations = {
     // About
     aboutTitle: "About Me",
     aboutText:
-      "Python engineer with two years of experience who moved from backend development into AI engineering. Built services on FastAPI and Django with PostgreSQL, Redis and Docker, and contributed to a microservice architecture and a real-time production analytics platform. Now I build LLM systems: RAG with hybrid search and reranking, multi-agent pipelines on LangGraph and MCP tools for agents, and I check retrieval and answer quality on datasets. My backend experience helps take these systems to production: job queues, caching, monitoring and security. Looking for an AI Engineer role in a product team.",
+      "Python engineer with two years of experience who moved from backend development into AI engineering. Built services on FastAPI and Django with PostgreSQL, Redis and Docker, and contributed to a microservice architecture and a real-time production analytics platform. Now I build LLM systems: RAG with hybrid search and reranking, multi-agent pipelines on LangGraph and MCP tools for agents, and I check retrieval and answer quality on datasets. My backend experience helps take these systems to production: job queues, caching, monitoring and security. Looking for an AI Engineer or Python Backend Engineer role in a product team.",
     aboutFacts: [
       { label: "Age", value: "24 years" },
       { label: "Citizenship", value: "Kazakhstan" },

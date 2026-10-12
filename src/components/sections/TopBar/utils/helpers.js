@@ -23,7 +23,7 @@ export const splitDescription = (text) => {
                     .map((p) => {
                         const cleanP = p.replace(/\[DOT\]/g, ".");
                         // Не добавляем точку, если предложение заканчивается на URL
-                        if (/[a-zA-Z0-9.-]+\.[a-z]{2,}(\/[^\s]*)?$/.test(cleanP)) {
+                        if (/[a-zA-Z0-9.-]+\.(?!js\b)[a-z]{2,}(\/[^\s]*)?$/.test(cleanP)) {
                             return p;
                         }
                         return p.endsWith(".") ? p : p + ".";
@@ -43,7 +43,7 @@ export const renderTextWithLinks = (text, baseStyle = {}) => {
     if (!text) return { text: "", ...baseStyle };
     // Улучшенное регулярное выражение: захватываем URL полностью, но исключаем знаки препинания в САМОМ конце
     const urlRegex =
-        /(https?:\/\/[^\s]+?|github\.com\/[^\s]+?|pavlodar\.hh\.kz\/[^\s]+?|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|[a-zA-Z0-9.-]+\.[a-z]{2,}(?:\/[^\s]+?)?)(?=[.,!?;:]*(?:\s|$))/g;
+        /(https?:\/\/[^\s]+?|github\.com\/[^\s]+?|pavlodar\.hh\.kz\/[^\s]+?|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|[a-zA-Z0-9.-]+\.(?!js\b)[a-z]{2,}(?:\/[^\s]+?)?)(?=[.,!?;:]*(?:\s|$))/g;
     const parts = text.split(urlRegex);
     const matches = text.match(urlRegex);
 

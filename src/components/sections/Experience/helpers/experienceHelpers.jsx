@@ -3,7 +3,7 @@ import React from "react";
 export const renderDescription = (text, styles = {}) => {
   // Улучшенное регулярное выражение: захватываем URL полностью, но исключаем знаки препинания в САМОМ конце
   const urlRegex =
-    /(https?:\/\/[^\s]+?|github\.com\/[^\s]+?|pavlodar\.hh\.kz\/[^\s]+?|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|[a-zA-Z0-9.-]+\.[a-z]{2,}(?:\/[^\s]+?)?)(?=[.,!?;:]*(?:\s|$))/g;
+    /(https?:\/\/[^\s]+?|github\.com\/[^\s]+?|pavlodar\.hh\.kz\/[^\s]+?|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|[a-zA-Z0-9.-]+\.(?!js\b)[a-z]{2,}(?:\/[^\s]+?)?)(?=[.,!?;:]*(?:\s|$))/g;
   const parts = text.split(urlRegex);
   const matches = text.match(urlRegex);
 
@@ -60,10 +60,10 @@ export const classifySentences = (sentences) => {
 };
 
 export const splitIntoSentences = (text) => {
-  const textWithProtectedUrls = text.replace(
-    /([a-zA-Z0-9.-]+)\.(com|ru|org|net|kz|io|ai|me)/g,
-    "$1[DOT]$2",
-  );
+  // Names like "Next.js" keep their dot too
+  const textWithProtectedUrls = text
+    .replace(/([a-zA-Z0-9.-]+)\.(com|ru|org|net|kz|io|ai|me)/g, "$1[DOT]$2")
+    .replace(/\b([a-zA-Z0-9]+)\.js\b/g, "$1[DOT]js");
 
   return textWithProtectedUrls
     .split(/\.|\n/)
@@ -72,7 +72,7 @@ export const splitIntoSentences = (text) => {
     .map((sentence) => {
       const fixedSentence = sentence.replace(/\[DOT\]/g, ".");
       // Не добавляем точку, если предложение заканчивается или является URL
-      if (/[a-zA-Z0-9.-]+\.[a-z]{2,}(?:\/[^\s,.]*[^/\s,.])?$/.test(fixedSentence)) {
+      if (/[a-zA-Z0-9.-]+\.(?!js\b)[a-z]{2,}(?:\/[^\s,.]*[^/\s,.])?$/.test(fixedSentence)) {
         return fixedSentence;
       }
       if (/^\d+\)/.test(fixedSentence)) {

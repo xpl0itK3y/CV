@@ -66,17 +66,14 @@ const DesktopLayout = ({
                         <Experience title="" experience={[job]} {...experienceProps} />
                     </AnimatedSection>
                 ))}
-            </div>
 
-            {/* Under the experience, across both columns */}
-            <div className={styles.fullRow}>
-                <AnimatedSection delay={0.6 + Math.max(leftColumn.length, rightColumn.length) * 0.06}>
+                {/* The right column ends higher, so the projects fill it under the experience */}
+                <AnimatedSection delay={0.6 + rightColumn.length * 0.06}>
                     <Projects
                         title={t.projectsTitle}
                         projects={t.projects}
                         stackTitle={t.stackTitle}
                         releaseLabel={t.latestReleaseLabel}
-                        wide
                     />
                 </AnimatedSection>
             </div>

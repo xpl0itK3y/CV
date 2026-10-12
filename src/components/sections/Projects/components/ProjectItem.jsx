@@ -3,13 +3,13 @@ import { releasesUrl } from "../helpers/latestRelease";
 import { useLatestRelease } from "../hooks/useLatestRelease";
 import styles from "../styles/Projects.module.css";
 
-const ProjectItem = ({ project, stackTitle, releaseLabel, isMobile, wide }) => {
+const ProjectItem = ({ project, stackTitle, releaseLabel, isMobile }) => {
   const { name, repo, tagline, meta, description, highlights, technologies, links } =
     project;
   const version = useLatestRelease(repo, project.version);
 
   return (
-    <article className={`${styles.project} ${wide ? styles.projectWide : ""}`}>
+    <article className={styles.project}>
       <div className={styles.head}>
         <h3 className={isMobile ? styles.nameMobile : styles.nameDesktop}>
           {name}

@@ -171,15 +171,17 @@ const translations = {
         period: "Июнь 2025 - Май 2026",
         employment: "Полная занятость",
         description:
-          "По контракту в кросс-функциональной команде разрабатывал production-платформу реального времени на Replit: отвечал за AI-модуль и связанные с ним бэкенд-сервисы. - Разработал AI-модуль платформы для обработки текстов на OpenAI API: структурированные ответы в JSON с валидацией через Pydantic, повторы и ограничение частоты запросов к LLM, кэширование ответов в Redis. - Участвовал в проектировании микросервисной архитектуры на FastAPI под конкурентную нагрузку и масштабирование: asyncio и multiprocessing для параллельной обработки, PostgreSQL через SQLAlchemy. - Реализовал защиту сервисов: JWT-аутентификация, шифрование данных через Fernet, хеширование паролей на bcrypt и ограничение частоты запросов. - Вместе с командой настроил развёртывание на Docker Compose с multi-stage сборкой образов и мониторинг: метрики в реальном времени на Prometheus и Grafana, health checks, логи в ELK. - Участвовал в развитии тестирования: unit и интеграционные тесты на Pytest, нагрузочные на Locust.",
+          "По контракту в кросс-функциональной команде разрабатывал production-платформу реального времени на Replit, которая сводит данные компании из разных систем в наглядные дашборды. - Разрабатывал сбор данных в реальном времени из 1С, Битрикс, Documentolog и других источников и их подготовку для дашбордов. - Платформа разрослась, и искать в ней данные стало неудобно: обернул её в MCP-сервер и написал инструменты для AI-агента, чтобы через Claude Code нужную информацию можно было получить обычным запросом. - Защитил доступ двухфакторной аутентификацией: даже с украденным токеном злоумышленник не войдёт без второго фактора.",
         techGroups: [
           {
             label: "Языки",
             items: ["Python"],
           },
           {
-            label: "AI и обработка текста",
+            label: "AI и LLM",
             items: [
+              "MCP",
+              "Claude Code",
               "OpenAI API",
               "Prompt Engineering",
               "Structured Outputs (JSON)",
@@ -201,6 +203,10 @@ const translations = {
             ],
           },
           {
+            label: "Интеграции",
+            items: ["1С", "Битрикс", "Documentolog"],
+          },
+          {
             label: "Базы данных и кэширование",
             items: ["PostgreSQL", "Redis"],
           },
@@ -217,7 +223,7 @@ const translations = {
           },
           {
             label: "Безопасность и тестирование",
-            items: ["JWT", "bcrypt", "Fernet", "Pytest", "Locust"],
+            items: ["2FA", "JWT", "bcrypt", "Fernet", "Pytest", "Locust"],
           },
         ],
       },
@@ -638,7 +644,7 @@ const translations = {
         period: "June 2025 - May 2026",
         employment: "Full-time",
         description:
-          "Under contract, built a real-time production platform on Replit as part of a cross-functional team, owning the AI module and the backend services around it. - Built the platform's AI module for text processing on the OpenAI API: structured JSON outputs validated with Pydantic, retries and rate limiting for LLM calls, and response caching in Redis. - Took part in designing a FastAPI microservice architecture for concurrent load and scaling: asyncio and multiprocessing for parallel work, PostgreSQL through SQLAlchemy. - Secured the services with JWT authentication, Fernet encryption, bcrypt password hashing and request rate limiting. - Set up deployment with the team on Docker Compose with multi-stage image builds, plus monitoring: real-time metrics in Prometheus and Grafana, health checks and logs in ELK. - Contributed to testing: unit and integration tests with Pytest, load tests with Locust.",
+          "Under contract, built a real-time production platform on Replit as part of a cross-functional team, bringing the company's data from different systems together in clear dashboards. - Built real-time data collection from 1C, Bitrix, Documentolog and other sources and prepared it for the dashboards. - As the platform grew, finding data in it got hard: wrapped it in an MCP server with tools for an AI agent, so Claude Code can pull the needed information from a plain request. - Protected access with two-factor authentication: a stolen token alone is not enough to get in.",
 
         techGroups: [
           {
@@ -646,8 +652,10 @@ const translations = {
             items: ["Python"],
           },
           {
-            label: "AI and Text Processing",
+            label: "AI / LLM",
             items: [
+              "MCP",
+              "Claude Code",
               "OpenAI API",
               "Prompt Engineering",
               "Structured Outputs (JSON)",
@@ -669,6 +677,10 @@ const translations = {
             ],
           },
           {
+            label: "Integrations",
+            items: ["1C", "Bitrix", "Documentolog"],
+          },
+          {
             label: "Databases and Caching",
             items: ["PostgreSQL", "Redis"],
           },
@@ -685,7 +697,7 @@ const translations = {
           },
           {
             label: "Security and Testing",
-            items: ["JWT", "bcrypt", "Fernet", "Pytest", "Locust"],
+            items: ["2FA", "JWT", "bcrypt", "Fernet", "Pytest", "Locust"],
           },
         ],
       },

@@ -59,6 +59,35 @@ export const classifySentences = (sentences) => {
   }));
 };
 
+// A project's repository goes under its last point and closes its stretch
+// of the rule. `links` follow the projects' order in the description
+export const withProjectLinks = (items, links = []) => {
+  if (!links.length) return items;
+  let project = -1;
+  let name = "";
+  return items.flatMap((item) => {
+    if (item.kind === "project") {
+      project += 1;
+      name = item.text;
+    }
+    const url = item.last && links[project];
+    return url
+      ? [{ ...item, last: false }, { kind: "link", url, name, inProject: true, last: true }]
+      : [item];
+  });
+};
+
+// Where the collapsed preview ends: after `max` sentences, links not counted,
+// so a project's link is never what the fade swallows
+export const previewEnd = (items, max) => {
+  let count = 0;
+  for (let i = 0; i < items.length; i += 1) {
+    if (items[i].kind !== "link") count += 1;
+    if (count === max) return i + 1;
+  }
+  return items.length;
+};
+
 export const splitIntoSentences = (text) => {
   // Names like "Next.js" keep their dot too
   const textWithProtectedUrls = text

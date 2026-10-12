@@ -1,8 +1,11 @@
 import React from "react";
+import { GithubIcon } from "../../Contacts/helpers/contactIcons";
 import {
   classifySentences,
+  previewEnd,
   renderDescription,
   splitIntoSentences,
+  withProjectLinks,
 } from "../helpers/experienceHelpers";
 import TechGroups from "./TechGroups";
 
@@ -21,10 +24,39 @@ const ExperienceItem = ({
   stackTitle,
   showAllTechLabel,
   hideTechLabel,
+  sourceCodeLabel,
   styles,
 }) => {
-  const sentences = classifySentences(splitIntoSentences(job.description));
-  const isLong = sentences.length > MAX_SENTENCES;
+  const sentences = withProjectLinks(
+    classifySentences(splitIntoSentences(job.description)),
+    job.projectLinks,
+  );
+  const shown = previewEnd(sentences, MAX_SENTENCES);
+  const isLong = shown < sentences.length;
+
+  const renderContent = (sentence) => {
+    if (sentence.kind === "project") return sentence.text;
+    if (sentence.kind === "link") {
+      return (
+        <a
+          href={sentence.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.repoLink}
+          // Four links read the same, so each names its project
+          aria-label={`${sourceCodeLabel}: ${sentence.name}`}
+          title={sentence.url.replace(/^https:\/\//, "")}
+        >
+          <GithubIcon />
+          <span>{sourceCodeLabel}</span>
+          <span className={styles.repoArrow} aria-hidden="true">
+            ↗
+          </span>
+        </a>
+      );
+    }
+    return renderDescription(sentence.text, styles);
+  };
 
   const renderSentence = (sentence, sentenceIndex) => (
     <div
@@ -33,15 +65,14 @@ const ExperienceItem = ({
         styles.sentence,
         sentence.kind === "project" && styles.projectName,
         sentence.kind === "point" && styles.point,
+        sentence.kind === "link" && styles.repoRow,
         sentence.inProject && styles.inProject,
         sentence.last && styles.projectEnd,
       ]
         .filter(Boolean)
         .join(" ")}
     >
-      {sentence.kind === "project"
-        ? sentence.text
-        : renderDescription(sentence.text, styles)}
+      {renderContent(sentence)}
     </div>
   );
 
@@ -86,7 +117,7 @@ const ExperienceItem = ({
           }}
         >
           {sentences
-            .slice(0, isLong ? MAX_SENTENCES : sentences.length)
+            .slice(0, shown)
             .map(renderSentence)}
         </div>
 
@@ -97,7 +128,7 @@ const ExperienceItem = ({
             }`}
           >
             <div className={styles.expandableInner}>
-              {sentences.slice(MAX_SENTENCES).map(renderSentence)}
+              {sentences.slice(shown).map(renderSentence)}
             </div>
           </div>
         )}

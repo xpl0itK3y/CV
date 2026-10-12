@@ -32,6 +32,7 @@ function App() {
     stackTitle: t.stackTitle,
     showAllTechLabel: t.showAllTech,
     hideTechLabel: t.hideTech,
+    sourceCodeLabel: t.sourceCode,
   };
 
   const contactsData = {

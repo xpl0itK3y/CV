@@ -188,6 +188,16 @@ const descriptionLine = (sentence, color) => {
 // "https://example.com/" → "example.com"
 const bareUrl = (url) => url.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
+// A project's repository under its points, labelled like a project's links
+const repoLine = (url) => ({
+  text: [
+    { text: "GitHub: ", style: "stackLabel" },
+    { text: bareUrl(url), link: url },
+  ],
+  style: "stackText",
+  margin: [0, 1, 0, 3],
+});
+
 // A project as on the site: name and one-liner, the facts line, the text on
 // the rule, then the stack and the links as labelled lines
 const projectBlock = (project, index, stackTitle) => ({
@@ -548,6 +558,7 @@ export const generateContent = (translations, lang, pdfLogo) => {
       const descriptionRows = [];
       // A project's rows: its stretch of the rule is drawn in the accent
       const projectRows = new Set();
+      let projectIndex = 0;
       splitDescription(job.description).forEach((sentence) => {
         const projectTitleMatch = sentence.match(/^(\d+\)\s+[^.]+)/);
         if (projectTitleMatch) {
@@ -561,13 +572,18 @@ export const generateContent = (translations, lang, pdfLogo) => {
             .slice(projectTitleMatch[1].length)
             .replace(/^[:\s.]+/, "");
 
-          const lines = rest
+          const parts = rest
             .split(/\.\s+/)
             .map((s) => s.trim())
             .filter((s) => s.length > 0 && s !== ".")
-            .map((rs) =>
-              descriptionLine(rs.endsWith(".") ? rs : `${rs}.`, ACCENT),
-            );
+            .map((rs) => (rs.endsWith(".") ? rs : `${rs}.`));
+          // The project ends with its last point: a remark after it belongs
+          // to the job again, and the repository goes in between
+          const end = parts.findLastIndex((p) => p.startsWith("-")) + 1 || parts.length;
+          const lines = parts.slice(0, end).map((p) => descriptionLine(p, ACCENT));
+          const repo = job.projectLinks?.[projectIndex];
+          projectIndex += 1;
+          if (repo) lines.push(repoLine(repo));
 
           // The title goes to the next page with its first line
           projectRows.add(descriptionRows.length);
@@ -589,6 +605,9 @@ export const generateContent = (translations, lang, pdfLogo) => {
           lines.forEach((line) => {
             projectRows.add(descriptionRows.length);
             descriptionRows.push([line]);
+          });
+          parts.slice(end).forEach((p) => {
+            descriptionRows.push([descriptionLine(p)]);
           });
         } else {
           const isProjectsLead =

@@ -14,6 +14,7 @@ const Experience = ({
   stackTitle = "Technologies",
   showAllTechLabel = "Show all",
   hideTechLabel = "Hide",
+  sourceCodeLabel = "Source code",
 }) => {
   const isMobile = useIsMobile();
   const { expandedJobs, expandedTech, toggleExpand, toggleTechExpand } =
@@ -51,6 +52,7 @@ const Experience = ({
           stackTitle={stackTitle}
           showAllTechLabel={showAllTechLabel}
           hideTechLabel={hideTechLabel}
+          sourceCodeLabel={sourceCodeLabel}
           styles={styles}
         />
       ))}

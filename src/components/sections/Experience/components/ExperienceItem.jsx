@@ -65,7 +65,9 @@ const ExperienceItem = ({
 
       <div className={isMobile ? styles.metaMobile : styles.metaDesktop}>
         <span className={styles.company}>{job.company}</span>
-        <span className={styles.separator}>•</span>
+        {job.employment && (
+          <span className={styles.employment}>{job.employment}</span>
+        )}
         <span className={styles.period}>{job.period}</span>
       </div>
 

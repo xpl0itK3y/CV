@@ -93,6 +93,12 @@ export const pdfStyles = {
         // Sits on the baseline of the position next to it
         margin: [0, 2.3, 0, 0],
     },
+    jobEmployment: {
+        fontSize: 10.5,
+        color: "#6f5964",
+        alignment: "right",
+        margin: [0, 3, 0, 0],
+    },
     jobDescription: {
         fontSize: 12,
         color: "#1d1116",

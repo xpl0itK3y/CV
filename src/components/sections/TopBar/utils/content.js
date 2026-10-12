@@ -528,8 +528,13 @@ export const generateContent = (translations, lang, pdfLogo) => {
                 },
                 {
                   width: "auto",
-                  text: withEnDash(job.period),
-                  style: "jobPeriod",
+                  stack: [
+                    { text: withEnDash(job.period), style: "jobPeriod" },
+                    // Under the period, level with the company
+                    ...(job.employment
+                      ? [{ text: job.employment, style: "jobEmployment" }]
+                      : []),
+                  ],
                 },
               ],
               columnGap: 10,

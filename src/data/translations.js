@@ -171,7 +171,7 @@ const translations = {
         period: "Июнь 2025 - Май 2026",
         employment: "Полная занятость",
         description:
-          "По контракту в кросс-функциональной команде разрабатывал production-платформу реального времени на Replit, которая сводит данные компании из разных систем в наглядные дашборды. - Разрабатывал сбор данных в реальном времени из 1С, Битрикс, Documentolog и других источников и их подготовку для дашбордов. - Платформа разрослась, и искать в ней данные стало неудобно: обернул её в MCP-сервер и написал инструменты для AI-агента, чтобы через Claude Code нужную информацию можно было получить обычным запросом. - Защитил доступ двухфакторной аутентификацией: даже с украденным токеном злоумышленник не войдёт без второго фактора.",
+          "По контракту в кросс-функциональной команде разрабатывал production-платформу аналитики в реальном времени: она собирает данные компании из корпоративных систем в единые дашборды. - Разработал интеграции с 1С, Битрикс и Documentolog на Python и FastAPI: данные из разных систем в реальном времени попадают в PostgreSQL и сводятся на общих дашбордах, так что вся картина видна в одном месте. - Когда платформа разрослась и искать в ней данные стало неудобно, сделал MCP-сервер с инструментами для AI-агента: через Claude Code нужную информацию можно получить запросом на естественном языке вместо ручного поиска по интерфейсу. - Защитил доступ двухфакторной аутентификацией (украденный токен без второго фактора бесполезен), JWT, хешированием паролей на bcrypt и шифрованием данных через Fernet.",
         techGroups: [
           {
             label: "Языки",
@@ -644,7 +644,7 @@ const translations = {
         period: "June 2025 - May 2026",
         employment: "Full-time",
         description:
-          "Under contract, built a real-time production platform on Replit as part of a cross-functional team, bringing the company's data from different systems together in clear dashboards. - Built real-time data collection from 1C, Bitrix, Documentolog and other sources and prepared it for the dashboards. - As the platform grew, finding data in it got hard: wrapped it in an MCP server with tools for an AI agent, so Claude Code can pull the needed information from a plain request. - Protected access with two-factor authentication: a stolen token alone is not enough to get in.",
+          "Under contract, built a real-time production analytics platform as part of a cross-functional team, pulling the company's data from its business systems into shared dashboards. - Built integrations with 1C, Bitrix and Documentolog on Python and FastAPI: data from separate systems lands in PostgreSQL in real time and comes together on shared dashboards, so the whole picture is in one place. - When the platform grew too large to navigate comfortably, built an MCP server with tools for an AI agent: through Claude Code, the needed data comes from a natural-language request instead of a manual search through the UI. - Secured access with two-factor authentication (a stolen token is useless without the second factor), JWT, bcrypt password hashing and Fernet data encryption.",
 
         techGroups: [
           {

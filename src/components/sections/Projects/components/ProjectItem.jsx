@@ -4,7 +4,7 @@ import { useLatestRelease } from "../hooks/useLatestRelease";
 import styles from "../styles/Projects.module.css";
 
 const ProjectItem = ({ project, stackTitle, releaseLabel, isMobile }) => {
-  const { name, repo, tagline, meta, description, highlights, technologies, links } =
+  const { name, repo, logo, tagline, meta, description, highlights, technologies, links } =
     project;
   const version = useLatestRelease(repo, project.version);
 
@@ -12,6 +12,18 @@ const ProjectItem = ({ project, stackTitle, releaseLabel, isMobile }) => {
     <article className={styles.project}>
       <div className={styles.head}>
         <h3 className={isMobile ? styles.nameMobile : styles.nameDesktop}>
+          {/* The name stands next to it, so the icon itself says nothing */}
+          {logo && (
+            <span className={styles.logo}>
+              <img
+                src={`${import.meta.env.BASE_URL || "/"}${logo}`}
+                alt=""
+                width="144"
+                height="144"
+                decoding="async"
+              />
+            </span>
+          )}
           {name}
         </h3>
         {version && (

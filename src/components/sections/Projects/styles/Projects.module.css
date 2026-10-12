@@ -46,6 +46,48 @@
     transition: color var(--duration-hover) ease;
 }
 
+/* The app's icon goes with its name, so the two never wrap apart */
+.nameDesktop,
+.nameMobile {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+/* Framed like an app icon: rounded, lifted off the card */
+.logo {
+    position: relative;
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 24%;
+    overflow: hidden;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.35),
+        0 0 16px rgba(var(--block-accent-rgb), 0.14);
+}
+
+.nameMobile .logo {
+    width: 2rem;
+    height: 2rem;
+}
+
+.logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* A hairline on the edge keeps the dark icon from sinking into the dark card */
+.logo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+    pointer-events: none;
+}
+
 /* The newest release, as the product's site shows it: a pill with a lit dot */
 .version {
     position: relative;

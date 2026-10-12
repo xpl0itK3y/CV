@@ -205,6 +205,39 @@ const translations = {
         ],
       },
       {
+        position: "Backend Developer",
+        company: "Фриланс, Павлодар",
+        period: "Август 2024 - Февраль 2025",
+        description:
+          "Разрабатывал веб-приложения на заказ с бэкендом на Python и PHP. 1) Генератор детских сказок для школы. - Разработал веб-приложение, которое пишет сказки с помощью LLM с учётом возраста читателя (3–5, 6–8, 9–12 лет) и персонажей, которых добавляет пользователь. - Написал сервис на FastAPI, который отдаёт сказку потоком по мере генерации, на русском и казахском языках через OpenAI API (GPT-4o-mini). - Сделал веб-интерфейс на Yii2: форма создания сказки, вывод текста в реальном времени и история сказок в MySQL. - Упаковал сервисы в Docker Compose. 2) Мини-CRM для магазина. - Разработал CRM для приёма заявок покупателей с сайта магазина через встраиваемый виджет. - Реализовал панель администратора со статусами заявок, фильтрацией и статистикой за день, неделю и месяц. - Настроил роли администратора и менеджера, вложения к заявкам и защиту от повторных заявок с одного телефона или email. - Построил backend на Laravel с разделением на сервисы и репозитории и контейнеризировал приложение в Docker.",
+        techGroups: [
+          {
+            label: "Языки",
+            items: ["Python", "PHP", "JavaScript"],
+          },
+          {
+            label: "AI и LLM",
+            items: ["OpenAI API", "Prompt Engineering", "Streaming"],
+          },
+          {
+            label: "Backend и базы данных",
+            items: [
+              "FastAPI",
+              "Pydantic",
+              "Yii2",
+              "Laravel",
+              "REST API",
+              "MySQL",
+              "SQLite",
+            ],
+          },
+          {
+            label: "DevOps",
+            items: ["Docker", "Docker Compose", "Nginx"],
+          },
+        ],
+      },
+      {
         position: "Python/Django Developer (Diploma Project)",
         company: "Комитет по делам молодежи ИнЕУ",
         period: "Февраль 2024 - Июнь 2024",
@@ -596,6 +629,39 @@ const translations = {
           {
             label: "Security and Testing",
             items: ["JWT", "bcrypt", "Fernet", "Pytest", "Locust"],
+          },
+        ],
+      },
+      {
+        position: "Backend Developer",
+        company: "Freelance, Pavlodar",
+        period: "August 2024 - February 2025",
+        description:
+          "Built web applications for clients, with backends in Python and PHP. 1) Children's Story Generator for a School. - Built a web app that writes fairy tales with an LLM, adapted to the reader's age (3–5, 6–8, 9–12) and to the characters the user adds. - Wrote a FastAPI service that streams the story as it is generated, in Russian and Kazakh, through the OpenAI API (GPT-4o-mini). - Built the Yii2 web interface: a story form, the text appearing in real time and a story history stored in MySQL. - Packaged the services with Docker Compose. 2) Mini CRM for a Shop. - Built a CRM that collects customer requests from the shop's website through an embeddable widget. - Implemented an admin panel with request statuses, filtering and daily, weekly and monthly statistics. - Set up admin and manager roles, file attachments and protection against repeat requests from the same phone or email. - Structured the Laravel backend into services and repositories and containerized the app with Docker.",
+        techGroups: [
+          {
+            label: "Languages",
+            items: ["Python", "PHP", "JavaScript"],
+          },
+          {
+            label: "AI / LLM",
+            items: ["OpenAI API", "Prompt Engineering", "Streaming"],
+          },
+          {
+            label: "Backend and Databases",
+            items: [
+              "FastAPI",
+              "Pydantic",
+              "Yii2",
+              "Laravel",
+              "REST API",
+              "MySQL",
+              "SQLite",
+            ],
+          },
+          {
+            label: "DevOps",
+            items: ["Docker", "Docker Compose", "Nginx"],
           },
         ],
       },

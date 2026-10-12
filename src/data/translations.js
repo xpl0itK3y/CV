@@ -12,7 +12,7 @@ const translations = {
 
     // Header
     name: "Денис Максимович",
-    title: "Python Backend and AI Engineer",
+    title: "Python Backend Developer and AI Engineer",
 
     // About
     aboutTitle: "О себе",
@@ -480,7 +480,7 @@ const translations = {
 
     // Header
     name: "Denis Maksimovich",
-    title: "Python Backend and AI Engineer",
+    title: "Python Backend Developer and AI Engineer",
 
     // About
     aboutTitle: "About Me",

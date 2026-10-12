@@ -1,90 +1,57 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
+import { useSplash } from "../../../../hooks/useSplash";
 import { getSkillIcon, getSkillColor } from "../helpers/skillsHelpers";
 
-const PARTICLE_COUNT = 16;
+const DROPS = 12;
 
-// A fresh random splash per hover, built in the event handler so render stays pure
-const createParticles = () =>
-  Array.from({ length: PARTICLE_COUNT }, (_, i) => {
-    const angle = (i / PARTICLE_COUNT) * Math.PI * 2;
-    const dist = 40 + Math.random() * 35;
-    return {
-      tx: Math.cos(angle) * dist,
-      ty: Math.sin(angle) * dist,
-      size: 3 + Math.random() * 5,
-      delay: Math.random() * 0.15,
-    };
-  });
+// Brand colours as dark as Flask's or Vercel's black vanish on the glass:
+// their drops take the block's accent instead
+const dropColor = (hex) => {
+  const channels = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  const lightness = (Math.max(...channels) + Math.min(...channels)) / 510;
+  return lightness < 0.3 ? "rgb(var(--block-accent-rgb))" : hex;
+};
 
-// The icon wiggles side to side and settles, evenly spaced keyframes
-const WIGGLE = [-10, -10, 10, -10, 10, -5, 5, -3, 3, 0, 0].map((deg) => ({
-  transform: `rotate(${deg}deg)`,
-}));
-
+// Knocked like ModelCrew's icon: it rocks on its base and splashes in its
+// own colour. Touch fires the enter on tap, so a tap plays it too
 const SkillIcon = ({ skill, isMobile, styles }) => {
-  // Hover state lives here so entering an icon re-renders just this icon.
-  // The id remounts the particles, so every splash plays from the start
-  const [splash, setSplash] = useState(null);
-  const iconRef = useRef(null);
+  const size = isMobile ? 48 : 56;
+  const { iconRef, dropRefs, splash } = useSplash(size);
+  const [failed, setFailed] = useState(false);
   const iconSrc = getSkillIcon(skill.name);
-
-  const play = () => {
-    setSplash((previous) => ({
-      id: (previous?.id ?? 0) + 1,
-      particles: createParticles(),
-    }));
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      iconRef.current?.animate(WIGGLE, { duration: 800, easing: "ease-in-out" });
-    }
-  };
 
   return (
     <div
       title={skill.name}
       className={styles.skillIconContainer}
-      // A mouse plays it on hover; touch has no hover, so a tap plays it
-      // instead of a fake hover that sticks until the next tap elsewhere
-      onPointerEnter={(event) => event.pointerType === "mouse" && play()}
-      onPointerLeave={(event) => event.pointerType === "mouse" && setSplash(null)}
-      onPointerDown={(event) => event.pointerType !== "mouse" && play()}
-      style={{
-        width: isMobile ? "48px" : "56px",
-        height: isMobile ? "48px" : "56px",
-      }}
+      onPointerEnter={splash}
+      style={{ width: `${size}px`, height: `${size}px` }}
     >
-      {iconSrc ? (
-        <img
-          ref={iconRef}
-          src={iconSrc}
-          alt={skill.name}
-          className={styles.skillIcon}
-          onError={(e) => {
-            e.target.style.display = "none";
-            e.target.parentElement.innerHTML =
-              '<span style="font-size: 36px">💻</span>';
-          }}
-        />
-      ) : (
-        <span ref={iconRef} style={{ fontSize: "36px" }}>💻</span>
-      )}
-
-      {splash?.particles.map(({ tx, ty, size, delay }, i) => (
-        <div
-          key={`${splash.id}-${i}`}
-          className={styles.splashParticle}
-          style={{
-            backgroundColor: getSkillColor(skill.name),
-            "--tx": `${tx}px`,
-            "--ty": `${ty}px`,
-            width: `${size}px`,
-            height: `${size}px`,
-            left: "50%",
-            top: "50%",
-            margin: `-${size / 2}px 0 0 -${size / 2}px`,
-            animationDelay: `${delay}s`,
-          }}
-        />
-      ))}
+      <span
+        className={styles.splash}
+        style={{ color: dropColor(getSkillColor(skill.name)) }}
+        aria-hidden="true"
+      >
+        {Array.from({ length: DROPS }, (_, i) => (
+          <span
+            key={i}
+            ref={(el) => (dropRefs.current[i] = el)}
+            className={styles.drop}
+          />
+        ))}
+      </span>
+      <span ref={iconRef} className={styles.skillGlyph}>
+        {iconSrc && !failed ? (
+          <img
+            src={iconSrc}
+            alt={skill.name}
+            className={styles.skillIcon}
+            onError={() => setFailed(true)}
+          />
+        ) : (
+          "💻"
+        )}
+      </span>
     </div>
   );
 };

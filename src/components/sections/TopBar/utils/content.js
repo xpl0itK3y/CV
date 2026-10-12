@@ -29,6 +29,27 @@ const timelineLayout = {
   paddingBottom: () => 0,
 };
 
+// Description text on a thin teal rule, its bullets sitting on the rule
+const descriptionLayout = {
+  vLineWidth: (i) => (i === 0 ? 1 : 0),
+  vLineColor: () => TEAL,
+  hLineWidth: () => 0,
+  paddingLeft: () => 8,
+  paddingRight: () => 0,
+  paddingTop: () => 0,
+  paddingBottom: () => 0,
+};
+
+// Rows only: no lines and no padding, just page breaks between them
+const plainLayout = {
+  hLineWidth: () => 0,
+  vLineWidth: () => 0,
+  paddingLeft: () => 0,
+  paddingRight: () => 0,
+  paddingTop: () => 0,
+  paddingBottom: () => 0,
+};
+
 // Label/value grid without borders for the contacts
 const contactsTableLayout = {
   hLineWidth: () => 0,
@@ -158,6 +179,90 @@ const descriptionLine = (sentence) => {
   };
 };
 
+// "https://example.com/" → "example.com"
+const bareUrl = (url) => url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+
+// A project as on the site: name and one-liner, the facts line, the text on
+// the rule, then the stack and the links as labelled lines
+const projectBlock = (project, index, stackTitle) => ({
+  stack: [
+    {
+      table: {
+        widths: ["*"],
+        body: [
+          // The header goes to the next page with the description under it
+          [
+            {
+              stack: [
+                { text: project.name, style: "jobPosition" },
+                ...(project.tagline
+                  ? [{ text: project.tagline, style: "jobCompany" }]
+                  : []),
+                ...(project.meta?.length
+                  ? [{ text: bulletList(project.meta), style: "projectMeta" }]
+                  : []),
+                {
+                  table: {
+                    widths: ["*"],
+                    body: [[descriptionLine(project.description)]],
+                  },
+                  layout: descriptionLayout,
+                  margin: [0, 5, 0, 0],
+                },
+              ],
+              unbreakable: true,
+            },
+          ],
+          // Each highlight is unbreakable on its own, so the page may turn
+          // between them
+          ...(project.highlights ?? []).map((item) => [
+            {
+              table: { widths: ["*"], body: [[descriptionBullet(item)]] },
+              layout: descriptionLayout,
+            },
+          ]),
+        ],
+      },
+      layout: plainLayout,
+    },
+    {
+      stack: [
+        ...(project.technologies?.length
+          ? [
+              {
+                text: [
+                  { text: `${stackTitle}: `, style: "stackLabel" },
+                  ...bulletList(project.technologies),
+                ],
+                style: "stackText",
+              },
+            ]
+          : []),
+        ...(project.links?.length
+          ? [
+              {
+                text: bulletList(
+                  project.links.map(({ label, url }) => ({
+                    text: [
+                      { text: `${label}: `, style: "stackLabel" },
+                      { text: bareUrl(url), link: url },
+                    ],
+                  })),
+                ),
+                style: "stackText",
+              },
+            ]
+          : []),
+      ],
+      unbreakable: true,
+      margin: [0, 6, 0, 0],
+    },
+  ],
+  // Like a job: one that would start at the very bottom of a page moves on
+  headlineLevel: 2,
+  margin: [0, index === 0 ? 0 : 12, 0, 0],
+});
+
 const skillGroup = (group, index) => ({
   stack: [
     { text: group.category, style: "skillHeader" },
@@ -282,6 +387,16 @@ export const generateContent = (translations, lang, pdfLogo) => {
             columnGap: 8,
             margin: [0, 10, 0, 0],
           },
+        ]
+      : []),
+
+    // Проекты
+    ...(translations.projects?.length
+      ? [
+          sectionTitle(titleText(translations.projectsTitle)),
+          ...translations.projects.map((project, index) =>
+            projectBlock(project, index, stackTitle),
+          ),
         ]
       : []),
 
@@ -460,15 +575,7 @@ export const generateContent = (translations, lang, pdfLogo) => {
               widths: ["*"],
               body: descriptionRows,
             },
-            layout: {
-              vLineWidth: (i) => (i === 0 ? 1 : 0),
-              vLineColor: () => TEAL,
-              hLineWidth: () => 0,
-              paddingLeft: () => 8,
-              paddingRight: () => 0,
-              paddingTop: () => 0,
-              paddingBottom: () => 0,
-            },
+            layout: descriptionLayout,
             margin: [0, 4, 0, 4],
           },
         ]);

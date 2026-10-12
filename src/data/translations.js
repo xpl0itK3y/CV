@@ -361,15 +361,22 @@ const translations = {
     projectsTitle: "Проекты",
     projects: [
       {
-        name: "E-commerce Platform",
-        tech: "React, Redux, Node.js",
+        name: "ModelCrew",
+        // Non-breaking spaces keep each phrase whole when the line wraps
+        tagline: "Шесть агентов. Одна\u00a0папка. Ничего\u00a0не\u00a0затёрто.",
+        meta: ["Автор и разработчик", "Open source, MIT", "macOS, Windows, Linux"],
         description:
-          "Полнофункциональная платформа электронной коммерции с корзиной, оплатой и админ-панелью",
-      },
-      {
-        name: "Social Network",
-        tech: "Next.js, MongoDB, Socket.io",
-        description: "Социальная сеть с real-time чатом и лентой новостей",
+          "Десктопное приложение, в котором несколько AI-агентов для кода (Claude Code, Codex, Copilot, OpenCode) работают бок о бок в одном проекте и не затирают правки друг друга.",
+        highlights: [
+          "Захват файлов через хуки самих агентов: перед правкой агент занимает файл, а второй получает отказ на своём протоколе (exit code, JSON-решение или ошибка плагина) вместе с причиной. Запись поверх устаревшего чтения тоже отклоняется.",
+          "Сетка терминалов на PTY: каждая панель запускает CLI из PATH пользователя, а при запуске все сессии возвращаются вместе с разговорами агентов.",
+          "Живая git-панель: диффы по файлам в реальном времени, коммит, откат, переключение веток и история с графом.",
+        ],
+        technologies: ["Tauri 2", "Rust", "TypeScript", "React", "xterm.js"],
+        links: [
+          { label: "Сайт", url: "https://modelcrew-com.vercel.app/" },
+          { label: "GitHub", url: "https://github.com/xpl0itK3y/modelcrew-desktop" },
+        ],
       },
     ],
   },
@@ -735,15 +742,21 @@ const translations = {
     projectsTitle: "Projects",
     projects: [
       {
-        name: "E-commerce Platform",
-        tech: "React, Redux, Node.js",
+        name: "ModelCrew",
+        tagline: "Six agents. One\u00a0folder. Nothing\u00a0overwritten.",
+        meta: ["Author and developer", "Open source, MIT", "macOS, Windows, Linux"],
         description:
-          "Full-featured e-commerce platform with cart, payment and admin panel",
-      },
-      {
-        name: "Social Network",
-        tech: "Next.js, MongoDB, Socket.io",
-        description: "Social network with real-time chat and news feed",
+          "A desktop app where several AI coding agents (Claude Code, Codex, Copilot, OpenCode) work side by side in one project without overwriting each other's edits.",
+        highlights: [
+          "File claims through the agents' own hooks: an agent claims a file before editing it, and a second one is refused in its own protocol (exit code, JSON decision or plugin error) along with the reason. Writing over a stale read is refused too.",
+          "A terminal grid on PTY: every panel runs the CLI already on the user's PATH, and at launch every session comes back with each agent's conversation.",
+          "A live git panel: per-file diffs in real time, commit, revert, branch switching and history with a graph.",
+        ],
+        technologies: ["Tauri 2", "Rust", "TypeScript", "React", "xterm.js"],
+        links: [
+          { label: "Website", url: "https://modelcrew-com.vercel.app/" },
+          { label: "GitHub", url: "https://github.com/xpl0itK3y/modelcrew-desktop" },
+        ],
       },
     ],
   },

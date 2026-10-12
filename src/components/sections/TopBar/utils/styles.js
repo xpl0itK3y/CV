@@ -106,6 +106,12 @@ export const pdfStyles = {
         color: "#d14b88",
         margin: [0, 4, 0, 2],
     },
+    // Author, licence and platforms under a project's name
+    projectMeta: {
+        fontSize: 10.5,
+        color: "#6f5964",
+        margin: [0, 1, 0, 0],
+    },
     stackTitle: {
         fontSize: 10,
         bold: true,

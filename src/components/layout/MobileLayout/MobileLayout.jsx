@@ -4,6 +4,7 @@ import Contacts from "../../sections/Contacts/Contacts";
 import Education from "../../sections/Education";
 import Skills from "../../sections/Skills/Skills";
 import Experience from "../../sections/Experience/Experience";
+import Projects from "../../sections/Projects/Projects";
 import AnimatedSection from "../../common/AnimatedSection/AnimatedSection";
 import styles from "../../../styles/App.module.css";
 
@@ -27,6 +28,14 @@ const MobileLayout = ({
             </AnimatedSection>
 
             <AnimatedSection delay={0.42}>
+                <Projects
+                    title={t.projectsTitle}
+                    projects={t.projects}
+                    stackTitle={t.stackTitle}
+                />
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.48}>
                 <Education
                     title={t.educationTitle}
                     education={t.education}
@@ -34,7 +43,7 @@ const MobileLayout = ({
                 />
             </AnimatedSection>
 
-            <AnimatedSection delay={0.48}>
+            <AnimatedSection delay={0.54}>
                 <Skills
                     skillsTitle={t.skillsTitle}
                     softSkillsTitle={t.softSkillsTitle}
@@ -46,7 +55,7 @@ const MobileLayout = ({
                 />
             </AnimatedSection>
 
-            <AnimatedSection delay={0.54}>
+            <AnimatedSection delay={0.6}>
                 <Experience
                     title={t.experienceTitle}
                     experience={firstExperience}
@@ -55,7 +64,7 @@ const MobileLayout = ({
             </AnimatedSection>
 
             {remainingExperiences.map((job, index) => (
-                <AnimatedSection key={`mobile-${index}`} delay={0.6 + index * 0.06}>
+                <AnimatedSection key={`mobile-${index}`} delay={0.66 + index * 0.06}>
                     <Experience title="" experience={[job]} {...experienceProps} />
                 </AnimatedSection>
             ))}

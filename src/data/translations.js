@@ -419,7 +419,7 @@ const translations = {
         // Shown until GitHub answers with the newest release of `repo`
         version: "v0.0.21",
         repo: "xpl0itK3y/modelcrew-desktop",
-        logo: "icons/modelcrew/modelcrew-logo.png",
+        logo: "icons/modelcrew/modelcrew-logo.svg",
         // The non-breaking space keeps the preposition off the end of a line
         tagline: "Совместная работа AI-агентов над\u00a0общим кодом",
         meta: ["Автор проекта", "В активной разработке", "Open source, MIT", "macOS, Windows, Linux"],
@@ -867,7 +867,7 @@ const translations = {
         // Shown until GitHub answers with the newest release of `repo`
         version: "v0.0.21",
         repo: "xpl0itK3y/modelcrew-desktop",
-        logo: "icons/modelcrew/modelcrew-logo.png",
+        logo: "icons/modelcrew/modelcrew-logo.svg",
         tagline: "AI coding agents working together on one codebase",
         meta: ["Project author", "In active development", "Open source, MIT", "macOS, Windows, Linux"],
         description:

@@ -54,17 +54,11 @@
     gap: 0.65rem;
 }
 
-/* Framed like an app icon: rounded, lifted off the card */
 .logo {
     position: relative;
     flex-shrink: 0;
     width: 2.25rem;
     height: 2.25rem;
-    border-radius: 24%;
-    overflow: hidden;
-    box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.35),
-        0 0 16px rgba(var(--block-accent-rgb), 0.14);
 }
 
 .nameMobile .logo {
@@ -72,20 +66,72 @@
     height: 2rem;
 }
 
-.logo img {
-    display: block;
+/* The app icon on the site's glass, tinted like the company badges; it
+   rocks on its base */
+.logoTile {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
+    border-radius: 24%;
+    border: 1px solid rgba(var(--block-accent-rgb), 0.34);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(var(--block-accent-rgb), 0.24) 0%,
+            rgba(var(--block-accent-rgb), 0.06) 100%
+        ),
+        rgba(6, 14, 18, 0.85);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 4px 12px rgba(0, 0, 0, 0.35),
+        0 0 16px rgba(var(--block-accent-rgb), 0.16);
+    transform-origin: 50% 100%;
+    transition:
+        border-color var(--duration-hover) ease,
+        box-shadow var(--duration-hover) ease;
 }
 
-/* A hairline on the edge keeps the dark icon from sinking into the dark card */
-.logo::after {
-    content: "";
+.logoTile img {
+    display: block;
+    width: 64%;
+    height: auto;
+}
+
+/* The drops start behind the tile and fly out over the name */
+.splash {
     position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+    left: 50%;
+    top: 50%;
     pointer-events: none;
+}
+
+.drop {
+    position: absolute;
+    left: -3px;
+    top: -3px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    opacity: 0;
+    background: rgb(var(--block-accent-rgb));
+    box-shadow: 0 0 6px rgba(var(--block-accent-rgb), 0.7);
+}
+
+/* White like the glyph, every other one */
+.drop:nth-child(even) {
+    background: #e9fbfd;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.drop:nth-child(3n) {
+    left: -2px;
+    top: -2px;
+    width: 4px;
+    height: 4px;
 }
 
 /* The newest release, as the product's site shows it: a pill with a lit dot */
@@ -345,6 +391,14 @@
     .version:hover {
         border-color: rgba(var(--block-accent-rgb), 0.6);
         color: #fff;
+    }
+
+    .logo:hover .logoTile {
+        border-color: rgba(var(--block-accent-rgb), 0.6);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            0 4px 12px rgba(0, 0, 0, 0.35),
+            0 0 22px rgba(var(--block-accent-rgb), 0.32);
     }
 
     .link:hover {

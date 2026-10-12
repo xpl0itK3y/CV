@@ -2,6 +2,7 @@ import { GithubIcon } from "../../Contacts/helpers/contactIcons";
 import { releasesUrl } from "../helpers/latestRelease";
 import { useLatestRelease } from "../hooks/useLatestRelease";
 import styles from "../styles/Projects.module.css";
+import ProjectLogo from "./ProjectLogo";
 
 const ProjectItem = ({ project, stackTitle, releaseLabel, isMobile }) => {
   const { name, repo, logo, tagline, meta, description, highlights, technologies, links } =
@@ -12,17 +13,8 @@ const ProjectItem = ({ project, stackTitle, releaseLabel, isMobile }) => {
     <article className={styles.project}>
       <div className={styles.head}>
         <h3 className={isMobile ? styles.nameMobile : styles.nameDesktop}>
-          {/* The name stands next to it, so the icon itself says nothing */}
           {logo && (
-            <span className={styles.logo}>
-              <img
-                src={`${import.meta.env.BASE_URL || "/"}${logo}`}
-                alt=""
-                width="144"
-                height="144"
-                decoding="async"
-              />
-            </span>
+            <ProjectLogo src={`${import.meta.env.BASE_URL || "/"}${logo}`} />
           )}
           {name}
         </h3>

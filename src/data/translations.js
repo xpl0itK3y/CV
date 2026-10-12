@@ -205,7 +205,7 @@ const translations = {
         ],
       },
       {
-        position: "Backend Developer (Freelance)",
+        position: "Full-Stack Developer (Freelance)",
         company: "Проекты на заказ",
         period: "Август 2024 - Февраль 2025",
         description:
@@ -638,7 +638,7 @@ const translations = {
         ],
       },
       {
-        position: "Backend Developer (Freelance)",
+        position: "Full-Stack Developer (Freelance)",
         company: "Client Projects",
         period: "August 2024 - February 2025",
         description:

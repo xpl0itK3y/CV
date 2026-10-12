@@ -183,13 +183,29 @@
         background var(--duration-hover) ease;
 }
 
-/* Second to the company: an outline with no fill */
+/* Second to the company: a status pill, its dot echoes the timeline dot */
 .employment {
-    color: rgba(255, 255, 255, 0.72);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.2rem 0.7rem 0.2rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.85em;
     font-weight: 500;
-    padding: 0.25rem 0.75rem;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, 0.82);
+    background: rgba(var(--block-accent-rgb), 0.06);
+    border: 1px solid rgba(var(--block-accent-rgb), 0.2);
+}
+
+.employment::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: rgb(var(--block-accent-rgb));
+    box-shadow: 0 0 6px rgba(var(--block-accent-rgb), 0.6);
 }
 
 /* A line of its own under the badges, so nothing hangs at a line end */

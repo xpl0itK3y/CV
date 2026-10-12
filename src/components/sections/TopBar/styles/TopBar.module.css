@@ -62,8 +62,11 @@
     opacity: 0;
 }
 
+/* The bar sits under the status bar and the notch, its content clear of them */
 .glassBoxDesktop {
-    padding: 1.25rem 2rem;
+    padding: calc(1.25rem + env(safe-area-inset-top, 0px))
+        max(2rem, env(safe-area-inset-right, 0px)) 1.25rem
+        max(2rem, env(safe-area-inset-left, 0px));
     background: var(--topbar-surface-bg);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
@@ -86,7 +89,9 @@
 }
 
 .glassBoxMobile {
-    padding: 1rem 1rem;
+    padding: calc(1rem + env(safe-area-inset-top, 0px))
+        max(1rem, env(safe-area-inset-right, 0px)) 1rem
+        max(1rem, env(safe-area-inset-left, 0px));
     background: var(--topbar-surface-bg);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);

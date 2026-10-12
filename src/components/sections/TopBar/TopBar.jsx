@@ -33,8 +33,10 @@ const TopBar = ({ currentLang, onLanguageChange, translations }) => {
     >
       <div
         className={glassBoxClassName}
-        onMouseEnter={() => !isMobile && setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        // Only a real mouse hovers: a tap on a touch screen (an iPad is wider
+        // than the mobile layout) would leave the glow stuck on
+        onPointerEnter={(event) => event.pointerType === "mouse" && setIsHovered(true)}
+        onPointerLeave={() => setIsHovered(false)}
       >
         <div
           className={`${styles.gradientOverlay} ${

@@ -453,3 +453,24 @@
         font-size: 0.95rem;
     }
 }
+
+/* The text buttons and links are 20-24px tall, too small to hit with a
+   finger: an invisible hit area brings them to about 44px */
+@media (pointer: coarse) {
+    .expandButton,
+    .jobLink {
+        position: relative;
+    }
+
+    .expandButton::after {
+        content: "";
+        position: absolute;
+        inset: -10px -8px;
+    }
+
+    .jobLink::after {
+        content: "";
+        position: absolute;
+        inset: -10px -4px;
+    }
+}

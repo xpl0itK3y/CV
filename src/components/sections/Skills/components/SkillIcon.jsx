@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { getSkillIcon, getSkillColor } from "../helpers/skillsHelpers";
 
 const PARTICLE_COUNT = 16;
@@ -16,17 +16,37 @@ const createParticles = () =>
     };
   });
 
+// The icon wiggles side to side and settles, evenly spaced keyframes
+const WIGGLE = [-10, -10, 10, -10, 10, -5, 5, -3, 3, 0, 0].map((deg) => ({
+  transform: `rotate(${deg}deg)`,
+}));
+
 const SkillIcon = ({ skill, isMobile, styles }) => {
-  // Hover state lives here so entering an icon re-renders just this icon
-  const [particles, setParticles] = useState(null);
+  // Hover state lives here so entering an icon re-renders just this icon.
+  // The id remounts the particles, so every splash plays from the start
+  const [splash, setSplash] = useState(null);
+  const iconRef = useRef(null);
   const iconSrc = getSkillIcon(skill.name);
+
+  const play = () => {
+    setSplash((previous) => ({
+      id: (previous?.id ?? 0) + 1,
+      particles: createParticles(),
+    }));
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      iconRef.current?.animate(WIGGLE, { duration: 800, easing: "ease-in-out" });
+    }
+  };
 
   return (
     <div
       title={skill.name}
       className={styles.skillIconContainer}
-      onMouseEnter={() => setParticles(createParticles())}
-      onMouseLeave={() => setParticles(null)}
+      // A mouse plays it on hover; touch has no hover, so a tap plays it
+      // instead of a fake hover that sticks until the next tap elsewhere
+      onPointerEnter={(event) => event.pointerType === "mouse" && play()}
+      onPointerLeave={(event) => event.pointerType === "mouse" && setSplash(null)}
+      onPointerDown={(event) => event.pointerType !== "mouse" && play()}
       style={{
         width: isMobile ? "48px" : "56px",
         height: isMobile ? "48px" : "56px",
@@ -34,6 +54,7 @@ const SkillIcon = ({ skill, isMobile, styles }) => {
     >
       {iconSrc ? (
         <img
+          ref={iconRef}
           src={iconSrc}
           alt={skill.name}
           className={styles.skillIcon}
@@ -44,12 +65,12 @@ const SkillIcon = ({ skill, isMobile, styles }) => {
           }}
         />
       ) : (
-        <span style={{ fontSize: "36px" }}>💻</span>
+        <span ref={iconRef} style={{ fontSize: "36px" }}>💻</span>
       )}
 
-      {particles?.map(({ tx, ty, size, delay }, i) => (
+      {splash?.particles.map(({ tx, ty, size, delay }, i) => (
         <div
-          key={i}
+          key={`${splash.id}-${i}`}
           className={styles.splashParticle}
           style={{
             backgroundColor: getSkillColor(skill.name),

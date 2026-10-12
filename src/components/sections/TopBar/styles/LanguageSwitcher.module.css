@@ -151,6 +151,12 @@
     }
 }
 
+/* Touch has no hover: the tapped option lights up under the finger */
+.optionButton:active {
+    background: rgba(230, 60, 134, 0.22);
+    transition-duration: 0ms;
+}
+
 .optionFlag {
     width: 26px;
     height: 18px;

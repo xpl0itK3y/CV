@@ -73,6 +73,22 @@
     opacity: 0.6;
 }
 
+/* A finger needs more than the 20px line: the hit area grows into the gap
+   between the rows, nothing moves */
+@media (pointer: coarse) {
+    .link,
+    .linkBreakable {
+        position: relative;
+    }
+
+    .link::after,
+    .linkBreakable::after {
+        content: "";
+        position: absolute;
+        inset: -6px 0;
+    }
+}
+
 .contactItem {
     display: flex;
     align-items: center;

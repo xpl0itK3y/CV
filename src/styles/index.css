@@ -17,6 +17,17 @@
   box-sizing: border-box;
 }
 
+html {
+  /* The page's top colour: without it iOS shows white when the page
+     rubber-bands past its top or bottom */
+  background-color: #140008;
+  color-scheme: dark;
+  /* No font inflation in landscape */
+  -webkit-text-size-adjust: 100%;
+  /* Pressables have their own :active feedback */
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -25,9 +36,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-  /* Pressables have their own :active feedback */
-  -webkit-tap-highlight-color: transparent;
+}
+
+/* Controls fire on tap without the double-tap-zoom wait, and a long press
+   doesn't select their label. Links stay selectable: they're contacts */
+button,
+[role="button"] {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 /* Headings: tracking tightens and leading shrinks as size grows */
@@ -51,4 +69,6 @@ h3 {
 #root {
   width: 100%;
   min-height: 100vh;
+  /* The smallest viewport, so the URL bar never pushes it past the screen */
+  min-height: 100svh;
 }

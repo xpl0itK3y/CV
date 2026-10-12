@@ -212,12 +212,8 @@ const translations = {
             items: ["PostgreSQL", "Redis"],
           },
           {
-            label: "DevOps и мониторинг",
-            items: [
-              "Prometheus",
-              "Grafana",
-              "ELK Stack",
-            ],
+            label: "DevOps",
+            items: ["Replit", "Docker", "Docker Compose"],
           },
           {
             label: "Безопасность и тестирование",
@@ -684,12 +680,8 @@ const translations = {
             items: ["PostgreSQL", "Redis"],
           },
           {
-            label: "DevOps and Monitoring",
-            items: [
-              "Prometheus",
-              "Grafana",
-              "ELK Stack",
-            ],
+            label: "DevOps",
+            items: ["Replit", "Docker", "Docker Compose"],
           },
           {
             label: "Security and Testing",

@@ -231,7 +231,7 @@ const translations = {
         techGroups: [
           {
             label: "Языки",
-            items: ["TypeScript"],
+            items: ["TypeScript", "Python"],
           },
           {
             label: "Frontend",
@@ -248,6 +248,7 @@ const translations = {
             label: "Backend и базы данных",
             items: [
               "Node.js",
+              "FastAPI",
               "Route Handlers",
               "Server Actions",
               "REST API",
@@ -706,7 +707,7 @@ const translations = {
         techGroups: [
           {
             label: "Languages",
-            items: ["TypeScript"],
+            items: ["TypeScript", "Python"],
           },
           {
             label: "Frontend",
@@ -723,6 +724,7 @@ const translations = {
             label: "Backend and Databases",
             items: [
               "Node.js",
+              "FastAPI",
               "Route Handlers",
               "Server Actions",
               "REST API",

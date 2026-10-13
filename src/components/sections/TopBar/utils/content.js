@@ -276,12 +276,18 @@ const projectBlock = (project, index, stackTitle) => ({
           ? [
               {
                 text: bulletList(
-                  project.links.map(({ label, url }) => ({
-                    text: [
-                      { text: `${label}: `, style: "stackLabel" },
-                      { text: bareUrl(url), link: url },
-                    ],
-                  })),
+                  project.links.map(({ label, url }) =>
+                    // A page inside a link already on the line (the repo's
+                    // releases) needs no address of its own: the label links
+                    project.links.some((other) => other.url !== url && url.startsWith(other.url))
+                      ? { text: label, style: "stackLabel", link: url }
+                      : {
+                          text: [
+                            { text: `${label}: `, style: "stackLabel" },
+                            { text: bareUrl(url), link: url },
+                          ],
+                        },
+                  ),
                 ),
                 style: "stackText",
               },

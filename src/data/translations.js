@@ -471,6 +471,7 @@ const translations = {
         technologies: ["Tauri 2", "Rust", "TypeScript", "React"],
         links: [
           { label: "Сайт", url: "https://modelcrew-com.vercel.app/" },
+          { label: "Скачать", url: "https://github.com/xpl0itK3y/modelcrew-desktop/releases/latest" },
           { label: "GitHub", url: "https://github.com/xpl0itK3y/modelcrew-desktop" },
         ],
       },
@@ -947,6 +948,7 @@ const translations = {
         technologies: ["Tauri 2", "Rust", "TypeScript", "React"],
         links: [
           { label: "Website", url: "https://modelcrew-com.vercel.app/" },
+          { label: "Download", url: "https://github.com/xpl0itK3y/modelcrew-desktop/releases/latest" },
           { label: "GitHub", url: "https://github.com/xpl0itK3y/modelcrew-desktop" },
         ],
       },

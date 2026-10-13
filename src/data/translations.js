@@ -186,7 +186,7 @@ const translations = {
         ],
       },
       {
-        position: "AI Engineer (Personal Projects)",
+        position: "Личные AI-проекты",
         company: "Open Source / GitHub",
         period: "Февраль 2026 - настоящее время",
         employment: "Самообучение",
@@ -662,7 +662,7 @@ const translations = {
         ],
       },
       {
-        position: "AI Engineer (Personal Projects)",
+        position: "Personal AI Projects",
         company: "Open Source / GitHub",
         period: "February 2026 - Present",
         employment: "Self-study",

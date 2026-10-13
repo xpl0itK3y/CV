@@ -35,7 +35,13 @@ const DesktopLayout = ({
 
                 {leftColumn.map((job, index) => (
                     <AnimatedSection key={`left-${index}`} delay={0.6 + index * 0.06}>
-                        <Experience title="" experience={[job]} {...experienceProps} />
+                        <Experience
+                            title={job.heading ?? ""}
+                            experience={[job]}
+                            {...experienceProps}
+                            // The years badge belongs to the work experience heading only
+                            totalExperience={null}
+                        />
                     </AnimatedSection>
                 ))}
             </div>
@@ -63,7 +69,13 @@ const DesktopLayout = ({
 
                 {rightColumn.map((job, index) => (
                     <AnimatedSection key={`right-${index}`} delay={0.6 + index * 0.06}>
-                        <Experience title="" experience={[job]} {...experienceProps} />
+                        <Experience
+                            title={job.heading ?? ""}
+                            experience={[job]}
+                            {...experienceProps}
+                            // The years badge belongs to the work experience heading only
+                            totalExperience={null}
+                        />
                     </AnimatedSection>
                 ))}
 

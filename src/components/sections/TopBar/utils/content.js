@@ -517,8 +517,10 @@ export const generateContent = (translations, lang, pdfLogo) => {
       aside: translations.totalExperience,
       margin: [0, 20, 0, 14],
     }),
-    ...translations.experiences.map((job, jobIdx) => {
-      const isLast = jobIdx === translations.experiences.length - 1;
+    ...translations.experiences.flatMap((job, jobIdx) => {
+      // Last in its group: a block with its own heading starts a new one
+      const next = translations.experiences[jobIdx + 1];
+      const isLast = !next || Boolean(next.heading);
       const rows = [];
 
       // 1. Заголовок вакансии (точка на линии)
@@ -700,11 +702,14 @@ export const generateContent = (translations, lang, pdfLogo) => {
 
       // headlineLevel 2: a job that would start at the very bottom of a
       // page moves to the next one whole, header included
-      return {
+      const block = {
         table: { widths: [TIMELINE_GUTTER, "*"], body: rows },
         layout: timelineLayout,
         headlineLevel: 2,
       };
+      return job.heading
+        ? [sectionTitle(titleText(job.heading), { margin: [0, 20, 0, 14] }), block]
+        : [block];
     }),
 
     // Проекты, под опытом, как на сайте

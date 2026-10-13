@@ -57,7 +57,13 @@ const MobileLayout = ({
 
             {remainingExperiences.map((job, index) => (
                 <AnimatedSection key={`mobile-${index}`} delay={0.6 + index * 0.06}>
-                    <Experience title="" experience={[job]} {...experienceProps} />
+                    <Experience
+                        title={job.heading ?? ""}
+                        experience={[job]}
+                        {...experienceProps}
+                        // The years badge belongs to the work experience heading only
+                        totalExperience={null}
+                    />
                 </AnimatedSection>
             ))}
 

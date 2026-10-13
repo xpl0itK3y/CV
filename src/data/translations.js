@@ -46,7 +46,7 @@ const translations = {
         period: "Июнь 2025 - Май 2026",
         employment: "Полная занятость",
         description:
-          "По контракту в составе кросс-функциональной команды работал над production-платформой аналитики в реальном времени. - Разрабатывал интеграции с 1С, Битрикс и Documentolog на Python и FastAPI: данные из этих систем собираются в PostgreSQL и сводятся на общих дашбордах. - Когда платформа разрослась и искать в ней данные стало неудобно, по запросу заказчика сделал MCP-сервер с инструментами для AI-агента, чтобы получать нужную информацию через Claude Code запросом на естественном языке, а не вручную по интерфейсу; также писал скиллы, с которыми Replit Agent точнее ищет по файлам проекта, придерживается его архитектуры и структуры и пишет код в едином стиле. - Работал над ботами, в том числе над внутренним ботом, который ищет по корпоративной базе знаний и выдаёт коллегам нужную информацию. - Защитил доступ двухфакторной аутентификацией через Microsoft Authenticator (украденный токен без подтверждения с телефона бесполезен), хешированием паролей на bcrypt и шифрованием данных через Fernet.",
+          "По контракту в составе кросс-функциональной команды работал над production-платформой аналитики в реальном времени, а параллельно над внутренним RAG-ботом для сотрудников. - Разрабатывал интеграции с 1С, Битрикс и Documentolog на Python и FastAPI: данные из этих систем собираются в PostgreSQL и сводятся на общих дашбордах. - Когда платформа разрослась и искать в ней данные стало неудобно, по запросу заказчика сделал MCP-сервер с инструментами для AI-агента, чтобы получать нужную информацию через Claude Code запросом на естественном языке, а не вручную по интерфейсу; также писал скиллы, с которыми Replit Agent точнее ищет по файлам проекта, придерживается его архитектуры и структуры и пишет код в едином стиле. - Защитил доступ двухфакторной аутентификацией через Microsoft Authenticator (украденный токен без подтверждения с телефона бесполезен), хешированием паролей на bcrypt и шифрованием данных через Fernet. - RAG-бот работает в Telegram: ищет по корпоративной базе знаний и выдаёт коллегам нужную информацию; стек: Python, FastAPI, LangChain, PostgreSQL с pgvector. - Поднял точность ответов бота: доработал поиск и добавил reranking найденных фрагментов, переработал подготовку документов (разбиение на фрагменты и очистку) и промпты; по отзывам коллег, верных ответов стало почти вдвое больше.",
         techGroups: [
           {
             label: "Языки",
@@ -56,6 +56,9 @@ const translations = {
             label: "AI и LLM",
             items: [
               "MCP",
+              "RAG",
+              "LangChain",
+              "Reranking",
               "Claude Code",
               "Replit Agent",
               "OpenAI API",
@@ -80,11 +83,11 @@ const translations = {
           },
           {
             label: "Интеграции",
-            items: ["1С", "Битрикс", "Documentolog"],
+            items: ["1С", "Битрикс", "Documentolog", "Telegram Bot API"],
           },
           {
             label: "Базы данных и кэширование",
-            items: ["PostgreSQL", "Redis"],
+            items: ["PostgreSQL", "pgvector", "Redis"],
           },
           {
             label: "DevOps",
@@ -528,7 +531,7 @@ const translations = {
         period: "June 2025 - May 2026",
         employment: "Full-time",
         description:
-          "Under contract, worked on a real-time production analytics platform as part of a cross-functional team. - Developed integrations with 1C, Bitrix and Documentolog on Python and FastAPI: data from these systems is collected in PostgreSQL and brought together on shared dashboards. - When the platform grew too large to navigate comfortably, built an MCP server with tools for an AI agent at the client's request, so the client could pull the data they needed through Claude Code with a natural-language request instead of searching the UI by hand; also wrote skills that help Replit Agent search the project's files more precisely, follow its architecture and structure, and write code in one consistent style. - Worked on bots, including an internal one that searches the corporate knowledge base and gives colleagues the information they need. - Secured access with two-factor authentication through Microsoft Authenticator (a stolen token is useless without confirmation from the phone), bcrypt password hashing and Fernet data encryption.",
+          "Under contract, worked on a real-time production analytics platform as part of a cross-functional team, and in parallel on an internal RAG bot for employees. - Developed integrations with 1C, Bitrix and Documentolog on Python and FastAPI: data from these systems is collected in PostgreSQL and brought together on shared dashboards. - When the platform grew too large to navigate comfortably, built an MCP server with tools for an AI agent at the client's request, so the client could pull the data they needed through Claude Code with a natural-language request instead of searching the UI by hand; also wrote skills that help Replit Agent search the project's files more precisely, follow its architecture and structure, and write code in one consistent style. - Secured access with two-factor authentication through Microsoft Authenticator (a stolen token is useless without confirmation from the phone), bcrypt password hashing and Fernet data encryption. - The RAG bot runs in Telegram: it searches the corporate knowledge base and gives colleagues the information they need; stack: Python, FastAPI, LangChain, PostgreSQL with pgvector. - Raised the bot's answer accuracy: improved retrieval and added reranking of the retrieved chunks, reworked document preparation (chunking and cleanup) and the prompts; going by colleagues' feedback, correct answers nearly doubled.",
 
         techGroups: [
           {
@@ -539,6 +542,9 @@ const translations = {
             label: "AI / LLM",
             items: [
               "MCP",
+              "RAG",
+              "LangChain",
+              "Reranking",
               "Claude Code",
               "Replit Agent",
               "OpenAI API",
@@ -563,11 +569,11 @@ const translations = {
           },
           {
             label: "Integrations",
-            items: ["1C", "Bitrix", "Documentolog"],
+            items: ["1C", "Bitrix", "Documentolog", "Telegram Bot API"],
           },
           {
             label: "Databases and Caching",
-            items: ["PostgreSQL", "Redis"],
+            items: ["PostgreSQL", "pgvector", "Redis"],
           },
           {
             label: "DevOps",

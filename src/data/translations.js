@@ -187,7 +187,7 @@ const translations = {
       },
       {
         // Its own section heading: this block is not work experience
-        heading: "Личные проекты",
+        heading: "Pet-проекты",
         position: "AI Engineer (Personal Projects)",
         company: "Open Source / GitHub",
         period: "Февраль 2026 - настоящее время",
@@ -440,7 +440,7 @@ const translations = {
     ],
 
     // Projects
-    projectsTitle: "Проекты",
+    projectsTitle: "Собственный продукт",
     latestReleaseLabel: "Последний релиз",
     projects: [
       {
@@ -665,7 +665,7 @@ const translations = {
       },
       {
         // Its own section heading: this block is not work experience
-        heading: "Personal Projects",
+        heading: "Side Projects",
         position: "AI Engineer (Personal Projects)",
         company: "Open Source / GitHub",
         period: "February 2026 - Present",
@@ -917,7 +917,7 @@ const translations = {
     ],
 
     // Projects
-    projectsTitle: "Projects",
+    projectsTitle: "Open Source Product",
     latestReleaseLabel: "Latest release",
     projects: [
       {

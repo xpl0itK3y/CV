@@ -188,7 +188,7 @@ const translations = {
       {
         // Its own section heading: this block is not work experience
         heading: "Личные проекты",
-        position: "AI Engineer",
+        position: "AI Engineer (Personal Projects)",
         company: "Open Source / GitHub",
         period: "Февраль 2026 - настоящее время",
         employment: "Самообучение",
@@ -666,7 +666,7 @@ const translations = {
       {
         // Its own section heading: this block is not work experience
         heading: "Personal Projects",
-        position: "AI Engineer",
+        position: "AI Engineer (Personal Projects)",
         company: "Open Source / GitHub",
         period: "February 2026 - Present",
         employment: "Self-study",

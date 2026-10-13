@@ -4,28 +4,12 @@ import { useLatestRelease } from "../hooks/useLatestRelease";
 import styles from "../styles/Projects.module.css";
 import ProjectLogo from "./ProjectLogo";
 
-// The release page: the installers, not the code
-const DownloadIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M12 3v12" />
-    <path d="m7 10 5 5 5-5" />
-    <path d="M5 21h14" />
-  </svg>
-);
-
 const ProjectItem = ({ project, stackTitle, releaseLabel, isMobile }) => {
   const { name, repo, logo, tagline, meta, description, highlights, technologies, links } =
     project;
   const version = useLatestRelease(repo, project.version);
+  // The version badge already leads to the release; the PDF has no badge
+  const siteLinks = links?.filter((link) => !link.pdfOnly);
 
   return (
     <article className={styles.project}>
@@ -92,9 +76,9 @@ const ProjectItem = ({ project, stackTitle, releaseLabel, isMobile }) => {
         </div>
       )}
 
-      {links?.length > 0 && (
+      {siteLinks?.length > 0 && (
         <div className={styles.links}>
-          {links.map(({ label, url }, index) => (
+          {siteLinks.map(({ label, url }, index) => (
             <a
               key={url}
               href={url}
@@ -103,11 +87,7 @@ const ProjectItem = ({ project, stackTitle, releaseLabel, isMobile }) => {
               // The first link is the project's own site, the rest are secondary
               className={`${styles.link} ${index === 0 ? styles.linkPrimary : ""}`}
             >
-              {url.includes("/releases") ? (
-                <DownloadIcon />
-              ) : (
-                url.includes("github.com") && <GithubIcon />
-              )}
+              {url.includes("github.com") && <GithubIcon />}
               <span>{label}</span>
               <span className={styles.linkArrow} aria-hidden="true">
                 ↗

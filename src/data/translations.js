@@ -159,6 +159,33 @@ const translations = {
         ],
       },
       {
+        position: "Python/Django Developer (Diploma Project)",
+        company: "Комитет по делам молодежи ИнЕУ",
+        period: "Февраль 2024 - Июнь 2024",
+        employment: "Стажировка",
+        description:
+          "Самостоятельно разработал веб-платформу для молодежных клубов университета на Django в формате информационно-управляющего портала. - Реализовал backend и frontend логику приложения: новости и мероприятия, клубы, фотогалерею, страницы руководства, личные кабинеты студентов и руководителей, а также подачу заявок в клубы и на мероприятия. - Настроил систему регистрации, авторизации, восстановления доступа и ролевую модель пользователей с использованием Django Auth, Group и Django ORM. - Реализовал внутренние чаты, публикацию клубных новостей, комментарии, лайки и управление участниками клубов. - Использовал server-side rendering на Django Templates, SQLite для хранения данных и JavaScript для отдельных интерактивных сценариев. - Выполнил контейнеризацию приложения с помощью Docker и подготовил проект к развертыванию, что упростило деплой, воспроизводимость окружения и сопровождение. - Дополнительно настроил Django Admin для управления контентом и основными сущностями системы.",
+
+        techGroups: [
+          {
+            label: "Языки",
+            items: ["Python", "JavaScript"],
+          },
+          {
+            label: "Backend и базы данных",
+            items: ["Django", "Django ORM", "Django Auth", "SQLite"],
+          },
+          {
+            label: "Frontend",
+            items: ["HTML", "CSS", "Django Templates"],
+          },
+          {
+            label: "DevOps and Tools",
+            items: ["Docker", "Linux", "Django Admin"],
+          },
+        ],
+      },
+      {
         position: "AI Engineer (Personal Projects)",
         company: "Open Source / GitHub",
         period: "Февраль 2026 - настоящее время",
@@ -280,33 +307,6 @@ const translations = {
               "GitHub source ingestion",
               "URL / HTTP fetch ingestion",
             ],
-          },
-        ],
-      },
-      {
-        position: "Python/Django Developer (Diploma Project)",
-        company: "Комитет по делам молодежи ИнЕУ",
-        period: "Февраль 2024 - Июнь 2024",
-        employment: "Стажировка",
-        description:
-          "Самостоятельно разработал веб-платформу для молодежных клубов университета на Django в формате информационно-управляющего портала. - Реализовал backend и frontend логику приложения: новости и мероприятия, клубы, фотогалерею, страницы руководства, личные кабинеты студентов и руководителей, а также подачу заявок в клубы и на мероприятия. - Настроил систему регистрации, авторизации, восстановления доступа и ролевую модель пользователей с использованием Django Auth, Group и Django ORM. - Реализовал внутренние чаты, публикацию клубных новостей, комментарии, лайки и управление участниками клубов. - Использовал server-side rendering на Django Templates, SQLite для хранения данных и JavaScript для отдельных интерактивных сценариев. - Выполнил контейнеризацию приложения с помощью Docker и подготовил проект к развертыванию, что упростило деплой, воспроизводимость окружения и сопровождение. - Дополнительно настроил Django Admin для управления контентом и основными сущностями системы.",
-
-        techGroups: [
-          {
-            label: "Языки",
-            items: ["Python", "JavaScript"],
-          },
-          {
-            label: "Backend и базы данных",
-            items: ["Django", "Django ORM", "Django Auth", "SQLite"],
-          },
-          {
-            label: "Frontend",
-            items: ["HTML", "CSS", "Django Templates"],
-          },
-          {
-            label: "DevOps and Tools",
-            items: ["Docker", "Linux", "Django Admin"],
           },
         ],
       },
@@ -635,6 +635,33 @@ const translations = {
         ],
       },
       {
+        position: "Python/Django Developer (Diploma Project)",
+        company: "Youth Affairs Committee of INEU",
+        period: "February 2024 - June 2024",
+        employment: "Internship",
+        description:
+          "Independently developed a Django-based web platform for the university’s student clubs as an information and management portal. - Implemented both backend and frontend application logic, including news and events, clubs, photo gallery, leadership pages, student and supervisor dashboards, as well as applications for joining clubs and participating in events. - Configured user registration, authentication, password recovery, and a role-based access model using Django Auth, Group, and Django ORM. Implemented internal chats, club news publishing, comments, likes, and club member management. - Used server-side rendering with Django Templates, SQLite for data storage, and JavaScript for interactive client-side features. - Containerized the application with Docker and prepared it for deployment, improving deployment simplicity, environment reproducibility, and maintainability. - Additionally configured Django Admin for managing content and core system entities.",
+
+        techGroups: [
+          {
+            label: "Languages",
+            items: ["Python", "JavaScript"],
+          },
+          {
+            label: "Backend and Databases",
+            items: ["Django", "Django ORM", "Django Auth", "SQLite"],
+          },
+          {
+            label: "Frontend",
+            items: ["HTML", "CSS", "Django Templates"],
+          },
+          {
+            label: "DevOps and Tools",
+            items: ["Docker", "Linux", "Django Admin"],
+          },
+        ],
+      },
+      {
         position: "AI Engineer (Personal Projects)",
         company: "Open Source / GitHub",
         period: "February 2026 - Present",
@@ -756,33 +783,6 @@ const translations = {
               "GitHub source ingestion",
               "URL / HTTP fetch ingestion",
             ],
-          },
-        ],
-      },
-      {
-        position: "Python/Django Developer (Diploma Project)",
-        company: "Youth Affairs Committee of INEU",
-        period: "February 2024 - June 2024",
-        employment: "Internship",
-        description:
-          "Independently developed a Django-based web platform for the university’s student clubs as an information and management portal. - Implemented both backend and frontend application logic, including news and events, clubs, photo gallery, leadership pages, student and supervisor dashboards, as well as applications for joining clubs and participating in events. - Configured user registration, authentication, password recovery, and a role-based access model using Django Auth, Group, and Django ORM. Implemented internal chats, club news publishing, comments, likes, and club member management. - Used server-side rendering with Django Templates, SQLite for data storage, and JavaScript for interactive client-side features. - Containerized the application with Docker and prepared it for deployment, improving deployment simplicity, environment reproducibility, and maintainability. - Additionally configured Django Admin for managing content and core system entities.",
-
-        techGroups: [
-          {
-            label: "Languages",
-            items: ["Python", "JavaScript"],
-          },
-          {
-            label: "Backend and Databases",
-            items: ["Django", "Django ORM", "Django Auth", "SQLite"],
-          },
-          {
-            label: "Frontend",
-            items: ["HTML", "CSS", "Django Templates"],
-          },
-          {
-            label: "DevOps and Tools",
-            items: ["Docker", "Linux", "Django Admin"],
           },
         ],
       },

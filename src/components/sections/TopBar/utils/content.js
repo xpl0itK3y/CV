@@ -200,16 +200,18 @@ const repoLine = (url) => ({
 
 // A project as on the site: name and one-liner, the facts line, the text on
 // the rule, then the stack and the links as labelled lines
-const projectBlock = (project, index, stackTitle) => ({
+const projectBlock = (project, index, stackTitle, heading) => ({
   stack: [
     {
       table: {
         widths: ["*"],
         body: [
-          // The header goes to the next page with the description under it
+          // The header goes to the next page with the description under it,
+          // and the section title over it when there is one
           [
             {
               stack: [
+                ...(heading ? [heading] : []),
                 project.version
                   ? {
                       columns: [
@@ -721,11 +723,21 @@ export const generateContent = (translations, lang, pdfLogo) => {
     // Проекты, под опытом, как на сайте
     ...(translations.projects?.length
       ? [
-          sectionTitle(titleText(translations.projectsTitle), {
-            margin: [0, 20, 0, 10],
-          }),
+          // The title rides in the first project's unbreakable header: the
+          // header is taller than the room headlineLevel 1 keeps, so on its
+          // own the title could stay alone at the bottom of a page
           ...translations.projects.map((project, index) =>
-            projectBlock(project, index, stackTitle),
+            projectBlock(
+              project,
+              index,
+              stackTitle,
+              index === 0
+                ? sectionTitle(titleText(translations.projectsTitle), {
+                    keepWithNext: false,
+                    margin: [0, 20, 0, 10],
+                  })
+                : null,
+            ),
           ),
         ]
       : []),

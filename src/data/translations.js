@@ -41,10 +41,128 @@ const translations = {
     totalExperience: "2 года",
     experiences: [
       {
+        position: "Backend Developer (Contract)",
+        company: "Private Startup (NDA)",
+        period: "Июнь 2025 - Май 2026",
+        employment: "Полная занятость",
+        description:
+          "По контракту в составе кросс-функциональной команды работал над production-платформой аналитики в реальном времени. - Разрабатывал интеграции с 1С, Битрикс и Documentolog на Python и FastAPI: данные из этих систем собираются в PostgreSQL и сводятся на общих дашбордах. - Когда платформа разрослась и искать в ней данные стало неудобно, сделал MCP-сервер с инструментами для AI-агента: через Claude Code нужную информацию можно получить запросом на естественном языке вместо ручного поиска по интерфейсу; также писал скиллы, с которыми Replit Agent точнее ищет по файлам проекта, придерживается его архитектуры и структуры и пишет код в едином стиле. - Защитил доступ двухфакторной аутентификацией через Microsoft Authenticator (украденный токен без подтверждения с телефона бесполезен), хешированием паролей на bcrypt и шифрованием данных через Fernet.",
+        techGroups: [
+          {
+            label: "Языки",
+            items: ["Python"],
+          },
+          {
+            label: "AI и LLM",
+            items: [
+              "MCP",
+              "Claude Code",
+              "Replit Agent",
+              "OpenAI API",
+              "Prompt Engineering",
+              "Structured Outputs (JSON)",
+              "Pydantic валидация",
+              "NLP",
+              "LLM кэширование и retry/rate limiting",
+            ],
+          },
+          {
+            label: "Backend",
+            items: [
+              "FastAPI",
+              "Pydantic",
+              "SQLAlchemy",
+              "REST API",
+              "Microservices",
+              "asyncio",
+              "Multiprocessing",
+            ],
+          },
+          {
+            label: "Интеграции",
+            items: ["1С", "Битрикс", "Documentolog"],
+          },
+          {
+            label: "Базы данных и кэширование",
+            items: ["PostgreSQL", "Redis"],
+          },
+          {
+            label: "DevOps",
+            items: ["Replit", "Docker", "Docker Compose"],
+          },
+          {
+            label: "Безопасность и тестирование",
+            items: ["2FA", "Microsoft Authenticator", "bcrypt", "Fernet", "Pytest", "Locust"],
+          },
+        ],
+      },
+      {
+        position: "Full-Stack Developer (Freelance)",
+        company: "Проекты на заказ",
+        period: "Август 2024 - Февраль 2025",
+        employment: "Проектная работа",
+        description:
+          "Разрабатывал веб-приложения и AI-сервисы на заказ вместе с напарником: вели проекты от обсуждения задачи с заказчиком до сдачи. 1) Сервис генерации сказок. - Разработал веб-приложение на Next.js и TypeScript, которое пишет сказки с помощью LLM по возрасту, жанру, языку и героям и выводит текст по мере генерации. - Сделал потоковую генерацию через Vercel AI SDK и OpenAI API, отдельные промпты на русском и казахском и историю сказок в PostgreSQL через Prisma. - Собрал интерфейс на React, Tailwind CSS и React Hook Form с проверкой на Zod, написал тесты на Vitest и упаковал всё в Docker Compose. 2) CRM-система для обработки заявок магазина. - Разработал CRM на Next.js и TypeScript для заявок с сайта магазина: встраиваемый виджет и страница статуса заявки для клиента. - Сделал рабочий стол менеджера с очередью, фильтрами, приоритетами и сроками ответа, ролями на Better Auth и сводкой за день, неделю и месяц. - Добавил защиту публичных форм от спама и перебора, хранение в SQLite через Drizzle ORM и тесты основных сценариев. 3) AI-ассистент поддержки покупателей в Telegram. - Разработал Telegram-бота поддержки покупателей на TypeScript и OpenAI API: он отвечает на вопросы о доставке, оплате и режиме работы магазина. - Подключил бота к каталогу магазина: он находит товары по запросу покупателя и сообщает цены и наличие.",
+        techGroups: [
+          {
+            label: "Языки",
+            items: ["TypeScript", "Python"],
+          },
+          {
+            label: "Frontend",
+            items: [
+              "React",
+              "Next.js",
+              "Tailwind CSS",
+              "React Hook Form",
+              "Motion",
+              "React Markdown",
+            ],
+          },
+          {
+            label: "Backend и базы данных",
+            items: [
+              "Node.js",
+              "FastAPI",
+              "Route Handlers",
+              "Server Actions",
+              "REST API",
+              "Telegram Bot API",
+              "Server-Sent Events",
+              "Zod",
+              "Better Auth",
+              "Prisma",
+              "Drizzle ORM",
+              "PostgreSQL",
+              "SQLite",
+            ],
+          },
+          {
+            label: "AI и LLM",
+            items: [
+              "Vercel AI SDK",
+              "OpenAI API",
+              "Prompt Engineering",
+              "Streaming",
+            ],
+          },
+          {
+            label: "Тестирование и DevOps",
+            items: [
+              "Vitest",
+              "Node.js Test Runner",
+              "ESLint",
+              "Docker",
+              "Docker Compose",
+            ],
+          },
+        ],
+      },
+      {
         position: "AI Engineer (Personal Projects)",
         company: "Open Source / GitHub",
         period: "Февраль 2026 - настоящее время",
-        employment: "Профессиональное обучение",
+        employment: "Самообучение",
         // One per project in the description, in its order
         projectLinks: [
           "https://github.com/Modern-Messiah/Multi-language-RAG-Document-Assistant",
@@ -161,124 +279,6 @@ const translations = {
               "Notion API",
               "GitHub source ingestion",
               "URL / HTTP fetch ingestion",
-            ],
-          },
-        ],
-      },
-      {
-        position: "Backend Developer (Contract)",
-        company: "Private Startup (NDA)",
-        period: "Июнь 2025 - Май 2026",
-        employment: "Полная занятость",
-        description:
-          "По контракту в составе кросс-функциональной команды работал над production-платформой аналитики в реальном времени. - Разрабатывал интеграции с 1С, Битрикс и Documentolog на Python и FastAPI: данные из этих систем собираются в PostgreSQL и сводятся на общих дашбордах. - Когда платформа разрослась и искать в ней данные стало неудобно, сделал MCP-сервер с инструментами для AI-агента: через Claude Code нужную информацию можно получить запросом на естественном языке вместо ручного поиска по интерфейсу; также писал скиллы, с которыми Replit Agent точнее ищет по файлам проекта, придерживается его архитектуры и структуры и пишет код в едином стиле. - Защитил доступ двухфакторной аутентификацией через Microsoft Authenticator (украденный токен без подтверждения с телефона бесполезен), хешированием паролей на bcrypt и шифрованием данных через Fernet.",
-        techGroups: [
-          {
-            label: "Языки",
-            items: ["Python"],
-          },
-          {
-            label: "AI и LLM",
-            items: [
-              "MCP",
-              "Claude Code",
-              "Replit Agent",
-              "OpenAI API",
-              "Prompt Engineering",
-              "Structured Outputs (JSON)",
-              "Pydantic валидация",
-              "NLP",
-              "LLM кэширование и retry/rate limiting",
-            ],
-          },
-          {
-            label: "Backend",
-            items: [
-              "FastAPI",
-              "Pydantic",
-              "SQLAlchemy",
-              "REST API",
-              "Microservices",
-              "asyncio",
-              "Multiprocessing",
-            ],
-          },
-          {
-            label: "Интеграции",
-            items: ["1С", "Битрикс", "Documentolog"],
-          },
-          {
-            label: "Базы данных и кэширование",
-            items: ["PostgreSQL", "Redis"],
-          },
-          {
-            label: "DevOps",
-            items: ["Replit", "Docker", "Docker Compose"],
-          },
-          {
-            label: "Безопасность и тестирование",
-            items: ["2FA", "Microsoft Authenticator", "bcrypt", "Fernet", "Pytest", "Locust"],
-          },
-        ],
-      },
-      {
-        position: "Full-Stack Developer (Freelance)",
-        company: "Проекты на заказ",
-        period: "Август 2024 - Февраль 2025",
-        employment: "Проектная работа",
-        description:
-          "Разрабатывал веб-приложения и AI-сервисы на заказ вместе с напарником: вели проекты от обсуждения задачи с заказчиком до сдачи. 1) Сервис генерации сказок. - Разработал веб-приложение на Next.js и TypeScript, которое пишет сказки с помощью LLM по возрасту, жанру, языку и героям и выводит текст по мере генерации. - Сделал потоковую генерацию через Vercel AI SDK и OpenAI API, отдельные промпты на русском и казахском и историю сказок в PostgreSQL через Prisma. - Собрал интерфейс на React, Tailwind CSS и React Hook Form с проверкой на Zod, написал тесты на Vitest и упаковал всё в Docker Compose. 2) CRM-система для обработки заявок магазина. - Разработал CRM на Next.js и TypeScript для заявок с сайта магазина: встраиваемый виджет и страница статуса заявки для клиента. - Сделал рабочий стол менеджера с очередью, фильтрами, приоритетами и сроками ответа, ролями на Better Auth и сводкой за день, неделю и месяц. - Добавил защиту публичных форм от спама и перебора, хранение в SQLite через Drizzle ORM и тесты основных сценариев. 3) AI-ассистент поддержки покупателей в Telegram. - Разработал Telegram-бота поддержки покупателей на TypeScript и OpenAI API: он отвечает на вопросы о доставке, оплате и режиме работы магазина. - Подключил бота к каталогу магазина: он находит товары по запросу покупателя и сообщает цены и наличие.",
-        techGroups: [
-          {
-            label: "Языки",
-            items: ["TypeScript", "Python"],
-          },
-          {
-            label: "Frontend",
-            items: [
-              "React",
-              "Next.js",
-              "Tailwind CSS",
-              "React Hook Form",
-              "Motion",
-              "React Markdown",
-            ],
-          },
-          {
-            label: "Backend и базы данных",
-            items: [
-              "Node.js",
-              "FastAPI",
-              "Route Handlers",
-              "Server Actions",
-              "REST API",
-              "Telegram Bot API",
-              "Server-Sent Events",
-              "Zod",
-              "Better Auth",
-              "Prisma",
-              "Drizzle ORM",
-              "PostgreSQL",
-              "SQLite",
-            ],
-          },
-          {
-            label: "AI и LLM",
-            items: [
-              "Vercel AI SDK",
-              "OpenAI API",
-              "Prompt Engineering",
-              "Streaming",
-            ],
-          },
-          {
-            label: "Тестирование и DevOps",
-            items: [
-              "Vitest",
-              "Node.js Test Runner",
-              "ESLint",
-              "Docker",
-              "Docker Compose",
             ],
           },
         ],
@@ -516,10 +516,129 @@ const translations = {
     totalExperience: "2 years",
     experiences: [
       {
+        position: "Backend Developer (Contract)",
+        company: "Private Startup (NDA)",
+        period: "June 2025 - May 2026",
+        employment: "Full-time",
+        description:
+          "Under contract, worked on a real-time production analytics platform as part of a cross-functional team. - Developed integrations with 1C, Bitrix and Documentolog on Python and FastAPI: data from these systems is collected in PostgreSQL and brought together on shared dashboards. - When the platform grew too large to navigate comfortably, built an MCP server with tools for an AI agent: through Claude Code, the needed data comes from a natural-language request instead of a manual search through the UI; also wrote skills that help Replit Agent search the project's files more precisely, follow its architecture and structure, and write code in one consistent style. - Secured access with two-factor authentication through Microsoft Authenticator (a stolen token is useless without confirmation from the phone), bcrypt password hashing and Fernet data encryption.",
+
+        techGroups: [
+          {
+            label: "Languages",
+            items: ["Python"],
+          },
+          {
+            label: "AI / LLM",
+            items: [
+              "MCP",
+              "Claude Code",
+              "Replit Agent",
+              "OpenAI API",
+              "Prompt Engineering",
+              "Structured Outputs (JSON)",
+              "Pydantic validation",
+              "NLP",
+              "LLM caching and retry/rate limiting",
+            ],
+          },
+          {
+            label: "Backend",
+            items: [
+              "FastAPI",
+              "Pydantic",
+              "SQLAlchemy",
+              "REST API",
+              "Microservices",
+              "asyncio",
+              "Multiprocessing",
+            ],
+          },
+          {
+            label: "Integrations",
+            items: ["1C", "Bitrix", "Documentolog"],
+          },
+          {
+            label: "Databases and Caching",
+            items: ["PostgreSQL", "Redis"],
+          },
+          {
+            label: "DevOps",
+            items: ["Replit", "Docker", "Docker Compose"],
+          },
+          {
+            label: "Security and Testing",
+            items: ["2FA", "Microsoft Authenticator", "bcrypt", "Fernet", "Pytest", "Locust"],
+          },
+        ],
+      },
+      {
+        position: "Full-Stack Developer (Freelance)",
+        company: "Client Projects",
+        period: "August 2024 - February 2025",
+        employment: "Project-based",
+        description:
+          "Built web apps and AI services for clients together with a partner, taking each project from the first brief to handover. 1) Fairy Tale Generation Service. - Built a Next.js and TypeScript web app that writes fairy tales with an LLM for a chosen age, genre, language and characters, showing the text as it is generated. - Implemented streaming through the Vercel AI SDK and the OpenAI API, separate prompts in Russian and Kazakh, and a story history in PostgreSQL through Prisma. - Built the interface with React, Tailwind CSS and React Hook Form with Zod validation, wrote Vitest tests and packaged everything with Docker Compose. 2) Request Management CRM for a Retail Store. - Built a Next.js and TypeScript CRM for requests from the shop's website: an embeddable widget and a request status page for customers. - Built a manager desk with a queue, filters, priorities and response deadlines, roles on Better Auth and a summary for the day, week and month. - Added spam and guessing protection to the public forms, SQLite storage through Drizzle ORM and tests of the main flows. 3) AI Customer Support Assistant for Telegram. - Built a customer support Telegram bot on TypeScript with the OpenAI API: it answers questions about delivery, payment and the shop's opening hours. - Connected the bot to the shop's catalog: it finds products from the customer's request and reports prices and availability.",
+        techGroups: [
+          {
+            label: "Languages",
+            items: ["TypeScript", "Python"],
+          },
+          {
+            label: "Frontend",
+            items: [
+              "React",
+              "Next.js",
+              "Tailwind CSS",
+              "React Hook Form",
+              "Motion",
+              "React Markdown",
+            ],
+          },
+          {
+            label: "Backend and Databases",
+            items: [
+              "Node.js",
+              "FastAPI",
+              "Route Handlers",
+              "Server Actions",
+              "REST API",
+              "Telegram Bot API",
+              "Server-Sent Events",
+              "Zod",
+              "Better Auth",
+              "Prisma",
+              "Drizzle ORM",
+              "PostgreSQL",
+              "SQLite",
+            ],
+          },
+          {
+            label: "AI / LLM",
+            items: [
+              "Vercel AI SDK",
+              "OpenAI API",
+              "Prompt Engineering",
+              "Streaming",
+            ],
+          },
+          {
+            label: "Testing and DevOps",
+            items: [
+              "Vitest",
+              "Node.js Test Runner",
+              "ESLint",
+              "Docker",
+              "Docker Compose",
+            ],
+          },
+        ],
+      },
+      {
         position: "AI Engineer (Personal Projects)",
         company: "Open Source / GitHub",
         period: "February 2026 - Present",
-        employment: "Professional development",
+        employment: "Self-study",
         // One per project in the description, in its order
         projectLinks: [
           "https://github.com/Modern-Messiah/Multi-language-RAG-Document-Assistant",
@@ -636,125 +755,6 @@ const translations = {
               "Notion API",
               "GitHub source ingestion",
               "URL / HTTP fetch ingestion",
-            ],
-          },
-        ],
-      },
-      {
-        position: "Backend Developer (Contract)",
-        company: "Private Startup (NDA)",
-        period: "June 2025 - May 2026",
-        employment: "Full-time",
-        description:
-          "Under contract, worked on a real-time production analytics platform as part of a cross-functional team. - Developed integrations with 1C, Bitrix and Documentolog on Python and FastAPI: data from these systems is collected in PostgreSQL and brought together on shared dashboards. - When the platform grew too large to navigate comfortably, built an MCP server with tools for an AI agent: through Claude Code, the needed data comes from a natural-language request instead of a manual search through the UI; also wrote skills that help Replit Agent search the project's files more precisely, follow its architecture and structure, and write code in one consistent style. - Secured access with two-factor authentication through Microsoft Authenticator (a stolen token is useless without confirmation from the phone), bcrypt password hashing and Fernet data encryption.",
-
-        techGroups: [
-          {
-            label: "Languages",
-            items: ["Python"],
-          },
-          {
-            label: "AI / LLM",
-            items: [
-              "MCP",
-              "Claude Code",
-              "Replit Agent",
-              "OpenAI API",
-              "Prompt Engineering",
-              "Structured Outputs (JSON)",
-              "Pydantic validation",
-              "NLP",
-              "LLM caching and retry/rate limiting",
-            ],
-          },
-          {
-            label: "Backend",
-            items: [
-              "FastAPI",
-              "Pydantic",
-              "SQLAlchemy",
-              "REST API",
-              "Microservices",
-              "asyncio",
-              "Multiprocessing",
-            ],
-          },
-          {
-            label: "Integrations",
-            items: ["1C", "Bitrix", "Documentolog"],
-          },
-          {
-            label: "Databases and Caching",
-            items: ["PostgreSQL", "Redis"],
-          },
-          {
-            label: "DevOps",
-            items: ["Replit", "Docker", "Docker Compose"],
-          },
-          {
-            label: "Security and Testing",
-            items: ["2FA", "Microsoft Authenticator", "bcrypt", "Fernet", "Pytest", "Locust"],
-          },
-        ],
-      },
-      {
-        position: "Full-Stack Developer (Freelance)",
-        company: "Client Projects",
-        period: "August 2024 - February 2025",
-        employment: "Project-based",
-        description:
-          "Built web apps and AI services for clients together with a partner, taking each project from the first brief to handover. 1) Fairy Tale Generation Service. - Built a Next.js and TypeScript web app that writes fairy tales with an LLM for a chosen age, genre, language and characters, showing the text as it is generated. - Implemented streaming through the Vercel AI SDK and the OpenAI API, separate prompts in Russian and Kazakh, and a story history in PostgreSQL through Prisma. - Built the interface with React, Tailwind CSS and React Hook Form with Zod validation, wrote Vitest tests and packaged everything with Docker Compose. 2) Request Management CRM for a Retail Store. - Built a Next.js and TypeScript CRM for requests from the shop's website: an embeddable widget and a request status page for customers. - Built a manager desk with a queue, filters, priorities and response deadlines, roles on Better Auth and a summary for the day, week and month. - Added spam and guessing protection to the public forms, SQLite storage through Drizzle ORM and tests of the main flows. 3) AI Customer Support Assistant for Telegram. - Built a customer support Telegram bot on TypeScript with the OpenAI API: it answers questions about delivery, payment and the shop's opening hours. - Connected the bot to the shop's catalog: it finds products from the customer's request and reports prices and availability.",
-        techGroups: [
-          {
-            label: "Languages",
-            items: ["TypeScript", "Python"],
-          },
-          {
-            label: "Frontend",
-            items: [
-              "React",
-              "Next.js",
-              "Tailwind CSS",
-              "React Hook Form",
-              "Motion",
-              "React Markdown",
-            ],
-          },
-          {
-            label: "Backend and Databases",
-            items: [
-              "Node.js",
-              "FastAPI",
-              "Route Handlers",
-              "Server Actions",
-              "REST API",
-              "Telegram Bot API",
-              "Server-Sent Events",
-              "Zod",
-              "Better Auth",
-              "Prisma",
-              "Drizzle ORM",
-              "PostgreSQL",
-              "SQLite",
-            ],
-          },
-          {
-            label: "AI / LLM",
-            items: [
-              "Vercel AI SDK",
-              "OpenAI API",
-              "Prompt Engineering",
-              "Streaming",
-            ],
-          },
-          {
-            label: "Testing and DevOps",
-            items: [
-              "Vitest",
-              "Node.js Test Runner",
-              "ESLint",
-              "Docker",
-              "Docker Compose",
             ],
           },
         ],

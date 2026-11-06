@@ -445,29 +445,29 @@ const translations = {
       {
         name: "ModelCrew",
         // Shown until GitHub answers with the newest release of `repo`
-        version: "v0.0.21",
+        version: "v0.0.24",
         repo: "xpl0itK3y/modelcrew-desktop",
         logo: "icons/modelcrew/modelcrew-logo.svg",
         // The non-breaking space keeps the preposition off the end of a line
-        tagline: "Совместная работа AI-агентов над\u00a0общим кодом",
-        meta: ["Автор проекта", "В активной разработке", "Open source, MIT", "macOS, Windows, Linux"],
+        tagline: "Терминальное рабочее место для нескольких AI-агентов в\u00a0одном проекте",
+        meta: ["Автор проекта", "20+ релизов с июня 2026", "Open source, MIT", "macOS, Windows, Linux"],
         description:
-          "Десктопное приложение, в котором несколько AI-агентов для программирования (Claude Code, Codex, Copilot, OpenCode) работают бок о бок в одном проекте и не затирают правки друг друга.",
+          "Десктопное приложение, в котором Claude Code, Codex, GitHub Copilot и OpenCode работают параллельно в одном проекте и не затирают правки друг друга.",
         highlights: [
           {
             title: "Захват файлов",
-            text: "Перед правкой агент занимает файл через собственный хук. Второй агент получает отказ с причиной в формате своего CLI: exit code, JSON-решение или ошибка плагина. Отклоняется и запись поверх версии, которую агент прочитал до чужих изменений.",
+            text: "Агент занимает файл перед записью, а второй агент получает отказ с причиной и берётся за другой файл.",
           },
           {
-            title: "Сетка терминалов",
-            text: "Каждая панель запускает CLI агента из PATH пользователя в собственном PTY. После перезапуска приложения сессии восстанавливаются вместе с диалогами агентов.",
+            title: "Браузер по MCP",
+            text: "Собственный MCP-сервер даёт агентам встроенный браузер: прочитать страницу, кликнуть, ввести текст и снять скриншот, с защитой от prompt injection.",
           },
           {
-            title: "Git-панель",
-            text: "Диффы по файлам в реальном времени, коммит, откат, переключение веток и история с графом.",
+            title: "Сессии и уведомления",
+            text: "После перезапуска каждая панель продолжает свой диалог с агентом, а агент, который закончил или ждёт разрешения, присылает уведомление.",
           },
         ],
-        technologies: ["Tauri 2", "Rust", "TypeScript", "React"],
+        technologies: ["Tauri 2", "Rust", "TypeScript", "React", "xterm.js", "MCP", "GitHub Actions"],
         links: [
           { label: "Сайт", url: "https://modelcrew-com.vercel.app/" },
           {
@@ -926,28 +926,28 @@ const translations = {
       {
         name: "ModelCrew",
         // Shown until GitHub answers with the newest release of `repo`
-        version: "v0.0.21",
+        version: "v0.0.24",
         repo: "xpl0itK3y/modelcrew-desktop",
         logo: "icons/modelcrew/modelcrew-logo.svg",
-        tagline: "AI coding agents working together on one codebase",
-        meta: ["Project author", "In active development", "Open source, MIT", "macOS, Windows, Linux"],
+        tagline: "A terminal workspace for several AI coding agents in one project",
+        meta: ["Project author", "20+ releases since June 2026", "Open source, MIT", "macOS, Windows, Linux"],
         description:
-          "A desktop app where several AI coding agents (Claude Code, Codex, Copilot, OpenCode) work side by side in one project without overwriting each other's edits.",
+          "A desktop app where Claude Code, Codex, GitHub Copilot and OpenCode work in parallel in one project without overwriting each other's edits.",
         highlights: [
           {
             title: "File claims",
-            text: "An agent claims a file through its own hook before editing it. A second agent is refused with a reason, in its own CLI's format: an exit code, a JSON decision or a plugin error. A write over a version the agent read before someone else changed it is refused too.",
+            text: "An agent claims a file before writing it; a second agent is refused with a reason and moves on to another file.",
           },
           {
-            title: "Terminal grid",
-            text: "Each panel runs the agent's CLI from the user's PATH in its own PTY. After a restart, sessions come back together with each agent's conversation.",
+            title: "Browser over MCP",
+            text: "A built-in MCP server gives agents a browser to read the page, click, type and take screenshots, with protection against prompt injection.",
           },
           {
-            title: "Git panel",
-            text: "Real-time per-file diffs, commit, revert, branch switching and a history graph.",
+            title: "Sessions and alerts",
+            text: "After a restart each panel resumes its own conversation with the agent, and an agent that finished or needs permission sends an alert.",
           },
         ],
-        technologies: ["Tauri 2", "Rust", "TypeScript", "React"],
+        technologies: ["Tauri 2", "Rust", "TypeScript", "React", "xterm.js", "MCP", "GitHub Actions"],
         links: [
           { label: "Website", url: "https://modelcrew-com.vercel.app/" },
           {

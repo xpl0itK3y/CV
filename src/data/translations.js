@@ -429,14 +429,10 @@ const translations = {
     softSkills: [
       "Командная работа",
       "Коммуникация",
-      "Аналитическое мышление",
-      "Решение проблем",
       "Самоорганизация",
-      "Внимание к деталям",
       "Системное мышление",
-      "Быстрое освоение новых технологий",
     ],
-    workPractices: ["Agile", "Scrum", "Kanban"],
+    workPractices: ["Agile", "Scrum"],
     languages: [
       { name: "Русский", level: "C2 - Родной" },
       { name: "Английский", level: "Ниже среднего (A2 - B1)" },
@@ -914,14 +910,10 @@ const translations = {
     softSkills: [
       "Teamwork",
       "Communication",
-      "Analytical Thinking",
-      "Problem Solving",
       "Self-Organization",
-      "Attention to Detail",
       "Systems Thinking",
-      "Fast Learning of New Technologies",
     ],
-    workPractices: ["Agile", "Scrum", "Kanban"],
+    workPractices: ["Agile", "Scrum"],
     languages: [
       { name: "Russian", level: "C2 - Native" },
       { name: "English", level: "A2 - B1 Pre-Intermediate" },
